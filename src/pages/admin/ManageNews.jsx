@@ -29,7 +29,8 @@ const ManageNews = () => {
     category: 'Berita',
     content: '',
     image_url: '',
-    author: 'Admin PBA'
+    author: 'Admin PBA',
+    created_at: new Date().toISOString().split('T')[0] // Default to current date (YYYY-MM-DD)
   });
 
   const uploadImage = async (e) => {
@@ -132,13 +133,21 @@ const ManageNews = () => {
       category: item.category,
       content: item.content,
       image_url: item.image_url || '',
-      author: item.author || 'Admin PBA'
+      author: item.author || 'Admin PBA',
+      created_at: item.created_at ? new Date(item.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]
     });
     setIsModalOpen(true);
   };
 
   const resetForm = () => {
-    setFormData({ title: '', category: 'Berita', content: '', image_url: '', author: 'Admin PBA' });
+    setFormData({ 
+      title: '', 
+      category: 'Berita', 
+      content: '', 
+      image_url: '', 
+      author: 'Admin PBA',
+      created_at: new Date().toISOString().split('T')[0]
+    });
     setCurrentNews(null);
   };
 
@@ -298,6 +307,20 @@ const ManageNews = () => {
                         value={formData.author}
                         onChange={(e) => setFormData({...formData, author: e.target.value})}
                         className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-bold"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Tanggal Publikasi</label>
+                    <div className="relative">
+                      <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                      <input 
+                        type="date"
+                        required
+                        value={formData.created_at}
+                        onChange={(e) => setFormData({...formData, created_at: e.target.value})}
+                        className="w-full pl-12 pr-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-bold"
                       />
                     </div>
                   </div>
