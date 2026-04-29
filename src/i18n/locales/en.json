@@ -1,0 +1,352 @@
+{
+  "translation": {
+    "site": {
+      "name": "Arabic Language Education",
+      "faculty": "Faculty of Educational Sciences",
+      "university": "UIN Syarif Hidayatullah Jakarta",
+      "search_placeholder": "What are you looking for?"
+    },
+    "nav": {
+      "home": "Home",
+      "profile": "Profile",
+      "curriculum": "Curriculum",
+      "lecturers": "Lecturers",
+      "research": "Research & Publication",
+      "students": "Students",
+      "alumni": "Alumni",
+      "news": "News",
+      "profile_history": "History",
+      "profile_vision": "Scientific Vision",
+      "profile_goals": "Goals",
+      "profile_graduates": "Graduate Profile",
+      "curriculum_cpl": "Learning Outcomes",
+      "curriculum_courses": "Courses",
+      "student_data": "Data",
+      "student_services": "Academic Services",
+      "alumni_data": "Data",
+      "alumni_tracer": "Tracer Study Form"
+    },
+    "hero": {
+      "title": "Arabic Language Education",
+      "subtitle": "Creating innovative, professional, and noble character educators in the global era."
+    },
+    "pages": {
+      "sejarah": {
+        "badge": "PBA Journey",
+        "title": "History",
+        "title_accent": "PBA UIN Jakarta",
+        "desc": "Rooted in the Academy of Religious Sciences (ADIA) in 1957, evolved into IAIN in 1960, and transformed into UIN in 2002. PBA is one of the oldest and leading study programs at FITK UIN Jakarta.",
+        "quote": "More than 6 decades dedicated to producing superior and moderate Arabic language educators.",
+        "milestones": {
+          "0": { "year": "1957 - 1960", "title": "Early Establishment", "desc": "PBA initially took the form of the Arabic Language Department (BA) under ADIA (Academy of Religious Sciences) which was established on June 1, 1957." },
+          "1": { "year": "2002", "title": "Transformation to UIN", "desc": "In accordance with Presidential Decree No. 031 of 2002, IAIN transformed into UIN Syarif Hidayatullah Jakarta, strengthening PBA's position as a flagship study program." },
+          "2": { "year": "2011", "title": "Master's Education (S2)", "desc": "The Arabic Language Education Master's Program (MPBA) FITK UIN Jakarta was officially established on January 11, 2011, based on the Director's Decree." },
+          "3": { "year": "1960 - Present", "title": "Transformation (Today)", "desc": "Part of UIN Syarif Hidayatullah Jakarta. PBA continues to develop as the oldest and leading study program in FITK UIN Syarif Hidayatullah Jakarta." }
+        }
+      },
+      "visi": {
+        "badge": "Scientific Vision",
+        "title": "Building the Future",
+        "title_accent": "Arabic Language Education",
+        "main_visi": "To organize innovative, holistic, and integrative Arabic language education based on authentic tasks and digital technology grounded in research and contributing to international reputation.",
+        "pillars_title": "Strategic Pillars",
+        "pillars": {
+          "0": { "title": "Innovation & Technology", "desc": "Utilization of the latest digital platforms for language learning effectiveness." },
+          "1": { "title": "Holistic & Integrative", "desc": "Comprehensive learning approach, combining linguistic theory with authentic practice." },
+          "2": { "title": "Research-Based", "desc": "Curriculum and teaching methods are developed based on current research findings." },
+          "3": { "title": "International Reputation", "desc": "Producing graduates and scientific works recognized by the global academic community." }
+        }
+      },
+      "tujuan": {
+        "badge": "Core Objectives",
+        "title": "Study Program",
+        "title_accent": "Goals",
+        "subtitle": "Producing superior graduates who are competitive, innovative, and of noble character.",
+        "footer_title": "Building Competence, Realizing Achievement",
+        "footer_desc": "Our curriculum is designed to ensure every graduate has high competitiveness in the global job market as well as in the academic world.",
+        "items": {
+          "1": { "title": "Professional & Holistic Graduates", "desc": "To produce graduates who are pious, professional, and competent in Arabic language education with an innovative and integrative holistic approach based on authentic tasks." },
+          "2": { "title": "Language Proficiency & Research", "desc": "Equipping graduates with Arabic language proficiency at least equivalent to CEFR B1 (lower intermediate), pedagogical competence, research ability, and learning innovation." },
+          "3": { "title": "Global Innovators & Researchers", "desc": "Producing educators, curriculum developers, researchers, and Arabic language education innovators who are adaptive, creative, and competitive with real contributions at national and international levels." },
+          "4": { "title": "Leadership & Entrepreneurship", "desc": "Cultivating leadership, independence, and entrepreneurship based on Arabic language in the fields of education, digital media, and other relevant professions." }
+        }
+      },
+      "profil_lulusan": {
+        "badge": "Career Path & Prospect",
+        "title": "Profile of",
+        "title_accent": "Superior Graduates",
+        "subtitle": "We produce experts who are not only academically competent but also innovative and ready to lead in the global job market.",
+        "footer_title": "Ready to Compete Globally",
+        "footer_desc": "Our graduates are spread across various strategic sectors, from international educational institutions to educational technology startups.",
+        "profiles": {
+          "0": { "title": "Arabic Language Educator", "desc": "Mastering the theory and practice of Arabic language learning with an innovative and integrative holistic approach based on authentic tasks, as well as being proficient in integrating digital technology." },
+          "1": { "title": "Curriculum Developer", "desc": "Expert in designing and evaluating curricula and assessment instruments that are adaptive to modern academic standards and global job market needs." },
+          "2": { "title": "Educational Technopreneur", "desc": "Competent in creating innovative digital learning technology solutions to increase accessibility and effectiveness of language teaching." },
+          "3": { "title": "Islamic Consultant", "desc": "Muslim scholars who provide Islamic guidance based on Arabic language literacy to answer contemporary social and religious issues." },
+          "4": { "title": "Educational Researcher", "desc": "Proficient in designing strategic research in the field of Arabic language education to disseminate scientific innovation at national and international levels." }
+        }
+      },
+      "lecturers": {
+        "badge": "Academic Community",
+        "title": "Lecturer",
+        "title_accent": "Data",
+        "subtitle": "Meet our expert teaching staff who are highly dedicated to the development of Arabic language education through teaching, research, and community service.",
+        "search_placeholder": "Search lecturer name or specialization...",
+        "nip": "ID Number",
+        "expertise": "Expertise"
+      },
+      "curriculum": {
+        "badge": "2026 Curriculum Update",
+        "title": "Transformation of",
+        "title_accent": "Arabic Education",
+        "subtitle": "PBA FITK UIN Syarif Hidayatullah Jakarta is committed to improving quality through an innovative, integrative, and applicable curriculum in line with global dynamics.",
+        "digital_era": {
+          "title": "Digital Era & Innovation",
+          "desc": "Changes in the global educational landscape demand learning that is not only theoretical but also utilizes digital technology to create graduates who are adaptive, creative, and problem-solvers in the 21st century."
+        },
+        "holistic_vision": {
+          "title": "Holistic-Integrative Vision",
+          "desc": "An authentic task-based and holistic approach is the new foundation. We are updating conventional structures into an inclusive and future-oriented educational ecosystem."
+        },
+        "obe": {
+          "title": "Outcome Based Education (OBE)",
+          "desc": "We adopt the OBE framework to ensure the entire educational process is directed towards achieving measurable graduate competencies oriented toward real-world outcomes.",
+          "points": ["Competent Graduate Profile", "International Standards", "Real Outcome Oriented"],
+          "roles": {
+            "educator": "Educator",
+            "researcher": "Researcher",
+            "developer": "Developer",
+            "entrepreneur": "Entrepreneur"
+          }
+        },
+        "quote": "Creating an Arabic language education ecosystem that is more dynamic, inclusive, and future-oriented as a contribution to the academic reputation of UIN Jakarta.",
+        "tags": ["Collaborative", "Creative", "Relevant"]
+      },
+      "news": {
+        "badge": "Latest Updates",
+        "title": "News &",
+        "title_accent": "Events",
+        "subtitle": "Follow the latest developments, student achievements, and various academic activities within the PBA UIN Jakarta environment.",
+        "categories": {
+          "all": "All",
+          "education": "Education",
+          "research": "Research",
+          "event": "Event",
+          "announcement": "Announcement"
+        },
+        "search_placeholder": "Search news...",
+        "read_more": "Read More",
+        "not_found": "No news found.",
+        "detail": {
+          "back": "Back",
+          "breadcrumb": "News",
+          "author": "Author",
+          "read_time": "{{minutes}} min read",
+          "share": "Share",
+          "other_news": "Other News",
+          "not_found": "News not found",
+          "back_to_news": "Back to News"
+        }
+      },
+      "cpl": {
+        "badge": "Curriculum & Standards",
+        "title": "Graduate",
+        "title_accent": "Outcomes",
+        "subtitle": "The PBA FITK UIN Jakarta curriculum is designed to ensure every graduate meets global competency standards covering aspects of attitude, knowledge, and skills.",
+        "cefr_badge": "Global Standard",
+        "cefr_title": "CEFR B1 Standard",
+        "cefr_desc": "Graduates are required to have minimum language proficiency at the B1 level (Intermediate) as an international competency standard.",
+        "items": {
+          "0": { "title": "Ethics & Integrity", "desc": "Analyze, internalize, and demonstrate piety, professional responsibility, and ethics in diversity and social-environmental care for integrated decision-making." },
+          "1": { "title": "Language Proficiency (CEFR B1)", "desc": "Use Arabic receptively, productively, interactively, and meditatively with a minimum proficiency equivalent to CEFR B1 (Lower Intermediate) in various communication contexts." },
+          "2": { "title": "Arabic Linguistics & Literature", "desc": "Master and apply basic concepts of Arabic linguistics and literature, referring to relevant international references in linguistic analysis." },
+          "3": { "title": "Innovative Learning Principles", "desc": "Analyze and evaluate language learning principles to design and adapt innovative strategies based on current technology." },
+          "4": { "title": "Learning Technology", "desc": "Design, implement, and evaluate technology-based Arabic language learning in an innovative and adaptive manner." },
+          "5": { "title": "Research Methodology", "desc": "Design and conduct Arabic language education research based on scientific methods and disseminate results according to global standards." },
+          "6": { "title": "Language-Based Edupreneur", "desc": "Develop Arabic language-based edupreneur competencies with innovative managerial strategies in global-oriented creative industries." }
+        }
+      },
+      "mata_kuliah": {
+        "badge": "Academic Curriculum",
+        "title": "List of",
+        "title_accent": "Courses",
+        "subtitle": "Explore various courses designed to shape professional, innovative, and globally-oriented Arabic language educators.",
+        "search_placeholder": "Search course code or name...",
+        "semesters": {
+          "all": "All",
+          "elective": "Elective",
+          "label": "Semester"
+        },
+        "stats": {
+          "study_load": "Study Load",
+          "distribution": "SKS Distribution per Semester",
+          "total_sks": "Total Curriculum SKS",
+          "structure": "Course Structure",
+          "composition": "Course Composition",
+          "compulsory": "Compulsory",
+          "elective": "Elective"
+        },
+        "elective_section": {
+          "title": "Elective Courses",
+          "slot_prefix": "Elective Course",
+          "click_to_select": "Click to select a course",
+          "footer_note": "* Semester {{semester}} students can choose the elective courses above.",
+          "modal_title": "Select Course"
+        },
+        "not_found": {
+          "title": "No Courses Found",
+          "desc": "Try using other keywords or select a different semester."
+        },
+        "modal": {
+          "desc_title": "Course Description",
+          "close": "Close Details"
+        }
+      },
+      "alumni": {
+        "badge": "PBA Alumni Association",
+        "title": "Building",
+        "title_accent": "Networks",
+        "title_suffix": "of Success Together",
+        "subtitle": "Welcome to the PBA UIN Jakarta alumni portal. A place for communication, collaboration, and inspiration for all graduates who have worked in various corners of the world.",
+        "cards": {
+          "directory": {
+            "title": "Alumni Directory",
+            "desc": "Search and find your peers through the integrated alumni database.",
+            "cta": "Access Now"
+          },
+          "tracer": {
+            "title": "Tracer Study",
+            "desc": "Help us improve education quality by filling out the graduate tracking survey.",
+            "cta": "Access Now"
+          }
+        },
+        "contribution": {
+          "title": "Alumni Contribution",
+          "desc": "We are proud of our alumni's achievements as educators, researchers, entrepreneurs, and bureaucrats at national and international levels.",
+          "points": ["Wide Career Network", "Alumni Mentoring Program", "Routine Seminars & Reunions"],
+          "stats": {
+            "employment": "Employment Rate",
+            "reach": "Alumni Reach",
+            "story": "Success Story",
+            "graduates": "Total Graduates"
+          }
+        }
+      },
+      "mahasiswa": {
+        "badge": "Student Information Center",
+        "title": "Realize",
+        "title_accent": "Achievements",
+        "title_suffix": "& Your Talent",
+        "subtitle": "A complete portal to support academic activities, self-development, and student services for all PBA UIN Jakarta members.",
+        "cards": {
+          "directory": {
+            "title": "Student Directory",
+            "desc": "Access active student data and find study partners and academic project collaborators.",
+            "cta": "Explore Now"
+          },
+          "services": {
+            "title": "Academic Services",
+            "desc": "Information on administrative procedures, letter submissions, and integrated academic guidance.",
+            "cta": "Explore Now"
+          }
+        },
+        "features": {
+          "scholarship": { "title": "Scholarship", "desc": "Information on outstanding education cost assistance." },
+          "organization": { "title": "Organization", "desc": "Develop soft skills in HMPS & communities." },
+          "library": { "title": "Library", "desc": "Access thousands of digital Arabic literature." }
+        },
+        "stats": {
+          "title": "Number of Students",
+          "subtitle": "Visualization of semester data for 2020 - 2026",
+          "label": "Number of Students",
+          "semester": "Semester",
+          "count": "Total Students",
+          "loading": "Loading Data..."
+        }
+      },
+      "penelitian": {
+        "title": "Research &",
+        "title_accent": "Publication",
+        "subtitle": "Supporting an innovative research ecosystem in the development of Arabic language education.",
+        "stats": {
+          "total": "Total Works",
+          "research": "Research",
+          "publication": "Scientific Publication"
+        },
+        "tabs": {
+          "all": "All",
+          "research": "Research",
+          "publication": "Publication"
+        },
+        "search_placeholder": "Search title or researcher...",
+        "view_work": "View Work"
+      },
+      "footer": {
+        "desc": "Arabic Language Education Study Program (PBA) UIN Syarif Hidayatullah Jakarta. Producing excellent, moderate, and innovative generations of Arabic language educators.",
+        "columns": {
+          "program": {
+            "title": "Study Program",
+            "vision": "Vision & Mission",
+            "curriculum": "Curriculum",
+            "staff": "Lecturers",
+            "accreditation": "Accreditation"
+          },
+          "services": {
+            "title": "Services",
+            "registration": "Online Registration",
+            "schedule": "Course Schedule",
+            "calendar": "Academic Calendar",
+            "help": "Help Center"
+          },
+          "students": {
+            "title": "Students",
+            "organization": "Student Association",
+            "scholarship": "Scholarship",
+            "achievement": "Achievements",
+            "alumni": "Alumni"
+          }
+        },
+        "contact": {
+          "address": "Address",
+          "city": "Ciputat, South Tangerang",
+          "phone": "Phone",
+          "email": "Email"
+        },
+        "bottom": {
+          "rights": "All rights reserved.",
+          "privacy": "Privacy Policy",
+          "terms": "Terms of Service"
+        }
+      },
+      "home": {
+        "badge": "PBA UIN Jakarta",
+        "hero_cta": "Register Now",
+        "hero_curriculum": "Curriculum",
+        "news_title": "News &",
+        "news_title_accent": "Events",
+        "news_see_all": "View All",
+        "news_read_more": "Read",
+        "cta_title": "Ready to Join Us?",
+        "cta_desc": "Realize your dreams of becoming a professional and globally-minded Arabic language educator at UIN Syarif Hidayatullah Jakarta.",
+        "cta_button": "Register Now",
+        "quick_links": {
+          "popular": "Popular Searches",
+          "students": "Students & Alumni",
+          "programs": "Featured Programs",
+          "library": "University Library",
+          "lab": "Language Laboratory",
+          "jobs": "Lecturer Vacancies",
+          "scholarship": "Scholarship Programs",
+          "portal": "AIS Portal",
+          "lms": "LMS Brightspace",
+          "email": "Institutional Email",
+          "tracer": "Tracer Study",
+          "s1": "Bachelor Program (S1)",
+          "s2": "Master Program (S2)",
+          "intensive": "Intensive Language Course",
+          "continuing": "Continuing Education"
+        }
+      }
+    }
+  }
+}
