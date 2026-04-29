@@ -62,7 +62,7 @@ const Footer = () => {
           <div className="lg:col-span-4">
             <Link to="/" className="flex items-center gap-3 mb-8 group">
               <div className="w-14 h-14 flex items-center justify-center">
-                <img src={logoUin} alt="UIN Jakarta Logo" className="w-full h-full object-contain" />
+                <img src={logoUin} alt="Logo UIN Syarif Hidayatullah Jakarta" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col leading-tight text-white">
                 <span className="text-2xl font-black tracking-tight">PBA <span className="text-primary-500">UIN</span></span>
@@ -77,6 +77,7 @@ const Footer = () => {
                 <a 
                   key={i} 
                   href={social.href}
+                  aria-label={`Buka tautan sosial ${i + 1}`}
                   className="w-10 h-10 rounded-2xl bg-slate-900 flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all duration-300 border border-slate-800"
                 >
                   <social.icon size={18} />

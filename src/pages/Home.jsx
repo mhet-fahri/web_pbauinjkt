@@ -156,7 +156,7 @@ const Home = () => {
               >
                 <img 
                   src={uinJakarta} 
-                  alt="UIN Jakarta"
+                  alt="Gedung Kampus UIN Syarif Hidayatullah Jakarta"
                   className="w-full h-[500px] object-cover"
                   loading="lazy"
                 />

@@ -107,12 +107,13 @@ const Navbar = () => {
                 <button 
                   key={lang.code} 
                   onClick={() => changeLanguage(lang.code)}
+                  aria-label={`Ganti bahasa ke ${lang.name}`}
                   className={clsx(
                     "hover:scale-110 transition-all flex items-center gap-1.5 px-2 py-1 rounded-md",
                     i18n.language === lang.code ? "bg-indigo-500/10 opacity-100 scale-110" : "opacity-40 hover:opacity-100"
                   )}
                 >
-                  <img src={lang.flag} alt={lang.name} className="w-5 h-auto rounded-sm shadow-sm" />
+                  <img src={lang.flag} alt={`Bendera ${lang.name}`} className="w-5 h-auto rounded-sm shadow-sm" />
                   <span className="text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-tighter">{lang.code}</span>
                 </button>
               ))}
@@ -124,7 +125,7 @@ const Navbar = () => {
       <div className="container-custom flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
           <div className="w-12 h-12 flex items-center justify-center">
-            <img src={logoUin} alt="UIN Jakarta Logo" className="w-full h-full object-contain" />
+            <img src={logoUin} alt="Logo UIN Syarif Hidayatullah Jakarta" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col leading-[1.1]">
             <span className={clsx(
@@ -206,7 +207,11 @@ const Navbar = () => {
           {/* Scrolled Info */}
           {scrolled && (
             <div className="flex items-center gap-4 ml-2 pl-4 border-l border-slate-200 dark:border-slate-800">
-              <button onClick={() => setShowSearch(!showSearch)} className="text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition-colors">
+              <button 
+                onClick={() => setShowSearch(!showSearch)} 
+                aria-label="Cari di website"
+                className="text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition-colors"
+              >
                 <Search size={18} />
               </button>
               <div className="flex gap-2">
@@ -214,12 +219,13 @@ const Navbar = () => {
                   <button 
                     key={lang.code} 
                     onClick={() => changeLanguage(lang.code)}
+                    aria-label={`Ganti bahasa ke ${lang.name}`}
                     className={clsx(
                       "hover:scale-110 transition-all",
                       i18n.language === lang.code ? "opacity-100 scale-110" : "opacity-30"
                     )}
                   >
-                    <img src={lang.flag} alt={lang.name} className="w-4 h-auto rounded-sm" />
+                    <img src={lang.flag} alt={`Bendera ${lang.name}`} className="w-4 h-auto rounded-sm" />
                   </button>
                 ))}
               </div>
@@ -229,12 +235,17 @@ const Navbar = () => {
 
         {/* Mobile Buttons */}
         <div className="flex items-center gap-4 lg:hidden">
-          <button onClick={() => setShowSearch(!showSearch)} className="p-2 text-slate-900 dark:text-white">
+          <button 
+            onClick={() => setShowSearch(!showSearch)} 
+            aria-label="Cari di website"
+            className="p-2 text-slate-900 dark:text-white"
+          >
             <Search size={20} />
           </button>
           <button
             className="p-2 text-slate-900 dark:text-white"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Tutup menu" : "Buka menu"}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
