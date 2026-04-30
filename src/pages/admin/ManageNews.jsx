@@ -10,10 +10,26 @@ import {
   Save,
   Loader2,
   Calendar,
-  Upload
+  Upload,
+  Sparkles,
+  Languages,
+  Globe
 } from 'lucide-react';
+import { translateWithAI } from '../../utils/aiService';
 import { supabase } from '../../lib/supabase';
 import { getDirectImageUrl } from '../../utils/imageUtils';
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
+
+const quillModules = {
+  toolbar: [
+    [{ 'header': [1, 2, 3, false] }],
+    ['bold', 'italic', 'underline', 'strike'],
+    [{ 'align': [] }],
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    ['link', 'clean']
+  ]
+};
 
 const ManageNews = () => {
   const [news, setNews] = useState([]);
@@ -26,12 +42,19 @@ const ManageNews = () => {
   // Form State
   const [formData, setFormData] = useState({
     title: '',
+    title_ar: '',
+    title_en: '',
     category: 'Berita',
     content: '',
+    content_ar: '',
+    content_en: '',
     image_url: '',
     author: 'Admin PBA',
-    created_at: new Date().toISOString().split('T')[0] // Default to current date (YYYY-MM-DD)
+    created_at: new Date().toISOString().split('T')[0]
   });
+
+  const [activeTab, setActiveTab] = useState('id'); // 'id', 'ar', 'en'
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const uploadImage = async (e) => {
     try {
@@ -129,9 +152,13 @@ const ManageNews = () => {
   const openEditModal = (item) => {
     setCurrentNews(item);
     setFormData({
-      title: item.title,
-      category: item.category,
-      content: item.content,
+      title: item.title || '',
+      title_ar: item.title_ar || '',
+      title_en: item.title_en || '',
+      category: item.category || 'Berita',
+      content: item.content || '',
+      content_ar: item.content_ar || '',
+      content_en: item.content_en || '',
       image_url: item.image_url || '',
       author: item.author || 'Admin PBA',
       created_at: item.created_at ? new Date(item.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]
@@ -139,16 +166,55 @@ const ManageNews = () => {
     setIsModalOpen(true);
   };
 
+  const generateAIContent = async () => {
+    if (!formData.title || !formData.content) {
+      alert('Mohon isi judul dan konten bahasa Indonesia terlebih dahulu.');
+      return;
+    }
+
+    try {
+      setIsGenerating(true);
+      
+      // Generate Arabic
+      const titleAr = await translateWithAI(formData.title, 'Arabic');
+      const contentAr = await translateWithAI(formData.content, 'Arabic');
+      
+      // Generate English
+      const titleEn = await translateWithAI(formData.title, 'English');
+      const contentEn = await translateWithAI(formData.content, 'English');
+
+      setFormData(prev => ({
+        ...prev,
+        title_ar: titleAr,
+        content_ar: contentAr,
+        title_en: titleEn,
+        content_en: contentEn
+      }));
+
+      alert('Berhasil men-generate konten dalam Bahasa Arab dan Inggris!');
+      setActiveTab('ar'); // Switch to Arabic to show the result
+    } catch (error) {
+      alert('Gagal men-generate konten: ' + error.message);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
   const resetForm = () => {
     setFormData({ 
       title: '', 
+      title_ar: '',
+      title_en: '',
       category: 'Berita', 
       content: '', 
+      content_ar: '',
+      content_en: '',
       image_url: '', 
       author: 'Admin PBA',
       created_at: new Date().toISOString().split('T')[0]
     });
     setCurrentNews(null);
+    setActiveTab('id');
   };
 
   const filteredNews = news.filter(item => 
@@ -275,17 +341,129 @@ const ManageNews = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Judul Berita</label>
-                    <input 
-                      type="text"
-                      required
-                      value={formData.title}
-                      onChange={(e) => setFormData({...formData, title: e.target.value})}
-                      placeholder="Masukkan judul artikel..."
-                      className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-bold"
-                    />
+                  {/* Language Tabs */}
+                  <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl mb-6">
+                    {[
+                      { id: 'id', label: 'Indonesia', icon: <Globe size={14} /> },
+                      { id: 'ar', label: 'Arab', icon: <Globe size={14} /> },
+                      { id: 'en', label: 'Inggris', icon: <Globe size={14} /> }
+                    ].map((tab) => (
+                      <button
+                        key={tab.id}
+                        type="button"
+                        onClick={() => setActiveTab(tab.id)}
+                        className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-all ${
+                          activeTab === tab.id 
+                            ? 'bg-white dark:bg-slate-700 text-indigo-600 shadow-sm' 
+                            : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                        }`}
+                      >
+                        {tab.icon}
+                        {tab.label}
+                      </button>
+                    ))}
                   </div>
+
+                  {activeTab === 'id' && (
+                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Judul Berita (ID)</label>
+                          <button 
+                            type="button"
+                            onClick={generateAIContent}
+                            disabled={isGenerating}
+                            className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-indigo-600 hover:text-indigo-700 bg-indigo-50 dark:bg-indigo-900/20 px-3 py-1 rounded-full border border-indigo-100 dark:border-indigo-800 transition-all disabled:opacity-50"
+                          >
+                            {isGenerating ? <Loader2 size={12} className="animate-spin" /> : <Sparkles size={12} />}
+                            Generate AI (AR & EN)
+                          </button>
+                        </div>
+                        <input 
+                          type="text"
+                          required
+                          value={formData.title}
+                          onChange={(e) => setFormData({...formData, title: e.target.value})}
+                          placeholder="Masukkan judul artikel..."
+                          className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-bold"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Konten Berita (ID)</label>
+                        <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus-within:ring-2 focus-within:ring-indigo-500 transition-all">
+                          <ReactQuill 
+                            theme="snow"
+                            modules={quillModules}
+                            value={formData.content}
+                            onChange={(content) => setFormData({...formData, content})}
+                            placeholder="Tuliskan isi berita..."
+                            className="bg-transparent text-slate-900 dark:text-white border-none"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === 'ar' && (
+                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300" dir="rtl">
+                      <div className="space-y-2">
+                        <label className="text-xs font-black text-slate-400 uppercase tracking-widest mr-1 block text-right">عنوان الخبر (Arabic Title)</label>
+                        <input 
+                          type="text"
+                          value={formData.title_ar}
+                          onChange={(e) => setFormData({...formData, title_ar: e.target.value})}
+                          placeholder="أدخل عنوان المقال..."
+                          className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-bold text-right"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-xs font-black text-slate-400 uppercase tracking-widest mr-1 block text-right">محتوى الخبر (Arabic Content)</label>
+                        <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus-within:ring-2 focus-within:ring-indigo-500 transition-all" dir="ltr">
+                          <ReactQuill 
+                            theme="snow"
+                            modules={quillModules}
+                            value={formData.content_ar}
+                            onChange={(content) => setFormData({...formData, content_ar: content})}
+                            placeholder="اكتب محتوى الخبر هنا..."
+                            className="bg-transparent text-slate-900 dark:text-white border-none quill-rtl"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === 'en' && (
+                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                      <div className="space-y-2">
+                        <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">News Title (English)</label>
+                        <input 
+                          type="text"
+                          value={formData.title_en}
+                          onChange={(e) => setFormData({...formData, title_en: e.target.value})}
+                          placeholder="Enter article title..."
+                          className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-bold"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">News Content (English)</label>
+                        <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus-within:ring-2 focus-within:ring-indigo-500 transition-all">
+                          <ReactQuill 
+                            theme="snow"
+                            modules={quillModules}
+                            value={formData.content_en}
+                            onChange={(content) => setFormData({...formData, content_en: content})}
+                            placeholder="Write news content here..."
+                            className="bg-transparent text-slate-900 dark:text-white border-none"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <hr className="border-slate-100 dark:border-slate-800" />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
@@ -352,17 +530,7 @@ const ManageNews = () => {
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Konten Berita</label>
-                    <textarea 
-                      required
-                      rows={6}
-                      value={formData.content}
-                      onChange={(e) => setFormData({...formData, content: e.target.value})}
-                      placeholder="Tuliskan isi berita..."
-                      className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 transition-all resize-none font-medium"
-                    />
-                  </div>
+
 
                   <div className="pt-4 flex gap-4">
                     <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 px-8 py-4 rounded-2xl font-bold border border-slate-200 dark:border-slate-800 hover:bg-slate-100 transition-colors">Batal</button>

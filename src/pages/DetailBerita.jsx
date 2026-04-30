@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
@@ -45,6 +46,8 @@ const demoNews = [
 ];
 
 const DetailBerita = () => {
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language;
   const { id } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
@@ -128,7 +131,11 @@ const DetailBerita = () => {
             <div className="flex items-center gap-2 text-sm font-medium text-slate-400">
               <Link to="/berita" className="hover:text-primary-600 transition-colors">Berita</Link>
               <ChevronRight size={14} />
-              <span className="text-slate-600 dark:text-slate-300 line-clamp-1">{post.title}</span>
+              <span className="text-slate-600 dark:text-slate-300 line-clamp-1">
+                {currentLang === 'ar' && post.title_ar ? post.title_ar : 
+                 currentLang === 'en' && post.title_en ? post.title_en : 
+                 post.title}
+              </span>
             </div>
           </div>
 
@@ -142,7 +149,9 @@ const DetailBerita = () => {
                 {post.category}
               </div>
               <h1 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 leading-tight tracking-tight">
-                {post.title}
+                {currentLang === 'ar' && post.title_ar ? post.title_ar : 
+                 currentLang === 'en' && post.title_en ? post.title_en : 
+                 post.title}
               </h1>
               
               <div className="flex flex-wrap items-center gap-6 text-sm text-slate-500 border-b border-slate-100 dark:border-slate-800 pb-8">
@@ -180,14 +189,27 @@ const DetailBerita = () => {
 
           {/* Article Content */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-8">
-              <div className="prose prose-slate dark:prose-invert max-w-none">
-                {post.content.split('\n\n').map((para, i) => (
-                  <p key={i} className="text-lg leading-relaxed text-slate-600 dark:text-slate-400 mb-6 text-justify">
-                    {para}
-                  </p>
-                ))}
-              </div>
+            <div className="lg:col-span-8 min-w-0">
+              <div 
+                className={`prose prose-slate dark:prose-invert max-w-none overflow-hidden w-full ${currentLang === 'ar' ? 'text-right' : 'text-left'} text-lg leading-relaxed text-slate-600 dark:text-slate-400`}
+                dangerouslySetInnerHTML={{ 
+                  __html: (() => {
+                    let content = currentLang === 'ar' && post.content_ar ? post.content_ar : 
+                                  currentLang === 'en' && post.content_en ? post.content_en : 
+                                  post.content;
+                    if (!content) return '';
+                    
+                    // Replace non-breaking spaces with normal spaces to allow natural word wrapping
+                    content = content.replace(/&nbsp;/g, ' ');
+
+                    // Convert newlines to paragraphs for legacy plain text entries
+                    if (!/<[a-z][\s\S]*>/i.test(content)) {
+                      return content.split('\n\n').map(p => `<p>${p.replace(/\n/g, ' ')}</p>`).join('');
+                    }
+                    return content;
+                  })()
+                }}
+              />
 
               {/* Tags/Share Footer */}
               <div className="mt-16 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -195,11 +217,45 @@ const DetailBerita = () => {
                   <Share2 size={18} className="text-slate-400" />
                   <span className="text-sm font-bold text-slate-500 uppercase tracking-widest">Bagikan:</span>
                   <div className="flex items-center gap-2 ml-2">
-                    {[1, 2, 3].map((i) => (
-                      <button key={i} className="w-9 h-9 rounded-full bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary-600 hover:text-white transition-all shadow-sm">
-                        <Share2 size={16} />
-                      </button>
-                    ))}
+                    <button 
+                      onClick={() => {
+                        const url = window.location.href;
+                        const title = currentLang === 'ar' && post.title_ar ? post.title_ar : currentLang === 'en' && post.title_en ? post.title_en : post.title;
+                        window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' \n\n' + url)}`, '_blank');
+                      }}
+                      title="Share to WhatsApp"
+                      className="w-9 h-9 rounded-full bg-[#25D366]/10 text-[#25D366] flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-all shadow-sm"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+                    </button>
+                    <button 
+                      onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank')}
+                      title="Share to Facebook"
+                      className="w-9 h-9 rounded-full bg-[#1877F2]/10 text-[#1877F2] flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-all shadow-sm"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg>
+                    </button>
+                    <button 
+                      onClick={() => {
+                        const url = window.location.href;
+                        const title = currentLang === 'ar' && post.title_ar ? post.title_ar : currentLang === 'en' && post.title_en ? post.title_en : post.title;
+                        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank');
+                      }}
+                      title="Share to X (Twitter)"
+                      className="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 flex items-center justify-center hover:bg-slate-900 dark:hover:bg-slate-700 hover:text-white transition-all shadow-sm"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/></svg>
+                    </button>
+                    <button 
+                      onClick={() => {
+                        navigator.clipboard.writeText(window.location.href);
+                        alert('Tautan berhasil disalin!');
+                      }}
+                      title="Copy Link"
+                      className="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all shadow-sm"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                    </button>
                   </div>
                 </div>
               </div>

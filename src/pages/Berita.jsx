@@ -51,7 +51,8 @@ const demoNews = [
 ];
 
 const Berita = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('Semua');
   const [dbNews, setDbNews] = useState([]);
@@ -184,10 +185,14 @@ const Berita = () => {
                       {new Date(item.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
                     </div>
                     <h3 className="text-xl font-black mb-4 leading-tight text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors line-clamp-2">
-                      {item.title}
+                      {currentLang === 'ar' && item.title_ar ? item.title_ar : 
+                       currentLang === 'en' && item.title_en ? item.title_en : 
+                       item.title}
                     </h3>
                     <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 line-clamp-3 leading-relaxed">
-                      {item.content}
+                      {(currentLang === 'ar' && item.content_ar ? item.content_ar : 
+                       currentLang === 'en' && item.content_en ? item.content_en : 
+                       item.content || '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ')}
                     </p>
                     <Link to={`/berita/${item.id}`} className="inline-flex items-center gap-2 text-sm font-black text-primary-600 group/link">
                       {t('pages.news.read_more')} 
