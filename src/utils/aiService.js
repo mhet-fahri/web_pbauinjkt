@@ -8,11 +8,10 @@ export const translateWithAI = async (text, targetLang) => {
 
   try {
     /**
-     * Kita gunakan 'gemini-pro' (Versi 1.0) sebagai model utama
-     * karena seri 1.5 (Flash/Pro) terus menerus memberikan error 404 
-     * pada project Google Cloud Anda.
+     * Kita gunakan 'gemini-1.5-flash' sebagai model utama.
+     * Model ini lebih cepat dan stabil untuk tugas translasi.
      */
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     
     const prompt = `Translate the following text to ${targetLang} professionally. Keep all HTML tags and formatting exactly as they are. Only return the translation:\n\n${text}`;
     
