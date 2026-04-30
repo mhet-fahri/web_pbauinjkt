@@ -31,6 +31,7 @@ import ManageStudents from './pages/admin/ManageStudents';
 import ManageAlumni from './pages/admin/ManageAlumni';
 import ManagePublications from './pages/admin/ManagePublications';
 import AdminLayout from './components/admin/AdminLayout';
+import ProtectedRoute from './components/admin/ProtectedRoute';
 
 import './App.css';
 
@@ -76,7 +77,14 @@ function App() {
           
           {/* Admin Routes */}
           <Route path="/admin/login" element={<Login />} />
-          <Route path="/admin" element={<AdminLayout />}>
+          <Route 
+            path="/admin" 
+            element={
+              <ProtectedRoute>
+                <AdminLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="news" element={<ManageNews />} />
             <Route path="lecturers" element={<ManageLecturers />} />

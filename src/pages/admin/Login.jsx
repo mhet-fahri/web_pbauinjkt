@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Lock, Mail, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 
@@ -10,6 +10,20 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get the page they were trying to visit
+  const from = location.state?.from?.pathname || '/admin/dashboard';
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        navigate('/admin/dashboard', { replace: true });
+      }
+    };
+    checkUser();
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,7 +42,8 @@ const Login = () => {
 
       if (authError) throw authError;
       
-      navigate('/admin/dashboard');
+      // Navigate to the intended page or dashboard
+      navigate(from, { replace: true });
     } catch (err) {
       setError(err.message || 'Gagal login. Silakan coba lagi.');
     } finally {
