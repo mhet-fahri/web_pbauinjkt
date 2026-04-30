@@ -110,10 +110,10 @@ const DataMahasiswa = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white"
           >
-            Portal <span className="gradient-text">Mahasiswa</span>
+            {t('pages.mahasiswa.data.title')} <span className="gradient-text">{t('pages.mahasiswa.data.title_accent')}</span>
           </motion.h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            Pusat data, statistik pertumbuhan, dan galeri karya ilmiah mahasiswa PBA UIN Jakarta.
+            {t('pages.mahasiswa.data.subtitle')}
           </p>
         </div>
 
@@ -148,7 +148,7 @@ const DataMahasiswa = () => {
                     <div key={idx} className="flex-grow h-full flex flex-col justify-end items-center group relative min-w-[32px]">
                       {/* Hover Tooltip */}
                       <div className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-all bg-slate-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg mb-2 pointer-events-none z-20 whitespace-nowrap">
-                        {stat.count} Mahasiswa
+                        {stat.count} {t('pages.nav.students')}
                       </div>
 
                       {/* Static Label on Top of Bar */}
@@ -181,11 +181,11 @@ const DataMahasiswa = () => {
               <div className="flex flex-wrap gap-4 justify-center">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-primary-600" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Semester Ganjil</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{t('pages.mahasiswa.data.ganjil')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-indigo-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Semester Genap</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{t('pages.mahasiswa.data.genap')}</span>
                 </div>
               </div>
             </div>
@@ -207,7 +207,7 @@ const DataMahasiswa = () => {
               }`}
             >
               <Users size={18} />
-              Direktori Mahasiswa
+              {t('pages.mahasiswa.data.directory_tab')}
             </button>
             <button
               onClick={() => setActiveTab('publications')}
@@ -218,7 +218,7 @@ const DataMahasiswa = () => {
               }`}
             >
               <BookOpen size={18} />
-              Karya Ilmiah
+              {t('pages.mahasiswa.data.publications_tab')}
             </button>
           </div>
         </div>
@@ -228,7 +228,7 @@ const DataMahasiswa = () => {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
           <input
             type="text"
-            placeholder={activeTab === 'directory' ? "Cari nama atau NIM..." : "Cari judul atau penulis..."}
+            placeholder={activeTab === 'directory' ? t('pages.mahasiswa.data.search_placeholder_students') : t('pages.mahasiswa.data.search_placeholder_publications')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-12 pr-6 py-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:ring-2 focus:ring-primary-500 shadow-sm"
@@ -265,7 +265,7 @@ const DataMahasiswa = () => {
                       </div>
                       <div>
                         <h3 className="font-bold text-slate-900 dark:text-white leading-tight">{student.name}</h3>
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Angkatan {student.batch}</p>
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">{t('pages.mahasiswa.data.batch_label')} {student.batch}</p>
                       </div>
                     </div>
 
@@ -273,7 +273,7 @@ const DataMahasiswa = () => {
                       <div className="space-y-3 mt-auto pt-6 border-t border-slate-50 dark:border-slate-800">
                         <div className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                           <Award size={14} className="text-amber-500" />
-                          Prestasi Unggulan
+                          {t('pages.mahasiswa.data.top_achievements')}
                         </div>
                         <div className="flex flex-wrap gap-2">
                           {student.achievements.map((a, idx) => (
@@ -308,7 +308,7 @@ const DataMahasiswa = () => {
                       <div className="flex-grow">
                         <div className="flex flex-wrap items-center gap-3 mb-4">
                           <span className="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 text-slate-500">
-                            {pub.type || 'Jurnal / Artikel'}
+                            {pub.type || t('pages.mahasiswa.data.publication_type_default')}
                           </span>
                           <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400">
                             <Calendar size={14} />
@@ -346,7 +346,7 @@ const DataMahasiswa = () => {
                 ) : (
                   <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-dashed border-slate-100 dark:border-slate-800">
                     <BookOpen size={48} className="mx-auto text-slate-200 mb-4" />
-                    <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Belum ada publikasi mahasiswa</p>
+                    <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">{t('pages.mahasiswa.data.no_publications')}</p>
                   </div>
                 )}
               </motion.div>

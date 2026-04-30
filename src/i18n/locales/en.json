@@ -230,6 +230,31 @@
             "story": "Success Story",
             "graduates": "Total Graduates"
           }
+        },
+        "data": {
+          "title": "Alumni",
+          "title_accent": "Database",
+          "subtitle": "Reconnect with thousands of PBA UIN Jakarta graduates who have successfully worked in various fields.",
+          "search_placeholder": "Search name, institution, or position...",
+          "batch_label": "Graduate"
+        },
+        "tracer": {
+          "badge": "Building Quality Together",
+          "title": "Tracer Study",
+          "title_accent": "PBA UIN Jakarta",
+          "subtitle": "Your contribution today reflects our future success. Help us improve educational quality by sharing your career experience.",
+          "hero_title": "Alumni Voice, Program Strength.",
+          "hero_desc": "We want to hear from you. The survey results will be used confidentially for accreditation and curriculum development purposes relevant to the job market.",
+          "hero_cta": "Fill out the Form Now",
+          "feature_1": "Accurate Data",
+          "feature_2": "OBE Curriculum",
+          "feature_3": "Graduate Quality",
+          "feature_4": "Career Network",
+          "why_title": "Why Should You Participate?",
+          "reason_1_title": "Curriculum Relevance",
+          "reason_1_desc": "Information about your work helps us adjust courses to the real needs in the current job market.",
+          "reason_2_title": "National & International Accreditation",
+          "reason_2_desc": "Graduate employment data is a key indicator of program quality for BAN-PT and international agencies."
         }
       },
       "mahasiswa": {
@@ -262,6 +287,40 @@
           "semester": "Semester",
           "count": "Total Students",
           "loading": "Loading Data..."
+        },
+        "data": {
+          "title": "Student",
+          "title_accent": "Portal",
+          "subtitle": "Data center, growth statistics, and scientific work gallery for PBA UIN Jakarta students.",
+          "directory_tab": "Student Directory",
+          "publications_tab": "Scientific Works",
+          "search_placeholder_students": "Search name or student ID...",
+          "search_placeholder_publications": "Search title or author...",
+          "batch_label": "Class of",
+          "top_achievements": "Top Achievements",
+          "publication_type_default": "Journal / Article",
+          "no_publications": "No student publications yet",
+          "genap": "Even Semester",
+          "ganjil": "Odd Semester"
+        },
+        "layanan": {
+          "badge": "Student Support Center",
+          "title": "Integrated",
+          "title_accent": "Academic Services",
+          "subtitle": "We are here to provide easy access to administration and guidance for all PBA UIN Jakarta students efficiently and transparently.",
+          "portal_title": "Access Official Service Portal",
+          "portal_desc": "Use our integrated portal for letter requests, complaints, and other administrative services in one place.",
+          "portal_feature_1": "Fast & Tracked Process",
+          "portal_feature_2": "Service Available 24/7 (System)",
+          "portal_cta": "Access Service Now",
+          "portal_badge": "Service Portal",
+          "service_1_title": "Letter Administration",
+          "service_1_desc": "Requests for student status letters, research introduction letters, and other permission letters.",
+          "service_2_title": "Document Legalization",
+          "service_2_desc": "Legalization services for diplomas and transcripts for graduates and final-year students.",
+          "service_3_title": "Academic Guidance",
+          "service_3_desc": "Study plan consultation (KRS) and academic progress with Academic Advisory Lecturers.",
+          "learn_flow": "Learn the Workflow"
         }
       },
       "penelitian": {

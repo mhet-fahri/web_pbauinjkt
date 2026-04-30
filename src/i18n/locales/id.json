@@ -230,6 +230,31 @@
             "story": "Success Story",
             "graduates": "Total Lulusan"
           }
+        },
+        "data": {
+          "title": "Database",
+          "title_accent": "Alumni",
+          "subtitle": "Terhubung kembali dengan ribuan lulusan PBA UIN Jakarta yang telah sukses berkarya di berbagai bidang.",
+          "search_placeholder": "Cari nama, instansi, atau posisi...",
+          "batch_label": "Lulusan"
+        },
+        "tracer": {
+          "badge": "Membangun Mutu Bersama",
+          "title": "Tracer Study",
+          "title_accent": "PBA UIN Jakarta",
+          "subtitle": "Kontribusi Anda hari ini adalah cerminan kesuksesan kami di masa depan. Mari bantu kami meningkatkan kualitas pendidikan dengan berbagi pengalaman karir Anda.",
+          "hero_title": "Suara Alumni, Kekuatan Prodi.",
+          "hero_desc": "Kami ingin mendengar kabar Anda. Hasil survei ini akan digunakan secara rahasia untuk keperluan akreditasi dan pengembangan kurikulum yang relevan dengan dunia kerja.",
+          "hero_cta": "Isi Formulir Sekarang",
+          "feature_1": "Data Akurat",
+          "feature_2": "Kurikulum OBE",
+          "feature_3": "Mutu Lulusan",
+          "feature_4": "Jejaring Karir",
+          "why_title": "Mengapa Anda Perlu Berpartisipasi?",
+          "reason_1_title": "Relevansi Kurikulum",
+          "reason_1_desc": "Informasi tentang pekerjaan Anda membantu kami menyesuaikan mata kuliah dengan kebutuhan nyata di lapangan kerja saat ini.",
+          "reason_2_title": "Akreditasi Nasional & Internasional",
+          "reason_2_desc": "Data keterserapan lulusan adalah indikator utama dalam penilaian mutu prodi oleh BAN-PT dan lembaga internasional."
         }
       },
       "mahasiswa": {
@@ -262,6 +287,40 @@
           "semester": "Semester",
           "count": "Jumlah Mahasiswa",
           "loading": "Memuat Data..."
+        },
+        "data": {
+          "title": "Portal",
+          "title_accent": "Mahasiswa",
+          "subtitle": "Pusat data, statistik pertumbuhan, dan galeri karya ilmiah mahasiswa PBA UIN Jakarta.",
+          "directory_tab": "Direktori Mahasiswa",
+          "publications_tab": "Karya Ilmiah",
+          "search_placeholder_students": "Cari nama atau NIM...",
+          "search_placeholder_publications": "Cari judul atau penulis...",
+          "batch_label": "Angkatan",
+          "top_achievements": "Prestasi Unggulan",
+          "publication_type_default": "Jurnal / Artikel",
+          "no_publications": "Belum ada publikasi mahasiswa",
+          "genap": "Semester Genap",
+          "ganjil": "Semester Ganjil"
+        },
+        "layanan": {
+          "badge": "Pusat Bantuan Mahasiswa",
+          "title": "Layanan Akademik",
+          "title_accent": "Terpadu",
+          "subtitle": "Kami hadir untuk memberikan kemudahan akses administrasi dan bimbingan bagi seluruh mahasiswa PBA UIN Jakarta secara efisien dan transparan.",
+          "portal_title": "Akses Portal Layanan Resmi",
+          "portal_desc": "Gunakan portal terpadu kami untuk pengajuan surat-menyurat, pengaduan, dan layanan administrasi lainnya dalam satu pintu.",
+          "portal_feature_1": "Proses Cepat & Terpantau",
+          "portal_feature_2": "Layanan Tersedia 24/7 (Sistem)",
+          "portal_cta": "Akses Layanan Sekarang",
+          "portal_badge": "Portal Layanan",
+          "service_1_title": "Administrasi Surat",
+          "service_1_desc": "Pengajuan surat keterangan mahasiswa aktif, surat pengantar penelitian, dan surat izin lainnya.",
+          "service_2_title": "Legalisir Dokumen",
+          "service_2_desc": "Layanan legalisir ijazah dan transkrip nilai bagi alumni dan mahasiswa tingkat akhir.",
+          "service_3_title": "Bimbingan Akademik",
+          "service_3_desc": "Konsultasi rencana studi (KRS) dan perkembangan akademik bersama Dosen Penasehat Akademik.",
+          "learn_flow": "Pelajari Alur"
         }
       },
       "penelitian": {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { 
   GraduationCap, 
@@ -12,6 +13,7 @@ import {
 } from 'lucide-react';
 
 const TracerStudy = () => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen pt-32 pb-20 bg-white dark:bg-slate-950 overflow-hidden relative">
       {/* Decorative Circles */}
@@ -25,7 +27,7 @@ const TracerStudy = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-sm font-bold mb-8"
           >
             <TrendingUp size={16} />
-            <span>Membangun Mutu Bersama</span>
+            <span>{t('pages.alumni.tracer.badge')}</span>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -33,10 +35,10 @@ const TracerStudy = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 leading-tight"
           >
-            Tracer Study <span className="text-emerald-600">PBA UIN Jakarta</span>
+            {t('pages.alumni.tracer.title')} <span className="text-emerald-600">{t('pages.alumni.tracer.title_accent')}</span>
           </motion.h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mx-auto">
-            Kontribusi Anda hari ini adalah cerminan kesuksesan kami di masa depan. Mari bantu kami meningkatkan kualitas pendidikan dengan berbagi pengalaman karir Anda.
+            {t('pages.alumni.tracer.subtitle')}
           </p>
         </div>
 
@@ -52,9 +54,9 @@ const TracerStudy = () => {
               <div className="w-16 h-16 rounded-2xl bg-emerald-500 flex items-center justify-center mb-8 shadow-lg shadow-emerald-500/30">
                 <GraduationCap size={32} />
               </div>
-              <h2 className="text-3xl md:text-4xl font-black mb-6 leading-tight">Suara Alumni, Kekuatan Prodi.</h2>
+              <h2 className="text-3xl md:text-4xl font-black mb-6 leading-tight">{t('pages.alumni.tracer.hero_title')}</h2>
               <p className="text-slate-400 text-lg mb-10 leading-relaxed">
-                Kami ingin mendengar kabar Anda. Hasil survei ini akan digunakan secara rahasia untuk keperluan akreditasi dan pengembangan kurikulum yang relevan dengan dunia kerja.
+                {t('pages.alumni.tracer.hero_desc')}
               </p>
               <a 
                 href="https://docs.google.com/forms/d/1C0lmX5-F_8VHaZrw_iwnSiegwTmSru9Z3Oj9jVUF1Ts/viewform?edit_requested=true" 
@@ -62,16 +64,16 @@ const TracerStudy = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-10 py-5 bg-emerald-600 text-white rounded-2xl font-black shadow-xl hover:bg-emerald-500 transition-all group text-lg"
               >
-                Isi Formulir Sekarang <ExternalLink size={20} className="group-hover:rotate-12 transition-transform" />
+                {t('pages.alumni.tracer.hero_cta')} <ExternalLink size={20} className="group-hover:rotate-12 transition-transform" />
               </a>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
               {[
-                { label: "Data Akurat", icon: BarChart3, color: "bg-blue-600" },
-                { label: "Kurikulum OBE", icon: Target, color: "bg-indigo-600" },
-                { label: "Mutu Lulusan", icon: Award, color: "bg-amber-600" },
-                { label: "Jejaring Karir", icon: Heart, color: "bg-rose-600" },
+                { label: t('pages.alumni.tracer.feature_1'), icon: BarChart3, color: "bg-blue-600" },
+                { label: t('pages.alumni.tracer.feature_2'), icon: Target, color: "bg-indigo-600" },
+                { label: t('pages.alumni.tracer.feature_3'), icon: Award, color: "bg-amber-600" },
+                { label: t('pages.alumni.tracer.feature_4'), icon: Heart, color: "bg-rose-600" },
               ].map((item, i) => (
                 <div key={i} className="p-6 rounded-3xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center">
                   <div className={`w-12 h-12 rounded-xl ${item.color} flex items-center justify-center mb-4`}>
@@ -91,22 +93,22 @@ const TracerStudy = () => {
 
         {/* Benefits Section */}
         <div className="max-w-5xl mx-auto">
-          <h3 className="text-2xl font-black text-center mb-12 text-slate-900 dark:text-white">Mengapa Anda Perlu Berpartisipasi?</h3>
+          <h3 className="text-2xl font-black text-center mb-12 text-slate-900 dark:text-white">{t('pages.alumni.tracer.why_title')}</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
               <h4 className="font-black text-emerald-600 mb-4 flex items-center gap-2">
-                <ArrowRight size={20} /> Relevansi Kurikulum
+                <ArrowRight size={20} /> {t('pages.alumni.tracer.reason_1_title')}
               </h4>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                Informasi tentang pekerjaan Anda membantu kami menyesuaikan mata kuliah dengan kebutuhan nyata di lapangan kerja saat ini.
+                {t('pages.alumni.tracer.reason_1_desc')}
               </p>
             </div>
             <div className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
               <h4 className="font-black text-emerald-600 mb-4 flex items-center gap-2">
-                <ArrowRight size={20} /> Akreditasi Nasional & Internasional
+                <ArrowRight size={20} /> {t('pages.alumni.tracer.reason_2_title')}
               </h4>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                Data keterserapan lulusan adalah indikator utama dalam penilaian mutu prodi oleh BAN-PT dan lembaga internasional.
+                {t('pages.alumni.tracer.reason_2_desc')}
               </p>
             </div>
           </div>
