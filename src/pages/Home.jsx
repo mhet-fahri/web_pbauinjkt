@@ -67,10 +67,9 @@ const Home = () => {
     {
       category: t('pages.home.quick_links.students'),
       links: [
-        { name: t('pages.home.quick_links.portal'), url: "#" },
-        { name: t('pages.home.quick_links.lms'), url: "#" },
-        { name: t('pages.home.quick_links.email'), url: "#" },
-        { name: t('pages.home.quick_links.tracer'), url: "#" },
+        { name: t('pages.home.quick_links.registration'), url: "https://spmb.uinjkt.ac.id/" },
+        { name: t('pages.home.quick_links.portal'), url: "https://ais.uinjkt.ac.id/" },
+        { name: t('pages.home.quick_links.esemesta'), url: "https://esemesta.uinjkt.ac.id/" },
       ]
     },
     {
