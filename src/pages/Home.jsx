@@ -54,12 +54,14 @@ const Home = () => {
 
   const quickLinks = [
     {
-      category: t('pages.home.quick_links.popular'),
+      category: t('pages.home.quick_links.documents'),
       links: [
-        { name: t('pages.home.quick_links.library'), url: "#" },
-        { name: t('pages.home.quick_links.lab'), url: "#" },
-        { name: t('pages.home.quick_links.jobs'), url: "#" },
-        { name: t('pages.home.quick_links.scholarship'), url: "#" },
+        { name: t('pages.home.quick_links.accreditation'), url: "#" },
+        { name: t('pages.home.quick_links.curriculum_doc'), url: "#" },
+        { name: t('pages.home.quick_links.academic_guidelines'), url: "#" },
+        { name: t('pages.home.quick_links.writing_guidelines'), url: "#" },
+        { name: t('pages.home.quick_links.microteaching_guidelines'), url: "#" },
+        { name: t('pages.home.quick_links.circulars'), url: "#" },
       ]
     },
     {
