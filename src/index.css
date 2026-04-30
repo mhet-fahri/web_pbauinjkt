@@ -1,7 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Scheherazade+New:wght@400;700&display=swap');
 
 @layer base {
   :root {
@@ -21,14 +21,26 @@
 
   /* Font khusus untuk teks Arab agar lebih estetik */
   html[lang="ar"] {
-    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-family: 'Scheherazade New', serif;
+  }
+
+  html[lang="ar"] body {
+    font-size: 1.125rem; /* Meningkatkan ukuran font dasar untuk Arab agar lebih terbaca */
   }
 
   html[lang="ar"] h1,
   html[lang="ar"] h2,
   html[lang="ar"] h3,
-  html[lang="ar"] .font-arabic {
+  html[lang="ar"] .font-kufi {
     font-family: 'Noto Kufi Arabic', sans-serif;
+    line-height: 1.4;
+  }
+
+  html[lang="ar"] p,
+  html[lang="ar"] span,
+  html[lang="ar"] .font-arabic {
+    font-family: 'Scheherazade New', serif;
+    line-height: 1.8;
   }
 
   .dark body {

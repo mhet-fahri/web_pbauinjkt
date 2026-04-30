@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { 
-  ArrowRight, 
-  GraduationCap, 
-  Users, 
-  BookOpen, 
-  Star, 
-  ChevronRight, 
+import {
+  ArrowRight,
+  GraduationCap,
+  Users,
+  BookOpen,
+  Star,
+  ChevronRight,
   Search,
   ExternalLink,
   Calendar,
@@ -154,8 +154,8 @@ const Home = () => {
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-white dark:border-slate-800"
               >
-                <img 
-                  src={uinJakarta} 
+                <img
+                  src={uinJakarta}
                   alt="Gedung Kampus UIN Syarif Hidayatullah Jakarta"
                   className="w-full h-[500px] object-cover"
                   loading="lazy"
@@ -185,10 +185,10 @@ const Home = () => {
               {displayNews.map((item, i) => (
                 <Card key={item.id || i} className="overflow-hidden p-0 border-none shadow-md group h-full flex flex-col">
                   <div className="h-48 overflow-hidden relative bg-slate-100 dark:bg-slate-800">
-                    <img 
-                      src={getDirectImageUrl(item.image_url, 600) || "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800"} 
-                      alt={item.title} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                    <img
+                      src={getDirectImageUrl(item.image_url, 600) || "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800"}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       onError={(e) => {
                         e.target.src = "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800";
                       }}
@@ -205,8 +205,8 @@ const Home = () => {
                         <Calendar size={12} className="text-primary-500" />
                         {new Date(item.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}
                       </div>
-                      <Link 
-                        to={`/berita/${item.id}`} 
+                      <Link
+                        to={`/berita/${item.id}`}
                         className="px-4 py-1.5 rounded-lg border border-primary-600 text-primary-600 font-bold text-xs hover:bg-primary-600 hover:text-white transition-all flex items-center gap-2"
                       >
                         {t('pages.home.news_read_more')} <ArrowRight size={14} />
