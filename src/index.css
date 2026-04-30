@@ -29,12 +29,12 @@
   }
 
   /* Judul dan elemen UI penting menggunakan Noto Kufi Arabic */
-  html[lang="ar"] h1,
-  html[lang="ar"] h2,
-  html[lang="ar"] h3,
-  html[lang="ar"] h4,
-  html[lang="ar"] h5,
-  html[lang="ar"] h6,
+  html[lang="ar"] h1, html[lang="ar"] h1 span,
+  html[lang="ar"] h2, html[lang="ar"] h2 span,
+  html[lang="ar"] h3, html[lang="ar"] h3 span,
+  html[lang="ar"] h4, html[lang="ar"] h4 span,
+  html[lang="ar"] h5, html[lang="ar"] h5 span,
+  html[lang="ar"] h6, html[lang="ar"] h6 span,
   html[lang="ar"] .font-kufi,
   html[lang="ar"] nav,
   html[lang="ar"] nav a,
@@ -51,7 +51,6 @@
   }
 
   html[lang="ar"] p,
-  html[lang="ar"] span:not(.font-kufi),
   html[lang="ar"] .font-arabic {
     font-family: 'Scheherazade New', serif;
     line-height: 1.8;
