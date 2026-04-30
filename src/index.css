@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 @layer base {
   :root {
@@ -16,6 +17,18 @@
     color: #0f172a; /* slate-900 */
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Font khusus untuk teks Arab agar lebih estetik */
+  html[lang="ar"] {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+  }
+
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] .font-arabic {
+    font-family: 'Noto Kufi Arabic', sans-serif;
   }
 
   .dark body {
