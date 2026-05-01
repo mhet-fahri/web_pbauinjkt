@@ -69,16 +69,38 @@ const translateWithGemini = async (text, targetLang) => {
 
   for (const config of modelConfigs) {
     try {
-      const model = genAI.getGenerativeModel({ model: config.model }, { apiVersion: config.apiVersion });
-      const prompt = `Translate the following text to ${targetLang} professionally. 
-      Keep all HTML tags, line breaks, and formatting EXACTLY as they are. 
-      Do not add any explanations or preamble. Only return the translated text:
-      
-      ${text}`;
+      const model = genAI.getGenerativeModel({ 
+        model: config.model,
+        generationConfig: {
+          temperature: 0.1, // Very low for stable translation
+          topP: 0.95,
+          topK: 40,
+          maxOutputTokens: 2048,
+        }
+      }, { apiVersion: config.apiVersion });
+
+      const prompt = `Task: Professional Translation.
+Target Language: ${targetLang}
+Input Language: Indonesian
+
+Instructions:
+1. Translate the input text COMPLETELY into ${targetLang}.
+2. Keep ALL HTML tags, styles, and structures exactly as they are.
+3. Do NOT mix languages. Ensure the entire output is in ${targetLang}.
+4. Do NOT add any notes, explanations, or preamble.
+5. Return ONLY the final translated content.
+
+Input Text to Translate:
+${text}`;
       
       const result = await model.generateContent(prompt);
       const response = await result.response;
-      return response.text().trim();
+      let translated = response.text().trim();
+      
+      // Basic cleaning if AI adds markers
+      translated = translated.replace(/^```html/i, '').replace(/```$/i, '').trim();
+      
+      return translated;
     } catch (error) {
       console.error(`Gagal menggunakan model ${config.model} (${config.apiVersion}):`, error);
       lastError = error;
