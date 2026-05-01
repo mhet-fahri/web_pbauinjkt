@@ -20,14 +20,26 @@ export async function onRequestPost(context) {
     }
 
     const lowerLang = target_lang.toLowerCase();
-    const target = lowerLang === 'arabic' || lowerLang === 'ar' ? 'Arabic' : 
-                   (lowerLang === 'english' || lowerLang === 'en' ? 'English' : lowerLang);
+    const isArabic = lowerLang === 'arabic' || lowerLang === 'ar';
+    const targetName = isArabic ? 'Arabic' : 'English';
 
-    // 1. Try Llama 3 for better quality and Arabic support
+    // 1. If English, use the fast m2m100 model directly
+    if (!isArabic) {
+      const m2mResult = await env.AI.run("@cf/meta/m2m100-1.2b", {
+        text: text,
+        source_lang: "indonesian",
+        target_lang: "english"
+      });
+      return new Response(JSON.stringify(m2mResult), {
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+
+    // 2. If Arabic, use Llama 3 for high quality (a bit slower but better)
     try {
       const result = await env.AI.run("@cf/meta/llama-3-8b-instruct", {
         messages: [
-          { role: "system", content: `You are a professional translator. Translate the user text to ${target}. Keep all HTML tags and formatting exactly as they are. Return ONLY the translated text without any explanation.` },
+          { role: "system", content: "Translate to Arabic professionally. Keep HTML tags. Return ONLY translation." },
           { role: "user", content: text }
         ]
       });
@@ -38,19 +50,16 @@ export async function onRequestPost(context) {
         });
       }
     } catch (e) {
-      console.error("Llama 3 translation failed, falling back to m2m100...");
+      // Final fallback
+      const finalResult = await env.AI.run("@cf/meta/m2m100-1.2b", {
+        text: text,
+        source_lang: "indonesian",
+        target_lang: "arabic"
+      });
+      return new Response(JSON.stringify(finalResult), {
+        headers: { "Content-Type": "application/json" }
+      });
     }
-
-    // 2. Fallback to m2m100
-    const m2mResult = await env.AI.run("@cf/meta/m2m100-1.2b", {
-      text: text,
-      source_lang: "indonesian",
-      target_lang: target.toLowerCase()
-    });
-
-    return new Response(JSON.stringify(m2mResult), {
-      headers: { "Content-Type": "application/json" }
-    });
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
