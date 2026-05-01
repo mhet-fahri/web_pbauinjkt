@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Clock, MapPin, User, ArrowRight, Loader2, Star } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 
 const ExamCards = () => {

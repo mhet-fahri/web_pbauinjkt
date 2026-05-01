@@ -4,16 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
-  GraduationCap,
   Users,
-  BookOpen,
-  Star,
   ChevronRight,
-  Search,
-  ExternalLink,
   Calendar,
   Globe,
-  Newspaper,
   Loader2,
   FileText
 } from 'lucide-react';
