@@ -159,9 +159,12 @@ const Home = () => {
               >
                 <img
                   src={uinJakarta}
-                  alt="Gedung Kampus UIN Syarif Hidayatullah Jakarta"
+                  alt="Gedung Kampus FITK UIN Syarif Hidayatullah Jakarta"
                   className="w-full h-[500px] object-cover"
-                  loading="lazy"
+                  loading="eager"
+                  fetchPriority="high"
+                  width={800}
+                  height={500}
                 />
               </motion.div>
             </div>
@@ -192,6 +195,9 @@ const Home = () => {
                       src={getDirectImageUrl(item.image_url, 600) || "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800"}
                       alt={item.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                      width={400}
+                      height={200}
                       onError={(e) => {
                         e.target.src = "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800";
                       }}
@@ -245,6 +251,8 @@ const Home = () => {
                       <a 
                         key={i}
                         href={link.url} 
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="group flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300"
                       >
                         <span className="text-sm font-bold text-slate-600 dark:text-slate-400 group-hover:text-blue-600 transition-colors">

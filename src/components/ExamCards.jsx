@@ -136,12 +136,14 @@ const ExamCards = () => {
               </button>
               <button 
                 onClick={() => setIsDetailOpen(true)}
+                aria-label={t('pages.home.exam_schedule.detail_button')}
                 className="flex-grow h-10 rounded-xl bg-slate-900 dark:bg-blue-600 text-white font-bold text-[10px] flex items-center justify-center gap-2 hover:bg-blue-700 transition-all shadow-lg shadow-slate-900/10"
               >
                 {t('pages.home.exam_schedule.detail_button')} <ArrowRight size={14} className={`${i18n.language === 'ar' ? 'rotate-180' : ''}`} />
               </button>
               <button 
                 onClick={nextExam}
+                aria-label="Next Exam"
                 className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-blue-600 transition-all border border-slate-100 dark:border-slate-800 flex items-center justify-center"
               >
                 <ArrowRight size={16} className={`${i18n.language === 'ar' ? 'rotate-180' : ''}`} />

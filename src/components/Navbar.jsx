@@ -113,7 +113,7 @@ const Navbar = () => {
                     i18n.language === lang.code ? "bg-indigo-500/10 opacity-100 scale-110" : "opacity-40 hover:opacity-100"
                   )}
                 >
-                  <img src={lang.flag} alt={`Bendera ${lang.name}`} className="w-5 h-auto rounded-sm shadow-sm" />
+                  <img src={lang.flag} alt={`Bendera ${lang.name}`} width={20} height={14} className="w-5 h-auto rounded-sm shadow-sm" />
                   <span className="text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-tighter">{lang.code}</span>
                 </button>
               ))}
@@ -125,7 +125,7 @@ const Navbar = () => {
       <div className="container-custom flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
           <div className="w-12 h-12 flex items-center justify-center">
-            <img src={logoUin} alt="Logo UIN Syarif Hidayatullah Jakarta" className="w-full h-full object-contain" />
+            <img src={logoUin} alt="Logo UIN Syarif Hidayatullah Jakarta" width={48} height={48} className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col leading-[1.1]">
             <span className={clsx(
