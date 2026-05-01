@@ -133,7 +133,7 @@ const Footer = () => {
             </div>
             <div>
               <p className="text-xs font-bold uppercase text-slate-500 mb-1">{t('pages.footer.contact.email')}</p>
-              <p className="text-white text-sm font-medium">pba.fitk@apps.uinjkt.ac.id</p>
+              <a href="mailto:pba.fitk@apps.uinjkt.ac.id" className="text-white text-sm font-medium hover:text-primary-400 transition-colors">pba.fitk@apps.uinjkt.ac.id</a>
             </div>
           </div>
         </div>
