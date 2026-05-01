@@ -16,11 +16,13 @@ const ExamCards = () => {
     const fetchLatestExams = async () => {
       try {
         setLoading(true);
+        const today = new Date().toISOString().split('T')[0];
         const { data, error } = await supabase
           .from('exams')
           .select('*')
-          .order('date', { ascending: false })
-          .limit(10); // Ambil 10 jadwal terbaru
+          .gte('date', today)
+          .order('date', { ascending: true })
+          .limit(10);
 
         if (error) throw error;
         setExams(data || []);
