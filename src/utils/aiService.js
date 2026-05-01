@@ -38,13 +38,19 @@ const translateWithCloudflare = async (text, targetLang) => {
 const translateWithGemini = async (text, targetLang) => {
   if (!genAI) throw new Error("Gemini API Key tidak terbaca.");
 
-  // Try different model naming conventions
-  const modelNames = ["gemini-1.5-flash", "gemini-1.5-flash-latest", "gemini-1.5-pro", "gemini-pro"];
+  // Try different model naming conventions and API versions
+  const modelConfigs = [
+    { model: "gemini-1.5-flash", apiVersion: "v1" },
+    { model: "gemini-1.5-flash", apiVersion: "v1beta" },
+    { model: "gemini-1.5-pro", apiVersion: "v1" },
+    { model: "gemini-pro", apiVersion: "v1" }
+  ];
+  
   let lastError = null;
 
-  for (const modelName of modelNames) {
+  for (const config of modelConfigs) {
     try {
-      const model = genAI.getGenerativeModel({ model: modelName });
+      const model = genAI.getGenerativeModel({ model: config.model }, { apiVersion: config.apiVersion });
       const prompt = `Translate the following text to ${targetLang} professionally. 
       Keep all HTML tags, line breaks, and formatting EXACTLY as they are. 
       Do not add any explanations or preamble. Only return the translated text:
@@ -55,7 +61,7 @@ const translateWithGemini = async (text, targetLang) => {
       const response = await result.response;
       return response.text().trim();
     } catch (error) {
-      console.error(`Gagal menggunakan model ${modelName}:`, error);
+      console.error(`Gagal menggunakan model ${config.model} (${config.apiVersion}):`, error);
       lastError = error;
       continue;
     }
