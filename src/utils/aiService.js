@@ -66,11 +66,11 @@ const translateWithGemini = async (text, targetLang) => {
   
   // Try different model naming conventions and API versions
   const modelConfigs = [
+    { model: "gemini-1.0-pro", apiVersion: "v1" },
+    { model: "gemini-pro", apiVersion: "v1" },
     { model: "gemini-1.5-flash", apiVersion: "v1" },
     { model: "gemini-1.5-flash-latest", apiVersion: "v1" },
-    { model: "gemini-2.0-flash-exp", apiVersion: "v1beta" },
-    { model: "gemini-1.0-pro", apiVersion: "v1" },
-    { model: "gemini-pro", apiVersion: "v1" }
+    { model: "gemini-2.0-flash-exp", apiVersion: "v1beta" }
   ];
   
   let lastError = null;
