@@ -11,11 +11,8 @@ import {
   Loader2,
   Calendar,
   Upload,
-  Sparkles,
-  Languages,
   Globe
 } from 'lucide-react';
-import { translateWithAI } from '../../utils/aiService';
 import { supabase } from '../../lib/supabase';
 import { getDirectImageUrl } from '../../utils/imageUtils';
 import ReactQuill from 'react-quill-new';
@@ -54,7 +51,6 @@ const ManageNews = () => {
   });
 
   const [activeTab, setActiveTab] = useState('id'); // 'id', 'ar', 'en'
-  const [isGenerating, setIsGenerating] = useState(false);
 
   const uploadImage = async (e) => {
     try {
@@ -164,40 +160,6 @@ const ManageNews = () => {
       created_at: item.created_at ? new Date(item.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]
     });
     setIsModalOpen(true);
-  };
-
-  const generateAIContent = async () => {
-    if (!formData.title || !formData.content) {
-      alert('Mohon isi judul dan konten bahasa Indonesia terlebih dahulu.');
-      return;
-    }
-
-    try {
-      setIsGenerating(true);
-      
-      // Generate Arabic
-      const titleAr = await translateWithAI(formData.title, 'Arabic');
-      const contentAr = await translateWithAI(formData.content, 'Arabic');
-      
-      // Generate English
-      const titleEn = await translateWithAI(formData.title, 'English');
-      const contentEn = await translateWithAI(formData.content, 'English');
-
-      setFormData(prev => ({
-        ...prev,
-        title_ar: titleAr,
-        content_ar: contentAr,
-        title_en: titleEn,
-        content_en: contentEn
-      }));
-
-      alert('Berhasil men-generate konten dalam Bahasa Arab dan Inggris!');
-      setActiveTab('ar'); // Switch to Arabic to show the result
-    } catch (error) {
-      alert('Gagal men-generate konten: ' + error.message);
-    } finally {
-      setIsGenerating(false);
-    }
   };
 
   const resetForm = () => {
@@ -369,15 +331,6 @@ const ManageNews = () => {
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
                           <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Judul Berita (ID)</label>
-                          <button 
-                            type="button"
-                            onClick={generateAIContent}
-                            disabled={isGenerating}
-                            className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-indigo-600 hover:text-indigo-700 bg-indigo-50 dark:bg-indigo-900/20 px-3 py-1 rounded-full border border-indigo-100 dark:border-indigo-800 transition-all disabled:opacity-50"
-                          >
-                            {isGenerating ? <Loader2 size={12} className="animate-spin" /> : <Sparkles size={12} />}
-                            Generate AI (AR & EN)
-                          </button>
                         </div>
                         <input 
                           type="text"
