@@ -23,40 +23,68 @@ export async function onRequestPost(context) {
     const isArabic = lowerLang === 'arabic' || lowerLang === 'ar';
     const targetName = isArabic ? 'Arabic' : 'English';
 
-    // 1. If English, use the fast m2m100 model directly
-    if (!isArabic) {
-      const m2mResult = await env.AI.run("@cf/meta/m2m100-1.2b", {
-        text: text,
-        source_lang: "indonesian",
-        target_lang: "english"
-      });
-      return new Response(JSON.stringify(m2mResult), {
-        headers: { "Content-Type": "application/json" }
-      });
+    // 1. Try Groq (Llama 3.1 70B) - BEST QUALITY
+    const groqKey = env.VITE_GROQ_API_KEY;
+    if (groqKey) {
+      try {
+        const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${groqKey}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            model: "llama-3.1-70b-versatile",
+            messages: [
+              { 
+                role: "system", 
+                content: `You are an expert academic translator for a university. 
+                Translate the input into ${targetName} professionally.
+                RULES:
+                1. Keep ALL HTML tags exactly.
+                2. Use formal, academic vocabulary.
+                3. Return ONLY the translated string.` 
+              },
+              { role: "user", content: text }
+            ],
+            temperature: 0
+          })
+        });
+
+        if (groqResponse.ok) {
+          const groqData = await groqResponse.json();
+          return new Response(JSON.stringify({ translated_text: groqData.choices[0].message.content.trim() }), {
+            headers: { "Content-Type": "application/json" }
+          });
+        }
+      } catch (e) {
+        console.error("Groq Backend Error:", e);
+      }
     }
 
-    // 2. If Arabic, use Llama 3 for high quality (a bit slower but better)
+    // 2. Fallback to Cloudflare AI
     try {
-      const result = await env.AI.run("@cf/meta/llama-3-8b-instruct", {
+      const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
         messages: [
-          { role: "system", content: "Translate to Arabic professionally. Keep HTML tags. Return ONLY translation." },
+          { role: "system", content: `Translate to ${targetName}. Keep HTML. Return ONLY translation.` },
           { role: "user", content: text }
-        ]
+        ],
+        max_tokens: 4096
       });
-
+      
       if (result && result.response) {
         return new Response(JSON.stringify({ translated_text: result.response }), {
           headers: { "Content-Type": "application/json" }
         });
       }
     } catch (e) {
-      // Final fallback
-      const finalResult = await env.AI.run("@cf/meta/m2m100-1.2b", {
+      // 3. Final Fallback to m2m100
+      const m2mResult = await env.AI.run("@cf/meta/m2m100-1.2b", {
         text: text,
         source_lang: "indonesian",
-        target_lang: "arabic"
+        target_lang: lowerLang === 'arabic' || lowerLang === 'ar' ? 'arabic' : 'english'
       });
-      return new Response(JSON.stringify(finalResult), {
+      return new Response(JSON.stringify(m2mResult), {
         headers: { "Content-Type": "application/json" }
       });
     }
