@@ -405,6 +405,24 @@
           "s2": "Master Program (S2)",
           "intensive": "Intensive Language Course",
           "continuing": "Continuing Education"
+        },
+        "exam_schedule": {
+          "title": "Academic Exam Schedule",
+          "detail_button": "View Details",
+          "close_button": "Close Details",
+          "nim": "Student ID",
+          "date": "Date",
+          "time": "Time",
+          "location": "Location",
+          "examiners_title": "Examiners / Advisors",
+          "no_data": "No upcoming exams",
+          "loading": "Loading Schedule...",
+          "not_determined": "To Be Determined",
+          "types": {
+            "seminar_proposal": "Proposal Seminar",
+            "komprehensif": "Comprehensive Exam",
+            "skripsi": "Thesis Defense"
+          }
         }
       }
     }

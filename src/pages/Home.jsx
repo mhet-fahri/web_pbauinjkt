@@ -14,10 +14,12 @@ import {
   Calendar,
   Globe,
   Newspaper,
-  Loader2
+  Loader2,
+  FileText
 } from 'lucide-react';
 import Button from '../components/Button';
 import Card from '../components/Card';
+import ExamCards from '../components/ExamCards';
 import uinJakarta from '../assets/uin-jakarta.jpg';
 import { supabase } from '../lib/supabase';
 import { getDirectImageUrl } from '../utils/imageUtils';
@@ -221,27 +223,51 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Quick Links Section */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-950">
+      {/* Info & Jadwal Section */}
+      <section className="py-24 bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {quickLinks.map((group, idx) => (
-              <div key={idx}>
-                <h3 className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-6 flex items-center gap-2">
-                  <span className="w-8 h-[2px] bg-primary-500" />
-                  {group.category}
-                </h3>
-                <ul className="space-y-4">
-                  {group.links.map((link, i) => (
-                    <li key={i}>
-                      <a href={link.url} className="text-slate-600 dark:text-slate-400 hover:text-primary-600 transition-colors font-medium">
-                        {link.name}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+            {/* Left & Middle: Quick Links */}
+            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10">
+              {quickLinks.slice(0, 2).map((group, idx) => (
+                <div key={idx} className="flex flex-col">
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className="w-10 h-10 rounded-xl bg-blue-600/10 text-blue-600 flex items-center justify-center shadow-sm">
+                      {idx === 0 ? <FileText size={18} /> : <Users size={18} />}
+                    </div>
+                    <h3 className="text-sm font-black uppercase tracking-[0.2em] text-slate-400">
+                      {group.category}
+                    </h3>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 gap-3">
+                    {group.links.map((link, i) => (
+                      <a 
+                        key={i}
+                        href={link.url} 
+                        className="group flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300"
+                      >
+                        <span className="text-sm font-bold text-slate-600 dark:text-slate-400 group-hover:text-blue-600 transition-colors">
+                          {link.name}
+                        </span>
+                        <div className="w-7 h-7 rounded-lg bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                          <ChevronRight size={14} />
+                        </div>
                       </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Right: Exam Schedules Slider */}
+            <div className="lg:col-span-1">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8 flex items-center gap-2">
+                <span className="w-8 h-[2px] bg-indigo-500" />
+                {t('pages.home.exam_schedule.title')}
+              </h3>
+              <ExamCards />
+            </div>
           </div>
         </div>
       </section>

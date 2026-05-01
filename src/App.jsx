@@ -33,6 +33,7 @@ const ManageLecturers = lazy(() => import('./pages/admin/ManageLecturers'));
 const ManageStudents = lazy(() => import('./pages/admin/ManageStudents'));
 const ManageAlumni = lazy(() => import('./pages/admin/ManageAlumni'));
 const ManagePublications = lazy(() => import('./pages/admin/ManagePublications'));
+const ManageExams = lazy(() => import('./pages/admin/ManageExams'));
 
 import AdminLayout from './components/admin/AdminLayout';
 import ProtectedRoute from './components/admin/ProtectedRoute';
@@ -103,6 +104,7 @@ function App() {
               <Route path="students" element={<ManageStudents />} />
               <Route path="alumni" element={<ManageAlumni />} />
               <Route path="publications" element={<ManagePublications />} />
+              <Route path="exams" element={<ManageExams />} />
             </Route>
 
             {/* Catch all redirect */}

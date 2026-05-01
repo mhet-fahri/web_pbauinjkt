@@ -429,6 +429,7 @@ const ManageNews = () => {
                         <option value="Berita">Berita</option>
                         <option value="Kegiatan">Kegiatan</option>
                         <option value="Pengumuman">Pengumuman</option>
+                        <option value="Opini">Opini</option>
                       </select>
                     </div>
                     <div className="space-y-2">

@@ -405,6 +405,24 @@
           "s2": "Program Magister (S2)",
           "intensive": "Kursus Intensif Bahasa",
           "continuing": "Pendidikan Berkelanjutan"
+        },
+        "exam_schedule": {
+          "title": "Jadwal Ujian Akademik",
+          "detail_button": "Detail Jadwal",
+          "close_button": "Tutup Detail",
+          "nim": "NIM",
+          "date": "Tanggal",
+          "time": "Waktu",
+          "location": "Lokasi",
+          "examiners_title": "Tim Penguji / Pembimbing",
+          "no_data": "Belum ada jadwal terbaru",
+          "loading": "Memuat Jadwal...",
+          "not_determined": "Belum Ditentukan",
+          "types": {
+            "seminar_proposal": "Seminar Proposal",
+            "komprehensif": "Ujian Komprehensif",
+            "skripsi": "Ujian Skripsi"
+          }
         }
       }
     }

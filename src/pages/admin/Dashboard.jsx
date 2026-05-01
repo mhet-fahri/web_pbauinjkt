@@ -33,28 +33,31 @@ const Dashboard = () => {
     try {
       setLoading(true);
       
-      // Fetch counts in parallel for speed
-      const [
-        { count: newsCount },
-        { count: lecturersCount },
-        { count: studentsCount },
-        { count: alumniCount },
-        { count: publicationsCount }
-      ] = await Promise.all([
-        supabase.from('posts').select('*', { count: 'exact', head: true }),
-        supabase.from('lecturers').select('*', { count: 'exact', head: true }),
-        supabase.from('students_data').select('*', { count: 'exact', head: true }),
-        supabase.from('alumni_data').select('*', { count: 'exact', head: true }),
-        supabase.from('publications_data').select('*', { count: 'exact', head: true })
-      ]);
+      const tables = [
+        { key: 'news', name: 'posts' },
+        { key: 'lecturers', name: 'lecturers' },
+        { key: 'students', name: 'students_data' },
+        { key: 'alumni', name: 'alumni_data' },
+        { key: 'publications', name: 'publications_data' }
+      ];
 
-      setStats({
-        news: newsCount || 0,
-        lecturers: lecturersCount || 0,
-        students: studentsCount || 0,
-        alumni: alumniCount || 0,
-        publications: publicationsCount || 0
-      });
+      const newStats = { ...stats };
+
+      for (const table of tables) {
+        try {
+          const { count, error } = await supabase
+            .from(table.name)
+            .select('*', { count: 'exact', head: true });
+          
+          if (!error) {
+            newStats[table.key] = count || 0;
+          }
+        } catch (err) {
+          console.error(`Error fetching ${table.name}:`, err);
+        }
+      }
+
+      setStats(newStats);
     } catch (error) {
       console.error('Error fetching dashboard stats:', error);
     } finally {
