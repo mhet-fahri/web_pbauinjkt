@@ -136,7 +136,7 @@ const Navbar = () => {
             </span>
             <span className={clsx(
               "text-[8.5px] uppercase font-bold tracking-[0.15em] mt-1 opacity-70",
-              scrolled ? "text-slate-600" : "text-slate-600 lg:text-slate-700"
+              scrolled ? "text-slate-700" : "text-slate-700 lg:text-slate-800"
             )}>{t('site.faculty')}</span>
             <span className={clsx(
               "text-[8.5px] uppercase font-extrabold tracking-[0.2em] text-indigo-600/90",
@@ -158,7 +158,7 @@ const Navbar = () => {
                 <button
                   className={clsx(
                     'text-[13px] font-bold transition-all hover:text-indigo-600 flex items-center gap-1 py-2',
-                    location.pathname.startsWith(link.path) ? 'text-indigo-600' : 'text-slate-600 dark:text-slate-300'
+                    location.pathname.startsWith(link.path) ? 'text-indigo-600' : (scrolled ? 'text-slate-700' : 'text-slate-800 lg:text-slate-900')
                   )}
                 >
                   {link.name}
@@ -169,7 +169,7 @@ const Navbar = () => {
                   to={link.path}
                   className={clsx(
                     'text-[13px] font-bold transition-all hover:text-indigo-600 relative group py-2',
-                    location.pathname === link.path ? 'text-indigo-600' : 'text-slate-600 dark:text-slate-300'
+                    location.pathname === link.path ? 'text-indigo-600' : (scrolled ? 'text-slate-700' : 'text-slate-800 lg:text-slate-900')
                   )}
                 >
                   {link.name}

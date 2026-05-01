@@ -206,7 +206,7 @@ const Home = () => {
                   <div className="p-6 flex flex-col flex-grow">
                     <span className="text-[10px] font-black text-primary-600 uppercase mb-2 block tracking-widest">{item.category}</span>
                     <h3 className="text-xl font-bold mb-3 leading-tight line-clamp-2 text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{item.title}</h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-2 leading-relaxed">
+                    <p className="text-slate-700 dark:text-slate-400 text-sm mb-4 line-clamp-2 leading-relaxed">
                       {item.content ? item.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ') : ''}
                     </p>
                     <div className="mt-auto pt-4 border-t border-slate-50 dark:border-slate-800 flex items-center justify-between">
