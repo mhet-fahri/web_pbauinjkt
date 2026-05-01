@@ -36,20 +36,12 @@ const translateWithCloudflare = async (text, targetLang) => {
  * Better at preserving HTML tags and complex formatting
  */
 export const translateWithAI = async (text, targetLang) => {
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-  console.log("Gemini API Key status:", apiKey ? `Present (Starts with: ${apiKey.substring(0, 5)}...)` : "MISSING");
-
   try {
-    // 1. Skip Cloudflare for Arabic (known support issue 3030)
-    // 2. Use Gemini for long text or HTML
-    if (targetLang.toLowerCase() === 'arabic' || text.length > 500 || text.includes('<')) {
-      return await translateWithGemini(text, targetLang);
-    }
-    
-    // 3. Try Cloudflare for short English text
+    // 1. Try Cloudflare first (using Llama 3 / m2m100)
+    // Now Cloudflare can handle HTML and longer text because we use Llama 3 fallback
     return await translateWithCloudflare(text, targetLang);
   } catch (error) {
-    console.warn("Mencoba fallback ke Gemini...");
+    console.warn("Cloudflare failed, trying Gemini as fallback...");
     try {
       return await translateWithGemini(text, targetLang);
     } catch (finalError) {

@@ -20,17 +20,35 @@ export async function onRequestPost(context) {
     }
 
     const lowerLang = target_lang.toLowerCase();
-    const target = lowerLang === 'arabic' || lowerLang === 'ar' ? 'arabic' : 
-                   (lowerLang === 'english' || lowerLang === 'en' ? 'english' : lowerLang);
+    const target = lowerLang === 'arabic' || lowerLang === 'ar' ? 'Arabic' : 
+                   (lowerLang === 'english' || lowerLang === 'en' ? 'English' : lowerLang);
 
-    // Cloudflare Workers AI Translation
-    const result = await env.AI.run("@cf/meta/m2m100-1.2b", {
+    // 1. Try Llama 3 for better quality and Arabic support
+    try {
+      const result = await env.AI.run("@cf/meta/llama-3-8b-instruct", {
+        messages: [
+          { role: "system", content: `You are a professional translator. Translate the user text to ${target}. Keep all HTML tags and formatting exactly as they are. Return ONLY the translated text without any explanation.` },
+          { role: "user", content: text }
+        ]
+      });
+      
+      if (result && result.response) {
+        return new Response(JSON.stringify({ translated_text: result.response }), {
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+    } catch (e) {
+      console.error("Llama 3 translation failed, falling back to m2m100...");
+    }
+
+    // 2. Fallback to m2m100
+    const m2mResult = await env.AI.run("@cf/meta/m2m100-1.2b", {
       text: text,
       source_lang: "indonesian",
-      target_lang: target
+      target_lang: target.toLowerCase()
     });
 
-    return new Response(JSON.stringify(result), {
+    return new Response(JSON.stringify(m2mResult), {
       headers: { "Content-Type": "application/json" }
     });
   } catch (error) {
