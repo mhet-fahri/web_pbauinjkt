@@ -38,13 +38,18 @@ const translateWithCloudflare = async (text, targetLang) => {
 const translateWithGemini = async (text, targetLang) => {
   if (!genAI) throw new Error("Gemini API Key tidak terbaca.");
 
-  const modelNames = ["gemini-1.5-flash", "gemini-1.5-flash-latest", "gemini-pro"];
+  // Try different model naming conventions
+  const modelNames = ["gemini-1.5-flash", "gemini-1.5-flash-latest", "gemini-1.5-pro", "gemini-pro"];
   let lastError = null;
 
   for (const modelName of modelNames) {
     try {
       const model = genAI.getGenerativeModel({ model: modelName });
-      const prompt = `Translate the following text to ${targetLang} professionally. Keep all HTML tags and formatting exactly as they are. Only return the translation:\n\n${text}`;
+      const prompt = `Translate the following text to ${targetLang} professionally. 
+      Keep all HTML tags, line breaks, and formatting EXACTLY as they are. 
+      Do not add any explanations or preamble. Only return the translated text:
+      
+      ${text}`;
       
       const result = await model.generateContent(prompt);
       const response = await result.response;
@@ -63,17 +68,16 @@ const translateWithGemini = async (text, targetLang) => {
  */
 export const translateWithAI = async (text, targetLang) => {
   try {
-    // 1. Coba pakai Cloudflare Workers AI dulu (lebih cepat)
-    // Catatan: Jika teks sangat kompleks dengan banyak HTML, 
-    // kamu bisa langsung loncat ke Gemini.
-    if (text.length < 500 && !text.includes('<')) {
-      return await translateWithCloudflare(text, targetLang);
+    // 1. Skip Cloudflare for Arabic (known support issue 3030)
+    // 2. Use Gemini for long text or HTML
+    if (targetLang.toLowerCase() === 'arabic' || text.length > 500 || text.includes('<')) {
+      return await translateWithGemini(text, targetLang);
     }
     
-    // 2. Gunakan Gemini untuk teks panjang atau yang ada HTML-nya
-    return await translateWithGemini(text, targetLang);
+    // 3. Try Cloudflare for short English text
+    return await translateWithCloudflare(text, targetLang);
   } catch (error) {
-    console.warn("Mencoba fallback ke Gemini karena Cloudflare gagal...");
+    console.warn("Mencoba fallback ke Gemini...");
     try {
       return await translateWithGemini(text, targetLang);
     } catch (finalError) {

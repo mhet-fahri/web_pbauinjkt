@@ -19,12 +19,15 @@ export async function onRequestPost(context) {
       });
     }
 
+    const lowerLang = target_lang.toLowerCase();
+    const target = lowerLang === 'arabic' || lowerLang === 'ar' ? 'arabic' : 
+                   (lowerLang === 'english' || lowerLang === 'en' ? 'english' : lowerLang);
+
     // Cloudflare Workers AI Translation
-    // target_lang expect 'arabic' or 'english' (or other supported languages)
     const result = await env.AI.run("@cf/meta/m2m100-1.2b", {
       text: text,
       source_lang: "indonesian",
-      target_lang: target_lang === "ar" ? "arabic" : (target_lang === "en" ? "english" : target_lang)
+      target_lang: target
     });
 
     return new Response(JSON.stringify(result), {
