@@ -35,14 +35,41 @@ const translateWithCloudflare = async (text, targetLang) => {
  * Google Gemini Translation (Fallback)
  * Better at preserving HTML tags and complex formatting
  */
-const translateWithGemini = async (text, targetLang) => {
-  if (!genAI) throw new Error("Gemini API Key tidak terbaca.");
+export const translateWithAI = async (text, targetLang) => {
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  console.log("Gemini API Key status:", apiKey ? `Present (Starts with: ${apiKey.substring(0, 5)}...)` : "MISSING");
 
+  try {
+    // 1. Skip Cloudflare for Arabic (known support issue 3030)
+    // 2. Use Gemini for long text or HTML
+    if (targetLang.toLowerCase() === 'arabic' || text.length > 500 || text.includes('<')) {
+      return await translateWithGemini(text, targetLang);
+    }
+    
+    // 3. Try Cloudflare for short English text
+    return await translateWithCloudflare(text, targetLang);
+  } catch (error) {
+    console.warn("Mencoba fallback ke Gemini...");
+    try {
+      return await translateWithGemini(text, targetLang);
+    } catch (finalError) {
+      throw new Error("Semua layanan AI gagal: " + finalError.message);
+    }
+  }
+};
+
+const translateWithGemini = async (text, targetLang) => {
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  if (!apiKey || apiKey === "undefined") throw new Error("Gemini API Key tidak terbaca atau tidak valid.");
+
+  const genAI = new GoogleGenerativeAI(apiKey);
+  
   // Try different model naming conventions and API versions
   const modelConfigs = [
     { model: "gemini-1.5-flash", apiVersion: "v1" },
-    { model: "gemini-1.5-flash", apiVersion: "v1beta" },
-    { model: "gemini-1.5-pro", apiVersion: "v1" },
+    { model: "gemini-1.5-flash-latest", apiVersion: "v1" },
+    { model: "gemini-2.0-flash-exp", apiVersion: "v1beta" },
+    { model: "gemini-1.0-pro", apiVersion: "v1" },
     { model: "gemini-pro", apiVersion: "v1" }
   ];
   
@@ -67,27 +94,4 @@ const translateWithGemini = async (text, targetLang) => {
     }
   }
   throw lastError;
-};
-
-/**
- * Main AI Translation Service
- */
-export const translateWithAI = async (text, targetLang) => {
-  try {
-    // 1. Skip Cloudflare for Arabic (known support issue 3030)
-    // 2. Use Gemini for long text or HTML
-    if (targetLang.toLowerCase() === 'arabic' || text.length > 500 || text.includes('<')) {
-      return await translateWithGemini(text, targetLang);
-    }
-    
-    // 3. Try Cloudflare for short English text
-    return await translateWithCloudflare(text, targetLang);
-  } catch (error) {
-    console.warn("Mencoba fallback ke Gemini...");
-    try {
-      return await translateWithGemini(text, targetLang);
-    } catch (finalError) {
-      throw new Error("Semua layanan AI gagal: " + finalError.message);
-    }
-  }
 };
