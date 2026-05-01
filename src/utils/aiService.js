@@ -37,13 +37,13 @@ const translateWithCloudflare = async (text, targetLang) => {
  */
 export const translateWithAI = async (text, targetLang) => {
   try {
-    // 1. Try Cloudflare first (using Llama 3 / m2m100)
-    // Now Cloudflare can handle HTML and longer text because we use Llama 3 fallback
-    return await translateWithCloudflare(text, targetLang);
+    // 1. Try Gemini first (now using the new API Key)
+    return await translateWithGemini(text, targetLang);
   } catch (error) {
-    console.warn("Cloudflare failed, trying Gemini as fallback...");
+    console.warn("Gemini failed, trying Cloudflare as fallback...");
     try {
-      return await translateWithGemini(text, targetLang);
+      // 2. Fallback to Cloudflare (Llama 3.1)
+      return await translateWithCloudflare(text, targetLang);
     } catch (finalError) {
       throw new Error("Semua layanan AI gagal: " + finalError.message);
     }

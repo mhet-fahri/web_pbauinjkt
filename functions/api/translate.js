@@ -43,7 +43,7 @@ export async function onRequestPost(context) {
           { role: "user", content: text }
         ]
       });
-      
+
       if (result && result.response) {
         return new Response(JSON.stringify({ translated_text: result.response }), {
           headers: { "Content-Type": "application/json" }
