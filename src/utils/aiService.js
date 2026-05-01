@@ -37,17 +37,66 @@ const translateWithCloudflare = async (text, targetLang) => {
  */
 export const translateWithAI = async (text, targetLang) => {
   try {
-    // 1. Try Gemini first (now using the new API Key)
-    return await translateWithGemini(text, targetLang);
+    // 1. Try Groq (Primary - Best Quality & Speed)
+    return await translateWithGroq(text, targetLang);
   } catch (error) {
-    console.warn("Gemini failed, trying Cloudflare as fallback...");
+    console.warn("Groq failed, trying Gemini as fallback...", error);
     try {
-      // 2. Fallback to Cloudflare (Llama 3.1)
-      return await translateWithCloudflare(text, targetLang);
-    } catch (finalError) {
-      throw new Error("Semua layanan AI gagal: " + finalError.message);
+      // 2. Try Gemini (Secondary)
+      return await translateWithGemini(text, targetLang);
+    } catch (geminiError) {
+      console.warn("Gemini failed, trying Cloudflare as fallback...", geminiError);
+      try {
+        // 3. Try Cloudflare (Final Fallback)
+        return await translateWithCloudflare(text, targetLang);
+      } catch (finalError) {
+        throw new Error("Semua layanan AI gagal: " + finalError.message);
+      }
     }
   }
+};
+
+/**
+ * Groq Translation (Primary - Most Powerful)
+ * Uses Llama 3.1 70B for superior academic translation
+ */
+const translateWithGroq = async (text, targetLang) => {
+  const apiKey = import.meta.env.VITE_GROQ_API_KEY;
+  if (!apiKey || apiKey === "undefined") throw new Error("Groq API Key tidak terbaca.");
+
+  const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${apiKey}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      model: "llama-3.1-70b-versatile",
+      messages: [
+        { 
+          role: "system", 
+          content: `You are an expert academic translator for a university website. 
+          Translate the text into ${targetLang} professionally.
+          RULES:
+          1. Keep ALL HTML tags exactly as they are.
+          2. Translate EVERYTHING. Do NOT skip any words.
+          3. Use formal, academic vocabulary.
+          4. Return ONLY the translation.` 
+        },
+        { role: "user", content: text }
+      ],
+      temperature: 0,
+      max_tokens: 4096
+    })
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error?.message || "Groq API Error");
+  }
+
+  const data = await response.json();
+  return data.choices[0].message.content.trim();
 };
 
 const translateWithGemini = async (text, targetLang) => {
@@ -64,33 +113,30 @@ const translateWithGemini = async (text, targetLang) => {
     try {
       const model = genAI.getGenerativeModel({ 
         model: modelName,
-        systemInstruction: `You are a professional academic translator for a university website. 
-        Your task is to translate Indonesian text into ${targetLang} with high precision.
-        
-        RULES:
-        1. Translate EVERYTHING. Do not skip words like "kompetensi", "ekosistem", or place names.
-        2. Keep all HTML tags (<p>, <strong>, etc.) exactly where they are.
-        3. Use formal, academic vocabulary appropriate for a university.
-        4. Do NOT include any English/Indonesian words in the Arabic output unless it's a proper name.
-        5. Return ONLY the translated text. No preamble, no "Here is the translation".`
+        systemInstruction: `You are an expert translator. Translate the text into ${targetLang}. 
+        Keep HTML. Do NOT add preamble. Do NOT mix languages.`
       }, { apiVersion: "v1beta" });
 
       const result = await model.generateContent({
         contents: [{ role: "user", parts: [{ text }] }],
         generationConfig: {
-          temperature: 0, // Absolute zero for maximum stability
-          topP: 1,
-          topK: 1,
-          maxOutputTokens: 4096,
-        }
+          temperature: 0,
+          maxOutputTokens: 2048,
+        },
+        safetySettings: [
+          { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_NONE" },
+          { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" },
+          { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_NONE" },
+          { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_NONE" },
+        ]
       });
       
       const response = await result.response;
       let translated = response.text().trim();
       
-      // Safety check for looping
-      if (translated.split(' ').length > 10 && new Set(translated.split(' ')).size < (translated.split(' ').length / 3)) {
-        throw new Error("Model detected looping, retrying with next model...");
+      // Strict check for "cities and cities" or "history of the world" loops
+      if (translated.toLowerCase().includes("cities and cities") || translated.toLowerCase().includes("history of the world")) {
+        throw new Error("Looping detected");
       }
 
       return translated;
