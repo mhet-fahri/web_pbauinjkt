@@ -276,7 +276,7 @@ const Home = () => {
       <section className="pb-20 bg-slate-50 dark:bg-slate-950">
         <div className="container-custom">
           <div className="bg-primary-600 rounded-[2.5rem] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl">
-            <div className="relative z-10">
+            <div className="relative">
               <h2 className="text-3xl md:text-5xl font-black mb-6">{t('pages.home.cta_title')}</h2>
               <p className="text-lg text-primary-50 mb-10 max-w-2xl mx-auto">
                 {t('pages.home.cta_desc')}
