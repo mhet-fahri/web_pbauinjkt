@@ -7,10 +7,13 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-utils': ['xlsx', 'framer-motion', 'lucide-react'],
-          'vendor-ui': ['@supabase/supabase-js', 'i18next', 'react-i18next'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react')) return 'vendor-react';
+            if (id.includes('xlsx') || id.includes('framer-motion') || id.includes('lucide-react')) return 'vendor-utils';
+            if (id.includes('@supabase') || id.includes('i18next')) return 'vendor-ui';
+            return 'vendor';
+          }
         }
       }
     },
