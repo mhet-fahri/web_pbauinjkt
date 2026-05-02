@@ -338,7 +338,19 @@
           "publication": "المنشورات"
         },
         "search_placeholder": "ابحث عن عنوان أو باحث...",
-        "view_work": "عرض العمل"
+        "view_work": "عرض العمل",
+        "journals": {
+          "title": "المجلات المعتمدة وطنياً",
+          "subtitle": "يدير برنامج تعليم اللغة العربية مجلتين علميتين مرموقتين كمنصة لنشر أبحاث تعليم اللغة العربية.",
+          "arabiyat": {
+            "name": "ARABIYAT: Jurnal Pendidikan Bahasa Arab dan Kebahasaaraban",
+            "rank": "SINTA 2"
+          },
+          "kalimatuna": {
+            "name": "Kalimātunā: Journal of Arabic Research",
+            "rank": "SINTA 4"
+          }
+        }
       },
       "footer": {
         "desc": "برنامج دراسة تعليم اللغة العربية بجامعة شريف هداية الله الإسلامية الحكومية جاكرتا. إعداد أجيال من معلمي اللغة العربية المتميزين والمعتدلين والمبتكرين.",

@@ -338,7 +338,19 @@
           "publication": "Publikasi"
         },
         "search_placeholder": "Cari judul atau peneliti...",
-        "view_work": "Lihat Karya"
+        "view_work": "Lihat Karya",
+        "journals": {
+          "title": "Jurnal Terakreditasi Nasional",
+          "subtitle": "Program Studi PBA mengelola dua jurnal ilmiah bereputasi sebagai wadah diseminasi riset pendidikan bahasa Arab.",
+          "arabiyat": {
+            "name": "ARABIYAT: Jurnal Pendidikan Bahasa Arab dan Kebahasaaraban",
+            "rank": "SINTA 2"
+          },
+          "kalimatuna": {
+            "name": "Kalimātunā: Journal of Arabic Research",
+            "rank": "SINTA 4"
+          }
+        }
       },
       "footer": {
         "desc": "Program Studi Pendidikan Bahasa Arab (PBA) UIN Syarif Hidayatullah Jakarta. Mencetak generasi pendidik Bahasa Arab yang unggul, moderat, dan inovatif.",

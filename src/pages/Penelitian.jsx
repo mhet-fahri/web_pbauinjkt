@@ -80,6 +80,69 @@ const Penelitian = () => {
           </p>
         </div>
 
+        {/* Journals Section */}
+        <div className="mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+            <div className="max-w-2xl">
+              <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-2">{t('pages.penelitian.journals.title')}</h2>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                {t('pages.penelitian.journals.subtitle')}
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.a
+              href="https://journal.uinjkt.ac.id/index.php/arabiyat"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -5 }}
+              className="group bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-indigo-500 transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Book size={24} />
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-amber-50 text-amber-600 border border-amber-100 text-[10px] font-black uppercase tracking-widest shadow-sm">
+                    {t('pages.penelitian.journals.arabiyat.rank')}
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 leading-tight group-hover:text-indigo-600 transition-colors">
+                  {t('pages.penelitian.journals.arabiyat.name')}
+                </h3>
+              </div>
+              <div className="flex items-center gap-2 text-indigo-600 font-bold text-sm mt-4">
+                Kunjungi Jurnal <ExternalLink size={14} />
+              </div>
+            </motion.a>
+
+            <motion.a
+              href="https://journal.uinjkt.ac.id/kalimatuna"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -5 }}
+              className="group bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-indigo-500 transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Book size={24} />
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 text-[10px] font-black uppercase tracking-widest shadow-sm">
+                    {t('pages.penelitian.journals.kalimatuna.rank')}
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 leading-tight group-hover:text-emerald-600 transition-colors">
+                  {t('pages.penelitian.journals.kalimatuna.name')}
+                </h3>
+              </div>
+              <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm mt-4">
+                Kunjungi Jurnal <ExternalLink size={14} />
+              </div>
+            </motion.a>
+          </div>
+        </div>
+
         {/* Stats Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {[

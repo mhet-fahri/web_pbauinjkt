@@ -338,7 +338,19 @@
           "publication": "Publication"
         },
         "search_placeholder": "Search title or researcher...",
-        "view_work": "View Work"
+        "view_work": "View Work",
+        "journals": {
+          "title": "Nationally Accredited Journals",
+          "subtitle": "The Arabic Language Education study program manages two reputable scientific journals as a platform for disseminating Arabic language education research.",
+          "arabiyat": {
+            "name": "ARABIYAT: Jurnal Pendidikan Bahasa Arab dan Kebahasaaraban",
+            "rank": "SINTA 2"
+          },
+          "kalimatuna": {
+            "name": "Kalimātunā: Journal of Arabic Research",
+            "rank": "SINTA 4"
+          }
+        }
       },
       "footer": {
         "desc": "Arabic Language Education Study Program (PBA) UIN Syarif Hidayatullah Jakarta. Producing excellent, moderate, and innovative generations of Arabic language educators.",
