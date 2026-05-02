@@ -47,14 +47,18 @@ const ExamCards = () => {
   const getBadgeStyle = (type) => {
     switch (type) {
       case 'seminar_proposal': return 'bg-amber-50 text-amber-600 dark:bg-amber-900/20';
-      case 'komprehensif': return 'bg-emerald-50 text-emerald-600 dark:bg-amber-900/20';
+      case 'komprehensif': return 'bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20';
       case 'skripsi': return 'bg-blue-50 text-blue-600 dark:bg-blue-900/20';
-      default: return 'bg-slate-50 text-slate-600';
+      case 'lainnya': 
+      case 'ujian_lainnya': return 'bg-purple-50 text-purple-600 dark:bg-purple-900/20';
+      default: return 'bg-slate-50 text-slate-600 dark:bg-slate-800 text-slate-400';
     }
   };
 
   const getLabel = (type) => {
-    return t(`pages.home.exam_schedule.types.${type}`, type);
+    // Try to translate. Fallback to the type itself if no translation found.
+    // The keys in home.json are under exam_schedule.types
+    return t(`exam_schedule.types.${type}`, type.replace(/_/g, ' '));
   };
 
   if (loading) return (

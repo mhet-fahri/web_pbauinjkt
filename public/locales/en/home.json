@@ -42,6 +42,7 @@
     "types": {
       "seminar_proposal": "Research Proposal Exam",
       "ujian_lainnya": "Other Exam",
+      "lainnya": "Other Exam",
       "komprehensif": "Comprehensive Exam",
       "skripsi": "Thesis Defense"
     }

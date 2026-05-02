@@ -42,6 +42,7 @@
     "types": {
       "seminar_proposal": "امتحان مقترح البحث",
       "ujian_lainnya": "امتحان آخر",
+      "lainnya": "امتحان آخر",
       "komprehensif": "الامتحان الشامل",
       "skripsi": "مناقشة الرسالة"
     }

@@ -42,6 +42,7 @@
     "types": {
       "seminar_proposal": "Ujian Proposal Penelitian",
       "ujian_lainnya": "Ujian Lainnya",
+      "lainnya": "Ujian Lainnya",
       "komprehensif": "Ujian Komprehensif",
       "skripsi": "Ujian Skripsi"
     }

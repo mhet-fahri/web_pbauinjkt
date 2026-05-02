@@ -65,5 +65,33 @@
       "privacy": "Kebijakan Privasi",
       "terms": "Syarat & Ketentuan"
     }
+  },
+  "admin": {
+    "exams": {
+      "title": "Manajemen Jadwal Ujian",
+      "subtitle": "Kelola jadwal ujian proposal, komprehensif, skripsi, dan lainnya",
+      "add_button": "Tambah Jadwal",
+      "search_placeholder": "Cari nama, NIM, atau judul...",
+      "loading": "Memuat Data...",
+      "edit_title": "Edit Jadwal",
+      "add_title": "Tambah Jadwal",
+      "delete_confirm": "Yakin ingin menghapus jadwal ujian ini?",
+      "form": {
+        "type": "Jenis Ujian",
+        "custom_type": "Nama Ujian Lainnya",
+        "custom_placeholder": "Masukkan jenis ujian baru...",
+        "title": "Judul Skripsi / Seminar",
+        "title_placeholder": "... Masukkan judul lengkap",
+        "student_name": "Nama Mahasiswa",
+        "student_nim": "NIM Mahasiswa",
+        "examiner_1": "Penguji 1",
+        "examiner_2": "Penguji 2",
+        "date": "Tanggal",
+        "time": "Waktu (WIB)",
+        "location": "Lokasi / Ruangan",
+        "save": "Simpan Perubahan",
+        "submit": "Tambah Jadwal"
+      }
+    }
   }
 }
