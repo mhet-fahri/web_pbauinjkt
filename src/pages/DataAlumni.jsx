@@ -15,7 +15,7 @@ import { supabase } from '../lib/supabase';
 import { getDirectImageUrl } from '../utils/imageUtils';
 
 const DataAlumni = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['student', 'common']);
   const [searchTerm, setSearchTerm] = useState('');
   const [dbAlumni, setDbAlumni] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -69,10 +69,10 @@ const DataAlumni = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white"
           >
-            {t('pages.alumni.data.title')} <span className="gradient-text">{t('pages.alumni.data.title_accent')}</span>
+            {t('alumni.data.title')} <span className="gradient-text">{t('alumni.data.title_accent')}</span>
           </m.h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            {t('pages.alumni.data.subtitle')}
+            {t('alumni.data.subtitle')}
           </p>
         </div>
 
@@ -80,7 +80,7 @@ const DataAlumni = () => {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
           <input
             type="text"
-            placeholder={t('pages.alumni.data.search_placeholder')}
+            placeholder={t('alumni.data.search_placeholder')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-12 pr-6 py-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm"
@@ -111,7 +111,7 @@ const DataAlumni = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900 dark:text-white leading-tight">{alumnus.name}</h3>
-                    <div className="text-[10px] font-black text-emerald-600 uppercase tracking-widest mt-1">{t('pages.alumni.data.batch_label')} {alumnus.batch}</div>
+                    <div className="text-[10px] font-black text-emerald-600 uppercase tracking-widest mt-1">{t('alumni.data.batch_label')} {alumnus.batch}</div>
                   </div>
                 </div>
 

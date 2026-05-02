@@ -5,7 +5,7 @@ import { Search, BookOpen, Clock, Tag, ChevronRight, Info, Filter, X, Plus, Chec
 import { courses } from '../data/courses';
 
 const MataKuliah = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['academic', 'common']);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeSemester, setActiveSemester] = useState('Semua');
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -85,12 +85,12 @@ const MataKuliah = () => {
           </div>
           <div className="flex-1">
             <span className="text-[10px] font-black tracking-widest text-slate-400 uppercase mb-1 block">
-              {selected ? selected.kode : `${t('pages.mata_kuliah.elective_section.slot_prefix')} ${index + 1}`}
+              {selected ? selected.kode : `${t('mata_kuliah.elective_section.slot_prefix')} ${index + 1}`}
             </span>
             <h3 className={`font-bold text-lg leading-tight transition-colors ${
               selected ? 'text-slate-900 dark:text-white' : 'text-slate-400 group-hover:text-sky-500'
             }`}>
-              {selected ? selected.nama : t('pages.mata_kuliah.elective_section.click_to_select')}
+              {selected ? selected.nama : t('mata_kuliah.elective_section.click_to_select')}
             </h3>
           </div>
           {selected && (
@@ -114,7 +114,7 @@ const MataKuliah = () => {
                 <Clock size={12} /> {selected.sks} SKS
              </div>
              <div className="flex items-center gap-1 text-xs font-medium text-slate-500">
-                <Tag size={12} /> {t('pages.mata_kuliah.stats.elective')}
+                <Tag size={12} /> {t('mata_kuliah.stats.elective')}
              </div>
           </div>
         )}
@@ -156,14 +156,14 @@ const MataKuliah = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 mb-6"
           >
             <BookOpen size={18} />
-            <span className="text-sm font-bold tracking-wide uppercase">{t('pages.mata_kuliah.badge')}</span>
+            <span className="text-sm font-bold tracking-wide uppercase">{t('mata_kuliah.badge')}</span>
           </m.div>
           <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white"
           >
-            {t('pages.mata_kuliah.title')} <span className="gradient-text">{t('pages.mata_kuliah.title_accent')}</span>
+            {t('mata_kuliah.title')} <span className="gradient-text">{t('mata_kuliah.title_accent')}</span>
           </m.h1>
           <m.p
             initial={{ opacity: 0, y: 20 }}
@@ -171,7 +171,7 @@ const MataKuliah = () => {
             transition={{ delay: 0.1 }}
             className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
           >
-            {t('pages.mata_kuliah.subtitle')}
+            {t('mata_kuliah.subtitle')}
           </m.p>
         </div>
 
@@ -188,7 +188,7 @@ const MataKuliah = () => {
               </div>
               <input
                 type="text"
-                placeholder={t('pages.mata_kuliah.search_placeholder')}
+                placeholder={t('mata_kuliah.search_placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none transition-all shadow-xl shadow-slate-200/50 dark:shadow-none"
@@ -220,7 +220,7 @@ const MataKuliah = () => {
                     : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-sky-500 hover:text-sky-500'
                 }`}
               >
-                {sem === 'Semua' ? t('pages.mata_kuliah.semesters.all') : sem === 'Pilihan' ? t('pages.mata_kuliah.semesters.elective') : `${t('pages.mata_kuliah.semesters.label')} ${sem}`}
+                {sem === 'Semua' ? t('mata_kuliah.semesters.all') : sem === 'Pilihan' ? t('mata_kuliah.semesters.elective') : `${t('mata_kuliah.semesters.label')} ${sem}`}
               </button>
             ))}
           </m.div>
@@ -237,8 +237,8 @@ const MataKuliah = () => {
             <div className="lg:col-span-2 bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border border-slate-100 dark:border-slate-800 shadow-sm">
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <h3 className="text-xl font-black text-slate-900 dark:text-white">{t('pages.mata_kuliah.stats.study_load')}</h3>
-                  <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mt-1">{t('pages.mata_kuliah.stats.distribution')}</p>
+                  <h3 className="text-xl font-black text-slate-900 dark:text-white">{t('mata_kuliah.stats.study_load')}</h3>
+                  <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mt-1">{t('mata_kuliah.stats.distribution')}</p>
                 </div>
                 <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">
                    <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-sky-500" /> SKS</div>
@@ -282,15 +282,15 @@ const MataKuliah = () => {
                     <CheckCircle2 size={24} />
                   </div>
                   <div className="text-4xl font-black mb-1">{stats.totalSks}</div>
-                  <div className="text-xs font-bold uppercase tracking-widest opacity-80">{t('pages.mata_kuliah.stats.total_sks')}</div>
+                  <div className="text-xs font-bold uppercase tracking-widest opacity-80">{t('mata_kuliah.stats.total_sks')}</div>
                 </div>
               </div>
 
               <div className="flex-1 bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col justify-between">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h4 className="text-sm font-black text-slate-400 uppercase tracking-widest mb-1">{t('pages.mata_kuliah.stats.structure')}</h4>
-                    <p className="text-lg font-bold text-slate-900 dark:text-white">{t('pages.mata_kuliah.stats.composition')}</p>
+                    <h4 className="text-sm font-black text-slate-400 uppercase tracking-widest mb-1">{t('mata_kuliah.stats.structure')}</h4>
+                    <p className="text-lg font-bold text-slate-900 dark:text-white">{t('mata_kuliah.stats.composition')}</p>
                   </div>
                   <div className="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400">
                     <Tag size={20} />
@@ -301,7 +301,7 @@ const MataKuliah = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-sky-500" />
-                      <span className="text-sm font-medium text-slate-600 dark:text-slate-400">{t('pages.mata_kuliah.stats.compulsory')}</span>
+                      <span className="text-sm font-medium text-slate-600 dark:text-slate-400">{t('mata_kuliah.stats.compulsory')}</span>
                     </div>
                     <span className="text-sm font-black text-slate-900 dark:text-white">{stats.totalWajib}</span>
                   </div>
@@ -316,7 +316,7 @@ const MataKuliah = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-indigo-500" />
-                      <span className="text-sm font-medium text-slate-600 dark:text-slate-400">{t('pages.mata_kuliah.stats.elective')}</span>
+                      <span className="text-sm font-medium text-slate-600 dark:text-slate-400">{t('mata_kuliah.stats.elective')}</span>
                     </div>
                     <span className="text-sm font-black text-slate-900 dark:text-white">{stats.totalPilihan}</span>
                   </div>
@@ -380,11 +380,11 @@ const MataKuliah = () => {
                     </div>
                     <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-800">
                       <Tag size={14} className="text-indigo-500" />
-                      {course.jenis === 'Wajib' ? t('pages.mata_kuliah.stats.compulsory') : t('pages.mata_kuliah.stats.elective')}
+                      {course.jenis === 'Wajib' ? t('mata_kuliah.stats.compulsory') : t('mata_kuliah.stats.elective')}
                     </div>
                     <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-800">
                       <Filter size={14} className="text-emerald-500" />
-                      {t('pages.mata_kuliah.semesters.label')} {course.semester}
+                      {t('mata_kuliah.semesters.label')} {course.semester}
                     </div>
                   </div>
                 </m.div>
@@ -398,7 +398,7 @@ const MataKuliah = () => {
                   <div className="p-2 rounded-lg bg-sky-100 dark:bg-sky-900/30 text-sky-600">
                     <Filter size={20} />
                   </div>
-                  <h2 className="text-2xl font-black text-slate-900 dark:text-white">{t('pages.mata_kuliah.elective_section.title')}</h2>
+                  <h2 className="text-2xl font-black text-slate-900 dark:text-white">{t('mata_kuliah.elective_section.title')}</h2>
                 </div>
                 
                 <div className={`grid gap-6 ${activeSemester === '6' ? 'md:grid-cols-2' : 'grid-cols-1 max-w-2xl'}`}>
@@ -412,7 +412,7 @@ const MataKuliah = () => {
                   )}
                 </div>
                 <p className="mt-4 text-sm text-slate-500 italic">
-                  {t('pages.mata_kuliah.elective_section.footer_note', { semester: activeSemester })}
+                  {t('mata_kuliah.elective_section.footer_note', { semester: activeSemester })}
                 </p>
               </div>
             )}
@@ -426,8 +426,8 @@ const MataKuliah = () => {
                 <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-400 mb-4">
                   <Search size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t('pages.mata_kuliah.not_found.title')}</h3>
-                <p className="text-slate-600 dark:text-slate-400">{t('pages.mata_kuliah.not_found.desc')}</p>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t('mata_kuliah.not_found.title')}</h3>
+                <p className="text-slate-600 dark:text-slate-400">{t('mata_kuliah.not_found.desc')}</p>
               </m.div>
             )}
           </m.div>
@@ -454,8 +454,8 @@ const MataKuliah = () => {
               <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 shadow-2xl border border-white/10 max-h-[80vh] flex flex-col">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <h2 className="text-2xl font-black text-slate-900 dark:text-white">{t('pages.mata_kuliah.elective_section.modal_title')}</h2>
-                    <p className="text-sm text-slate-500">{t('pages.mata_kuliah.semesters.label')} {isSelecting.sem === 'sem6' ? '6' : '7'}</p>
+                    <h2 className="text-2xl font-black text-slate-900 dark:text-white">{t('mata_kuliah.elective_section.modal_title')}</h2>
+                    <p className="text-sm text-slate-500">{t('mata_kuliah.semesters.label')} {isSelecting.sem === 'sem6' ? '6' : '7'}</p>
                   </div>
                   <button onClick={() => setIsSelecting(null)} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                     <X size={20} />
@@ -533,13 +533,13 @@ const MataKuliah = () => {
                       <div className="text-xl font-black text-sky-600">{selectedCourse.sks}</div>
                     </div>
                     <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-3xl text-center border border-slate-100 dark:border-slate-800">
-                      <div className="text-[10px] font-bold text-slate-400 uppercase mb-1">{t('pages.mata_kuliah.semesters.label')}</div>
+                      <div className="text-[10px] font-bold text-slate-400 uppercase mb-1">{t('mata_kuliah.semesters.label')}</div>
                       <div className="text-xl font-black text-indigo-600">{selectedCourse.semester}</div>
                     </div>
                     <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-3xl text-center border border-slate-100 dark:border-slate-800">
                       <div className="text-[10px] font-bold text-slate-400 uppercase mb-1">Jenis</div>
                       <div className="text-xl font-black text-emerald-600">
-                        {selectedCourse.jenis === 'Wajib' ? t('pages.mata_kuliah.stats.compulsory') : t('pages.mata_kuliah.stats.elective')}
+                        {selectedCourse.jenis === 'Wajib' ? t('mata_kuliah.stats.compulsory') : t('mata_kuliah.stats.elective')}
                       </div>
                     </div>
                   </div>
@@ -547,7 +547,7 @@ const MataKuliah = () => {
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 text-slate-900 dark:text-white font-bold mb-2">
                       <Info size={18} className="text-sky-500" />
-                      {t('pages.mata_kuliah.modal.desc_title')}
+                      {t('mata_kuliah.modal.desc_title')}
                     </div>
                     <div className="text-slate-600 dark:text-slate-400 leading-relaxed text-base">
                       {selectedCourse.deskripsi}
@@ -560,7 +560,7 @@ const MataKuliah = () => {
                     onClick={() => setSelectedCourse(null)}
                     className="px-8 py-3 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold hover:scale-105 transition-transform"
                   >
-                    {t('pages.mata_kuliah.modal.close')}
+                    {t('mata_kuliah.modal.close')}
                   </button>
                 </div>
               </div>

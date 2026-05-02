@@ -51,7 +51,7 @@ const demoNews = [
 ];
 
 const Berita = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(['news', 'common']);
   const currentLang = i18n.language;
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('Semua');
@@ -59,11 +59,11 @@ const Berita = () => {
   const [loading, setLoading] = useState(true);
 
   const categories = [
-    { id: 'Semua', label: t('pages.news.categories.all') },
-    { id: 'Berita', label: t('pages.news.categories.news') },
-    { id: 'Kegiatan', label: t('pages.news.categories.event') },
-    { id: 'Pengumuman', label: t('pages.news.categories.announcement') },
-    { id: 'Opini', label: t('pages.news.categories.opinion') }
+    { id: 'Semua', label: t('categories.all') },
+    { id: 'Berita', label: t('categories.news') },
+    { id: 'Kegiatan', label: t('categories.event') },
+    { id: 'Pengumuman', label: t('categories.announcement') },
+    { id: 'Opini', label: t('categories.opinion') }
   ];
 
   useEffect(() => {
@@ -105,7 +105,7 @@ const Berita = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-bold mb-6"
           >
             <Newspaper size={16} />
-            <span>{t('pages.news.badge')}</span>
+            <span>{t('badge')}</span>
           </m.div>
           <m.h1
             initial={{ opacity: 0, y: 20 }}
@@ -113,10 +113,10 @@ const Berita = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white"
           >
-            {t('pages.news.title')} <span className="gradient-text">{t('pages.news.title_accent')}</span>
+            {t('title')} <span className="gradient-text">{t('title_accent')}</span>
           </m.h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            {t('pages.news.subtitle')}
+            {t('subtitle')}
           </p>
         </div>
 
@@ -141,7 +141,7 @@ const Berita = () => {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
             <input
               type="text"
-              placeholder={t('pages.news.search_placeholder')}
+              placeholder={t('search_placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:ring-2 focus:ring-primary-500 shadow-sm"
@@ -195,7 +195,7 @@ const Berita = () => {
                        item.content || '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ')}
                     </p>
                     <Link to={`/berita/${item.id}`} className="inline-flex items-center gap-2 text-sm font-black text-primary-600 group/link">
-                      {t('pages.news.read_more')} 
+                      {t('read_more')} 
                       <ChevronRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -207,7 +207,7 @@ const Berita = () => {
 
         {filteredNews.length === 0 && (
           <div className="text-center py-20">
-            <div className="text-slate-400 font-bold">{t('pages.news.not_found')}</div>
+            <div className="text-slate-400 font-bold">{t('not_found')}</div>
           </div>
         )}
       </div>

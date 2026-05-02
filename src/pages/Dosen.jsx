@@ -8,7 +8,7 @@ import { supabase } from '../lib/supabase';
 import { getDirectImageUrl } from '../utils/imageUtils';
 
 const Dosen = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['academic', 'common']);
   const [searchTerm, setSearchTerm] = useState('');
   const [dbLecturers, setDbLecturers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -91,13 +91,13 @@ const Dosen = () => {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-600 text-sm font-bold mb-6"
           >
             <Users size={14} />
-            <span>{t('pages.lecturers.badge')}</span>
+            <span>{t('lecturers.badge')}</span>
           </m.div>
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6">
-            {t('pages.lecturers.title')} <span className="gradient-text">{t('pages.lecturers.title_accent')}</span>
+            {t('lecturers.title')} <span className="gradient-text">{t('lecturers.title_accent')}</span>
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            {t('pages.lecturers.subtitle')}
+            {t('lecturers.subtitle')}
           </p>
         </div>
           
@@ -105,7 +105,7 @@ const Dosen = () => {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
           <input 
             type="text" 
-            placeholder={t('pages.lecturers.search_placeholder')}
+            placeholder={t('lecturers.search_placeholder')}
             className="w-full pl-12 pr-6 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all shadow-sm"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -149,11 +149,11 @@ const Dosen = () => {
                   <p className="text-sm text-primary-600 font-medium mb-4">{lecturer.role}</p>
                   <div className="space-y-2 border-t border-slate-100 dark:border-slate-800 pt-4">
                     <div className="flex justify-between text-xs">
-                      <span className="text-slate-500">{t('pages.lecturers.nip')}</span>
+                      <span className="text-slate-500">{t('lecturers.nip')}</span>
                       <span className="text-slate-700 dark:text-slate-300">{lecturer.nip}</span>
                     </div>
                     <div className="flex flex-col gap-1 text-xs">
-                      <span className="text-slate-500">{t('pages.lecturers.expertise')}</span>
+                      <span className="text-slate-500">{t('lecturers.expertise')}</span>
                       <span className="text-slate-700 dark:text-slate-300 font-medium line-clamp-1">{lecturer.specialization}</span>
                     </div>
                   </div>

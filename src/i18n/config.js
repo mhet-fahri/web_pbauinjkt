@@ -11,6 +11,7 @@ i18n
     fallbackLng: 'id',
     ns: ['common', 'home', 'news', 'academic', 'student', 'profile'],
     defaultNS: 'common',
+    fallbackNS: 'common',
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',
     },

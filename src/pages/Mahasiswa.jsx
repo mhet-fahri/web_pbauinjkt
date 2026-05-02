@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 
 const Mahasiswa = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['student', 'common']);
   return (
     <div className="min-h-screen pt-32 pb-20 bg-white dark:bg-slate-950 overflow-hidden relative">
       {/* Decorative BG */}
@@ -29,7 +29,7 @@ const Mahasiswa = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-bold mb-8"
           >
             <GraduationCap size={16} />
-            <span>{t('pages.mahasiswa.badge')}</span>
+            <span>{t('mahasiswa.badge')}</span>
           </m.div>
           <m.h1
             initial={{ opacity: 0, y: 20 }}
@@ -37,28 +37,28 @@ const Mahasiswa = () => {
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-8 leading-[1.1]"
           >
-            {t('pages.mahasiswa.title')} <span className="text-blue-600">{t('pages.mahasiswa.title_accent')}</span> {t('pages.mahasiswa.title_suffix')}
+            {t('mahasiswa.title')} <span className="text-blue-600">{t('mahasiswa.title_accent')}</span> {t('mahasiswa.title_suffix')}
           </m.h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
-            {t('pages.mahasiswa.subtitle')}
+            {t('mahasiswa.subtitle')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {[
             {
-              title: t('pages.mahasiswa.cards.directory.title'),
-              desc: t('pages.mahasiswa.cards.directory.desc'),
-              cta: t('pages.mahasiswa.cards.directory.cta'),
+              title: t('mahasiswa.cards.directory.title'),
+              desc: t('mahasiswa.cards.directory.desc'),
+              cta: t('mahasiswa.cards.directory.cta'),
               link: "/mahasiswa/data",
               icon: Search,
               color: "bg-blue-600",
               text: "text-blue-600"
             },
             {
-              title: t('pages.mahasiswa.cards.services.title'),
-              desc: t('pages.mahasiswa.cards.services.desc'),
-              cta: t('pages.mahasiswa.cards.services.cta'),
+              title: t('mahasiswa.cards.services.title'),
+              desc: t('mahasiswa.cards.services.desc'),
+              cta: t('mahasiswa.cards.services.cta'),
               link: "/mahasiswa/layanan",
               icon: FileText,
               color: "bg-indigo-600",
@@ -87,9 +87,9 @@ const Mahasiswa = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {[
-            { title: t('pages.mahasiswa.features.scholarship.title'), icon: Award, desc: t('pages.mahasiswa.features.scholarship.desc') },
-            { title: t('pages.mahasiswa.features.organization.title'), icon: Sparkles, desc: t('pages.mahasiswa.features.organization.desc') },
-            { title: t('pages.mahasiswa.features.library.title'), icon: BookOpen, desc: t('pages.mahasiswa.features.library.desc') },
+            { title: t('mahasiswa.features.scholarship.title'), icon: Award, desc: t('mahasiswa.features.scholarship.desc') },
+            { title: t('mahasiswa.features.organization.title'), icon: Sparkles, desc: t('mahasiswa.features.organization.desc') },
+            { title: t('mahasiswa.features.library.title'), icon: BookOpen, desc: t('mahasiswa.features.library.desc') },
           ].map((feat, i) => (
             <div key={i} className="p-8 rounded-3xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm flex items-start gap-5">
               <div className="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-blue-600 shrink-0">

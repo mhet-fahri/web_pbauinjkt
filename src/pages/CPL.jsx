@@ -4,48 +4,48 @@ import { m } from 'framer-motion';
 import { BookOpen, Languages, Brain, Monitor, Search, Briefcase, Heart, Award, GraduationCap } from 'lucide-react';
 
 const CPL = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['academic', 'common']);
 
   const cplList = [
     {
-      title: t('pages.cpl.items.0.title'),
-      desc: t('pages.cpl.items.0.desc'),
+      title: t('cpl.items.0.title'),
+      desc: t('cpl.items.0.desc'),
       icon: Heart,
       color: "from-rose-500 to-pink-600"
     },
     {
-      title: t('pages.cpl.items.1.title'),
-      desc: t('pages.cpl.items.1.desc'),
+      title: t('cpl.items.1.title'),
+      desc: t('cpl.items.1.desc'),
       icon: Languages,
       color: "from-blue-500 to-indigo-600"
     },
     {
-      title: t('pages.cpl.items.2.title'),
-      desc: t('pages.cpl.items.2.desc'),
+      title: t('cpl.items.2.title'),
+      desc: t('cpl.items.2.desc'),
       icon: BookOpen,
       color: "from-emerald-500 to-teal-600"
     },
     {
-      title: t('pages.cpl.items.3.title'),
-      desc: t('pages.cpl.items.3.desc'),
+      title: t('cpl.items.3.title'),
+      desc: t('cpl.items.3.desc'),
       icon: Brain,
       color: "from-purple-500 to-violet-600"
     },
     {
-      title: t('pages.cpl.items.4.title'),
-      desc: t('pages.cpl.items.4.desc'),
+      title: t('cpl.items.4.title'),
+      desc: t('cpl.items.4.desc'),
       icon: Monitor,
       color: "from-orange-500 to-amber-600"
     },
     {
-      title: t('pages.cpl.items.5.title'),
-      desc: t('pages.cpl.items.5.desc'),
+      title: t('cpl.items.5.title'),
+      desc: t('cpl.items.5.desc'),
       icon: Search,
       color: "from-cyan-500 to-sky-600"
     },
     {
-      title: t('pages.cpl.items.6.title'),
-      desc: t('pages.cpl.items.6.desc'),
+      title: t('cpl.items.6.title'),
+      desc: t('cpl.items.6.desc'),
       icon: Briefcase,
       color: "from-fuchsia-500 to-pink-600"
     }
@@ -68,13 +68,13 @@ const CPL = () => {
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 text-primary-600 dark:text-primary-400 text-xs font-bold mb-8 uppercase tracking-widest">
               <GraduationCap size={14} />
-              {t('pages.cpl.badge')}
+              {t('cpl.badge')}
             </div>
             <h1 className="text-5xl md:text-6xl font-black mb-8 text-slate-900 dark:text-white leading-[1.1] tracking-tight">
-              {t('pages.cpl.title')} <span className="gradient-text">{t('pages.cpl.title_accent')}</span>
+              {t('cpl.title')} <span className="gradient-text">{t('cpl.title_accent')}</span>
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-xl">
-              {t('pages.cpl.subtitle')}
+              {t('cpl.subtitle')}
             </p>
           </m.div>
 
@@ -90,11 +90,11 @@ const CPL = () => {
                 <Award size={32} className="text-white" strokeWidth={2.5} />
               </div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-[10px] font-black uppercase tracking-widest border border-white/20 mb-4">
-                {t('pages.cpl.cefr_badge')}
+                {t('cpl.cefr_badge')}
               </div>
-              <h2 className="text-2xl font-black mb-3">{t('pages.cpl.cefr_title')}</h2>
+              <h2 className="text-2xl font-black mb-3">{t('cpl.cefr_title')}</h2>
               <p className="text-primary-50 leading-relaxed text-sm">
-                {t('pages.cpl.cefr_desc')}
+                {t('cpl.cefr_desc')}
               </p>
             </div>
           </m.div>

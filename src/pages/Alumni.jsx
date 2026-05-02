@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 
 const Alumni = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['student', 'common']);
   return (
     <div className="min-h-screen pt-32 pb-20 bg-white dark:bg-slate-950 overflow-hidden relative">
       {/* Decorative BG */}
@@ -28,7 +28,7 @@ const Alumni = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-sm font-bold mb-8"
           >
             <Users size={16} />
-            <span>{t('pages.alumni.badge')}</span>
+            <span>{t('alumni.badge')}</span>
           </m.div>
           <m.h1
             initial={{ opacity: 0, y: 20 }}
@@ -36,19 +36,19 @@ const Alumni = () => {
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-8 leading-[1.1]"
           >
-            {t('pages.alumni.title')} <span className="text-emerald-600">{t('pages.alumni.title_accent')}</span> {t('pages.alumni.title_suffix')}
+            {t('alumni.title')} <span className="text-emerald-600">{t('alumni.title_accent')}</span> {t('alumni.title_suffix')}
           </m.h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
-            {t('pages.alumni.subtitle')}
+            {t('alumni.subtitle')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {[
             {
-              title: t('pages.alumni.cards.directory.title'),
-              desc: t('pages.alumni.cards.directory.desc'),
-              cta: t('pages.alumni.cards.directory.cta'),
+              title: t('alumni.cards.directory.title'),
+              desc: t('alumni.cards.directory.desc'),
+              cta: t('alumni.cards.directory.cta'),
               link: "/alumni/data",
               icon: Search,
               color: "bg-blue-600",
@@ -56,9 +56,9 @@ const Alumni = () => {
               text: "text-blue-600"
             },
             {
-              title: t('pages.alumni.cards.tracer.title'),
-              desc: t('pages.alumni.cards.tracer.desc'),
-              cta: t('pages.alumni.cards.tracer.cta'),
+              title: t('alumni.cards.tracer.title'),
+              desc: t('alumni.cards.tracer.desc'),
+              cta: t('alumni.cards.tracer.cta'),
               link: "/alumni/tracer-study",
               icon: GraduationCap,
               color: "bg-emerald-600",
@@ -89,12 +89,12 @@ const Alumni = () => {
         <div className="bg-slate-900 rounded-[4rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
             <div>
-              <h2 className="text-4xl font-black mb-8 leading-tight">{t('pages.alumni.contribution.title')}</h2>
+              <h2 className="text-4xl font-black mb-8 leading-tight">{t('alumni.contribution.title')}</h2>
               <p className="text-slate-400 text-lg mb-10 leading-relaxed">
-                {t('pages.alumni.contribution.desc')}
+                {t('alumni.contribution.desc')}
               </p>
               <div className="space-y-6">
-                {t('pages.alumni.contribution.points', { returnObjects: true }).map((text, i) => (
+                {t('alumni.contribution.points', { returnObjects: true }).map((text, i) => (
                   <div key={i} className="flex items-center gap-4">
                     <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center">
                       <CheckCircle2 size={14} className="text-white" />
@@ -110,24 +110,24 @@ const Alumni = () => {
                   <div className="h-40 rounded-3xl bg-emerald-600 flex flex-col items-center justify-center text-center p-4">
                     <Briefcase size={32} className="mb-2" />
                     <div className="text-2xl font-black">85%</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest opacity-80">{t('pages.alumni.contribution.stats.employment')}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest opacity-80">{t('alumni.contribution.stats.employment')}</div>
                   </div>
                   <div className="h-32 rounded-3xl bg-slate-800 border border-slate-700 flex flex-col items-center justify-center text-center p-4">
                     <Globe size={32} className="mb-2" />
                     <div className="text-xl font-black">Global</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest opacity-60">{t('pages.alumni.contribution.stats.reach')}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest opacity-60">{t('alumni.contribution.stats.reach')}</div>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="h-32 rounded-3xl bg-slate-800 border border-slate-700 flex flex-col items-center justify-center text-center p-4">
                     <Sparkles size={32} className="mb-2" />
                     <div className="text-xl font-black">Inspiratif</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest opacity-60">{t('pages.alumni.contribution.stats.story')}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest opacity-60">{t('alumni.contribution.stats.story')}</div>
                   </div>
                   <div className="h-40 rounded-3xl bg-white text-slate-900 flex flex-col items-center justify-center text-center p-4 shadow-xl">
                     <Users size={32} className="mb-2 text-emerald-600" />
                     <div className="text-2xl font-black">1000+</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{t('pages.alumni.contribution.stats.graduates')}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{t('alumni.contribution.stats.graduates')}</div>
                   </div>
                 </div>
               </div>

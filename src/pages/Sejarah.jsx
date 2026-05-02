@@ -4,32 +4,32 @@ import { Calendar, History, Award, BookOpen, GraduationCap } from 'lucide-react'
 import { useTranslation } from 'react-i18next';
 
 const Sejarah = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['profile', 'common']);
 
   const milestones = [
     {
-      year: t('pages.sejarah.milestones.0.year'),
-      title: t('pages.sejarah.milestones.0.title'),
+      year: t('sejarah.milestones.0.year'),
+      title: t('sejarah.milestones.0.title'),
       icon: History,
-      desc: t('pages.sejarah.milestones.0.desc')
+      desc: t('sejarah.milestones.0.desc')
     },
     {
-      year: t('pages.sejarah.milestones.1.year'),
-      title: t('pages.sejarah.milestones.1.title'),
+      year: t('sejarah.milestones.1.year'),
+      title: t('sejarah.milestones.1.title'),
       icon: Award,
-      desc: t('pages.sejarah.milestones.1.desc')
+      desc: t('sejarah.milestones.1.desc')
     },
     {
-      year: t('pages.sejarah.milestones.2.year'),
-      title: t('pages.sejarah.milestones.2.title'),
+      year: t('sejarah.milestones.2.year'),
+      title: t('sejarah.milestones.2.title'),
       icon: GraduationCap,
-      desc: t('pages.sejarah.milestones.2.desc')
+      desc: t('sejarah.milestones.2.desc')
     },
     {
-      year: t('pages.sejarah.milestones.3.year'),
-      title: t('pages.sejarah.milestones.3.title'),
+      year: t('sejarah.milestones.3.year'),
+      title: t('sejarah.milestones.3.title'),
       icon: BookOpen,
-      desc: t('pages.sejarah.milestones.3.desc')
+      desc: t('sejarah.milestones.3.desc')
     }
   ];
 
@@ -49,13 +49,13 @@ const Sejarah = () => {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-bold mb-4 border border-primary-200 dark:border-primary-800 uppercase tracking-widest">
               <History size={12} />
-              <span>{t('pages.sejarah.badge')}</span>
+              <span>{t('sejarah.badge')}</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight text-slate-900 dark:text-white">
-              {t('pages.sejarah.title')} <span className="gradient-text">{t('pages.sejarah.title_accent')}</span>
+              {t('sejarah.title')} <span className="gradient-text">{t('sejarah.title_accent')}</span>
             </h1>
             <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-4xl">
-              {t('pages.sejarah.desc')}
+              {t('sejarah.desc')}
             </p>
           </m.div>
         </div>
@@ -99,7 +99,7 @@ const Sejarah = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2" />
             <Award className="w-10 h-10 mx-auto mb-4 opacity-50" />
             <h2 className="text-xl md:text-2xl font-bold italic max-w-2xl mx-auto">
-              "{t('pages.sejarah.quote')}"
+              "{t('sejarah.quote')}"
             </h2>
           </div>
         </div>

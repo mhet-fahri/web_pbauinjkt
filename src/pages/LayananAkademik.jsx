@@ -14,25 +14,25 @@ import {
 } from 'lucide-react';
 
 const LayananAkademik = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['student', 'common']);
   const services = [
     {
-      title: t('pages.mahasiswa.layanan.service_1_title'),
-      desc: t('pages.mahasiswa.layanan.service_1_desc'),
+      title: t('mahasiswa.layanan.service_1_title'),
+      desc: t('mahasiswa.layanan.service_1_desc'),
       icon: FileText,
       color: "text-blue-600",
       bg: "bg-blue-50 dark:bg-blue-900/20"
     },
     {
-      title: t('pages.mahasiswa.layanan.service_2_title'),
-      desc: t('pages.mahasiswa.layanan.service_2_desc'),
+      title: t('mahasiswa.layanan.service_2_title'),
+      desc: t('mahasiswa.layanan.service_2_desc'),
       icon: ShieldCheck,
       color: "text-emerald-600",
       bg: "bg-emerald-50 dark:bg-emerald-900/20"
     },
     {
-      title: t('pages.mahasiswa.layanan.service_3_title'),
-      desc: t('pages.mahasiswa.layanan.service_3_desc'),
+      title: t('mahasiswa.layanan.service_3_title'),
+      desc: t('mahasiswa.layanan.service_3_desc'),
       icon: ClipboardList,
       color: "text-indigo-600",
       bg: "bg-indigo-50 dark:bg-indigo-900/20"
@@ -52,7 +52,7 @@ const LayananAkademik = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-bold mb-8"
           >
             <HelpCircle size={16} />
-            <span>{t('pages.mahasiswa.layanan.badge')}</span>
+            <span>{t('mahasiswa.layanan.badge')}</span>
           </m.div>
           <m.h1
             initial={{ opacity: 0, y: 20 }}
@@ -60,10 +60,10 @@ const LayananAkademik = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 leading-tight"
           >
-            {t('pages.mahasiswa.layanan.title')} <span className="gradient-text">{t('pages.mahasiswa.layanan.title_accent')}</span>
+            {t('mahasiswa.layanan.title')} <span className="gradient-text">{t('mahasiswa.layanan.title_accent')}</span>
           </m.h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto">
-            {t('pages.mahasiswa.layanan.subtitle')}
+            {t('mahasiswa.layanan.subtitle')}
           </p>
         </div>
 
@@ -77,18 +77,18 @@ const LayananAkademik = () => {
           <div className="bg-primary-600 rounded-[3rem] p-10 md:p-16 text-white relative overflow-hidden shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
               <div>
-                <h2 className="text-3xl font-black mb-6 leading-tight">{t('pages.mahasiswa.layanan.portal_title')}</h2>
+                <h2 className="text-3xl font-black mb-6 leading-tight">{t('mahasiswa.layanan.portal_title')}</h2>
                 <p className="text-primary-100 mb-10 leading-relaxed">
-                  {t('pages.mahasiswa.layanan.portal_desc')}
+                  {t('mahasiswa.layanan.portal_desc')}
                 </p>
                 <div className="flex flex-col gap-4 mb-10 text-sm font-bold">
                   <div className="flex items-center gap-3">
                     <CheckCircle2 size={18} className="text-primary-300" />
-                    <span>{t('pages.mahasiswa.layanan.portal_feature_1')}</span>
+                    <span>{t('mahasiswa.layanan.portal_feature_1')}</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Clock size={18} className="text-primary-300" />
-                    <span>{t('pages.mahasiswa.layanan.portal_feature_2')}</span>
+                    <span>{t('mahasiswa.layanan.portal_feature_2')}</span>
                   </div>
                 </div>
                 <a 
@@ -97,7 +97,7 @@ const LayananAkademik = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 px-8 py-4 bg-white text-primary-600 rounded-2xl font-black shadow-xl hover:bg-primary-50 transition-all group"
                 >
-                  {t('pages.mahasiswa.layanan.portal_cta')} <ExternalLink size={20} className="group-hover:rotate-12 transition-transform" />
+                  {t('mahasiswa.layanan.portal_cta')} <ExternalLink size={20} className="group-hover:rotate-12 transition-transform" />
                 </a>
               </div>
               <div className="hidden lg:flex justify-center">
@@ -105,7 +105,7 @@ const LayananAkademik = () => {
                   {/* Simulated QR Placeholder or Icon */}
                   <div className="w-full h-full border-4 border-dashed border-primary-100 rounded-2xl flex flex-col items-center justify-center text-primary-200">
                     <MessageSquare size={80} strokeWidth={1} />
-                    <span className="text-[10px] uppercase font-black tracking-widest mt-4">{t('pages.mahasiswa.layanan.portal_badge')}</span>
+                    <span className="text-[10px] uppercase font-black tracking-widest mt-4">{t('mahasiswa.layanan.portal_badge')}</span>
                   </div>
                 </div>
               </div>
@@ -133,7 +133,7 @@ const LayananAkademik = () => {
                 {item.desc}
               </p>
               <div className="flex items-center gap-2 text-xs font-black text-primary-600 uppercase tracking-widest">
-                {t('pages.mahasiswa.layanan.learn_flow')} <ArrowRight size={14} />
+                {t('mahasiswa.layanan.learn_flow')} <ArrowRight size={14} />
               </div>
             </m.div>
           ))}

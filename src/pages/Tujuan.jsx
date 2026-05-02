@@ -4,31 +4,31 @@ import { CheckCircle2, Target, Award, Rocket, Briefcase, Lightbulb } from 'lucid
 import { useTranslation } from 'react-i18next';
 
 const Tujuan = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['profile', 'common']);
 
   const goals = [
     {
       id: 1,
-      title: t('pages.tujuan.items.1.title'),
-      desc: t('pages.tujuan.items.1.desc'),
+      title: t('tujuan.items.1.title'),
+      desc: t('tujuan.items.1.desc'),
       icon: CheckCircle2
     },
     {
       id: 2,
-      title: t('pages.tujuan.items.2.title'),
-      desc: t('pages.tujuan.items.2.desc'),
+      title: t('tujuan.items.2.title'),
+      desc: t('tujuan.items.2.desc'),
       icon: Lightbulb
     },
     {
       id: 3,
-      title: t('pages.tujuan.items.3.title'),
-      desc: t('pages.tujuan.items.3.desc'),
+      title: t('tujuan.items.3.title'),
+      desc: t('tujuan.items.3.desc'),
       icon: Rocket
     },
     {
       id: 4,
-      title: t('pages.tujuan.items.4.title'),
-      desc: t('pages.tujuan.items.4.desc'),
+      title: t('tujuan.items.4.title'),
+      desc: t('tujuan.items.4.desc'),
       icon: Briefcase
     }
   ];
@@ -47,13 +47,13 @@ const Tujuan = () => {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold mb-6 border border-white/30 uppercase tracking-widest">
               <Target size={12} />
-              <span>{t('pages.tujuan.badge')}</span>
+              <span>{t('tujuan.badge')}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
-              {t('pages.tujuan.title')} <span className="text-primary-200">{t('pages.tujuan.title_accent')}</span>
+              {t('tujuan.title')} <span className="text-primary-200">{t('tujuan.title_accent')}</span>
             </h1>
             <p className="text-xl md:text-2xl text-primary-50 font-medium leading-relaxed max-w-2xl">
-              {t('pages.tujuan.subtitle')}
+              {t('tujuan.subtitle')}
             </p>
           </m.div>
         </div>
@@ -96,9 +96,9 @@ const Tujuan = () => {
           <div className="bg-slate-900 rounded-3xl p-12 text-center text-white relative overflow-hidden group">
             <div className="absolute top-0 left-0 w-full h-full bg-primary-600 opacity-0 group-hover:opacity-10 transition-opacity duration-700" />
             <Award className="w-12 h-12 mx-auto mb-6 text-primary-500" />
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">{t('pages.tujuan.footer_title')}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">{t('tujuan.footer_title')}</h2>
             <p className="text-slate-400 max-w-2xl mx-auto">
-              {t('pages.tujuan.footer_desc')}
+              {t('tujuan.footer_desc')}
             </p>
           </div>
         </div>
