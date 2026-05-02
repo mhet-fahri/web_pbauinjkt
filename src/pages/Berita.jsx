@@ -18,7 +18,7 @@ import { getDirectImageUrl } from '../utils/imageUtils';
 const demoNews = [
   {
     id: 'demo-1',
-    category: "Pendidikan",
+    category: "Berita",
     title: "Inovasi Kurikulum PBA: Menyongsong Era Digital 5.0",
     content: "Diskusi panel tentang integrasi teknologi AI dalam pengajaran Bahasa Arab untuk meningkatkan efektivitas pembelajaran.",
     created_at: new Date().toISOString(),
@@ -26,7 +26,7 @@ const demoNews = [
   },
   {
     id: 'demo-2',
-    category: "Penelitian",
+    category: "Kegiatan",
     title: "Analisis Linguistik Komparatif: Arab-Indonesia",
     content: "Penelitian terbaru mengungkapkan pengaruh struktur gramatikal Arab terhadap perkembangan kosakata bahasa Indonesia modern.",
     created_at: new Date().toISOString(),
@@ -34,9 +34,9 @@ const demoNews = [
   },
   {
     id: 'demo-3',
-    category: "Acara",
-    title: "Seminar Internasional Literasi Bahasa Arab 2026",
-    content: "Menghadirkan pembicara dari Universitas Al-Azhar untuk membahas masa depan literasi Arab di kancah internasional.",
+    category: "Opini",
+    title: "Masa Depan Bahasa Arab di Indonesia",
+    content: "Sebuah tinjauan kritis mengenai tantangan dan peluang pengajaran bahasa Arab di era globalisasi.",
     created_at: new Date().toISOString(),
     image_url: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800"
   },
@@ -60,10 +60,10 @@ const Berita = () => {
 
   const categories = [
     { id: 'Semua', label: t('pages.news.categories.all') },
-    { id: 'Pendidikan', label: t('pages.news.categories.education') },
-    { id: 'Penelitian', label: t('pages.news.categories.research') },
-    { id: 'Acara', label: t('pages.news.categories.event') },
-    { id: 'Pengumuman', label: t('pages.news.categories.announcement') }
+    { id: 'Berita', label: t('pages.news.categories.news') },
+    { id: 'Kegiatan', label: t('pages.news.categories.event') },
+    { id: 'Pengumuman', label: t('pages.news.categories.announcement') },
+    { id: 'Opini', label: t('pages.news.categories.opinion') }
   ];
 
   useEffect(() => {

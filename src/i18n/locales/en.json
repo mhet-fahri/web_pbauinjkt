@@ -129,10 +129,10 @@
         "subtitle": "Follow the latest developments, student achievements, and various academic activities within the PBA UIN Jakarta environment.",
         "categories": {
           "all": "All",
-          "education": "Education",
-          "research": "Research",
-          "event": "Event",
-          "announcement": "Announcement"
+          "news": "News",
+          "event": "Events",
+          "announcement": "Announcements",
+          "opinion": "Opinion"
         },
         "search_placeholder": "Search news...",
         "read_more": "Read More",

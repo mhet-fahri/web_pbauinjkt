@@ -129,10 +129,10 @@
         "subtitle": "Ikuti perkembangan terbaru, prestasi mahasiswa, dan berbagai kegiatan akademik di lingkungan PBA UIN Jakarta.",
         "categories": {
           "all": "Semua",
-          "education": "Pendidikan",
-          "research": "Penelitian",
-          "event": "Acara",
-          "announcement": "Pengumuman"
+          "news": "Berita",
+          "event": "Kegiatan",
+          "announcement": "Pengumuman",
+          "opinion": "Opini"
         },
         "search_placeholder": "Cari berita...",
         "read_more": "Baca Selengkapnya",
