@@ -15,10 +15,10 @@ import {
   FileText
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
-import { lecturers } from '../../data/lecturers';
 
 const ManageExams = () => {
   const [exams, setExams] = useState([]);
+  const [lecturers, setLecturers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingExam, setEditingExam] = useState(null);
@@ -45,8 +45,27 @@ const ManageExams = () => {
   ];
 
   useEffect(() => {
-    fetchExams();
+    const loadData = async () => {
+      setLoading(true);
+      await Promise.all([fetchExams(), fetchLecturers()]);
+      setLoading(false);
+    };
+    loadData();
   }, []);
+
+  const fetchLecturers = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('lecturers')
+        .select('*')
+        .order('name', { ascending: true });
+
+      if (error) throw error;
+      setLecturers(data || []);
+    } catch (error) {
+      console.error('Error fetching lecturers:', error.message);
+    }
+  };
 
   const fetchExams = async () => {
     try {
@@ -119,6 +138,7 @@ const ManageExams = () => {
   };
 
   const openEdit = (exam) => {
+    fetchLecturers();
     setEditingExam(exam);
     setFormData({
       title: exam.title,
@@ -165,7 +185,7 @@ const ManageExams = () => {
           <p className="text-slate-500 dark:text-slate-400">Kelola jadwal ujian proposal, komprehensif, skripsi, dan lainnya</p>
         </div>
         <button
-          onClick={() => { resetForm(); setIsModalOpen(true); }}
+          onClick={() => { resetForm(); setIsModalOpen(true); fetchLecturers(); }}
           className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20"
         >
           <Plus size={18} />
