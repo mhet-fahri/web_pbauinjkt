@@ -94,7 +94,7 @@ const ExamCards = () => {
               </div>
             </div>
             
-            <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-6 leading-tight line-clamp-2 min-h-[3rem]">
+            <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-6 leading-tight line-clamp-2 min-h-[3rem] font-['Scheherazade_New'] text-right" dir="auto">
               {exam.title}
             </h4>
 
@@ -193,7 +193,7 @@ const ExamCards = () => {
                 <div className="p-5 md:p-8 space-y-5 md:space-y-8 overflow-y-auto max-h-[92vh] custom-scrollbar text-left rtl:text-right">
                   {/* Title Section */}
                   <div className="rtl:text-right">
-                    <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white leading-tight mb-4">
+                    <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-tight mb-4 font-['Scheherazade_New'] text-right" dir="auto">
                       {exam.title}
                     </h2>
                     <div className="h-1 w-12 bg-blue-600 rounded-full rtl:mr-0 rtl:ml-auto" />
