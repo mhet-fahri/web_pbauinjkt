@@ -18,30 +18,30 @@ const Footer = () => {
   const { t } = useTranslation();
   const footerLinks = [
     {
-      title: t('pages.footer.columns.program.title'),
+      title: t('footer.columns.program.title'),
       links: [
-        { name: t('pages.footer.columns.program.vision'), path: '#' },
-        { name: t('pages.footer.columns.program.curriculum'), path: '/kurikulum' },
-        { name: t('pages.footer.columns.program.staff'), path: '/dosen' },
-        { name: t('pages.footer.columns.program.accreditation'), path: '#' },
+        { name: t('footer.columns.program.vision'), path: '#' },
+        { name: t('footer.columns.program.curriculum'), path: '/kurikulum' },
+        { name: t('footer.columns.program.staff'), path: '/dosen' },
+        { name: t('footer.columns.program.accreditation'), path: '#' },
       ],
     },
     {
-      title: t('pages.footer.columns.services.title'),
+      title: t('footer.columns.services.title'),
       links: [
-        { name: t('pages.footer.columns.services.registration'), path: '#' },
-        { name: t('pages.footer.columns.services.schedule'), path: '#' },
-        { name: t('pages.footer.columns.services.calendar'), path: '#' },
-        { name: t('pages.footer.columns.services.help'), path: '#' },
+        { name: t('footer.columns.services.registration'), path: '#' },
+        { name: t('footer.columns.services.schedule'), path: '#' },
+        { name: t('footer.columns.services.calendar'), path: '#' },
+        { name: t('footer.columns.services.help'), path: '#' },
       ],
     },
     {
-      title: t('pages.footer.columns.students.title'),
+      title: t('footer.columns.students.title'),
       links: [
-        { name: t('pages.footer.columns.students.organization'), path: '#' },
-        { name: t('pages.footer.columns.students.scholarship'), path: '#' },
-        { name: t('pages.footer.columns.students.achievement'), path: '#' },
-        { name: t('pages.footer.columns.students.alumni'), path: '/alumni' },
+        { name: t('footer.columns.students.organization'), path: '#' },
+        { name: t('footer.columns.students.scholarship'), path: '#' },
+        { name: t('footer.columns.students.achievement'), path: '#' },
+        { name: t('footer.columns.students.alumni'), path: '/alumni' },
       ],
     },
   ];
@@ -70,7 +70,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-lg leading-relaxed mb-8 text-slate-500">
-              {t('pages.footer.desc')}
+              {t('footer.desc')}
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, i) => (
@@ -114,8 +114,8 @@ const Footer = () => {
               <MapPin size={20} />
             </div>
             <div>
-              <p className="text-xs font-bold uppercase text-slate-500 mb-1">{t('pages.footer.contact.address')}</p>
-              <p className="text-white text-sm font-medium">{t('pages.footer.contact.city')}</p>
+              <p className="text-xs font-bold uppercase text-slate-500 mb-1">{t('footer.contact.address')}</p>
+              <p className="text-white text-sm font-medium">{t('footer.contact.city')}</p>
             </div>
           </div>
           <div className="flex items-center gap-4 group">
@@ -123,7 +123,7 @@ const Footer = () => {
               <Phone size={20} />
             </div>
             <div>
-              <p className="text-xs font-bold uppercase text-slate-500 mb-1">{t('pages.footer.contact.phone')}</p>
+              <p className="text-xs font-bold uppercase text-slate-500 mb-1">{t('footer.contact.phone')}</p>
               <p className="text-white text-sm font-medium">+62 21 7401925</p>
             </div>
           </div>
@@ -132,17 +132,17 @@ const Footer = () => {
               <Mail size={20} />
             </div>
             <div>
-              <p className="text-xs font-bold uppercase text-slate-500 mb-1">{t('pages.footer.contact.email')}</p>
+              <p className="text-xs font-bold uppercase text-slate-500 mb-1">{t('footer.contact.email')}</p>
               <a href="mailto:pba.fitk@apps.uinjkt.ac.id" className="text-white text-sm font-medium hover:text-primary-400 transition-colors">pba.fitk@apps.uinjkt.ac.id</a>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
-          <p>&copy; {new Date().getFullYear()} PBA UIN Jakarta. {t('pages.footer.bottom.rights')}</p>
+          <p>&copy; {new Date().getFullYear()} PBA UIN Jakarta. {t('footer.bottom.rights')}</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">{t('pages.footer.bottom.privacy')}</a>
-            <a href="#" className="hover:text-white transition-colors">{t('pages.footer.bottom.terms')}</a>
+            <a href="#" className="hover:text-white transition-colors">{t('footer.bottom.privacy')}</a>
+            <a href="#" className="hover:text-white transition-colors">{t('footer.bottom.terms')}</a>
           </div>
         </div>
       </div>

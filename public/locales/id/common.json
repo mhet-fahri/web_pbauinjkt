@@ -1,0 +1,69 @@
+{
+  "site": {
+    "name": "Pendidikan Bahasa Arab",
+    "faculty": "Fakultas Ilmu Tarbiyah dan Keguruan",
+    "university": "UIN Syarif Hidayatullah Jakarta",
+    "search_placeholder": "Apa yang ingin Anda cari?"
+  },
+  "nav": {
+    "home": "Beranda",
+    "profile": "Profil",
+    "curriculum": "Kurikulum",
+    "lecturers": "Dosen",
+    "research": "Penelitian & Publikasi",
+    "students": "Mahasiswa",
+    "alumni": "Alumni",
+    "news": "Berita",
+    "profile_history": "Sejarah",
+    "profile_vision": "Visi Keilmuan",
+    "profile_goals": "Tujuan",
+    "profile_graduates": "Profil Lulusan",
+    "curriculum_cpl": "CPL",
+    "curriculum_courses": "Mata Kuliah",
+    "student_data": "Data",
+    "student_services": "Layanan Akademik",
+    "alumni_data": "Data",
+    "alumni_tracer": "Formulir Tracer Study"
+  },
+  "hero": {
+    "title": "Pendidikan Bahasa Arab",
+    "subtitle": "Mencetak generasi pendidik yang inovatif, profesional, dan berakhlakul karimah di era global."
+  },
+  "footer": {
+    "desc": "Program Studi Pendidikan Bahasa Arab (PBA) UIN Syarif Hidayatullah Jakarta. Mencetak generasi pendidik Bahasa Arab yang unggul, moderat, dan inovatif.",
+    "columns": {
+      "program": {
+        "title": "Program Studi",
+        "vision": "Visi & Misi",
+        "curriculum": "Kurikulum",
+        "staff": "Staf Pengajar",
+        "accreditation": "Akreditasi"
+      },
+      "services": {
+        "title": "Layanan",
+        "registration": "Pendaftaran Online",
+        "schedule": "Jadwal Kuliah",
+        "calendar": "Kalender Akademik",
+        "help": "Pusat Bantuan"
+      },
+      "students": {
+        "title": "Mahasiswa",
+        "organization": "Himpunan Mahasiswa",
+        "scholarship": "Beasiswa",
+        "achievement": "Prestasi",
+        "alumni": "Alumni"
+      }
+    },
+    "contact": {
+      "address": "Alamat",
+      "city": "Ciputat, Tangerang Selatan",
+      "phone": "Telepon",
+      "email": "Email"
+    },
+    "bottom": {
+      "rights": "Hak cipta dilindungi.",
+      "privacy": "Kebijakan Privasi",
+      "terms": "Syarat & Ketentuan"
+    }
+  }
+}

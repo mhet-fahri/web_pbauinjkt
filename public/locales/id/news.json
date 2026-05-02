@@ -1,0 +1,26 @@
+{
+  "badge": "Update Terkini",
+  "title": "Berita &",
+  "title_accent": "Acara",
+  "subtitle": "Ikuti perkembangan terbaru, prestasi mahasiswa, dan berbagai kegiatan akademik di lingkungan PBA UIN Jakarta.",
+  "categories": {
+    "all": "Semua",
+    "news": "Berita",
+    "event": "Kegiatan",
+    "announcement": "Pengumuman",
+    "opinion": "Opini"
+  },
+  "search_placeholder": "Cari berita...",
+  "read_more": "Baca Selengkapnya",
+  "not_found": "Tidak ada berita yang ditemukan.",
+  "detail": {
+    "back": "Kembali",
+    "breadcrumb": "Berita",
+    "author": "Penulis",
+    "read_time": "{{minutes}} menit baca",
+    "share": "Bagikan",
+    "other_news": "Berita Lainnya",
+    "not_found": "Berita tidak ditemukan",
+    "back_to_news": "Kembali ke Berita"
+  }
+}

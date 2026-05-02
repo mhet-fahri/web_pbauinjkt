@@ -4,38 +4,38 @@ import { GraduationCap, BookText, Cpu, Compass, Search, Award } from 'lucide-rea
 import { useTranslation } from 'react-i18next';
 
 const ProfilLulusan = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['profile', 'common']);
 
   const profiles = [
     {
-      title: t('pages.profil_lulusan.profiles.0.title'),
+      title: t('profil_lulusan.profiles.0.title'),
       icon: GraduationCap,
       color: "from-blue-500 to-indigo-600",
-      desc: t('pages.profil_lulusan.profiles.0.desc')
+      desc: t('profil_lulusan.profiles.0.desc')
     },
     {
-      title: t('pages.profil_lulusan.profiles.1.title'),
+      title: t('profil_lulusan.profiles.1.title'),
       icon: BookText,
       color: "from-emerald-500 to-teal-600",
-      desc: t('pages.profil_lulusan.profiles.1.desc')
+      desc: t('profil_lulusan.profiles.1.desc')
     },
     {
-      title: t('pages.profil_lulusan.profiles.2.title'),
+      title: t('profil_lulusan.profiles.2.title'),
       icon: Cpu,
       color: "from-orange-500 to-amber-600",
-      desc: t('pages.profil_lulusan.profiles.2.desc')
+      desc: t('profil_lulusan.profiles.2.desc')
     },
     {
-      title: t('pages.profil_lulusan.profiles.3.title'),
+      title: t('profil_lulusan.profiles.3.title'),
       icon: Compass,
       color: "from-purple-500 to-pink-600",
-      desc: t('pages.profil_lulusan.profiles.3.desc')
+      desc: t('profil_lulusan.profiles.3.desc')
     },
     {
-      title: t('pages.profil_lulusan.profiles.4.title'),
+      title: t('profil_lulusan.profiles.4.title'),
       icon: Search,
       color: "from-rose-500 to-red-600",
-      desc: t('pages.profil_lulusan.profiles.4.desc')
+      desc: t('profil_lulusan.profiles.4.desc')
     }
   ];
 
@@ -60,13 +60,13 @@ const ProfilLulusan = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
             </span>
-            {t('pages.profil_lulusan.badge')}
+            {t('profil_lulusan.badge')}
           </div>
           <h1 className="text-5xl md:text-7xl font-black mb-8 text-slate-900 dark:text-white leading-[1.1] tracking-tight">
-            {t('pages.profil_lulusan.title')} <span className="gradient-text">{t('pages.profil_lulusan.title_accent')}</span>
+            {t('profil_lulusan.title')} <span className="gradient-text">{t('profil_lulusan.title_accent')}</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-2xl">
-            {t('pages.profil_lulusan.subtitle')}
+            {t('profil_lulusan.subtitle')}
           </p>
         </m.div>
       </section>
@@ -118,9 +118,9 @@ const ProfilLulusan = () => {
           className="bg-slate-900 rounded-[3rem] p-12 text-center text-white relative overflow-hidden group shadow-3xl"
         >
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary-600 to-sky-600 opacity-10" />
-          <h2 className="text-3xl font-black mb-4">{t('pages.profil_lulusan.footer_title')}</h2>
+          <h2 className="text-3xl font-black mb-4">{t('profil_lulusan.footer_title')}</h2>
           <p className="text-slate-400 max-w-2xl mx-auto mb-0">
-            {t('pages.profil_lulusan.footer_desc')}
+            {t('profil_lulusan.footer_desc')}
           </p>
         </m.div>
       </section>

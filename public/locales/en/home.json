@@ -1,0 +1,49 @@
+{
+  "badge": "PBA UIN Jakarta",
+  "hero_cta": "Register Now",
+  "hero_curriculum": "Curriculum",
+  "news_title": "News &",
+  "news_title_accent": "Events",
+  "news_see_all": "View All",
+  "news_read_more": "Read",
+  "cta_title": "Ready to Join Us?",
+  "cta_desc": "Realize your dreams of becoming a professional and globally-minded Arabic language educator at UIN Syarif Hidayatullah Jakarta.",
+  "cta_button": "Register Now",
+  "quick_links": {
+    "documents": "Documents",
+    "students": "Students & Alumni",
+    "programs": "Featured Programs",
+    "accreditation": "Accreditation",
+    "curriculum_doc": "Curriculum",
+    "academic_guidelines": "Academic Guidelines",
+    "writing_guidelines": "Scientific Writing Guidelines",
+    "microteaching_guidelines": "Micro Teaching Guidelines",
+    "circulars": "Study Program Circulars",
+    "registration": "New Student Registration",
+    "portal": "AIS Portal",
+    "esemesta": "E-Semesta Portal",
+    "s1": "Bachelor Program (S1)",
+    "s2": "Master Program (S2)",
+    "intensive": "Intensive Language Course",
+    "continuing": "Continuing Education"
+  },
+  "exam_schedule": {
+    "title": "Academic Exam Schedule",
+    "detail_button": "View Details",
+    "close_button": "Close Details",
+    "nim": "Student ID",
+    "date": "Date",
+    "time": "Time",
+    "location": "Location",
+    "examiners_title": "Examiners / Advisors",
+    "no_data": "No upcoming exams",
+    "loading": "Loading Schedule...",
+    "not_determined": "To Be Determined",
+    "types": {
+      "seminar_proposal": "Research Proposal Exam",
+      "ujian_lainnya": "Other Exam",
+      "komprehensif": "Comprehensive Exam",
+      "skripsi": "Thesis Defense"
+    }
+  }
+}

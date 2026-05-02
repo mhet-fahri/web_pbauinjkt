@@ -1,0 +1,150 @@
+{
+  "lecturers": {
+    "badge": "Academic Community",
+    "title": "Lecturer",
+    "title_accent": "Data",
+    "subtitle": "Meet our expert teaching staff who are highly dedicated to the development of Arabic language education through teaching, research, and community service.",
+    "search_placeholder": "Search lecturer name or specialization...",
+    "nip": "ID Number",
+    "expertise": "Expertise"
+  },
+  "curriculum": {
+    "badge": "2026 Curriculum Update",
+    "title": "Transformation of",
+    "title_accent": "Arabic Education",
+    "subtitle": "PBA FITK UIN Syarif Hidayatullah Jakarta is committed to improving quality through an innovative, integrative, and applicable curriculum in line with global dynamics.",
+    "digital_era": {
+      "title": "Digital Era & Innovation",
+      "desc": "Changes in the global educational landscape demand learning that is not only theoretical but also utilizes digital technology to create graduates who are adaptive, creative, and problem-solvers in the 21st century."
+    },
+    "holistic_vision": {
+      "title": "Holistic-Integrative Vision",
+      "desc": "An authentic task-based and holistic approach is the new foundation. We are updating conventional structures into an inclusive and future-oriented educational ecosystem."
+    },
+    "obe": {
+      "title": "Outcome Based Education (OBE)",
+      "desc": "We adopt the OBE framework to ensure the entire educational process is directed towards achieving measurable graduate competencies oriented toward real-world outcomes.",
+      "points": [
+        "Competent Graduate Profile",
+        "International Standards",
+        "Real Outcome Oriented"
+      ],
+      "roles": {
+        "educator": "Educator",
+        "researcher": "Researcher",
+        "developer": "Developer",
+        "entrepreneur": "Entrepreneur"
+      }
+    },
+    "quote": "Creating an Arabic language education ecosystem that is more dynamic, inclusive, and future-oriented as a contribution to the academic reputation of UIN Jakarta.",
+    "tags": [
+      "Collaborative",
+      "Creative",
+      "Relevant"
+    ]
+  },
+  "cpl": {
+    "badge": "Curriculum & Standards",
+    "title": "Graduate",
+    "title_accent": "Outcomes",
+    "subtitle": "The PBA FITK UIN Jakarta curriculum is designed to ensure every graduate meets global competency standards covering aspects of attitude, knowledge, and skills.",
+    "cefr_badge": "Global Standard",
+    "cefr_title": "CEFR B1 Standard",
+    "cefr_desc": "Graduates are required to have minimum language proficiency at the B1 level (Intermediate) as an international competency standard.",
+    "items": {
+      "0": {
+        "title": "Ethics & Integrity",
+        "desc": "Analyze, internalize, and demonstrate piety, professional responsibility, and ethics in diversity and social-environmental care for integrated decision-making."
+      },
+      "1": {
+        "title": "Language Proficiency (CEFR B1)",
+        "desc": "Use Arabic receptively, productively, interactively, and meditatively with a minimum proficiency equivalent to CEFR B1 (Lower Intermediate) in various communication contexts."
+      },
+      "2": {
+        "title": "Arabic Linguistics & Literature",
+        "desc": "Master and apply basic concepts of Arabic linguistics and literature, referring to relevant international references in linguistic analysis."
+      },
+      "3": {
+        "title": "Innovative Learning Principles",
+        "desc": "Analyze and evaluate language learning principles to design and adapt innovative strategies based on current technology."
+      },
+      "4": {
+        "title": "Learning Technology",
+        "desc": "Design, implement, and evaluate technology-based Arabic language learning in an innovative and adaptive manner."
+      },
+      "5": {
+        "title": "Research Methodology",
+        "desc": "Design and conduct Arabic language education research based on scientific methods and disseminate results according to global standards."
+      },
+      "6": {
+        "title": "Language-Based Edupreneur",
+        "desc": "Develop Arabic language-based edupreneur competencies with innovative managerial strategies in global-oriented creative industries."
+      }
+    }
+  },
+  "mata_kuliah": {
+    "badge": "Academic Curriculum",
+    "title": "List of",
+    "title_accent": "Courses",
+    "subtitle": "Explore various courses designed to shape professional, innovative, and globally-oriented Arabic language educators.",
+    "search_placeholder": "Search course code or name...",
+    "semesters": {
+      "all": "All",
+      "elective": "Elective",
+      "label": "Semester"
+    },
+    "stats": {
+      "study_load": "Study Load",
+      "distribution": "SKS Distribution per Semester",
+      "total_sks": "Total Curriculum SKS",
+      "structure": "Course Structure",
+      "composition": "Course Composition",
+      "compulsory": "Compulsory",
+      "elective": "Elective"
+    },
+    "elective_section": {
+      "title": "Elective Courses",
+      "slot_prefix": "Elective Course",
+      "click_to_select": "Click to select a course",
+      "footer_note": "* Semester {{semester}} students can choose the elective courses above.",
+      "modal_title": "Select Course"
+    },
+    "not_found": {
+      "title": "No Courses Found",
+      "desc": "Try using other keywords or select a different semester."
+    },
+    "modal": {
+      "desc_title": "Course Description",
+      "close": "Close Details"
+    }
+  },
+  "penelitian": {
+    "title": "Research &",
+    "title_accent": "Publication",
+    "subtitle": "Supporting an innovative research ecosystem in the development of Arabic language education.",
+    "stats": {
+      "total": "Total Works",
+      "research": "Research",
+      "publication": "Scientific Publication"
+    },
+    "tabs": {
+      "all": "All",
+      "research": "Research",
+      "publication": "Publication"
+    },
+    "search_placeholder": "Search title or researcher...",
+    "view_work": "View Work",
+    "journals": {
+      "title": "Nationally Accredited Journals",
+      "subtitle": "The Arabic Language Education study program manages two reputable scientific journals as a platform for disseminating Arabic language education research.",
+      "arabiyat": {
+        "name": "ARABIYAT: Jurnal Pendidikan Bahasa Arab dan Kebahasaaraban",
+        "rank": "SINTA 2"
+      },
+      "kalimatuna": {
+        "name": "Kalimātunā: Journal of Arabic Research",
+        "rank": "SINTA 4"
+      }
+    }
+  }
+}

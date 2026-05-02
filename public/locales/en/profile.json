@@ -1,0 +1,112 @@
+{
+  "sejarah": {
+    "badge": "PBA Journey",
+    "title": "History",
+    "title_accent": "PBA UIN Jakarta",
+    "desc": "Rooted in the Academy of Religious Sciences (ADIA) in 1957, evolved into IAIN in 1960, and transformed into UIN in 2002. PBA is one of the oldest and leading study programs at FITK UIN Jakarta.",
+    "quote": "More than 6 decades dedicated to producing superior and moderate Arabic language educators.",
+    "milestones": {
+      "0": {
+        "year": "1957 - 1960",
+        "title": "Early Establishment",
+        "desc": "PBA initially took the form of the Arabic Language Department (BA) under ADIA (Academy of Religious Sciences) which was established on June 1, 1957."
+      },
+      "1": {
+        "year": "2002",
+        "title": "Transformation to UIN",
+        "desc": "In accordance with Presidential Decree No. 031 of 2002, IAIN transformed into UIN Syarif Hidayatullah Jakarta, strengthening PBA's position as a flagship study program."
+      },
+      "2": {
+        "year": "2011",
+        "title": "Master's Education (S2)",
+        "desc": "The Arabic Language Education Master's Program (MPBA) FITK UIN Jakarta was officially established on January 11, 2011, based on the Director's Decree."
+      },
+      "3": {
+        "year": "1960 - Present",
+        "title": "Transformation (Today)",
+        "desc": "Part of UIN Syarif Hidayatullah Jakarta. PBA continues to develop as the oldest and leading study program in FITK UIN Syarif Hidayatullah Jakarta."
+      }
+    }
+  },
+  "visi": {
+    "badge": "Scientific Vision",
+    "title": "Building the Future",
+    "title_accent": "Arabic Language Education",
+    "main_visi": "To organize innovative, holistic, and integrative Arabic language education based on authentic tasks and digital technology grounded in research and contributing to international reputation.",
+    "pillars_title": "Strategic Pillars",
+    "pillars": {
+      "0": {
+        "title": "Innovation & Technology",
+        "desc": "Utilization of the latest digital platforms for language learning effectiveness."
+      },
+      "1": {
+        "title": "Holistic & Integrative",
+        "desc": "Comprehensive learning approach, combining linguistic theory with authentic practice."
+      },
+      "2": {
+        "title": "Research-Based",
+        "desc": "Curriculum and teaching methods are developed based on current research findings."
+      },
+      "3": {
+        "title": "International Reputation",
+        "desc": "Producing graduates and scientific works recognized by the global academic community."
+      }
+    }
+  },
+  "tujuan": {
+    "badge": "Core Objectives",
+    "title": "Study Program",
+    "title_accent": "Goals",
+    "subtitle": "Producing superior graduates who are competitive, innovative, and of noble character.",
+    "footer_title": "Building Competence, Realizing Achievement",
+    "footer_desc": "Our curriculum is designed to ensure every graduate has high competitiveness in the global job market as well as in the academic world.",
+    "items": {
+      "1": {
+        "title": "Professional & Holistic Graduates",
+        "desc": "To produce graduates who are pious, professional, and competent in Arabic language education with an innovative and integrative holistic approach based on authentic tasks."
+      },
+      "2": {
+        "title": "Language Proficiency & Research",
+        "desc": "Equipping graduates with Arabic language proficiency at least equivalent to CEFR B1 (lower intermediate), pedagogical competence, research ability, and learning innovation."
+      },
+      "3": {
+        "title": "Global Innovators & Researchers",
+        "desc": "Producing educators, curriculum developers, researchers, and Arabic language education innovators who are adaptive, creative, and competitive with real contributions at national and international levels."
+      },
+      "4": {
+        "title": "Leadership & Entrepreneurship",
+        "desc": "Cultivating leadership, independence, and entrepreneurship based on Arabic language in the fields of education, digital media, and other relevant professions."
+      }
+    }
+  },
+  "profil_lulusan": {
+    "badge": "Career Path & Prospect",
+    "title": "Profile of",
+    "title_accent": "Superior Graduates",
+    "subtitle": "We produce experts who are not only academically competent but also innovative and ready to lead in the global job market.",
+    "footer_title": "Ready to Compete Globally",
+    "footer_desc": "Our graduates are spread across various strategic sectors, from international educational institutions to educational technology startups.",
+    "profiles": {
+      "0": {
+        "title": "Arabic Language Educator",
+        "desc": "Mastering the theory and practice of Arabic language learning with an innovative and integrative holistic approach based on authentic tasks, as well as being proficient in integrating digital technology."
+      },
+      "1": {
+        "title": "Curriculum Developer",
+        "desc": "Expert in designing and evaluating curricula and assessment instruments that are adaptive to modern academic standards and global job market needs."
+      },
+      "2": {
+        "title": "Educational Technopreneur",
+        "desc": "Competent in creating innovative digital learning technology solutions to increase accessibility and effectiveness of language teaching."
+      },
+      "3": {
+        "title": "Islamic Consultant",
+        "desc": "Muslim scholars who provide Islamic guidance based on Arabic language literacy to answer contemporary social and religious issues."
+      },
+      "4": {
+        "title": "Educational Researcher",
+        "desc": "Proficient in designing strategic research in the field of Arabic language education to disseminate scientific innovation at national and international levels."
+      }
+    }
+  }
+}

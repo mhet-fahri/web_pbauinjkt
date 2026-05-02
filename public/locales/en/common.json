@@ -1,0 +1,69 @@
+{
+  "site": {
+    "name": "Arabic Language Education",
+    "faculty": "Faculty of Educational Sciences",
+    "university": "UIN Syarif Hidayatullah Jakarta",
+    "search_placeholder": "What are you looking for?"
+  },
+  "nav": {
+    "home": "Home",
+    "profile": "Profile",
+    "curriculum": "Curriculum",
+    "lecturers": "Lecturers",
+    "research": "Research & Publication",
+    "students": "Students",
+    "alumni": "Alumni",
+    "news": "News",
+    "profile_history": "History",
+    "profile_vision": "Scientific Vision",
+    "profile_goals": "Goals",
+    "profile_graduates": "Graduate Profile",
+    "curriculum_cpl": "Learning Outcomes",
+    "curriculum_courses": "Courses",
+    "student_data": "Data",
+    "student_services": "Academic Services",
+    "alumni_data": "Data",
+    "alumni_tracer": "Tracer Study Form"
+  },
+  "hero": {
+    "title": "Arabic Language Education",
+    "subtitle": "Creating innovative, professional, and noble character educators in the global era."
+  },
+  "footer": {
+    "desc": "Arabic Language Education Study Program (PBA) UIN Syarif Hidayatullah Jakarta. Producing excellent, moderate, and innovative generations of Arabic language educators.",
+    "columns": {
+      "program": {
+        "title": "Study Program",
+        "vision": "Vision & Mission",
+        "curriculum": "Curriculum",
+        "staff": "Lecturers",
+        "accreditation": "Accreditation"
+      },
+      "services": {
+        "title": "Services",
+        "registration": "Online Registration",
+        "schedule": "Course Schedule",
+        "calendar": "Academic Calendar",
+        "help": "Help Center"
+      },
+      "students": {
+        "title": "Students",
+        "organization": "Student Association",
+        "scholarship": "Scholarship",
+        "achievement": "Achievements",
+        "alumni": "Alumni"
+      }
+    },
+    "contact": {
+      "address": "Address",
+      "city": "Ciputat, South Tangerang",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "bottom": {
+      "rights": "All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+  }
+}

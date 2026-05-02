@@ -47,7 +47,7 @@ const demoNews = [
 ];
 
 const DetailBerita = () => {
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslation(['news', 'common']);
   const currentLang = i18n.language;
   const { id } = useParams();
   const navigate = useNavigate();

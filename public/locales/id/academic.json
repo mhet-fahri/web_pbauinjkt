@@ -1,0 +1,150 @@
+{
+  "lecturers": {
+    "badge": "Civitas Akademika",
+    "title": "Data",
+    "title_accent": "Dosen",
+    "subtitle": "Kenali tenaga pengajar ahli kami yang berdedikasi tinggi dalam pengembangan pendidikan bahasa Arab melalui pengajaran, penelitian, dan pengabdian.",
+    "search_placeholder": "Cari nama dosen atau spesialisasi...",
+    "nip": "NIP",
+    "expertise": "Keahlian"
+  },
+  "curriculum": {
+    "badge": "Pemutakhiran Kurikulum 2026",
+    "title": "Transformasi Pendidikan",
+    "title_accent": "Bahasa Arab",
+    "subtitle": "PBA FITK UIN Syarif Hidayatullah Jakarta berkomitmen meningkatkan mutu melalui kurikulum yang inovatif, integratif, dan aplikatif sesuai dinamika global.",
+    "digital_era": {
+      "title": "Era Digital & Inovasi",
+      "desc": "Perubahan lanskap pendidikan global menuntut pembelajaran yang tidak hanya teoritis, tetapi juga memanfaatkan teknologi digital untuk menciptakan lulusan yang adaptif, kreatif, dan solutif di abad ke-21."
+    },
+    "holistic_vision": {
+      "title": "Visi Holistik-Integratif",
+      "desc": "Pendekatan berbasis tugas autentik dan holistik menjadi landasan baru. Kami memperbaharui struktur konvensional menjadi ekosistem pendidikan yang inklusif dan berorientasi masa depan."
+    },
+    "obe": {
+      "title": "Outcome Based Education (OBE)",
+      "desc": "Kami mengadopsi kerangka kerja OBE untuk memastikan seluruh proses pendidikan diarahkan pada pencapaian kompetensi lulusan secara terukur dan berorientasi pada hasil nyata di dunia kerja.",
+      "points": [
+        "Profil Lulusan Kompeten",
+        "Standar Internasional",
+        "Berorientasi Hasil Nyata"
+      ],
+      "roles": {
+        "educator": "Pendidik",
+        "researcher": "Peneliti",
+        "developer": "Pengembang",
+        "entrepreneur": "Wirausaha"
+      }
+    },
+    "quote": "Menciptakan ekosistem pendidikan bahasa Arab yang lebih dinamis, inklusif, dan berorientasi masa depan sebagai kontribusi bagi reputasi akademik UIN Jakarta.",
+    "tags": [
+      "Kolaboratif",
+      "Kreatif",
+      "Relevan"
+    ]
+  },
+  "cpl": {
+    "badge": "Kurikulum & Standar",
+    "title": "Capaian",
+    "title_accent": "Lulusan",
+    "subtitle": "Kurikulum PBA FITK UIN Jakarta dirancang untuk memastikan setiap lulusan memenuhi standar kompetensi global yang mencakup aspek sikap, pengetahuan, dan keterampilan.",
+    "cefr_badge": "Global Standard",
+    "cefr_title": "Standar CEFR B1",
+    "cefr_desc": "Lulusan diwajibkan memiliki kemahiran bahasa minimal level B1 (Intermediate) sebagai standar kompetensi internasional.",
+    "items": {
+      "0": {
+        "title": "Etika & Integritas",
+        "desc": "Menganalisis, menginternalisasi, dan menunjukkan ketakwaan, tanggung jawab profesional, serta etika dalam keberagaman dan kepedulian sosial-lingkungan untuk pengambilan keputusan berintegritas."
+      },
+      "1": {
+        "title": "Kemahiran Bahasa (B1 CEFR)",
+        "desc": "Menggunakan bahasa Arab secara reseptif, produktif, interaktif, dan mediatif dengan kemahiran minimal setara B1 (menengah awal) CEFR dalam berbagai konteks komunikasi."
+      },
+      "2": {
+        "title": "Linguistik & Sastra Arab",
+        "desc": "Menguasai dan menerapkan konsep dasar ilmu bahasa dan sastra Arab, dengan merujuk pada referensi internasional yang relevan dalam analisis linguistik."
+      },
+      "3": {
+        "title": "Prinsip Pembelajaran Inovatif",
+        "desc": "Menganalisis dan mengevaluasi prinsip pembelajaran bahasa untuk merancang dan mengadaptasi strategi inovatif berbasis teknologi terkini."
+      },
+      "4": {
+        "title": "Teknologi Pembelajaran",
+        "desc": "Merancang, melaksanakan, dan mengevaluasi pembelajaran bahasa Arab berbasis teknologi secara inovatif dan adaptif."
+      },
+      "5": {
+        "title": "Metodologi Riset",
+        "desc": "Merancang dan melaksanakan penelitian pendidikan bahasa Arab berbasis metode ilmiah serta mendiseminasikan hasilnya sesuai standar global."
+      },
+      "6": {
+        "title": "Edupreneur Berbasis Bahasa",
+        "desc": "Mengembangkan kompetensi edupreneur berbasis bahasa Arab dengan strategi manajerial inovatif dalam industri kreatif yang berorientasi global."
+      }
+    }
+  },
+  "mata_kuliah": {
+    "badge": "Kurikulum Akademik",
+    "title": "Daftar",
+    "title_accent": "Mata Kuliah",
+    "subtitle": "Jelajahi berbagai mata kuliah yang dirancang untuk membentuk pendidik bahasa Arab yang profesional, inovatif, dan berwawasan global.",
+    "search_placeholder": "Cari kode atau nama mata kuliah...",
+    "semesters": {
+      "all": "Semua",
+      "elective": "Pilihan",
+      "label": "Semester"
+    },
+    "stats": {
+      "study_load": "Beban Studi",
+      "distribution": "Distribusi SKS per Semester",
+      "total_sks": "Total SKS Kurikulum",
+      "structure": "Struktur Kuliah",
+      "composition": "Komposisi Mata Kuliah",
+      "compulsory": "Wajib",
+      "elective": "Pilihan"
+    },
+    "elective_section": {
+      "title": "Mata Kuliah Pilihan",
+      "slot_prefix": "Mata Kuliah Pilihan",
+      "click_to_select": "Klik untuk memilih mata kuliah",
+      "footer_note": "* Mahasiswa semester {{semester}} dapat memilih mata kuliah pilihan di atas.",
+      "modal_title": "Pilih Mata Kuliah"
+    },
+    "not_found": {
+      "title": "Mata Kuliah Tidak Ditemukan",
+      "desc": "Coba gunakan kata kunci lain atau pilih semester yang berbeda."
+    },
+    "modal": {
+      "desc_title": "Deskripsi Mata Kuliah",
+      "close": "Tutup Detail"
+    }
+  },
+  "penelitian": {
+    "title": "Penelitian &",
+    "title_accent": "Publikasi",
+    "subtitle": "Mendukung ekosistem riset inovatif dalam pengembangan pendidikan bahasa Arab.",
+    "stats": {
+      "total": "Total Karya",
+      "research": "Penelitian",
+      "publication": "Publikasi Ilmiah"
+    },
+    "tabs": {
+      "all": "Semua",
+      "research": "Penelitian",
+      "publication": "Publikasi"
+    },
+    "search_placeholder": "Cari judul atau peneliti...",
+    "view_work": "Lihat Karya",
+    "journals": {
+      "title": "Jurnal Terakreditasi Nasional",
+      "subtitle": "Program Studi PBA mengelola dua jurnal ilmiah bereputasi sebagai wadah diseminasi riset pendidikan bahasa Arab.",
+      "arabiyat": {
+        "name": "ARABIYAT: Jurnal Pendidikan Bahasa Arab dan Kebahasaaraban",
+        "rank": "SINTA 2"
+      },
+      "kalimatuna": {
+        "name": "Kalimātunā: Journal of Arabic Research",
+        "rank": "SINTA 4"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "badge": "Latest Updates",
+  "title": "News &",
+  "title_accent": "Events",
+  "subtitle": "Follow the latest developments, student achievements, and various academic activities within the PBA UIN Jakarta environment.",
+  "categories": {
+    "all": "All",
+    "news": "News",
+    "event": "Events",
+    "announcement": "Announcements",
+    "opinion": "Opinion"
+  },
+  "search_placeholder": "Search news...",
+  "read_more": "Read More",
+  "not_found": "No news found.",
+  "detail": {
+    "back": "Back",
+    "breadcrumb": "News",
+    "author": "Author",
+    "read_time": "{{minutes}} min read",
+    "share": "Share",
+    "other_news": "Other News",
+    "not_found": "News not found",
+    "back_to_news": "Back to News"
+  }
+}

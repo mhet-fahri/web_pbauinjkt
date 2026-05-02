@@ -1,0 +1,49 @@
+{
+  "badge": "قسم تعليم اللغة العربية بجامعة شريف هداية الله",
+  "hero_cta": "سجل الآن",
+  "hero_curriculum": "المناهج الدراسية",
+  "news_title": "الأخبار و",
+  "news_title_accent": "الفعاليات",
+  "news_see_all": "عرض الكل",
+  "news_read_more": "اقرأ",
+  "cta_title": "هل أنت مستعد للانضمام إلينا؟",
+  "cta_desc": "حقق أحلامك في أن تصبح معلماً للغة العربية محترفاً وذا رؤية عالمية في جامعة شريف هداية الله الإسلامية الحكومية جاكرتا.",
+  "cta_button": "سجل الآن",
+  "quick_links": {
+    "documents": "الوثائق",
+    "students": "الطلاب والخريجون",
+    "programs": "البرامج المتميزة",
+    "accreditation": "الاعتماد",
+    "curriculum_doc": "المنهج الدراسي",
+    "academic_guidelines": "الإرشادات الأكاديمية",
+    "writing_guidelines": "إرشادات الكتابة العلمية",
+    "microteaching_guidelines": "إرشادات التعليم المصغر",
+    "circulars": "تعميمات البرنامج الدراسي",
+    "registration": "تسجيل الطلاب الجدد",
+    "portal": "بوابة AIS",
+    "esemesta": "بوابة E-Semesta",
+    "s1": "برنامج البكالوريوس (S1)",
+    "s2": "برنامج الماجستير (S2)",
+    "intensive": "دورة لغة مكثفة",
+    "continuing": "التعليم المستمر"
+  },
+  "exam_schedule": {
+    "title": "جدول الامتحانات الأكاديمية",
+    "detail_button": "تفاصيل الجدول",
+    "close_button": "إغلاق التفاصيل",
+    "nim": "الرقم الجامعي",
+    "date": "التاريخ",
+    "time": "الوقت",
+    "location": "المكان",
+    "examiners_title": "لجنة الممتحنين / المشرفين",
+    "no_data": "لا توجد جداول حديثة",
+    "loading": "جاري تحميل الجدول...",
+    "not_determined": "لم يحدد بعد",
+    "types": {
+      "seminar_proposal": "امتحان مقترح البحث",
+      "ujian_lainnya": "امتحان آخر",
+      "komprehensif": "الامتحان الشامل",
+      "skripsi": "مناقشة الرسالة"
+    }
+  }
+}

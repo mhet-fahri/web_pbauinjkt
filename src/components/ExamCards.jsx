@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { createPortal } from 'react-dom';
 
 const ExamCards = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(['home', 'common']);
   const [exams, setExams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -61,14 +61,14 @@ const ExamCards = () => {
     <div className="flex justify-center py-12">
       <div className="flex flex-col items-center gap-3">
         <Loader2 className="animate-spin text-blue-600" size={32} />
-        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('pages.home.exam_schedule.loading')}</p>
+        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('exam_schedule.loading')}</p>
       </div>
     </div>
   );
 
   if (exams.length === 0) return (
     <div className="text-center py-12 bg-white dark:bg-slate-900/50 rounded-2xl border-2 border-dashed border-slate-100 dark:border-slate-800">
-      <p className="text-slate-400 font-bold uppercase tracking-widest text-[10px]">{t('pages.home.exam_schedule.no_data')}</p>
+      <p className="text-slate-400 font-bold uppercase tracking-widest text-[10px]">{t('exam_schedule.no_data')}</p>
     </div>
   );
 
@@ -108,7 +108,7 @@ const ExamCards = () => {
                 </div>
                 <div>
                   <p className="text-sm font-bold text-slate-900 dark:text-white leading-tight">{exam.student_name}</p>
-                  <p className="text-[10px] font-bold text-slate-400 mt-0.5 uppercase tracking-widest">{t('pages.home.exam_schedule.nim')}: {exam.student_nim || '-'}</p>
+                  <p className="text-[10px] font-bold text-slate-400 mt-0.5 uppercase tracking-widest">{t('exam_schedule.nim')}: {exam.student_nim || '-'}</p>
                 </div>
               </div>
 
@@ -138,10 +138,10 @@ const ExamCards = () => {
               </button>
               <button 
                 onClick={() => setIsDetailOpen(true)}
-                aria-label={t('pages.home.exam_schedule.detail_button')}
+                aria-label={t('exam_schedule.detail_button')}
                 className="flex-grow h-12 rounded-2xl bg-slate-900 dark:bg-blue-600 text-white font-black text-xs flex items-center justify-center gap-2 hover:bg-blue-800 dark:hover:bg-blue-700 transition-all shadow-xl shadow-slate-900/10 hover:scale-[1.02] active:scale-[0.98]"
               >
-                {t('pages.home.exam_schedule.detail_button')} <ArrowRight size={16} className={`${i18n.language === 'ar' ? 'rotate-180' : ''}`} />
+                {t('exam_schedule.detail_button')} <ArrowRight size={16} className={`${i18n.language === 'ar' ? 'rotate-180' : ''}`} />
               </button>
               <button 
                 onClick={nextExam}
@@ -209,7 +209,7 @@ const ExamCards = () => {
                     </div>
                     <div>
                       <p className="text-lg font-bold text-slate-900 dark:text-white leading-tight">{exam.student_name}</p>
-                      <p className="text-xs font-medium text-blue-600 dark:text-blue-400 mt-1 uppercase tracking-widest">{t('pages.home.exam_schedule.nim')}: {exam.student_nim}</p>
+                      <p className="text-xs font-medium text-blue-600 dark:text-blue-400 mt-1 uppercase tracking-widest">{t('exam_schedule.nim')}: {exam.student_nim}</p>
                     </div>
                   </div>
 
@@ -218,7 +218,7 @@ const ExamCards = () => {
                     <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 shadow-sm">
                       <div className="flex items-center gap-2 mb-2">
                         <Calendar size={14} className="text-slate-400" />
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('pages.home.exam_schedule.date')}</p>
+                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('exam_schedule.date')}</p>
                       </div>
                       <p className="font-bold text-slate-700 dark:text-slate-200">
                         {new Date(exam.date).toLocaleDateString(i18n.language === 'ar' ? 'ar-SA' : 'id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
@@ -227,7 +227,7 @@ const ExamCards = () => {
                     <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 shadow-sm">
                       <div className="flex items-center gap-2 mb-2">
                         <Clock size={14} className="text-slate-400" />
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('pages.home.exam_schedule.time')}</p>
+                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('exam_schedule.time')}</p>
                       </div>
                       <p className="font-bold text-slate-700 dark:text-slate-200">{exam.time} WIB</p>
                     </div>
@@ -237,7 +237,7 @@ const ExamCards = () => {
                   <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 shadow-sm">
                     <div className="flex items-center gap-2 mb-2">
                       <MapPin size={14} className="text-slate-400" />
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('pages.home.exam_schedule.location')}</p>
+                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('exam_schedule.location')}</p>
                     </div>
                     <p className="font-bold text-slate-700 dark:text-slate-200">{exam.location}</p>
                   </div>
@@ -246,7 +246,7 @@ const ExamCards = () => {
                   <div className="space-y-4 pt-4">
                     <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
                       <span className="w-6 h-[2px] bg-slate-200 dark:bg-slate-800" />
-                      {t('pages.home.exam_schedule.examiners_title')}
+                      {t('exam_schedule.examiners_title')}
                     </h3>
                     <div className="grid grid-cols-1 gap-3">
                       {[exam.examiner_1, exam.examiner_2].filter(Boolean).map((ex, i) => (
@@ -267,7 +267,7 @@ const ExamCards = () => {
                     onClick={() => setIsDetailOpen(false)}
                     className="w-full py-4 rounded-xl bg-slate-900 dark:bg-blue-600 text-white font-bold text-sm hover:opacity-90 transition-all shadow-lg shadow-slate-900/10 dark:shadow-blue-600/20"
                   >
-                    {t('pages.home.exam_schedule.close_button')}
+                    {t('exam_schedule.close_button')}
                   </button>
                 </div>
               </m.div>

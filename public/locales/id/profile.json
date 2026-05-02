@@ -1,0 +1,112 @@
+{
+  "sejarah": {
+    "badge": "Jejak Langkah PBA",
+    "title": "Sejarah",
+    "title_accent": "PBA UIN Jakarta",
+    "desc": "Berakar dari Akademi Dinas Ilmu Agama (ADIA) pada 1957, berkembang menjadi IAIN pada 1960, dan bertransformasi menjadi UIN pada 2002. PBA merupakan salah satu prodi tertua dan terkemuka di FITK UIN Jakarta.",
+    "quote": "Lebih dari 6 dekade berdedikasi melahirkan pendidik Bahasa Arab yang unggul dan moderat.",
+    "milestones": {
+      "0": {
+        "year": "1957 - 1960",
+        "title": "Awal Pendirian",
+        "desc": "PBA awalnya berbentuk Jurusan Bahasa Arab (BA) di bawah ADIA (Akademi Dinas Ilmu Agama) yang berdiri pada 1 Juni 1957."
+      },
+      "1": {
+        "year": "2002",
+        "title": "Perubahan Menjadi UIN",
+        "desc": "Sesuai Kepres No. 031 Tahun 2002, IAIN berubah menjadi UIN Syarif Hidayatullah Jakarta, memperkuat posisi PBA sebagai prodi unggulan."
+      },
+      "2": {
+        "year": "2011",
+        "title": "Pendidikan Magister (S2)",
+        "desc": "Program Magister Pendidikan Bahasa Arab (MPBA) FITK UIN Jakarta didirikan secara resmi pada 11 Januari 2011 berdasarkan SK Direktur."
+      },
+      "3": {
+        "year": "1960 - Sekarang",
+        "title": "Transformasi (Sekarang)",
+        "desc": "Menjadi bagian dari UIN Syarif Hidayatullah Jakarta. PBA terus berkembang sebagai prodi tertua dan terkemuka di FITK UIN Syarif Hidayatullah Jakarta."
+      }
+    }
+  },
+  "visi": {
+    "badge": "Visi Keilmuan",
+    "title": "Membangun Masa Depan",
+    "title_accent": "Pendidikan Bahasa Arab",
+    "main_visi": "Menyelenggarakan pendidikan bahasa Arab yang inovatif, holistik, dan integratif berbasis tugas autentik dan teknologi digital bersendikan riset serta berkontribusi pada reputasi internasional.",
+    "pillars_title": "Pilar Strategis",
+    "pillars": {
+      "0": {
+        "title": "Inovasi & Teknologi",
+        "desc": "Pemanfaatan platform digital terbaru untuk efektivitas pembelajaran bahasa."
+      },
+      "1": {
+        "title": "Holistik & Integratif",
+        "desc": "Pendekatan pembelajaran menyeluruh, menggabungkan teori linguistik dengan praktik autentik."
+      },
+      "2": {
+        "title": "Berbasis Riset",
+        "desc": "Kurikulum dan metode pengajaran dikembangkan berdasarkan temuan penelitian terkini."
+      },
+      "3": {
+        "title": "Reputasi Internasional",
+        "desc": "Menghasilkan lulusan dan karya ilmiah yang diakui oleh komunitas akademik global."
+      }
+    }
+  },
+  "tujuan": {
+    "badge": "Core Objectives",
+    "title": "Tujuan",
+    "title_accent": "Program Studi",
+    "subtitle": "Mencetak lulusan unggul yang kompetitif, inovatif, dan berakhlak mulia.",
+    "footer_title": "Membangun Kompetensi, Mewujudkan Prestasi",
+    "footer_desc": "Kurikulum kami dirancang untuk memastikan setiap lulusan memiliki daya saing tinggi di pasar kerja global maupun dalam dunia akademis.",
+    "items": {
+      "1": {
+        "title": "Lulusan Profesional & Holistik",
+        "desc": "Menghasilkan lulusan yang bertakwa, profesional, dan kompeten dalam pendidikan bahasa Arab dengan pendekatan holistik berbasis tugas autentik yang inovatif dan integratif."
+      },
+      "2": {
+        "title": "Kemahiran Bahasa & Riset",
+        "desc": "Membekali lulusan dengan kemahiran bahasa Arab minimal setara B1 (menengah awal) CEFR, kompetensi pedagogik, kemampuan riset, dan inovasi pembelajaran."
+      },
+      "3": {
+        "title": "Inovator & Peneliti Global",
+        "desc": "Mencetak pendidik, pengembang kurikulum, peneliti, dan inovator pendidikan bahasa Arab yang adaptif, kreatif, dan kompetitif dengan kontribusi nyata di tingkat nasional dan internasional."
+      },
+      "4": {
+        "title": "Kepemimpinan & Wirausaha",
+        "desc": "Menumbuhkan jiwa kepemimpinan, kemandirian, serta kewirausahaan berbasis bahasa Arab dalam bidang pendidikan, media digital, dan profesi lain yang relevan."
+      }
+    }
+  },
+  "profil_lulusan": {
+    "badge": "Career Path & Prospect",
+    "title": "Profil",
+    "title_accent": "Lulusan Unggul",
+    "subtitle": "Kami melahirkan tenaga ahli yang tidak hanya kompeten secara akademik, tetapi juga inovatif dan siap memimpin di pasar kerja global.",
+    "footer_title": "Siap Bersaing Secara Global",
+    "footer_desc": "Lulusan kami tersebar di berbagai sektor strategis, mulai dari institusi pendidikan internasional hingga startup teknologi pendidikan.",
+    "profiles": {
+      "0": {
+        "title": "Pendidik Bahasa Arab",
+        "desc": "Menguasai teori dan praktik pembelajaran bahasa Arab dengan pendekatan holistik berbasis tugas autentik, serta mahir mengintegrasikan teknologi digital secara inovatif."
+      },
+      "1": {
+        "title": "Pengembang Kurikulum",
+        "desc": "Ahli dalam merancang dan mengevaluasi kurikulum serta instrumen asesmen yang adaptif terhadap standar akademik modern dan kebutuhan dunia kerja global."
+      },
+      "2": {
+        "title": "Technoprenuer Pendidikan",
+        "desc": "Kompeten dalam menciptakan solusi teknologi pembelajaran digital yang inovatif untuk meningkatkan aksesibilitas dan efektivitas pengajaran bahasa."
+      },
+      "3": {
+        "title": "Konsultan Keislaman",
+        "desc": "Cendekiawan muslim yang memberikan bimbingan keislaman berbasis literasi bahasa Arab untuk menjawab isu-isu sosial dan keagamaan kontemporer."
+      },
+      "4": {
+        "title": "Peneliti Pendidikan",
+        "desc": "Mahir dalam merancang riset strategis di bidang pendidikan bahasa Arab untuk mendiseminasi inovasi keilmuan di tingkat nasional maupun internasional."
+      }
+    }
+  }
+}

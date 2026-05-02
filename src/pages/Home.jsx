@@ -48,35 +48,35 @@ const demoNews = [
 ];
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['home', 'common']);
 
   const quickLinks = [
     {
-      category: t('pages.home.quick_links.documents'),
+      category: t('quick_links.documents'),
       links: [
-        { name: t('pages.home.quick_links.accreditation'), url: "#" },
-        { name: t('pages.home.quick_links.curriculum_doc'), url: "#" },
-        { name: t('pages.home.quick_links.academic_guidelines'), url: "#" },
-        { name: t('pages.home.quick_links.writing_guidelines'), url: "#" },
-        { name: t('pages.home.quick_links.microteaching_guidelines'), url: "#" },
-        { name: t('pages.home.quick_links.circulars'), url: "#" },
+        { name: t('quick_links.accreditation'), url: "#" },
+        { name: t('quick_links.curriculum_doc'), url: "#" },
+        { name: t('quick_links.academic_guidelines'), url: "#" },
+        { name: t('quick_links.writing_guidelines'), url: "#" },
+        { name: t('quick_links.microteaching_guidelines'), url: "#" },
+        { name: t('quick_links.circulars'), url: "#" },
       ]
     },
     {
-      category: t('pages.home.quick_links.students'),
+      category: t('quick_links.students'),
       links: [
-        { name: t('pages.home.quick_links.registration'), url: "https://spmb.uinjkt.ac.id/" },
-        { name: t('pages.home.quick_links.portal'), url: "https://ais.uinjkt.ac.id/" },
-        { name: t('pages.home.quick_links.esemesta'), url: "https://esemesta.uinjkt.ac.id/" },
+        { name: t('quick_links.registration'), url: "https://spmb.uinjkt.ac.id/" },
+        { name: t('quick_links.portal'), url: "https://ais.uinjkt.ac.id/" },
+        { name: t('quick_links.esemesta'), url: "https://esemesta.uinjkt.ac.id/" },
       ]
     },
     {
-      category: t('pages.home.quick_links.programs'),
+      category: t('quick_links.programs'),
       links: [
-        { name: t('pages.home.quick_links.s1'), url: "#" },
-        { name: t('pages.home.quick_links.s2'), url: "#" },
-        { name: t('pages.home.quick_links.intensive'), url: "#" },
-        { name: t('pages.home.quick_links.continuing'), url: "#" },
+        { name: t('quick_links.s1'), url: "#" },
+        { name: t('quick_links.s2'), url: "#" },
+        { name: t('quick_links.intensive'), url: "#" },
+        { name: t('quick_links.continuing'), url: "#" },
       ]
     }
   ];
@@ -149,7 +149,7 @@ const Home = () => {
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-bold mb-6">
                 <Globe size={14} />
-                <span>{t('pages.home.badge')}</span>
+                <span>{t('badge')}</span>
               </div>
               <h1 className="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white mb-6 leading-[1.1]">
                 {t('hero.title')}
@@ -160,12 +160,12 @@ const Home = () => {
               <div className="flex flex-wrap gap-4">
                 <a href="https://spmb.uinjkt.ac.id/spmbv2/home.zul" target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="group">
-                    {t('pages.home.hero_cta')} <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                    {t('hero_cta')} <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                   </Button>
                 </a>
                 <Link to="/kurikulum">
                   <Button variant="secondary" size="lg">
-                    {t('pages.home.hero_curriculum')}
+                    {t('hero_curriculum')}
                   </Button>
                 </Link>
               </div>
@@ -197,9 +197,9 @@ const Home = () => {
       <section className="section-padding bg-white dark:bg-slate-900/50">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">{t('pages.home.news_title')} <span className="gradient-text">{t('pages.home.news_title_accent')}</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">{t('news_title')} <span className="gradient-text">{t('news_title_accent')}</span></h2>
             <Link to="/berita">
-              <Button variant="secondary">{t('pages.home.news_see_all')}</Button>
+              <Button variant="secondary">{t('news_see_all')}</Button>
             </Link>
           </div>
 
@@ -262,7 +262,7 @@ const Home = () => {
                             to={`/berita/${item.id}`}
                             className="px-4 py-1.5 rounded-lg border border-primary-600 text-primary-600 font-bold text-xs hover:bg-primary-600 hover:text-white transition-all flex items-center gap-2"
                           >
-                            {t('pages.home.news_read_more')} <ArrowRight size={14} />
+                            {t('news_read_more')} <ArrowRight size={14} />
                           </Link>
                         </div>
                       </div>
@@ -318,7 +318,7 @@ const Home = () => {
             <div className="lg:col-span-1">
               <h3 className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8 flex items-center gap-2">
                 <span className="w-8 h-[2px] bg-indigo-500" />
-                {t('pages.home.exam_schedule.title')}
+                {t('exam_schedule.title')}
               </h3>
               <ExamCards />
             </div>
@@ -331,13 +331,13 @@ const Home = () => {
         <div className="container-custom">
           <div className="bg-primary-600 rounded-[2.5rem] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl">
             <div className="relative">
-              <h2 className="text-3xl md:text-5xl font-black mb-6">{t('pages.home.cta_title')}</h2>
+              <h2 className="text-3xl md:text-5xl font-black mb-6">{t('cta_title')}</h2>
               <p className="text-lg text-primary-50 mb-10 max-w-2xl mx-auto">
-                {t('pages.home.cta_desc')}
+                {t('cta_desc')}
               </p>
               <a href="https://spmb.uinjkt.ac.id/spmbv2/home.zul" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-white text-primary-600 hover:bg-primary-50">
-                  {t('pages.home.cta_button')}
+                  {t('cta_button')}
                 </Button>
               </a>
             </div>

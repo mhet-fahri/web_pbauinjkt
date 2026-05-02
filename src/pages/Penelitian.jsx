@@ -17,7 +17,7 @@ import { researchData as demoResearch } from '../data/research';
 import { supabase } from '../lib/supabase';
 
 const Penelitian = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['academic', 'common']);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('Semua');
   const [dbResearch, setDbResearch] = useState([]);
@@ -73,10 +73,10 @@ const Penelitian = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white"
           >
-            {t('pages.penelitian.title')} <span className="gradient-text">{t('pages.penelitian.title_accent')}</span>
+            {t('penelitian.title')} <span className="gradient-text">{t('penelitian.title_accent')}</span>
           </m.h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            {t('pages.penelitian.subtitle')}
+            {t('penelitian.subtitle')}
           </p>
         </div>
 
@@ -84,9 +84,9 @@ const Penelitian = () => {
         <div className="mb-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div className="max-w-2xl">
-              <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-2">{t('pages.penelitian.journals.title')}</h2>
+              <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-2">{t('penelitian.journals.title')}</h2>
               <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                {t('pages.penelitian.journals.subtitle')}
+                {t('penelitian.journals.subtitle')}
               </p>
             </div>
           </div>
@@ -104,11 +104,11 @@ const Penelitian = () => {
                     <Book size={24} />
                   </div>
                   <span className="px-3 py-1 rounded-full bg-amber-50 text-amber-600 border border-amber-100 text-[10px] font-black uppercase tracking-widest shadow-sm">
-                    {t('pages.penelitian.journals.arabiyat.rank')}
+                    {t('penelitian.journals.arabiyat.rank')}
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 leading-tight group-hover:text-indigo-600 transition-colors">
-                  {t('pages.penelitian.journals.arabiyat.name')}
+                  {t('penelitian.journals.arabiyat.name')}
                 </h3>
               </div>
               <div className="flex items-center gap-2 text-indigo-600 font-bold text-sm mt-4">
@@ -129,11 +129,11 @@ const Penelitian = () => {
                     <Book size={24} />
                   </div>
                   <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 text-[10px] font-black uppercase tracking-widest shadow-sm">
-                    {t('pages.penelitian.journals.kalimatuna.rank')}
+                    {t('penelitian.journals.kalimatuna.rank')}
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 leading-tight group-hover:text-emerald-600 transition-colors">
-                  {t('pages.penelitian.journals.kalimatuna.name')}
+                  {t('penelitian.journals.kalimatuna.name')}
                 </h3>
               </div>
               <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm mt-4">
@@ -146,9 +146,9 @@ const Penelitian = () => {
         {/* Stats Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {[
-            { label: t('pages.penelitian.stats.total'), value: stats.total, icon: Database, color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-900/20' },
-            { label: t('pages.penelitian.stats.research'), value: stats.researchCount, icon: FlaskConical, color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
-            { label: t('pages.penelitian.stats.publication'), value: stats.publicationCount, icon: Newspaper, color: 'text-indigo-500', bg: 'bg-indigo-50 dark:bg-indigo-900/20' },
+            { label: t('penelitian.stats.total'), value: stats.total, icon: Database, color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-900/20' },
+            { label: t('penelitian.stats.research'), value: stats.researchCount, icon: FlaskConical, color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
+            { label: t('penelitian.stats.publication'), value: stats.publicationCount, icon: Newspaper, color: 'text-indigo-500', bg: 'bg-indigo-50 dark:bg-indigo-900/20' },
           ].map((stat, i) => (
             <m.div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-5 shadow-sm">
               <div className={`w-12 h-12 rounded-xl ${stat.bg} ${stat.color} flex items-center justify-center shrink-0`}>
@@ -173,7 +173,7 @@ const Penelitian = () => {
                   activeTab === cat ? 'bg-indigo-600 text-white' : 'text-slate-600 dark:text-slate-400'
                 }`}
               >
-                {cat === 'Semua' ? t('pages.penelitian.tabs.all') : cat === 'Penelitian' ? t('pages.penelitian.tabs.research') : t('pages.penelitian.tabs.publication')}
+                {cat === 'Semua' ? t('penelitian.tabs.all') : cat === 'Penelitian' ? t('penelitian.tabs.research') : t('penelitian.tabs.publication')}
               </button>
             ))}
           </div>
@@ -181,7 +181,7 @@ const Penelitian = () => {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
             <input
               type="text"
-              placeholder={t('pages.penelitian.search_placeholder')}
+              placeholder={t('penelitian.search_placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm"
@@ -202,7 +202,7 @@ const Penelitian = () => {
                     <div className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${
                       item.category === 'Penelitian' ? 'text-emerald-600 border-emerald-100' : 'text-indigo-600 border-indigo-100'
                     }`}>
-                      {item.category === 'Penelitian' ? t('pages.penelitian.tabs.research') : t('pages.penelitian.tabs.publication')}
+                      {item.category === 'Penelitian' ? t('penelitian.tabs.research') : t('penelitian.tabs.publication')}
                     </div>
                     <div className="text-slate-400 text-sm font-bold flex items-center gap-1.5">
                       <Calendar size={14} /> {item.year}
@@ -219,7 +219,7 @@ const Penelitian = () => {
                     <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{item.type}</span>
                     {item.link && item.link !== '#' && (
                       <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-indigo-600 font-bold text-sm flex items-center gap-2">
-                        {t('pages.penelitian.view_work')} <ExternalLink size={14} />
+                        {t('penelitian.view_work')} <ExternalLink size={14} />
                       </a>
                     )}
                   </div>
