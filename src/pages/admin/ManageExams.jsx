@@ -15,6 +15,7 @@ import {
   FileText
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
+import { lecturers } from '../../data/lecturers';
 
 const ManageExams = () => {
   const [exams, setExams] = useState([]);
@@ -277,7 +278,13 @@ const ManageExams = () => {
 
                 <div className="space-y-2">
                   <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Judul Skripsi / Seminar</label>
-                  <input type="text" required value={formData.title} onChange={(e) => setFormData({...formData, title: e.target.value})} placeholder="Masukkan judul lengkap..." className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                  <textarea 
+                    required 
+                    value={formData.title} 
+                    onChange={(e) => setFormData({...formData, title: e.target.value})} 
+                    placeholder="Masukkan judul lengkap..." 
+                    className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all min-h-[100px] resize-none"
+                  />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -294,13 +301,33 @@ const ManageExams = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Penguji 1 / Pembimbing</label>
-                    <input type="text" value={formData.examiner_1} onChange={(e) => setFormData({...formData, examiner_1: e.target.value})} placeholder="Nama dosen..." className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                    <input 
+                      type="text" 
+                      list="lecturer-list"
+                      value={formData.examiner_1} 
+                      onChange={(e) => setFormData({...formData, examiner_1: e.target.value})} 
+                      placeholder="Nama dosen..." 
+                      className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all" 
+                    />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Penguji 2</label>
-                    <input type="text" value={formData.examiner_2} onChange={(e) => setFormData({...formData, examiner_2: e.target.value})} placeholder="Nama dosen..." className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                    <input 
+                      type="text" 
+                      list="lecturer-list"
+                      value={formData.examiner_2} 
+                      onChange={(e) => setFormData({...formData, examiner_2: e.target.value})} 
+                      placeholder="Nama dosen..." 
+                      className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all" 
+                    />
                   </div>
                 </div>
+
+                <datalist id="lecturer-list">
+                  {lecturers.map((lecturer) => (
+                    <option key={lecturer.id} value={lecturer.name} />
+                  ))}
+                </datalist>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
