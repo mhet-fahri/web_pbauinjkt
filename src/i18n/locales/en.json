@@ -419,7 +419,8 @@
           "loading": "Loading Schedule...",
           "not_determined": "To Be Determined",
           "types": {
-            "seminar_proposal": "Proposal Seminar",
+            "seminar_proposal": "Research Proposal Exam",
+            "ujian_lainnya": "Other Exam",
             "komprehensif": "Comprehensive Exam",
             "skripsi": "Thesis Defense"
           }

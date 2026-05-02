@@ -32,13 +32,15 @@ const ManageExams = () => {
     date: '',
     time: '',
     location: '',
-    type: 'seminar_proposal'
+    type: 'seminar_proposal',
+    custom_type: ''
   });
 
   const examTypes = [
-    { value: 'seminar_proposal', label: 'Seminar Proposal' },
+    { value: 'seminar_proposal', label: 'Ujian Proposal Penelitian' },
     { value: 'komprehensif', label: 'Ujian Komprehensif' },
-    { value: 'skripsi', label: 'Ujian Skripsi' }
+    { value: 'skripsi', label: 'Ujian Skripsi' },
+    { value: 'lainnya', label: 'Ujian Lainnya' }
   ];
 
   useEffect(() => {
@@ -72,16 +74,22 @@ const ManageExams = () => {
     e.preventDefault();
     setLoading(true);
     try {
+      const dataToSubmit = { ...formData };
+      if (dataToSubmit.type === 'lainnya') {
+        dataToSubmit.type = dataToSubmit.custom_type;
+      }
+      delete dataToSubmit.custom_type;
+
       if (editingExam) {
         const { error } = await supabase
           .from('exams')
-          .update(formData)
+          .update(dataToSubmit)
           .eq('id', editingExam.id);
         if (error) throw error;
       } else {
         const { error } = await supabase
           .from('exams')
-          .insert([formData]);
+          .insert([dataToSubmit]);
         if (error) throw error;
       }
       
@@ -120,7 +128,8 @@ const ManageExams = () => {
       date: exam.date,
       time: exam.time || '',
       location: exam.location,
-      type: exam.type
+      type: examTypes.find(t => t.value === exam.type) ? exam.type : 'lainnya',
+      custom_type: examTypes.find(t => t.value === exam.type) ? '' : exam.type
     });
     setIsModalOpen(true);
   };
@@ -136,7 +145,8 @@ const ManageExams = () => {
       date: '',
       time: '',
       location: '',
-      type: 'seminar_proposal'
+      type: 'seminar_proposal',
+      custom_type: ''
     });
   };
 
@@ -151,7 +161,7 @@ const ManageExams = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
         <div>
           <h1 className="text-3xl font-black text-slate-900 dark:text-white mb-2">Manajemen Jadwal Ujian</h1>
-          <p className="text-slate-500 dark:text-slate-400">Kelola jadwal seminar proposal, komprehensif, dan skripsi</p>
+          <p className="text-slate-500 dark:text-slate-400">Kelola jadwal ujian proposal, komprehensif, skripsi, dan lainnya</p>
         </div>
         <button
           onClick={() => { resetForm(); setIsModalOpen(true); }}
@@ -192,7 +202,7 @@ const ManageExams = () => {
                   exam.type === 'komprehensif' ? 'bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-900/20 dark:border-emerald-800' :
                   'bg-blue-50 text-blue-600 border-blue-100 dark:bg-blue-900/20 dark:border-blue-800'
                 }`}>
-                  {exam.type.replace('_', ' ')}
+                  {exam.type === 'seminar_proposal' ? 'Ujian Proposal Penelitian' : exam.type.replace('_', ' ')}
                 </span>
                 <div className="flex gap-2">
                   <button onClick={() => openEdit(exam)} className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-blue-600 transition-all"><Edit2 size={16} /></button>
@@ -250,6 +260,20 @@ const ManageExams = () => {
                     {examTypes.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
                   </select>
                 </div>
+
+                {formData.type === 'lainnya' && (
+                  <div className="space-y-2">
+                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Nama Ujian Lainnya</label>
+                    <input 
+                      type="text" 
+                      required 
+                      value={formData.custom_type} 
+                      onChange={(e) => setFormData({...formData, custom_type: e.target.value})} 
+                      placeholder="Masukkan jenis ujian baru..." 
+                      className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all font-bold" 
+                    />
+                  </div>
+                )}
 
                 <div className="space-y-2">
                   <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Judul Skripsi / Seminar</label>

@@ -419,7 +419,8 @@
           "loading": "Memuat Jadwal...",
           "not_determined": "Belum Ditentukan",
           "types": {
-            "seminar_proposal": "Seminar Proposal",
+            "seminar_proposal": "Ujian Proposal Penelitian",
+            "ujian_lainnya": "Ujian Lainnya",
             "komprehensif": "Ujian Komprehensif",
             "skripsi": "Ujian Skripsi"
           }

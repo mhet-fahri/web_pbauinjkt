@@ -419,7 +419,8 @@
           "loading": "جاري تحميل الجدول...",
           "not_determined": "لم يحدد بعد",
           "types": {
-            "seminar_proposal": "سيمينار مقترح البحث",
+            "seminar_proposal": "امتحان مقترح البحث",
+            "ujian_lainnya": "امتحان آخر",
             "komprehensif": "الامتحان الشامل",
             "skripsi": "مناقشة الرسالة"
           }
