@@ -94,7 +94,10 @@ const ExamCards = () => {
               </div>
             </div>
             
-            <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-6 leading-tight line-clamp-2 min-h-[3rem] font-['Scheherazade_New'] text-right" dir="auto">
+            <h4 
+              className={`font-bold text-slate-900 dark:text-white mb-6 leading-tight font-['Scheherazade_New'] text-right ${exam.title.length > 80 ? 'text-lg' : 'text-xl'}`} 
+              dir="auto"
+            >
               {exam.title}
             </h4>
 
@@ -114,7 +117,7 @@ const ExamCards = () => {
                   <Clock size={16} />
                 </div>
                 <p className="text-xs font-bold text-slate-600 dark:text-slate-400">
-                  {new Date(exam.date).toLocaleDateString(i18n.language === 'ar' ? 'ar-SA' : 'id-ID', { day: 'numeric', month: 'short' })} • {exam.time} WIB
+                  {new Date(exam.date).toLocaleDateString(i18n.language === 'ar' ? 'ar-SA' : 'id-ID', { day: 'numeric', month: 'long', year: 'numeric' })} • {exam.time} WIB
                 </p>
               </div>
 
@@ -126,26 +129,26 @@ const ExamCards = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 mt-auto pt-4 border-t border-slate-50 dark:border-slate-800">
+            <div className="flex items-center gap-3 mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
               <button 
                 onClick={prevExam}
-                className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-blue-600 transition-all border border-slate-100 dark:border-slate-800 flex items-center justify-center"
+                className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-blue-600 transition-all border border-slate-100 dark:border-slate-800 flex items-center justify-center hover:scale-105 active:scale-95"
               >
-                <ArrowRight size={16} className={`${i18n.language === 'ar' ? '' : 'rotate-180'}`} />
+                <ArrowRight size={18} className={`${i18n.language === 'ar' ? '' : 'rotate-180'}`} />
               </button>
               <button 
                 onClick={() => setIsDetailOpen(true)}
                 aria-label={t('pages.home.exam_schedule.detail_button')}
-                className="flex-grow h-10 rounded-xl bg-slate-900 dark:bg-blue-600 text-white font-bold text-[10px] flex items-center justify-center gap-2 hover:bg-blue-700 transition-all shadow-lg shadow-slate-900/10"
+                className="flex-grow h-12 rounded-2xl bg-slate-900 dark:bg-blue-600 text-white font-black text-xs flex items-center justify-center gap-2 hover:bg-blue-800 dark:hover:bg-blue-700 transition-all shadow-xl shadow-slate-900/10 hover:scale-[1.02] active:scale-[0.98]"
               >
-                {t('pages.home.exam_schedule.detail_button')} <ArrowRight size={14} className={`${i18n.language === 'ar' ? 'rotate-180' : ''}`} />
+                {t('pages.home.exam_schedule.detail_button')} <ArrowRight size={16} className={`${i18n.language === 'ar' ? 'rotate-180' : ''}`} />
               </button>
               <button 
                 onClick={nextExam}
                 aria-label="Next Exam"
-                className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-blue-600 transition-all border border-slate-100 dark:border-slate-800 flex items-center justify-center"
+                className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-blue-600 transition-all border border-slate-100 dark:border-slate-800 flex items-center justify-center hover:scale-105 active:scale-95"
               >
-                <ArrowRight size={16} className={`${i18n.language === 'ar' ? 'rotate-180' : ''}`} />
+                <ArrowRight size={18} className={`${i18n.language === 'ar' ? 'rotate-180' : ''}`} />
               </button>
             </div>
           </div>
