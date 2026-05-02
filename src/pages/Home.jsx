@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
   ArrowRight,
   Users,
@@ -142,7 +142,7 @@ const Home = () => {
 
         <div className="container-custom relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -169,10 +169,10 @@ const Home = () => {
                   </Button>
                 </Link>
               </div>
-            </motion.div>
+            </m.div>
 
             <div className="relative">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.8, rotate: -2 }}
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
@@ -187,7 +187,7 @@ const Home = () => {
                   width={800}
                   height={500}
                 />
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </div>

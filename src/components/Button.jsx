@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -24,7 +24,7 @@ const Button = ({
   };
 
   return (
-    <motion.button
+    <m.button
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={twMerge(
@@ -36,7 +36,7 @@ const Button = ({
       {...props}
     >
       {children}
-    </motion.button>
+    </m.button>
   );
 };
 

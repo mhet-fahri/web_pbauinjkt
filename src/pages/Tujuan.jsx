@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CheckCircle2, Target, Award, Rocket, Briefcase, Lightbulb } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -39,7 +39,7 @@ const Tujuan = () => {
       <section className="pt-40 pb-16 bg-primary-600 relative overflow-hidden text-white">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-white/10 skew-x-12 translate-x-1/2" />
         <div className="container-custom relative z-10">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -55,7 +55,7 @@ const Tujuan = () => {
             <p className="text-xl md:text-2xl text-primary-50 font-medium leading-relaxed max-w-2xl">
               {t('pages.tujuan.subtitle')}
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -64,7 +64,7 @@ const Tujuan = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {goals.map((goal, index) => (
-              <motion.div
+              <m.div
                 key={goal.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +84,7 @@ const Tujuan = () => {
                     {goal.desc}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Target, Zap, Layers, Microscope, Globe2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -43,7 +43,7 @@ const Visi = () => {
 
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 container-custom z-10">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -64,12 +64,12 @@ const Visi = () => {
               "{t('pages.visi.main_visi')}"
             </p>
           </div>
-        </motion.div>
+        </m.div>
       </section>
 
       {/* Pillars Section */}
       <section className="py-20 container-custom z-10">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -77,11 +77,11 @@ const Visi = () => {
         >
           <h2 className="text-3xl font-black mb-4 text-slate-900 dark:text-white">{t('pages.visi.pillars_title')}</h2>
           <div className="w-24 h-2 bg-gradient-to-r from-primary-600 to-sky-600 rounded-full" />
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {pillars.map((pillar, index) => (
-            <motion.div
+            <m.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ const Visi = () => {
                   {pillar.desc}
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </section>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { 
   Calendar, 
   ArrowLeft, 
@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { getDirectImageUrl } from '../utils/imageUtils';
+import DOMPurify from 'dompurify';
 
 // Demo data for fallback (Must match Home.jsx demo IDs)
 const demoNews = [
@@ -141,7 +142,7 @@ const DetailBerita = () => {
 
           {/* Hero Section */}
           <div className="mb-12">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
@@ -168,11 +169,11 @@ const DetailBerita = () => {
                   5 menit baca
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* Featured Image */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="rounded-[2.5rem] overflow-hidden mb-12 shadow-2xl bg-slate-100 dark:bg-slate-800"
@@ -185,7 +186,7 @@ const DetailBerita = () => {
                 e.target.src = "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1200";
               }}
             />
-          </motion.div>
+          </m.div>
 
           {/* Article Content */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -193,7 +194,7 @@ const DetailBerita = () => {
               <div 
                 className={`prose prose-slate dark:prose-invert max-w-none overflow-hidden w-full ${currentLang === 'ar' ? 'text-right' : 'text-left'} text-lg leading-relaxed text-slate-600 dark:text-slate-400`}
                 dangerouslySetInnerHTML={{ 
-                  __html: (() => {
+                  __html: DOMPurify.sanitize((() => {
                     let content = currentLang === 'ar' && post.content_ar ? post.content_ar : 
                                   currentLang === 'en' && post.content_en ? post.content_en : 
                                   post.content;
@@ -207,7 +208,7 @@ const DetailBerita = () => {
                       return content.split('\n\n').map(p => `<p>${p.replace(/\n/g, ' ')}</p>`).join('');
                     }
                     return content;
-                  })()
+                  })())
                 }}
               />
 

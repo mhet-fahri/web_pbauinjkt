@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { 
   Search, 
   Calendar, 
@@ -99,22 +99,22 @@ const Berita = () => {
       <div className="container-custom">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-bold mb-6"
           >
             <Newspaper size={16} />
             <span>{t('pages.news.badge')}</span>
-          </motion.div>
-          <motion.h1
+          </m.div>
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white"
           >
             {t('pages.news.title')} <span className="gradient-text">{t('pages.news.title_accent')}</span>
-          </motion.h1>
+          </m.h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
             {t('pages.news.subtitle')}
           </p>
@@ -155,7 +155,7 @@ const Berita = () => {
           </div>
         ) : (
           <AnimatePresence mode="wait">
-            <motion.div 
+            <m.div 
               key={activeCategory + searchTerm}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -201,7 +201,7 @@ const Berita = () => {
                   </div>
                 </Card>
               ))}
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         )}
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { 
   BookOpen, 
   Target, 
@@ -28,35 +28,35 @@ const Kurikulum = () => {
       <div className="container-custom relative z-10">
         {/* Hero Section */}
         <div className="max-w-4xl mb-24">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-bold mb-8"
           >
             <Sparkles size={16} />
             <span>{t('pages.curriculum.badge')}</span>
-          </motion.div>
-          <motion.h1
+          </m.div>
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-8 leading-[1.1]"
           >
             {t('pages.curriculum.title')} <span className="gradient-text">{t('pages.curriculum.title_accent')}</span>
-          </motion.h1>
-          <motion.p
+          </m.h1>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed"
           >
             {t('pages.curriculum.subtitle')}
-          </motion.p>
+          </m.p>
         </div>
 
         {/* Feature Cards / Pilars */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -69,9 +69,9 @@ const Kurikulum = () => {
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
               {t('pages.curriculum.digital_era.desc')}
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -89,7 +89,7 @@ const Kurikulum = () => {
             <div className="absolute top-0 right-0 p-12 opacity-5 translate-x-1/4 -translate-y-1/4">
               <Sparkles size={250} />
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* OBE Section */}
@@ -127,7 +127,7 @@ const Kurikulum = () => {
 
         {/* Closing Quote / Identity */}
         <div className="max-w-3xl mx-auto text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -144,7 +144,7 @@ const Kurikulum = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </div>

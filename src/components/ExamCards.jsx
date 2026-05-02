@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Calendar, Clock, MapPin, User, ArrowRight, Loader2, Star } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useTranslation } from 'react-i18next';
@@ -77,7 +77,7 @@ const ExamCards = () => {
   return (
     <div className="relative">
       <AnimatePresence mode="wait">
-        <motion.div
+        <m.div
           key={exam.id}
           initial={{ opacity: 0, x: 10 }}
           animate={{ opacity: 1, x: 0 }}
@@ -152,7 +152,7 @@ const ExamCards = () => {
               </button>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </AnimatePresence>
       
       <div className="flex justify-center gap-1 mt-4">
@@ -166,14 +166,14 @@ const ExamCards = () => {
         <AnimatePresence>
           {isDetailOpen && (
             <div className="fixed inset-0 z-[2147483647] flex items-center justify-center p-4" dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
                 exit={{ opacity: 0 }} 
                 onClick={() => setIsDetailOpen(false)} 
                 className="absolute inset-0 bg-slate-900/60 backdrop-blur-md z-0" 
               />
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, scale: 0.95, y: 10 }} 
                 animate={{ opacity: 1, scale: 1, y: 0 }} 
                 exit={{ opacity: 0, scale: 0.95, y: 10 }} 
@@ -270,7 +270,7 @@ const ExamCards = () => {
                     {t('pages.home.exam_schedule.close_button')}
                   </button>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
           )}
         </AnimatePresence>,

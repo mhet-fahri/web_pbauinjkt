@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -52,68 +53,70 @@ function App() {
   const isAdminPath = location.pathname.startsWith('/admin');
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 flex flex-col font-sans">
-      {!isAdminPath && <Navbar />}
-      <main className="flex-grow">
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/berita" element={<Berita />} />
-            <Route path="/berita/:id" element={<DetailBerita />} />
-            
-            {/* Profil Group */}
-            <Route path="/profil" element={<Profil />} />
-            <Route path="/profil/sejarah" element={<Sejarah />} />
-            <Route path="/profil/visi" element={<Visi />} />
-            <Route path="/profil/tujuan" element={<Tujuan />} />
-            <Route path="/profil/lulusan" element={<ProfilLulusan />} />
-            
-            {/* Kurikulum Group */}
-            <Route path="/kurikulum" element={<Kurikulum />} />
-            <Route path="/kurikulum/cpl" element={<CPL />} />
-            <Route path="/kurikulum/matakuliah" element={<MataKuliah />} />
-            
-            {/* Akademik & Riset */}
-            <Route path="/dosen" element={<Dosen />} />
-            <Route path="/penelitian" element={<Penelitian />} />
-            
-            {/* Mahasiswa Group */}
-            <Route path="/mahasiswa" element={<Mahasiswa />} />
-            <Route path="/mahasiswa/data" element={<DataMahasiswa />} />
-            <Route path="/mahasiswa/layanan" element={<LayananAkademik />} />
-            
-            {/* Alumni Group */}
-            <Route path="/alumni" element={<Alumni />} />
-            <Route path="/alumni/data" element={<DataAlumni />} />
-            <Route path="/alumni/tracer-study" element={<TracerStudy />} />
-            
-            {/* Admin Routes */}
-            <Route path="/admin/login" element={<Login />} />
-            <Route 
-              path="/admin" 
-              element={
-                <ProtectedRoute>
-                  <AdminLayout />
-                </ProtectedRoute>
-              }
-            >
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="news" element={<ManageNews />} />
-              <Route path="lecturers" element={<ManageLecturers />} />
-              <Route path="students" element={<ManageStudents />} />
-              <Route path="alumni" element={<ManageAlumni />} />
-              <Route path="publications" element={<ManagePublications />} />
-              <Route path="exams" element={<ManageExams />} />
-            </Route>
+    <LazyMotion features={domAnimation} strict>
+      <div className="min-h-screen bg-white dark:bg-slate-950 flex flex-col font-sans">
+        {!isAdminPath && <Navbar />}
+        <main className="flex-grow">
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              {/* Public Routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/berita" element={<Berita />} />
+              <Route path="/berita/:id" element={<DetailBerita />} />
+              
+              {/* Profil Group */}
+              <Route path="/profil" element={<Profil />} />
+              <Route path="/profil/sejarah" element={<Sejarah />} />
+              <Route path="/profil/visi" element={<Visi />} />
+              <Route path="/profil/tujuan" element={<Tujuan />} />
+              <Route path="/profil/lulusan" element={<ProfilLulusan />} />
+              
+              {/* Kurikulum Group */}
+              <Route path="/kurikulum" element={<Kurikulum />} />
+              <Route path="/kurikulum/cpl" element={<CPL />} />
+              <Route path="/kurikulum/matakuliah" element={<MataKuliah />} />
+              
+              {/* Akademik & Riset */}
+              <Route path="/dosen" element={<Dosen />} />
+              <Route path="/penelitian" element={<Penelitian />} />
+              
+              {/* Mahasiswa Group */}
+              <Route path="/mahasiswa" element={<Mahasiswa />} />
+              <Route path="/mahasiswa/data" element={<DataMahasiswa />} />
+              <Route path="/mahasiswa/layanan" element={<LayananAkademik />} />
+              
+              {/* Alumni Group */}
+              <Route path="/alumni" element={<Alumni />} />
+              <Route path="/alumni/data" element={<DataAlumni />} />
+              <Route path="/alumni/tracer-study" element={<TracerStudy />} />
+              
+              {/* Admin Routes */}
+              <Route path="/admin/login" element={<Login />} />
+              <Route 
+                path="/admin" 
+                element={
+                  <ProtectedRoute>
+                    <AdminLayout />
+                  </ProtectedRoute>
+                }
+              >
+                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="news" element={<ManageNews />} />
+                <Route path="lecturers" element={<ManageLecturers />} />
+                <Route path="students" element={<ManageStudents />} />
+                <Route path="alumni" element={<ManageAlumni />} />
+                <Route path="publications" element={<ManagePublications />} />
+                <Route path="exams" element={<ManageExams />} />
+              </Route>
 
-            {/* Catch all redirect */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </Suspense>
-      </main>
-      {!isAdminPath && <Footer />}
-    </div>
+              {/* Catch all redirect */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Suspense>
+        </main>
+        {!isAdminPath && <Footer />}
+      </div>
+    </LazyMotion>
   );
 }
 

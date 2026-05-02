@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   GraduationCap, 
@@ -23,22 +23,22 @@ const Mahasiswa = () => {
       
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mb-20">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-bold mb-8"
           >
             <GraduationCap size={16} />
             <span>{t('pages.mahasiswa.badge')}</span>
-          </motion.div>
-          <motion.h1
+          </m.div>
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-8 leading-[1.1]"
           >
             {t('pages.mahasiswa.title')} <span className="text-blue-600">{t('pages.mahasiswa.title_accent')}</span> {t('pages.mahasiswa.title_suffix')}
-          </motion.h1>
+          </m.h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
             {t('pages.mahasiswa.subtitle')}
           </p>
@@ -66,7 +66,7 @@ const Mahasiswa = () => {
             }
           ].map((item, i) => (
             <Link key={i} to={item.link}>
-              <motion.div
+              <m.div
                 whileHover={{ y: -10 }}
                 className="group p-10 rounded-[3rem] bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 transition-all h-full flex flex-col"
               >
@@ -80,7 +80,7 @@ const Mahasiswa = () => {
                 <div className={`flex items-center gap-2 font-black uppercase tracking-widest text-xs ${item.text}`}>
                   {item.cta} <ArrowRight size={16} />
                 </div>
-              </motion.div>
+              </m.div>
             </Link>
           ))}
         </div>

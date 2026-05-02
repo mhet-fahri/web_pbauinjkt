@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Calendar, History, Award, BookOpen, GraduationCap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -42,7 +42,7 @@ const Sejarah = () => {
         </div>
         
         <div className="container-custom relative z-10">
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -57,7 +57,7 @@ const Sejarah = () => {
             <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-4xl">
               {t('pages.sejarah.desc')}
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -66,7 +66,7 @@ const Sejarah = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {milestones.map((item, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -86,7 +86,7 @@ const Sejarah = () => {
                     {item.desc}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

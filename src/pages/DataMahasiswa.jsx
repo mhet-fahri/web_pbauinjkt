@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { 
   GraduationCap, 
   Search, 
@@ -105,13 +105,13 @@ const DataMahasiswa = () => {
     <div className="min-h-screen pt-32 pb-20 bg-slate-50 dark:bg-slate-950">
       <div className="container-custom">
         <div className="max-w-4xl mb-16 text-center mx-auto">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white"
           >
             {t('pages.mahasiswa.data.title')} <span className="gradient-text">{t('pages.mahasiswa.data.title_accent')}</span>
-          </motion.h1>
+          </m.h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
             {t('pages.mahasiswa.data.subtitle')}
           </p>
@@ -119,7 +119,7 @@ const DataMahasiswa = () => {
 
         {/* Animated Growth Chart */}
         <div className="mb-20">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="bg-white dark:bg-slate-900 p-10 md:p-16 rounded-[3.5rem] border border-slate-100 dark:border-slate-800 shadow-2xl shadow-primary-500/5 relative overflow-hidden"
@@ -158,7 +158,7 @@ const DataMahasiswa = () => {
                         </span>
                       )}
                       
-                      <motion.div
+                      <m.div
                         initial={{ height: 0 }}
                         animate={{ height: `${height}%` }}
                         transition={{ delay: idx * 0.05, duration: 1, ease: "easeOut" }}
@@ -169,7 +169,7 @@ const DataMahasiswa = () => {
                         }`}
                       >
                         <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-t-lg" />
-                      </motion.div>
+                      </m.div>
                       <div className="mt-3 text-[9px] font-black text-slate-400 uppercase tracking-tighter group-hover:text-slate-900 dark:group-hover:text-white transition-colors text-center leading-none">
                         {stat.semester.replace(/20/g, '').replace(' Ganjil', ' G').replace(' Genap', ' GN')}
                       </div>
@@ -192,7 +192,7 @@ const DataMahasiswa = () => {
             <div className="absolute -bottom-10 -right-10 opacity-5 pointer-events-none text-primary-600">
               <TrendingUp size={300} />
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Navigation Tabs */}
@@ -243,7 +243,7 @@ const DataMahasiswa = () => {
         ) : (
           <AnimatePresence mode="wait">
             {activeTab === 'directory' ? (
-              <motion.div
+              <m.div
                 key="directory"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -286,9 +286,9 @@ const DataMahasiswa = () => {
                     )}
                   </div>
                 ))}
-              </motion.div>
+              </m.div>
             ) : (
-              <motion.div
+              <m.div
                 key="publications"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -349,7 +349,7 @@ const DataMahasiswa = () => {
                     <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">{t('pages.mahasiswa.data.no_publications')}</p>
                   </div>
                 )}
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         )}

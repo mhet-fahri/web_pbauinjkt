@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Lock, Mail, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
@@ -56,7 +56,7 @@ const Login = () => {
       <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-blue-500/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[50%] h-[50%] bg-indigo-500/10 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md relative z-10"
@@ -102,14 +102,14 @@ const Login = () => {
             </div>
 
             {error && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="p-4 rounded-xl bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400 text-xs flex items-center gap-3 border border-rose-100 dark:border-rose-800"
               >
                 <AlertCircle size={16} />
                 {error}
-              </motion.div>
+              </m.div>
             )}
 
             <button
@@ -132,7 +132,7 @@ const Login = () => {
             </button>
           </div>
         </div>
-      </motion.div>
+      </m.div>
     </div>
   );
 };

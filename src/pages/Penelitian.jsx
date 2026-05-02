@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { 
   Search, 
   Newspaper, 
@@ -68,13 +68,13 @@ const Penelitian = () => {
     <div className="min-h-screen pt-32 pb-20 bg-slate-50 dark:bg-slate-950">
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white"
           >
             {t('pages.penelitian.title')} <span className="gradient-text">{t('pages.penelitian.title_accent')}</span>
-          </motion.h1>
+          </m.h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
             {t('pages.penelitian.subtitle')}
           </p>
@@ -91,7 +91,7 @@ const Penelitian = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <motion.a
+            <m.a
               href="https://journal.uinjkt.ac.id/index.php/arabiyat"
               target="_blank"
               rel="noopener noreferrer"
@@ -114,9 +114,9 @@ const Penelitian = () => {
               <div className="flex items-center gap-2 text-indigo-600 font-bold text-sm mt-4">
                 Kunjungi Jurnal <ExternalLink size={14} />
               </div>
-            </motion.a>
+            </m.a>
 
-            <motion.a
+            <m.a
               href="https://journal.uinjkt.ac.id/kalimatuna"
               target="_blank"
               rel="noopener noreferrer"
@@ -139,7 +139,7 @@ const Penelitian = () => {
               <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm mt-4">
                 Kunjungi Jurnal <ExternalLink size={14} />
               </div>
-            </motion.a>
+            </m.a>
           </div>
         </div>
 
@@ -150,7 +150,7 @@ const Penelitian = () => {
             { label: t('pages.penelitian.stats.research'), value: stats.researchCount, icon: FlaskConical, color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
             { label: t('pages.penelitian.stats.publication'), value: stats.publicationCount, icon: Newspaper, color: 'text-indigo-500', bg: 'bg-indigo-50 dark:bg-indigo-900/20' },
           ].map((stat, i) => (
-            <motion.div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-5 shadow-sm">
+            <m.div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-5 shadow-sm">
               <div className={`w-12 h-12 rounded-xl ${stat.bg} ${stat.color} flex items-center justify-center shrink-0`}>
                 <stat.icon size={24} />
               </div>
@@ -158,7 +158,7 @@ const Penelitian = () => {
                 <div className="text-2xl font-black text-slate-900 dark:text-white">{stat.value}</div>
                 <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">{stat.label}</div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
@@ -195,7 +195,7 @@ const Penelitian = () => {
           </div>
         ) : (
           <AnimatePresence mode="wait">
-            <motion.div key={activeTab + searchTerm} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <m.div key={activeTab + searchTerm} className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {filteredData.map((item) => (
                 <div key={item.id} className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm hover:shadow-xl transition-all flex flex-col h-full">
                   <div className="flex justify-between items-start mb-6">
@@ -225,7 +225,7 @@ const Penelitian = () => {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         )}
       </div>

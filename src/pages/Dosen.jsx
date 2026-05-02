@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Search, Mail, ExternalLink, Link as LinkIcon, Users, Loader2, GraduationCap } from 'lucide-react';
 import Card from '../components/Card';
 import { lecturers as demoLecturers } from '../data/lecturers';
@@ -85,14 +85,14 @@ const Dosen = () => {
     <div className="pt-32 pb-20 bg-slate-50/30 dark:bg-transparent min-h-screen">
       <div className="container-custom">
         <div className="mb-20 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-600 text-sm font-bold mb-6"
           >
             <Users size={14} />
             <span>{t('pages.lecturers.badge')}</span>
-          </motion.div>
+          </m.div>
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6">
             {t('pages.lecturers.title')} <span className="gradient-text">{t('pages.lecturers.title_accent')}</span>
           </h1>

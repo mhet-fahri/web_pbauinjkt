@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { BookOpen, Languages, Brain, Monitor, Search, Briefcase, Heart, Award, GraduationCap } from 'lucide-react';
 
 const CPL = () => {
@@ -61,7 +61,7 @@ const CPL = () => {
       {/* Hero & CEFR Highlight Section */}
       <section className="relative pt-40 pb-20 container-custom z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -76,9 +76,9 @@ const CPL = () => {
             <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-xl">
               {t('pages.cpl.subtitle')}
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -97,7 +97,7 @@ const CPL = () => {
                 {t('pages.cpl.cefr_desc')}
               </p>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -105,7 +105,7 @@ const CPL = () => {
       <section className="pb-24 container-custom z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cplList.map((item, index) => (
-            <motion.div
+            <m.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -126,7 +126,7 @@ const CPL = () => {
               <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                 {item.desc}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </section>

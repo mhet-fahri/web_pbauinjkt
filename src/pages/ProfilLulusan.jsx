@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { GraduationCap, BookText, Cpu, Compass, Search, Award } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -49,7 +49,7 @@ const ProfilLulusan = () => {
 
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 container-custom z-10">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -68,14 +68,14 @@ const ProfilLulusan = () => {
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-2xl">
             {t('pages.profil_lulusan.subtitle')}
           </p>
-        </motion.div>
+        </m.div>
       </section>
 
       {/* Profiles Grid */}
       <section className="pb-32 container-custom z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {profiles.map((profile, index) => (
-            <motion.div
+            <m.div
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -105,14 +105,14 @@ const ProfilLulusan = () => {
                   <div className={`w-8 h-1 bg-gradient-to-r ${profile.color} rounded-full`} />
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </section>
 
       {/* Compact Stat Footer */}
       <section className="pb-24 container-custom z-10">
-        <motion.div 
+        <m.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           className="bg-slate-900 rounded-[3rem] p-12 text-center text-white relative overflow-hidden group shadow-3xl"
@@ -122,7 +122,7 @@ const ProfilLulusan = () => {
           <p className="text-slate-400 max-w-2xl mx-auto mb-0">
             {t('pages.profil_lulusan.footer_desc')}
           </p>
-        </motion.div>
+        </m.div>
       </section>
     </div>
   );

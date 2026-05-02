@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   Users, 
@@ -22,22 +22,22 @@ const Alumni = () => {
       
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mb-20">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-sm font-bold mb-8"
           >
             <Users size={16} />
             <span>{t('pages.alumni.badge')}</span>
-          </motion.div>
-          <motion.h1
+          </m.div>
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-8 leading-[1.1]"
           >
             {t('pages.alumni.title')} <span className="text-emerald-600">{t('pages.alumni.title_accent')}</span> {t('pages.alumni.title_suffix')}
-          </motion.h1>
+          </m.h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
             {t('pages.alumni.subtitle')}
           </p>
@@ -67,7 +67,7 @@ const Alumni = () => {
             }
           ].map((item, i) => (
             <Link key={i} to={item.link}>
-              <motion.div
+              <m.div
                 whileHover={{ y: -10 }}
                 className="group p-10 rounded-[3rem] bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-emerald-500/30 transition-all h-full flex flex-col"
               >
@@ -81,7 +81,7 @@ const Alumni = () => {
                 <div className={`flex items-center gap-2 font-black uppercase tracking-widest text-xs ${item.text}`}>
                   {item.cta} <ArrowRight size={16} />
                 </div>
-              </motion.div>
+              </m.div>
             </Link>
           ))}
         </div>

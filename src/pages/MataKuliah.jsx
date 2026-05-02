@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Search, BookOpen, Clock, Tag, ChevronRight, Info, Filter, X, Plus, CheckCircle2 } from 'lucide-react';
 import { courses } from '../data/courses';
 
@@ -65,7 +65,7 @@ const MataKuliah = () => {
     const selected = selections[sem][index];
     
     return (
-      <motion.div
+      <m.div
         variants={itemVariants}
         whileHover={{ y: -5 }}
         onClick={() => selected ? setSelectedCourse(selected) : setIsSelecting({ sem, index })}
@@ -118,7 +118,7 @@ const MataKuliah = () => {
              </div>
           </div>
         )}
-      </motion.div>
+      </m.div>
     );
   };
 
@@ -150,34 +150,34 @@ const MataKuliah = () => {
       <div className="container-custom">
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 mb-6"
           >
             <BookOpen size={18} />
             <span className="text-sm font-bold tracking-wide uppercase">{t('pages.mata_kuliah.badge')}</span>
-          </motion.div>
-          <motion.h1
+          </m.div>
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white"
           >
             {t('pages.mata_kuliah.title')} <span className="gradient-text">{t('pages.mata_kuliah.title_accent')}</span>
-          </motion.h1>
-          <motion.p
+          </m.h1>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
           >
             {t('pages.mata_kuliah.subtitle')}
-          </motion.p>
+          </m.p>
         </div>
 
         {/* Search and Filter */}
         <div className="sticky top-24 z-30 mb-12 space-y-6">
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="relative max-w-2xl mx-auto"
@@ -202,9 +202,9 @@ const MataKuliah = () => {
                 </button>
               )}
             </div>
-          </motion.div>
+          </m.div>
 
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -223,12 +223,12 @@ const MataKuliah = () => {
                 {sem === 'Semua' ? t('pages.mata_kuliah.semesters.all') : sem === 'Pilihan' ? t('pages.mata_kuliah.semesters.elective') : `${t('pages.mata_kuliah.semesters.label')} ${sem}`}
               </button>
             ))}
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Visual Dashboard - Only for "Semua" filter */}
         {activeSemester === 'Semua' && !searchTerm && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-16 grid grid-cols-1 lg:grid-cols-3 gap-8"
@@ -250,16 +250,16 @@ const MataKuliah = () => {
                   <div key={i} className="flex-1 flex flex-col items-center gap-3 group">
                     <div className="relative w-full flex flex-col items-center justify-end h-full">
                        {/* Tooltip */}
-                       <motion.div 
+                       <m.div 
                          initial={{ opacity: 0, y: 5 }}
                          whileHover={{ opacity: 1, y: -5 }}
                          className="absolute -top-10 bg-slate-900 text-white text-[10px] font-black px-2 py-1 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity z-10"
                        >
                          {d.sks} SKS
-                       </motion.div>
+                       </m.div>
                        
                        {/* Bar */}
-                       <motion.div
+                       <m.div
                          initial={{ height: 0 }}
                          whileInView={{ height: `${Math.max((d.sks / 24) * 100, 2)}%` }}
                          viewport={{ once: true }}
@@ -306,7 +306,7 @@ const MataKuliah = () => {
                     <span className="text-sm font-black text-slate-900 dark:text-white">{stats.totalWajib}</span>
                   </div>
                   <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                    <motion.div 
+                    <m.div 
                       initial={{ width: 0 }}
                       animate={{ width: `${(stats.totalWajib / (stats.totalWajib + stats.totalPilihan)) * 100}%` }}
                       className="h-full bg-sky-500 rounded-full"
@@ -321,7 +321,7 @@ const MataKuliah = () => {
                     <span className="text-sm font-black text-slate-900 dark:text-white">{stats.totalPilihan}</span>
                   </div>
                   <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                    <motion.div 
+                    <m.div 
                       initial={{ width: 0 }}
                       animate={{ width: `${(stats.totalPilihan / (stats.totalWajib + stats.totalPilihan)) * 100}%` }}
                       className="h-full bg-indigo-500 rounded-full"
@@ -330,12 +330,12 @@ const MataKuliah = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
 
         {/* Course Grid */}
         <AnimatePresence mode="wait">
-          <motion.div
+          <m.div
             key={activeSemester + searchTerm}
             variants={containerVariants}
             initial="hidden"
@@ -346,7 +346,7 @@ const MataKuliah = () => {
             {/* Wajib Courses Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredCourses.map((course) => (
-                <motion.div
+                <m.div
                   key={course.kode}
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
@@ -387,7 +387,7 @@ const MataKuliah = () => {
                       {t('pages.mata_kuliah.semesters.label')} {course.semester}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
 
@@ -418,7 +418,7 @@ const MataKuliah = () => {
             )}
 
             {filteredCourses.length === 0 && (activeSemester !== '6' && activeSemester !== '7') && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="text-center py-20"
@@ -428,9 +428,9 @@ const MataKuliah = () => {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t('pages.mata_kuliah.not_found.title')}</h3>
                 <p className="text-slate-600 dark:text-slate-400">{t('pages.mata_kuliah.not_found.desc')}</p>
-              </motion.div>
+              </m.div>
             )}
-          </motion.div>
+          </m.div>
         </AnimatePresence>
       </div>
 
@@ -438,14 +438,14 @@ const MataKuliah = () => {
       <AnimatePresence>
         {isSelecting && (
           <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsSelecting(null)}
               className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
             />
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -482,7 +482,7 @@ const MataKuliah = () => {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         )}
       </AnimatePresence>
@@ -491,14 +491,14 @@ const MataKuliah = () => {
       <AnimatePresence>
         {selectedCourse && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedCourse(null)}
               className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
             />
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -564,7 +564,7 @@ const MataKuliah = () => {
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         )}
       </AnimatePresence>

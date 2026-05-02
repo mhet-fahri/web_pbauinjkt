@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { 
   GraduationCap, 
   Search, 
@@ -64,13 +64,13 @@ const DataAlumni = () => {
     <div className="min-h-screen pt-32 pb-20 bg-slate-50 dark:bg-slate-950">
       <div className="container-custom">
         <div className="max-w-4xl mb-16 text-center mx-auto">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white"
           >
             {t('pages.alumni.data.title')} <span className="gradient-text">{t('pages.alumni.data.title_accent')}</span>
-          </motion.h1>
+          </m.h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
             {t('pages.alumni.data.subtitle')}
           </p>
@@ -94,7 +94,7 @@ const DataAlumni = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredAlumni.map((alumnus, i) => (
-              <motion.div
+              <m.div
                 key={alumnus.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -134,7 +134,7 @@ const DataAlumni = () => {
                     </p>
                   </div>
                 )}
-              </motion.div>
+              </m.div>
             ))}
           </div>
         )}

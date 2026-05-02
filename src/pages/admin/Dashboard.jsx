@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { 
   LayoutDashboard, 
   Newspaper, 
@@ -123,7 +123,7 @@ const Dashboard = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {statCards.map((stat, i) => (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
@@ -144,10 +144,10 @@ const Dashboard = () => {
               <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                 {stat.label}
               </div>
-            </motion.div>
+            </m.div>
           ))}
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -165,7 +165,7 @@ const Dashboard = () => {
             <div className="absolute -bottom-4 -right-4 opacity-10">
               <CheckCircle2 size={120} />
             </div>
-          </motion.div>
+          </m.div>
         </div>
       )}
 

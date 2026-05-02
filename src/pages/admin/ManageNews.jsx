@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { 
   Plus, 
   Search, 
@@ -223,7 +223,7 @@ const ManageNews = () => {
       ) : (
         <div className="grid grid-cols-1 gap-4">
           {filteredNews.map((item) => (
-            <motion.div 
+            <m.div 
               layout
               key={item.id}
               className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-md transition-shadow"
@@ -264,7 +264,7 @@ const ManageNews = () => {
                   <Trash2 size={18} />
                 </button>
               </div>
-            </motion.div>
+            </m.div>
           ))}
 
           {filteredNews.length === 0 && (
@@ -279,14 +279,14 @@ const ManageNews = () => {
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
               className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm"
             />
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -495,7 +495,7 @@ const ManageNews = () => {
                   </div>
                 </form>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         )}
       </AnimatePresence>

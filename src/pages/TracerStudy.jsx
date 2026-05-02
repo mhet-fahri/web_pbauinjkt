@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { 
   GraduationCap, 
   ExternalLink, 
@@ -21,29 +21,29 @@ const TracerStudy = () => {
       
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-20">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-sm font-bold mb-8"
           >
             <TrendingUp size={16} />
             <span>{t('pages.alumni.tracer.badge')}</span>
-          </motion.div>
-          <motion.h1
+          </m.div>
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 leading-tight"
           >
             {t('pages.alumni.tracer.title')} <span className="text-emerald-600">{t('pages.alumni.tracer.title_accent')}</span>
-          </motion.h1>
+          </m.h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mx-auto">
             {t('pages.alumni.tracer.subtitle')}
           </p>
         </div>
 
         {/* Hero Form Card */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -89,7 +89,7 @@ const TracerStudy = () => {
           <div className="absolute top-0 right-0 opacity-10 pointer-events-none">
             <GraduationCap size={400} />
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Benefits Section */}
         <div className="max-w-5xl mx-auto">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { 
   FileText, 
   ExternalLink, 
@@ -46,29 +46,29 @@ const LayananAkademik = () => {
       
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-20">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-bold mb-8"
           >
             <HelpCircle size={16} />
             <span>{t('pages.mahasiswa.layanan.badge')}</span>
-          </motion.div>
-          <motion.h1
+          </m.div>
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 leading-tight"
           >
             {t('pages.mahasiswa.layanan.title')} <span className="gradient-text">{t('pages.mahasiswa.layanan.title_accent')}</span>
-          </motion.h1>
+          </m.h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto">
             {t('pages.mahasiswa.layanan.subtitle')}
           </p>
         </div>
 
         {/* Primary CTA Card */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
@@ -113,12 +113,12 @@ const LayananAkademik = () => {
             {/* Decorative background circle */}
             <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/10 rounded-full blur-[80px]" />
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Feature Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((item, i) => (
-            <motion.div
+            <m.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -135,7 +135,7 @@ const LayananAkademik = () => {
               <div className="flex items-center gap-2 text-xs font-black text-primary-600 uppercase tracking-widest">
                 {t('pages.mahasiswa.layanan.learn_flow')} <ArrowRight size={14} />
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
