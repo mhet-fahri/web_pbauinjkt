@@ -5,12 +5,14 @@ import { motion } from 'framer-motion';
 import {
   ArrowRight,
   Users,
+  ChevronLeft,
   ChevronRight,
   Calendar,
   Globe,
   Loader2,
   FileText
 } from 'lucide-react';
+import { useRef } from 'react';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import ExamCards from '../components/ExamCards';
@@ -81,6 +83,25 @@ const Home = () => {
 
   const [dbNews, setDbNews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const scrollRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { clientWidth } = scrollRef.current;
+      const scrollAmount = direction === 'left' ? -clientWidth : clientWidth;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   const displayNews = dbNews.length > 0 ? dbNews : demoNews;
 
@@ -92,7 +113,7 @@ const Home = () => {
           .from('posts')
           .select('*')
           .order('created_at', { ascending: false })
-          .limit(3);
+          .limit(10);
 
         if (error) throw error;
         setDbNews(data || []);
@@ -105,6 +126,12 @@ const Home = () => {
 
     fetchNews();
   }, []);
+
+  useEffect(() => {
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, [displayNews]);
 
   return (
     <div className="flex flex-col">
@@ -181,43 +208,68 @@ const Home = () => {
               <Loader2 className="animate-spin text-primary-600" size={40} />
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {displayNews.map((item, i) => (
-                <Card key={item.id || i} className="overflow-hidden p-0 border-none shadow-md group h-full flex flex-col">
-                  <div className="h-48 overflow-hidden relative bg-slate-100 dark:bg-slate-800">
-                    <img
-                      src={getDirectImageUrl(item.image_url, 600) || "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800"}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      loading="lazy"
-                      width={400}
-                      height={200}
-                      onError={(e) => {
-                        e.target.src = "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800";
-                      }}
-                    />
-                  </div>
-                  <div className="p-6 flex flex-col flex-grow">
-                    <span className="text-[10px] font-black text-primary-600 uppercase mb-2 block tracking-widest">{item.category}</span>
-                    <h3 className="text-xl font-bold mb-3 leading-tight line-clamp-2 text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{item.title}</h3>
-                    <p className="text-slate-700 dark:text-slate-400 text-sm mb-4 line-clamp-2 leading-relaxed">
-                      {item.content ? item.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ') : ''}
-                    </p>
-                    <div className="mt-auto pt-4 border-t border-slate-50 dark:border-slate-800 flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-                        <Calendar size={12} className="text-primary-500" />
-                        {new Date(item.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}
+            <div className="relative group">
+              {/* Navigation Buttons - Hidden on Mobile, shown on hover on Desktop */}
+              <button 
+                onClick={() => scroll('left')}
+                className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-6 z-20 w-12 h-12 rounded-full glass border border-white/20 shadow-xl hidden md:flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 disabled:opacity-0 ${!canScrollLeft ? 'pointer-events-none' : ''}`}
+                aria-label="Previous news"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              
+              <button 
+                onClick={() => scroll('right')}
+                className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-6 z-20 w-12 h-12 rounded-full glass border border-white/20 shadow-xl hidden md:flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 disabled:opacity-0 ${!canScrollRight ? 'pointer-events-none' : ''}`}
+                aria-label="Next news"
+              >
+                <ChevronRight size={24} />
+              </button>
+
+              <div 
+                ref={scrollRef}
+                onScroll={checkScroll}
+                className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-6 px-1"
+              >
+                {displayNews.map((item, i) => (
+                  <div key={item.id || i} className="min-w-[280px] w-[85%] md:w-[calc(33.333%-1.35rem)] md:min-w-[calc(33.333%-1.35rem)] flex-shrink-0 snap-start">
+                    <Card className="overflow-hidden p-0 border-none shadow-md group/card h-full flex flex-col">
+                      <div className="h-48 overflow-hidden relative bg-slate-100 dark:bg-slate-800">
+                        <img
+                          src={getDirectImageUrl(item.image_url, 600) || "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800"}
+                          alt={item.title}
+                          className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500"
+                          loading="lazy"
+                          width={400}
+                          height={200}
+                          onError={(e) => {
+                            e.target.src = "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800";
+                          }}
+                        />
                       </div>
-                      <Link
-                        to={`/berita/${item.id}`}
-                        className="px-4 py-1.5 rounded-lg border border-primary-600 text-primary-600 font-bold text-xs hover:bg-primary-600 hover:text-white transition-all flex items-center gap-2"
-                      >
-                        {t('pages.home.news_read_more')} <ArrowRight size={14} />
-                      </Link>
-                    </div>
+                      <div className="p-6 flex flex-col flex-grow">
+                        <span className="text-[10px] font-black text-primary-600 uppercase mb-2 block tracking-widest">{item.category}</span>
+                        <h3 className="text-xl font-bold mb-3 leading-tight line-clamp-2 text-slate-900 dark:text-white group-hover/card:text-primary-600 transition-colors">{item.title}</h3>
+                        <p className="text-slate-700 dark:text-slate-400 text-sm mb-4 line-clamp-2 leading-relaxed">
+                          {item.content ? item.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ') : ''}
+                        </p>
+                        <div className="mt-auto pt-4 border-t border-slate-50 dark:border-slate-800 flex items-center justify-between">
+                          <div className="flex items-center gap-2 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                            <Calendar size={12} className="text-primary-500" />
+                            {new Date(item.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}
+                          </div>
+                          <Link
+                            to={`/berita/${item.id}`}
+                            className="px-4 py-1.5 rounded-lg border border-primary-600 text-primary-600 font-bold text-xs hover:bg-primary-600 hover:text-white transition-all flex items-center gap-2"
+                          >
+                            {t('pages.home.news_read_more')} <ArrowRight size={14} />
+                          </Link>
+                        </div>
+                      </div>
+                    </Card>
                   </div>
-                </Card>
-              ))}
+                ))}
+              </div>
             </div>
           )}
         </div>
