@@ -231,7 +231,7 @@ const ManageExams = () => {
                 </div>
               </div>
               
-              <h3 className="font-bold text-slate-900 dark:text-white mb-4 line-clamp-2">{exam.title}</h3>
+              <h3 className="font-bold text-slate-900 dark:text-white mb-4 line-clamp-2 font-['Scheherazade_New'] text-xl text-right" dir="auto">{exam.title}</h3>
               
               <div className="space-y-3 text-sm text-slate-500 dark:text-slate-400">
                 <div className="flex items-center gap-3">
@@ -300,10 +300,11 @@ const ManageExams = () => {
                   <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Judul Skripsi / Seminar</label>
                   <textarea 
                     required 
+                    dir="rtl"
                     value={formData.title} 
                     onChange={(e) => setFormData({...formData, title: e.target.value})} 
-                    placeholder="Masukkan judul lengkap..." 
-                    className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all min-h-[100px] resize-none"
+                    placeholder="... Masukkan judul lengkap" 
+                    className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all min-h-[120px] resize-none text-right font-['Scheherazade_New'] text-xl leading-relaxed"
                   />
                 </div>
 
