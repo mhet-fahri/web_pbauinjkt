@@ -140,6 +140,8 @@ const Berita = () => {
           <div className="relative w-full lg:max-w-md">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
             <input
+              id="news-search"
+              name="news-search"
               type="text"
               placeholder={t('search_placeholder')}
               value={searchTerm}

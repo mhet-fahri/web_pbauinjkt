@@ -184,6 +184,8 @@ const MataKuliah = () => {
                 <Search size={20} />
               </div>
               <input
+                id="course-search"
+                name="course-search"
                 type="text"
                 placeholder={t('mata_kuliah.search_placeholder')}
                 value={searchTerm}
@@ -244,7 +246,7 @@ const MataKuliah = () => {
               
               <div className="h-64 flex items-end justify-between gap-2 md:gap-4 px-2 pt-8">
                 {stats.data.map((d, i) => (
-                  <div key={i} className="flex-1 flex flex-col items-center gap-3 group">
+                  <div key={i} className="flex-1 h-full flex flex-col items-center gap-3 group">
                     <div className="relative w-full flex flex-col items-center justify-end h-full">
                        {/* Label on top of bar */}
                        <m.div
