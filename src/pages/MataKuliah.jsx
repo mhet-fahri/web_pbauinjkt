@@ -5,7 +5,7 @@ import { Search, BookOpen, Clock, Tag, ChevronRight, Info, Filter, X, Plus, Chec
 import { courses } from '../data/courses';
 
 const MataKuliah = () => {
-  const { t } = useTranslation(['academic', 'common']);
+  const { t, i18n } = useTranslation(['academic', 'common']);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeSemester, setActiveSemester] = useState('Semua');
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -43,7 +43,7 @@ const MataKuliah = () => {
       
       return matchesSearch && matchesSemester;
     });
-  }, [searchTerm, activeSemester]);
+  }, [searchTerm, activeSemester, i18n.language]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
