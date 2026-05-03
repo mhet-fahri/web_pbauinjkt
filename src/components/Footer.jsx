@@ -20,10 +20,10 @@ const Footer = () => {
     {
       title: t('footer.columns.program.title'),
       links: [
-        { name: t('footer.columns.program.vision'), path: '#' },
+        { name: t('footer.columns.program.vision'), path: '/profil/visi' },
         { name: t('footer.columns.program.curriculum'), path: '/kurikulum' },
         { name: t('footer.columns.program.staff'), path: '/dosen' },
-        { name: t('footer.columns.program.accreditation'), path: '#' },
+        { name: t('footer.columns.program.accreditation'), path: '/profil/akreditasi' },
       ],
     },
     {

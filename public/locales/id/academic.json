@@ -146,5 +146,30 @@
         "rank": "SINTA 4"
       }
     }
+  },
+  "accreditation": {
+    "badge": "Kualitas Terjamin",
+    "title": "Akreditasi",
+    "title_accent": "Program Studi",
+    "subtitle": "PBA UIN Syarif Hidayatullah Jakarta berkomitmen menjaga standar kualitas pendidikan tinggi melalui pengakuan nasional dan internasional.",
+    "national": {
+      "title": "Akreditasi Nasional",
+      "status": "Terakreditasi A",
+      "body": "Berdasarkan Keputusan Badan Akreditasi Nasional Perguruan Tinggi (BAN-PT), Program Studi Pendidikan Bahasa Arab telah mendapatkan peringkat Akreditasi 'A' secara konsisten.",
+      "issued_by": "Badan Akreditasi Nasional Perguruan Tinggi"
+    },
+    "international": {
+      "title": "Akreditasi Internasional",
+      "status": "Terakreditasi ACQUIN",
+      "body": "Pengakuan standar kualitas global oleh Accreditation, Certification and Quality Assurance Institute (ACQUIN) dari Jerman, memastikan kurikulum dan lulusan kompetitif di kancah internasional.",
+      "issued_by": "ACQUIN (Germany)"
+    },
+    "certificates": {
+      "title": "Dokumen Sertifikat",
+      "desc": "Unduh sertifikat resmi akreditasi sebagai bukti validitas standar mutu kami.",
+      "download": "Lihat Sertifikat",
+      "ban_pt": "Sertifikat BAN-PT",
+      "acquin": "Sertifikat ACQUIN"
+    }
   }
 }

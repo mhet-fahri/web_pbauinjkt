@@ -146,5 +146,30 @@
         "rank": "SINTA 4"
       }
     }
+  },
+  "accreditation": {
+    "badge": "Guaranteed Quality",
+    "title": "Program",
+    "title_accent": "Accreditation",
+    "subtitle": "PBA UIN Syarif Hidayatullah Jakarta is committed to maintaining high educational standards through national and international recognition.",
+    "national": {
+      "title": "National Accreditation",
+      "status": "Accredited A",
+      "body": "Based on the National Accreditation Board for Higher Education (BAN-PT) decision, the Arabic Language Education study program has consistently achieved an 'A' Accreditation rating.",
+      "issued_by": "National Accreditation Board for Higher Education"
+    },
+    "international": {
+      "title": "International Accreditation",
+      "status": "ACQUIN Accredited",
+      "body": "Global quality recognition by the Accreditation, Certification and Quality Assurance Institute (ACQUIN) from Germany, ensuring curriculum and graduates are competitive on the international stage.",
+      "issued_by": "ACQUIN (Germany)"
+    },
+    "certificates": {
+      "title": "Certificate Documents",
+      "desc": "Download official accreditation certificates as proof of our quality standard validity.",
+      "download": "View Certificate",
+      "ban_pt": "BAN-PT Certificate",
+      "acquin": "ACQUIN Certificate"
+    }
   }
 }
