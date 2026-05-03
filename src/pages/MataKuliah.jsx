@@ -23,8 +23,15 @@ const MataKuliah = () => {
 
   const filteredCourses = useMemo(() => {
     return courses.filter(course => {
-      const matchesSearch = course.nama.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                           course.kode.toLowerCase().includes(searchTerm.toLowerCase());
+      const currentLang = i18n.language;
+      const localizedName = (currentLang === 'en' ? course.nama_en : currentLang === 'ar' ? course.nama_ar : course.nama) || course.nama;
+      
+      const matchesSearch = 
+        course.nama.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        (course.nama_en && course.nama_en.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (course.nama_ar && course.nama_ar.includes(searchTerm) ) ||
+        course.kode.toLowerCase().includes(searchTerm.toLowerCase());
+      
       const matchesSemester = activeSemester === 'Semua' || course.semester.includes(activeSemester);
       
       // If we are in a specific semester tab, we might want to hide electives that aren't "selected"
@@ -90,7 +97,7 @@ const MataKuliah = () => {
             <h3 className={`font-bold text-lg leading-tight transition-colors ${
               selected ? 'text-slate-900 dark:text-white' : 'text-slate-400 group-hover:text-sky-500'
             }`}>
-              {selected ? selected.nama : t('mata_kuliah.elective_section.click_to_select')}
+              {selected ? (i18n.language === 'en' ? selected.nama_en : i18n.language === 'ar' ? selected.nama_ar : selected.nama) : t('mata_kuliah.elective_section.click_to_select')}
             </h3>
           </div>
           {selected && (
@@ -369,7 +376,7 @@ const MataKuliah = () => {
                         {course.kode}
                       </span>
                       <h3 className="font-bold text-lg text-slate-900 dark:text-white leading-tight group-hover:text-sky-600 transition-colors">
-                        {course.nama}
+                        {i18n.language === 'en' ? course.nama_en : i18n.language === 'ar' ? course.nama_ar : course.nama}
                       </h3>
                     </div>
                   </div>
@@ -473,7 +480,9 @@ const MataKuliah = () => {
                       <div className="flex justify-between items-center">
                         <div className="flex-1">
                           <span className="text-[10px] font-black text-slate-400 block mb-1 uppercase tracking-wider">{course.kode}</span>
-                          <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-sky-600 transition-colors">{course.nama}</h4>
+                          <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-sky-600 transition-colors">
+                            {i18n.language === 'en' ? course.nama_en : i18n.language === 'ar' ? course.nama_ar : course.nama}
+                          </h4>
                         </div>
                         <div className="text-xs font-black text-sky-600 bg-sky-100 dark:bg-sky-900/30 px-3 py-1 rounded-lg">
                           {course.sks} SKS
@@ -523,7 +532,7 @@ const MataKuliah = () => {
                         {selectedCourse.kode}
                       </span>
                       <h2 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white leading-tight">
-                        {selectedCourse.nama}
+                        {i18n.language === 'en' ? selectedCourse.nama_en : i18n.language === 'ar' ? selectedCourse.nama_ar : selectedCourse.nama}
                       </h2>
                     </div>
                   </div>
@@ -551,7 +560,7 @@ const MataKuliah = () => {
                       {t('mata_kuliah.modal.desc_title')}
                     </div>
                     <div className="text-slate-600 dark:text-slate-400 leading-relaxed text-base">
-                      {selectedCourse.deskripsi}
+                      {i18n.language === 'en' ? selectedCourse.deskripsi_en : i18n.language === 'ar' ? selectedCourse.deskripsi_ar : selectedCourse.deskripsi}
                     </div>
                   </div>
                 </div>

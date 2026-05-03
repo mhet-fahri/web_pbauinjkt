@@ -2,521 +2,781 @@ export const courses = [
   {
     "kode": "FTK6012101",
     "nama": "Istima' Mubtadi",
+    "nama_en": "Elementary Listening",
+    "nama_ar": "الاستماع للمبتدئين",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "1",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memahami makna global, pesan utama, dan informasi penting yang dinyatakan secara eksplisit dalam wacana lisan berbahasa Arab yang disampaikan secara jelas dengan laju dan artikulasi standar pada topik umum yang relevan dengan konteks akademik kependidikan dan sosial-keagamaan, serta memediasi isi simakan secara sederhana melalui penyampaian ulang, ringkasan singkat, atau parafrasa dasar secara lisan atau tulis dengan menjaga ketepatan makna."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memahami makna global, pesan utama, dan informasi penting yang dinyatakan secara eksplisit dalam wacana lisan berbahasa Arab yang disampaikan secara jelas dengan laju dan artikulasi standar pada topik umum yang relevan dengan konteks akademik kependidikan dan sosial-keagamaan, serta memediasi isi simakan secara sederhana melalui penyampaian ulang, ringkasan singkat, atau parafrasa dasar secara lisan atau tulis dengan menjaga ketepatan makna.",
+    "deskripsi_en": "Through this course, students learn to understand the global meaning, main message, and important information explicitly stated in Arabic oral discourse delivered clearly with standard rate and articulation on general topics relevant to educational academic and socio-religious contexts.",
+    "deskripsi_ar": "من خلال هذا المساق، يتعلم الطلاب القدرة على فهم المعنى العام، والرسالة الأساسية، والمعلومات المهمة المذكورة صراحة في الخطاب الشفهي باللغة العربية الذي يتم إلقاؤه بوضوح وبنطق قياسي حول موضوعات عامة ذات صلة بالسياقات الأكاديمية والتربوية."
   },
   {
     "kode": "FTK6012103",
     "nama": "Kalam Mubtadi",
+    "nama_en": "Elementary Speaking",
+    "nama_ar": "المحادثة للمبتدئين",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "1",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memproduksi dan berinteraksi secara lisan dalam bahasa Arab dengan kelancaran dasar, keterpahaman yang konsisten, serta penerapan strategi interaksi dan klarifikasi sederhana untuk menyampaikan pengalaman dan pendapat sederhana, menjelaskan informasi atau prosedur dasar, dan merespons mitra tutur secara wajar dalam konteks akademik kependidikan, sosial-keislaman, dan kehidupan kampus."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memproduksi dan berinteraksi secara lisan dalam bahasa Arab dengan kelancaran dasar, keterpahaman yang konsisten, serta penerapan strategi interaksi dan klarifikasi sederhana untuk menyampaikan pengalaman dan pendapat sederhana, menjelaskan informasi atau prosedur dasar, dan merespons mitra tutur secara wajar dalam konteks akademik kependidikan, sosial-keislaman, dan kehidupan kampus.",
+    "deskripsi_en": "Students learn to produce and interact orally in Arabic with basic fluency and consistent understanding, using interaction strategies to convey experiences and basic opinions in academic and social contexts.",
+    "deskripsi_ar": "يتعلم الطلاب إنتاج والتفاعل شفهياً باللغة العربية بطلاقة أساسية وفهم ثابت، مع تطبيق استراتيجيات التفاعل والتوضيح البسيطة لنقل الخبرات والآراء الأساسية."
   },
   {
     "kode": "FTK6012105",
     "nama": "Qiraah Mubtadiah",
+    "nama_en": "Elementary Reading",
+    "nama_ar": "القراءة للمبتدئين",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "1",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memahami teks tulis berbahasa Arab yang sederhana and terstruktur dengan keterpahaman yang konsisten melalui pengenalan makna eksplisit, gagasan utama, dan informasi penting yang dinyatakan secara jelas, serta penerapan strategi membaca dasar untuk mengakses isi teks pada konteks akademik kependidikan dan wacana keislaman dasar."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memahami teks tulis berbahasa Arab yang sederhana and terstruktur dengan keterpahaman yang konsisten melalui pengenalan makna eksplisit, gagasan utama, dan informasi penting yang dinyatakan secara jelas, serta penerapan strategi membaca dasar untuk mengakses isi teks pada konteks akademik kependidikan dan wacana keislaman dasar.",
+    "deskripsi_en": "Students learn to understand simple and structured Arabic written texts through recognizing explicit meanings, main ideas, and important information in educational and Islamic discourse contexts.",
+    "deskripsi_ar": "يتعلم الطلاب فهم النصوص المكتوبة باللغة العربية البسيطة والمنظمة من خلال التعرف على المعاني الصريحة والأفكار الرئيسية والمعلومات المهمة."
   },
   {
     "kode": "FTK6012108",
     "nama": "Kitabah Mubtadiah",
+    "nama_en": "Elementary Writing",
+    "nama_ar": "الكتابة للمبتدئين",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "1",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memproduksi teks tulis berbahasa Arab sederhana dengan kejelasan makna yang konsisten, keterpaduan gagasan yang terjaga, serta penerapan strategi penulisan dasar untuk menyampaikan informasi, pengalaman, dan kebutuhan komunikasi sederhana dalam konteks akademik kependidikan, sosial-keislaman, dan administrasi kampus."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memproduksi teks tulis berbahasa Arab sederhana dengan kejelasan makna yang konsisten, keterpaduan gagasan yang terjaga, serta penerapan strategi penulisan dasar untuk menyampaikan informasi, pengalaman, dan kebutuhan komunikasi sederhana dalam konteks akademik kependidikan, sosial-keislaman, dan administrasi kampus.",
+    "deskripsi_en": "Students learn to produce simple Arabic written texts with consistent clarity and coherence, using basic writing strategies for academic and campus administration needs.",
+    "deskripsi_ar": "يتعلم الطلاب إنتاج نصوص مكتوبة باللغة العربية بسيطة بوضوح متسق وتماسك في الأفكار، مع تطبيق استراتيجيات الكتابة الأساسية."
   },
   {
     "kode": "FTK6012112",
     "nama": "Qawa'id Tathbiqiyah",
+    "nama_en": "Applied Grammar",
+    "nama_ar": "القواعد التطبيقية",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "1",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu mengidentifikasi, menganalisis, dan menerapkan kaidah nahwu, sharf, serta prinsip kebahasaan Arab lainnya secara akurat dan kontekstual dalam konstruksi kalimat, paragraf, dan wacana berbahasa Arab yang relevan dengan konteks akademik kependidikan dan sosial-keagamaan."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu mengidentifikasi, menganalisis, dan menerapkan kaidah nahwu, sharf, serta prinsip kebahasaan Arab lainnya secara akurat dan kontekstual dalam konstruksi kalimat, paragraf, dan wacana berbahasa Arab yang relevan dengan konteks akademik kependidikan dan sosial-keagamaan.",
+    "deskripsi_en": "Students learn to identify, analyze, and apply Arabic grammar and morphology rules accurately in sentences, paragraphs, and discourse relevant to academic and religious contexts.",
+    "deskripsi_ar": "يتعلم الطلاب تحديد وتحليل وتطبيق قواعد النحو والصرف ومبادئ اللغة العربية الأخرى بدقة وسياقية في بناء الجمل والفقرات."
   },
   {
     "kode": "FTK6012102",
     "nama": "Istima' Mutawassit",
+    "nama_en": "Intermediate Listening",
+    "nama_ar": "الاستماع المتوسط",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "2",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memahami wacana lisan berbahasa Arab yang lebih panjang dan relatif kompleks dalam konteks akademik kependidikan dan sosial keagamaan dengan mengidentifikasi makna global, pesan utama, informasi penting, serta hubungan logis antargagasan yang dinyatakan secara jelas."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memahami wacana lisan berbahasa Arab yang lebih panjang dan relatif kompleks dalam konteks akademik kependidikan dan sosial keagamaan dengan mengidentifikasi makna global, pesan utama, informasi penting, serta hubungan logis antargagasan yang dinyatakan secara jelas.",
+    "deskripsi_en": "Focuses on understanding longer and relatively complex Arabic oral discourse, identifying global meanings, main messages, and logical relationships between ideas.",
+    "deskripsi_ar": "يركز على فهم الخطاب الشفهي باللغة العربية الأطول والأكثر تعقيداً، مع تحديد المعاني العالمية والرسائل الرئيسية والعلاقات المنطقية بين الأفكار."
   },
   {
     "kode": "FTK6012104",
     "nama": "Kalam Mutawassit",
+    "nama_en": "Intermediate Speaking",
+    "nama_ar": "المحادثة المتوسطة",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "2",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memproduksi dan berinteraksi secara lisan dalam bahasa Arab dengan kelancaran yang lebih stabil, koherensi gagasan yang terjaga, serta penggunaan strategi interaksi dan klarifikasi yang lebih terarah untuk menyampaikan penjelasan, pendapat, dan argumentasi sederhana."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memproduksi dan berinteraksi secara lisan dalam bahasa Arab dengan kelancaran yang lebih stabil, koherensi gagasan yang terjaga, serta penggunaan strategi interaksi dan klarifikasi yang lebih terarah untuk menyampaikan penjelasan, pendapat, dan argumentasi sederhana.",
+    "deskripsi_en": "Develops the ability to interact orally in Arabic with stable fluency, coherence, and more directed strategies to convey explanations and arguments.",
+    "deskripsi_ar": "يطور القدرة على التفاعل شفهياً باللغة العربية بطلاقة مستقرة وتماسك في الأفكار واستخدام استراتيجيات تفاعل أكثر توجيهاً."
   },
   {
     "kode": "FTK6012106",
     "nama": "Qira'ah Mutawassitah",
+    "nama_en": "Intermediate Reading",
+    "nama_ar": "القراءة المتوسطة",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "2",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memahami dan mengolah teks tulis berbahasa Arab dengan tingkat kompleksitas menengah melalui pemahaman hubungan antaride, tujuan penulis, dan makna implisit terbatas yang ditandai secara cukup jelas."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memahami dan mengolah teks tulis berbahasa Arab dengan tingkat kompleksitas menengah melalui pemahaman hubungan antaride, tujuan penulis, dan makna implisit terbatas yang ditandai secara cukup jelas.",
+    "deskripsi_en": "Students learn to process intermediate Arabic written texts, understanding relationships between ideas, author's intent, and limited implicit meanings.",
+    "deskripsi_ar": "يتعلم الطلاب معالجة النصوص المكتوبة باللغة العربية متوسطة التعقيد، وفهم العلاقات بين الأفكار وأهداف الكاتب."
   },
   {
     "kode": "FTK6012109",
     "nama": "Kitabah Mutawassitah",
+    "nama_en": "Intermediate Writing",
+    "nama_ar": "الكتابة المتوسطة",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "2",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memproduksi teks tulis berbahasa Arab yang terstruktur dan koheren dengan pengembangan gagasan yang logis, keterkaitan antarbagiannya yang jelas, serta penggunaan register yang sesuai."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memproduksi teks tulis berbahasa Arab yang terstruktur dan koheren dengan pengembangan gagasan yang logis, keterkaitan antarbagiannya yang jelas, serta penggunaan register yang sesuai.",
+    "deskripsi_en": "Focuses on producing structured and coherent Arabic written texts with logical idea development and appropriate register usage.",
+    "deskripsi_ar": "يركز على إنتاج نصوص مكتوبة باللغة العربية منظمة ومتماسكة مع تطوير منطقي للأفكار واستخدام السجلات اللغوية المناسبة."
   },
   {
     "kode": "FTK6012113",
     "nama": "Sharf",
+    "nama_en": "Morphology (Sharf)",
+    "nama_ar": "الصرف",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "2",
-    "deskripsi": "Mata kuliah Sharf dirancang untuk membekali mahasiswa dengan pemahaman konseptual dan keterampilan aplikatif dalam ilmu morfologi bahasa Arab (ilmu sharf), mencakup identifikasi pola kata (wazan), proses derivasi (isytiqāq), pembentukan kata kerja (fiʿl) dan kata benda (ism)."
+    "deskripsi": "Mata kuliah Sharf dirancang untuk membekali mahasiswa dengan pemahaman konseptual dan keterampilan aplikatif dalam ilmu morfologi bahasa Arab (ilmu sharf), mencakup identifikasi pola kata (wazan), proses derivasi (isytiqāq), pembentukan kata kerja (fiʿl) dan kata benda (ism).",
+    "deskripsi_en": "Equips students with conceptual understanding and applied skills in Arabic morphology, including word patterns (wazan) and derivation (ishtiqaq).",
+    "deskripsi_ar": "يزود الطلاب بالفهم المفاهيمي والمهارات التطبيقية في علم الصرف العربي، بما في ذلك أوزان الكلمات والاشتقاق."
   },
   {
     "kode": "FTK6012114",
     "nama": "Nahwu",
+    "nama_en": "Syntax (Nahwu)",
+    "nama_ar": "النحو",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "2",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu mengidentifikasi, menganalisis, dan menerapkan kaidah-kaidah nahwu (sintaksis bahasa Arab) secara akurat dan kontekstual dalam memahami dan memproduksi struktur kalimat, frasa, dan wacana berbahasa Arab."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu mengidentifikasi, menganalisis, dan menerapkan kaidah-kaidah nahwu (sintaksis bahasa Arab) secara akurat dan kontekstual dalam memahami dan memproduksi struktur kalimat, frasa, dan wacana berbahasa Arab.",
+    "deskripsi_en": "Teaches students to identify and apply Arabic syntax rules accurately in understanding and producing sentence structures.",
+    "deskripsi_ar": "يعلم الطلاب تحديد وتطبيق قواعد النحو العربي بدقة في فهم وإنتاج تراكيب الجمل."
   },
   {
     "kode": "FTK6012201",
     "nama": "Tafsir Bayani",
+    "nama_en": "Bayani Interpretation",
+    "nama_ar": "التفسير البياني",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "2",
-    "deskripsi": "Mata kuliah Tafsir Bayani dirancang untuk mengembangkan kemampuan mahasiswa dalam memahami, menganalisis, dan mengkontekstualisasikan ayat-ayat Al-Qur’an melalui pendekatan kebahasaan (bayani) yang integratif."
+    "deskripsi": "Mata kuliah Tafsir Bayani dirancang untuk mengembangkan kemampuan mahasiswa dalam memahami, menganalisis, dan mengkontekstualisasikan ayat-ayat Al-Qur’an melalui pendekatan kebahasaan (bayani) yang integratif.",
+    "deskripsi_en": "Develops skills in analyzing Quranic verses through an integrative linguistic (bayani) approach.",
+    "deskripsi_ar": "يطور مهارات تحليل آيات القرآن الكريم من خلال نهج لغوي (بياني) متكامل."
   },
   {
     "kode": "FTK6012115",
     "nama": "Nahwu Mutaqaddim",
+    "nama_en": "Advanced Syntax",
+    "nama_ar": "النحو المتقدم",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "3",
-    "deskripsi": "Mata kuliah Nahwu Mutaqaddim merupakan kelanjutan dari mata kuliah Nahwu dasar yang dirancang untuk memperdalam kompetensi analitis mahasiswa dalam mengkaji struktur sintaksis bahasa Arab tingkat lanjut."
+    "deskripsi": "Mata kuliah Nahwu Mutaqaddim merupakan kelanjutan dari mata kuliah Nahwu dasar yang dirancang untuk memperdalam kompetensi analitis mahasiswa dalam mengkaji struktur sintaksis bahasa Arab tingkat lanjut.",
+    "deskripsi_en": "Advanced study of Arabic syntax to deepen analytical competence in complex linguistic structures.",
+    "deskripsi_ar": "دراسة متقدمة للنحو العربي لتعميق الكفاءة التحليلية في التراكيب اللغوية المعقدة."
   },
   {
     "kode": "FTK6012107",
     "nama": "Qira'ah Akadimiyah",
+    "nama_en": "Academic Reading",
+    "nama_ar": "القراءة الأكاديمية",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "3",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu membaca, menganalisis, dan memediasi teks akademik berbahasa Arab dalam bidang kependidikan, keislaman, dan kajian keilmuan melalui pemahaman argumen."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu membaca, menganalisis, dan memediasi teks akademik berbahasa Arab dalam bidang kependidikan, keislaman, dan kajian keilmuan melalui pemahaman argumen.",
+    "deskripsi_en": "Enables students to read and analyze Arabic academic texts in education and Islamic studies through argument comprehension.",
+    "deskripsi_ar": "يمكّن الطلاب من قراءة وتحليل النصوص الأكاديمية العربية في التربية والدراسات الإسلامية."
   },
   {
     "kode": "FTK6012111",
     "nama": "Tarjamah",
+    "nama_en": "Translation",
+    "nama_ar": "الترجمة",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "3",
-    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memediasi makna teks tulis berbahasa Arab dan bahasa Indonesia melalui kegiatan penerjemahan dasar Arab–Indonesia dan Indonesia–Arab secara akurat."
+    "deskripsi": "Dengan mata kuliah ini, Mahasiswa belajar agar mampu memediasi makna teks tulis berbahasa Arab dan bahasa Indonesia melalui kegiatan penerjemahan dasar Arab–Indonesia dan Indonesia–Arab secara akurat.",
+    "deskripsi_en": "Teaches the basic techniques of translating written texts between Arabic and Indonesian accurately.",
+    "deskripsi_ar": "يعلم التقنيات الأساسية لترجمة النصوص المكتوبة بين اللغتين العربية والإندونيسية بدقة."
   },
   {
     "kode": "FTK6011201",
     "nama": "Ilmu Pendidikan Islam",
+    "nama_en": "Islamic Education Science",
+    "nama_ar": "علم التربية الإسلامية",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "3",
-    "deskripsi": "Mata kuliah Ilmu Pendidikan Islam dirancang untuk membekali mahasiswa dengan pemahaman konseptual dan filosofis tentang prinsip-prinsip pendidikan dalam perspektif Islam."
+    "deskripsi": "Mata kuliah Ilmu Pendidikan Islam dirancang untuk membekali mahasiswa dengan pemahaman konseptual dan filosofis tentang prinsip-prinsip pendidikan dalam perspektif Islam.",
+    "deskripsi_en": "Provides a conceptual and philosophical understanding of educational principles from an Islamic perspective.",
+    "deskripsi_ar": "يقدم فهماً مفاهيمياً وفلسفياً للمبادئ التربوية من منظور إسلامي."
   },
   {
     "kode": "FTK6012116",
     "nama": "Balaghah",
+    "nama_en": "Rhetoric (Balaghah)",
+    "nama_ar": "البلاغة",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "3",
-    "deskripsi": "Mata kuliah Balaghah dirancang untuk membekali mahasiswa dengan kompetensi analitis dan aplikatif dalam mengkaji dimensi retorika bahasa Arab (‘ilm al-ma‘ānī, al-bayān, dan al-badī‘)."
+    "deskripsi": "Mata kuliah Balaghah dirancang untuk membekali mahasiswa dengan kompetensi analitis dan aplikatif dalam mengkaji dimensi retorika bahasa Arab (‘ilm al-ma‘ānī, al-bayān, dan al-badī‘).",
+    "deskripsi_en": "Equips students with analytical skills to study Arabic rhetoric, including Ma'ani, Bayan, and Badi'.",
+    "deskripsi_ar": "يزود الطلاب بمهارات تحليلية لدراسة البلاغة العربية، بما في ذلك المعاني والبيان والبديع."
   },
   {
     "kode": "FTK6012117",
     "nama": "Ilm al-Lughah",
+    "nama_en": "Linguistics",
+    "nama_ar": "علم اللغة",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "3",
-    "deskripsi": "Mata kuliah Ilm al-Lughah dirancang untuk membekali mahasiswa dengan pemahaman konseptual dan analitis tentang prinsip-prinsip linguistik Arab, meliputi fonologi, morfologi, sintaksis, semantik, dan pragmatik."
+    "deskripsi": "Mata kuliah Ilm al-Lughah dirancang untuk membekali mahasiswa dengan pemahaman konseptual dan analitis tentang prinsip-prinsip linguistik Arab, meliputi fonologi, morfologi, sintaksis, semantik, dan pragmatik.",
+    "deskripsi_en": "Covers conceptual and analytical principles of Arabic linguistics, including phonology, syntax, and semantics.",
+    "deskripsi_ar": "يغطي المبادئ المفاهيمية والتحليلية للغويات العربية، بما في ذلك علم الأصوات والنحو والدلالة."
   },
   {
     "kode": "NAS6013203",
     "nama": "Bahasa Indonesia",
+    "nama_en": "Indonesian Language",
+    "nama_ar": "اللغة الإندونيسية",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "3",
-    "deskripsi": "Mata kuliah ini mencakup sejarah perkembangan bahasa Indonesia, berbicara dalam presentasi ilmiah, dan kaidah penulisan dalam bahasa Indonesia, dan karya tulis ilmiah."
+    "deskripsi": "Mata kuliah ini mencakup sejarah perkembangan bahasa Indonesia, berbicara dalam presentasi ilmiah, dan kaidah penulisan dalam bahasa Indonesia, dan karya tulis ilmiah.",
+    "deskripsi_en": "Covers the history and rules of the Indonesian language, focusing on academic writing and scientific presentations.",
+    "deskripsi_ar": "يغطي تاريخ وقواعد اللغة الإندونيسية، مع التركيز على الكتابة الأكاديمية والعروض العلمية."
   },
   {
     "kode": "FTK6011203",
     "nama": "Psikologi Pendidikan",
+    "nama_en": "Educational Psychology",
+    "nama_ar": "علم النفس التربوي",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "3",
-    "deskripsi": "Mata kuliah Psikologi Pendidikan dirancang untuk membekali mahasiswa dengan pemahaman konseptual dan aplikatif tentang prinsip-prinsip psikologis yang mendasari proses belajar dan pembelajaran."
+    "deskripsi": "Mata kuliah Psikologi Pendidikan dirancang untuk membekali mahasiswa dengan pemahaman konseptual dan aplikatif tentang prinsip-prinsip psikologis yang mendasari proses belajar dan pembelajaran.",
+    "deskripsi_en": "Examines psychological principles underlying the learning process and human development in education.",
+    "deskripsi_ar": "يفحص المبادئ النفسية الكامنة وراء عملية التعلم والتطور البشري في التربية."
   },
   {
     "kode": "FTK6012123",
     "nama": "Kurikulum dan Pembelajaran Bahasa Arab",
+    "nama_en": "Arabic Language Curriculum and Learning",
+    "nama_ar": "منهج وتعليم اللغة العربية",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "4",
-    "deskripsi": "Mata kuliah ini membekali mahasiswa dengan kompetensi analitis dan aplikatif dalam mengkaji prinsip-prinsip pengembangan kurikulum dan desain pembelajaran bahasa Arab."
+    "deskripsi": "Mata kuliah ini membekali mahasiswa dengan kompetensi analitis dan aplikatif dalam mengkaji prinsip-prinsip pengembangan kurikulum dan desain pembelajaran bahasa Arab.",
+    "deskripsi_en": "Equips students with analytical skills to study curriculum development and Arabic learning design.",
+    "deskripsi_ar": "يزود الطلاب بمهارات تحليلية لدراسة تطوير المناهج وتصميم تعلم اللغة العربية."
   },
   {
     "kode": "FTK6012122",
     "nama": "Metode dan Strategi Pembelajaran Bahasa Arab",
+    "nama_en": "Arabic Learning Methods and Strategies",
+    "nama_ar": "طرائق واستراتيجيات تعليم اللغة العربية",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "4",
-    "deskripsi": "Mata kuliah ini membekali mahasiswa dengan kompetensi analitis dan aplikatif dalam mengkaji, memilih, dan mengadaptasi berbagai pendekatan, metode, dan strategi pembelajaran bahasa Arab."
+    "deskripsi": "Mata kuliah ini membekali mahasiswa dengan kompetensi analitis dan aplikatif dalam mengkaji, memilih, dan mengadaptasi berbagai pendekatan, metode, dan strategi pembelajaran bahasa Arab.",
+    "deskripsi_en": "Focuses on choosing and adapting various approaches and strategies for teaching Arabic.",
+    "deskripsi_ar": "يركز على اختيار وتكييف المناهج والاستراتيجيات المختلفة لتعليم اللغة العربية."
   },
   {
     "kode": "NAS6112201",
     "nama": "Pendidikan Pancasila",
+    "nama_en": "Pancasila Education",
+    "nama_ar": "تربية البانشاسيلا",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "4",
-    "deskripsi": "Memberikan pemahaman dan penghayatan kepada mahasiswa mengenai ideologi bangsa Indonesia dan berfungsi sebagai sumber nilai dan pedoman dalam pengembangan kepribadian."
+    "deskripsi": "Memberikan pemahaman dan penghayatan kepada mahasiswa mengenai ideologi bangsa Indonesia dan berfungsi sebagai sumber nilai dan pedoman dalam pengembangan kepribadian.",
+    "deskripsi_en": "Provides an understanding of Indonesia's national ideology as a guide for personality development.",
+    "deskripsi_ar": "يوفر فهماً للأيديولوجية الوطنية لإندونيسيا كدليل لتنمية الشخصية."
   },
   {
     "kode": "FTK6012118",
     "nama": "Tadawuliyah wa Tahlil Khithab",
+    "nama_en": "Pragmatics and Discourse Analysis",
+    "nama_ar": "التداولية وتحليل الخطاب",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "4",
-    "deskripsi": "Mengajak mahasiswa menelusuri dimensi di balik tuturan: bagaimana penutur Arab memproduksi makna melalui niat, konteks situasional, dan norma sosial-budaya."
+    "deskripsi": "Mengajak mahasiswa menelusuri dimensi di balik tuturan: bagaimana penutur Arab memproduksi makna melalui niat, konteks situasional, dan norma sosial-budaya.",
+    "deskripsi_en": "Explores how Arabic speakers produce meaning through intention, situational context, and social norms.",
+    "deskripsi_ar": "يستكشف كيف ينتج المتحدثون بالعربية المعنى من خلال النية والسياق الموقفي والمعايير الاجتماعية."
   },
   {
     "kode": "FTK6012121",
     "nama": "Mabadi' Ta'lim wa Ta'allum Lughah",
+    "nama_en": "Principles of Language Learning and Teaching",
+    "nama_ar": "مبادئ تعليم وتعلم اللغة",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "4",
-    "deskripsi": "Membekali mahasiswa dengan pemahaman konseptual dan aplikatif tentang prinsip-prinsip dasar pembelajaran dan pengajaran bahasa Arab."
+    "deskripsi": "Membekali mahasiswa dengan pemahaman konseptual dan aplikatif tentang prinsip-prinsip dasar pembelajaran dan pengajaran bahasa Arab.",
+    "deskripsi_en": "Covers basic conceptual and applied principles of Arabic language learning and teaching.",
+    "deskripsi_ar": "يغطي المبادئ المفاهيمية والتحليلية الأساسية لتعلم وتعليم اللغة العربية."
   },
   {
     "kode": "UIN6014203",
     "nama": "Bahasa Inggris",
+    "nama_en": "English Language",
+    "nama_ar": "اللغة الإنجليزية",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "4",
-    "deskripsi": "Membekali mahasiswa dengan fondasi-fondasi bahasa Inggris dalam konteks kehidupan sehari-hari dan konteks akademik."
+    "deskripsi": "Membekali mahasiswa dengan fondasi-fondasi bahasa Inggris dalam konteks kehidupan sehari-hari dan konteks akademik.",
+    "deskripsi_en": "Equips students with English foundations for daily life and academic contexts.",
+    "deskripsi_ar": "يزود الطلاب بأسس اللغة الإنجليزية للحياة اليومية والسياقات الأكاديمية."
   },
   {
     "kode": "UIN6032201",
     "nama": "Studi Islam",
+    "nama_en": "Islamic Studies",
+    "nama_ar": "الدراسات الإسلامية",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "4",
-    "deskripsi": "Memberikan pengetahuan kepada mahasiswa tentang agama Islam dari berbagai aspek: Al-Qur’an, Hadis, Fikih, Akidah, Akhlak-Tasawuf, dan Sejarah."
+    "deskripsi": "Memberikan pengetahuan kepada mahasiswa tentang agama Islam dari berbagai aspek: Al-Qur’an, Hadis, Fikih, Akidah, Akhlak-Tasawuf, dan Sejarah.",
+    "deskripsi_en": "Covers various aspects of Islam, including Quran, Hadith, Jurisprudence, Theology, and History.",
+    "deskripsi_ar": "يغطي جوانب مختلفة من الإسلام، بما في ذلك القرآن والحديث والفقه والعقيدة والتاريخ."
   },
   {
     "kode": "FTK6012125",
     "nama": "Evaluasi dan Asesmen Bahasa Arab",
+    "nama_en": "Arabic Language Evaluation and Assessment",
+    "nama_ar": "التقويم والقياس في اللغة العربية",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "4",
-    "deskripsi": "Membekali mahasiswa dengan kompetensi analitis dan aplikatif dalam merancang, menerapkan, dan mengevaluasi instrumen asesmen bahasa Arab yang valid dan autentik."
+    "deskripsi": "Membekali mahasiswa dengan kompetensi analitis dan aplikatif dalam merancang, menerapkan, dan mengevaluasi instrumen asesmen bahasa Arab yang valid dan autentik.",
+    "deskripsi_en": "Teaches design and implementation of valid and authentic Arabic assessment instruments.",
+    "deskripsi_ar": "يعلم تصميم وتنفيذ أدوات تقويم اللغة العربية الصحيحة والأصيلة."
   },
   {
     "kode": "FTK6012124",
     "nama": "Perencanaan Pembelajaran Bahasa Arab",
+    "nama_en": "Arabic Learning Planning",
+    "nama_ar": "تخطيط تعليم اللغة العربية",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "5",
-    "deskripsi": "Merancang, mengembangkan, dan mengevaluasi perangkat perencanaan pembelajaran bahasa Arab yang kontekstual untuk jenjang MI, MTs, dan MA."
+    "deskripsi": "Merancang, mengembangkan, dan mengevaluasi perangkat perencanaan pembelajaran bahasa Arab yang kontekstual untuk jenjang MI, MTs, dan MA.",
+    "deskripsi_en": "Focuses on designing and evaluating Arabic lesson plans for various educational levels.",
+    "deskripsi_ar": "يركز على تصميم وتقييم خطط دروس اللغة العربية لمختلف المستويات التعليمية."
   },
   {
     "kode": "FTK6012128",
     "nama": "Media dan Teknologi Pembelajaran Bahasa Arab",
+    "nama_en": "Arabic Learning Media and Technology",
+    "nama_ar": "وسائل وتكنولوجيا تعليم اللغة العربية",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "5",
-    "deskripsi": "Membekali mahasiswa dengan kompetensi dalam merancang, mengembangkan, dan memanfaatkan media serta teknologi pembelajaran bahasa Arab yang inovatif."
+    "deskripsi": "Membekali mahasiswa dengan kompetensi dalam merancang, mengembangkan, dan memanfaatkan media serta teknologi pembelajaran bahasa Arab yang inovatif.",
+    "deskripsi_en": "Focuses on utilizing innovative media and technology for Arabic language learning.",
+    "deskripsi_ar": "يركز على الاستفادة من الوسائط والتكنولوجيا المبتكرة لتعلم اللغة العربية."
   },
   {
     "kode": "FTK6012126",
     "nama": "Pengembangan Materi Ajar Bahasa Arab",
+    "nama_en": "Arabic Teaching Material Development",
+    "nama_ar": "تطوير المواد الدراسية للغة العربية",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "5",
-    "deskripsi": "Menganalisis kebutuhan pembelajaran, merancang, mengembangkan, dan mengevaluasi materi ajar bahasa Arab yang kontekstual dan komunikatif."
+    "deskripsi": "Menganalisis kebutuhan pembelajaran, merancang, mengembangkan, dan mengevaluasi materi ajar bahasa Arab yang kontekstual dan komunikatif.",
+    "deskripsi_en": "Analyzes learning needs and develops contextual and communicative Arabic teaching materials.",
+    "deskripsi_ar": "يحلل احتياجات التعلم ويطور مواد تدريس اللغة العربية السياقية والتواصلية."
   },
   {
     "kode": "UIN6033205",
     "nama": "Praktikum Qira'ah dan Ibadah",
+    "nama_en": "Recitation and Worship Practice",
+    "nama_ar": "تدريب القراءة والعبادة",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "5",
-    "deskripsi": "Menitikberatkan proses pembelajaran melalui praktik baca Al-Qur'an (tajwid) dan praktik ibadah (thaharah, shalat, pengurusan jenazah)."
+    "deskripsi": "Menitikberatkan proses pembelajaran melalui praktik baca Al-Qur'an (tajwid) dan praktik ibadah (thaharah, shalat, pengurusan jenazah).",
+    "deskripsi_en": "Practical course on Quranic recitation (Tajweed) and Islamic worship practices.",
+    "deskripsi_ar": "مساق عملي حول تلاوة القرآن (التجويد) وممارسات العبادة الإسلامية."
   },
   {
     "kode": "FTK6012127",
     "nama": "Analisis Kurikulum Bahasa Arab",
+    "nama_en": "Arabic Curriculum Analysis",
+    "nama_ar": "تحليل منهج اللغة العربية",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "5",
-    "deskripsi": "Menganalisis, mengevaluasi, dan merekomendasikan perbaikan terhadap dokumen dan implementasi kurikulum bahasa Arab pada berbagai jenjang pendidikan."
+    "deskripsi": "Menganalisis, mengevaluasi, dan merekomendasikan perbaikan terhadap dokumen dan implementasi kurikulum bahasa Arab pada berbagai jenjang pendidikan.",
+    "deskripsi_en": "Analyzes and evaluates Arabic curriculum documents across different educational levels.",
+    "deskripsi_ar": "يحلل ويقيم وثائق منهج اللغة العربية عبر المستويات التعليمية المختلفة."
   },
   {
     "kode": "FTK6012119",
     "nama": "Fiqh Lughah",
+    "nama_en": "Philology (Fiqh al-Lughah)",
+    "nama_ar": "فقه اللغة",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "5",
-    "deskripsi": "Menganalisis konsep-konsep dasar ilmu kebahasaan Arab klasik dan modern, meliputi hakikat bahasa, relasi semantik, dan perkembangan leksikal."
+    "deskripsi": "Menganalisis konsep-konsep dasar ilmu kebahasaan Arab klasik dan modern, meliputi hakikat bahasa, relasi semantik, dan perkembangan leksikal.",
+    "deskripsi_en": "Analyzes classical and modern Arabic linguistic concepts, including semantics and lexical development.",
+    "deskripsi_ar": "يحلل مفاهيم اللغويات العربية الكلاسيكية والحديثة، بما في ذلك الدلالات والتطور المعجمي."
   },
   {
     "kode": "FTK6012202",
     "nama": "Edupreneur",
+    "nama_en": "Edupreneurship",
+    "nama_ar": "ريادة الأعمال التعليمية",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "5",
-    "deskripsi": "Membekali mahasiswa dengan kompetensi kewirausahaan edukatif berbasis bahasa Arab melalui pengembangan ide bisnis dan perencanaan produk."
+    "deskripsi": "Membekali mahasiswa dengan kompetensi kewirausahaan edukatif berbasis bahasa Arab melalui pengembangan ide bisnis dan perencanaan produk.",
+    "deskripsi_en": "Equips students with educational entrepreneurship skills based on Arabic language business ideas.",
+    "deskripsi_ar": "يزود الطلاب بمهارات ريادة الأعمال التعليمية بناءً على أفكار تجارية باللغة العربية."
   },
   {
     "kode": "NAS611220",
     "nama": "Pendidikan Kewarganegaraan",
+    "nama_en": "Civic Education",
+    "nama_ar": "التربية الوطنية",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "5",
-    "deskripsi": "Memberikan pemahaman mengenai Pancasila, UUD 1945, NKRI dan Bhinneka Tunggal Ika serta implementasinya dalam membentuk karakter warga negara."
+    "deskripsi": "Memberikan pemahaman mengenai Pancasila, UUD 1945, NKRI dan Bhinneka Tunggal Ika serta implementasinya dalam membentuk karakter warga negara.",
+    "deskripsi_en": "Covers Indonesia's constitutional foundations and national character building.",
+    "deskripsi_ar": "يغطي الأسس الدستورية لإندونيسيا وبناء الشخصية الوطنية."
   },
   {
     "kode": "UIN6016208",
     "nama": "Metodologi Penelitian",
+    "nama_en": "Research Methodology",
+    "nama_ar": "مناهج البحث",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "5",
-    "deskripsi": "Merancang proposal penelitian pendidikan bahasa Arab yang koheren, etis, dan berbasis metode ilmiah (kuantitatif, kualitatif, mixed methods)."
+    "deskripsi": "Merancang proposal penelitian pendidikan bahasa Arab yang koheren, etis, dan berbasis metode ilmiah (kuantitatif, kualitatif, mixed methods).",
+    "deskripsi_en": "Teaches how to design coherent and ethical research proposals using scientific methods.",
+    "deskripsi_ar": "يعلم كيفية تصميم مقترحات بحثية متماسكة وأخلاقية باستخدام الأساليب العلمية."
   },
   {
     "kode": "UIN6032201",
     "nama": "Islam dan Ilmu Pengetahuan",
+    "nama_en": "Islam and Science",
+    "nama_ar": "الإسلام والعلوم",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "6",
-    "deskripsi": "Membekali mahasiswa dengan pemahaman integratif tentang relasi antara wahyu dan akal, serta paradigma integrasi-interkoneksi keilmuan."
+    "deskripsi": "Membekali mahasiswa dengan pemahaman integratif tentang relasi antara wahyu dan akal, serta paradigma integrasi-interkoneksi keilmuan.",
+    "deskripsi_en": "Explores the relationship between revelation and reason, and the integration of Islamic and scientific paradigms.",
+    "deskripsi_ar": "يستكشف العلاقة بين الوحي والعقل، وتكامل النماذج الإسلامية والعلمية."
   },
   {
     "kode": "FTK6120201",
     "nama": "Kepemimpinan Sekolah",
+    "nama_en": "School Leadership",
+    "nama_ar": "القيادة التربوية",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "6",
-    "deskripsi": "Menganalisis prinsip-prinsip kepemimpinan pendidikan yang efektif dalam konteks madrasah, sekolah, dan lembaga pendidikan keislaman."
+    "deskripsi": "Menganalisis prinsip-prinsip kepemimpinan pendidikan yang efektif dalam konteks madrasah, sekolah, dan lembaga pendidikan keislaman.",
+    "deskripsi_en": "Analyzes effective educational leadership principles in schools and Islamic institutions.",
+    "deskripsi_ar": "يحلل مبادئ القيادة التربوية الفعالة في المدارس والمؤسسات الإسلامية."
   },
   {
     "kode": "FTK6120202",
     "nama": "Statistika Pendidikan",
+    "nama_en": "Educational Statistics",
+    "nama_ar": "الإحصاء التربوي",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "6",
-    "deskripsi": "Memahami, menerapkan, dan menginterpretasikan konsep-konsep dasar statistika pendidikan dalam konteks penelitian pembelajaran bahasa Arab."
+    "deskripsi": "Memahami, menerapkan, dan menginterpretasikan konsep-konsep dasar statistika pendidikan dalam konteks penelitian pembelajaran bahasa Arab.",
+    "deskripsi_en": "Covers basic statistical concepts and their application in Arabic language learning research.",
+    "deskripsi_ar": "يغطي المفاهيم الإحصائية الأساسية وتطبيقها في أبحاث تعلم اللغة العربية."
   },
   {
     "kode": "FTK6011205",
     "nama": "Pengajaran Mikro",
+    "nama_en": "Micro Teaching",
+    "nama_ar": "التربية العملية المصغرة",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "6",
-    "deskripsi": "Merancang, melaksanakan, dan merefleksikan praktik pembelajaran bahasa Arab skala terbatas melalui simulasi pengajaran mikro yang terstruktur."
+    "deskripsi": "Merancang, melaksanakan, dan merefleksikan praktik pembelajaran bahasa Arab skala terbatas melalui simulasi pengajaran mikro yang terstruktur.",
+    "deskripsi_en": "Practical course on limited-scale Arabic teaching practice through structured simulations.",
+    "deskripsi_ar": "مساق عملي حول ممارسة تدريس اللغة العربية على نطاق محدود من خلال محاكاة منظمة."
   },
   {
     "kode": "FTK6012110",
     "nama": "Kitabah Akadimiyah",
+    "nama_en": "Academic Writing",
+    "nama_ar": "الكتابة الأكاديمية",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "6",
-    "deskripsi": "Memproduksi dan memediasi teks akademik berbahasa Arab dengan ketepatan makna dan konsistensi register akademik."
+    "deskripsi": "Memproduksi dan memediasi teks akademik berbahasa Arab dengan ketepatan makna dan konsistensi register akademik.",
+    "deskripsi_en": "Focuses on producing Arabic academic texts with precision and academic consistency.",
+    "deskripsi_ar": "يركز على إنتاج نصوص أكاديمية عربية بدقة واتساق أكاديمي."
   },
   {
     "kode": "FTK6012120",
     "nama": "Adab Arabi",
+    "nama_en": "Arabic Literature",
+    "nama_ar": "الأدب العربي",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "6",
-    "deskripsi": "Membekali mahasiswa dengan pemahaman analitis dan apresiatif terhadap khazanah sastra Arab klasik dan modern."
+    "deskripsi": "Membekali mahasiswa dengan pemahaman analitis dan apresiatif terhadap khazanah sastra Arab klasik dan modern.",
+    "deskripsi_en": "Provides an analytical and appreciative understanding of classical and modern Arabic literature.",
+    "deskripsi_ar": "يوفر فهماً تحليلياً وتقديرياً للأدب العربي الكلاسيكي والحديث."
   },
   {
     "kode": "FTK6012302",
     "nama": "Kepramukaan",
+    "nama_en": "Scouting",
+    "nama_ar": "الكشافة",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "6",
-    "deskripsi": "Membekali mahasiswa dengan pemahaman konseptual dan keterampilan praktis tentang prinsip-prinsip kepramukaan sebagai media pembentukan karakter."
+    "deskripsi": "Membekali mahasiswa dengan pemahaman konseptual dan keterampilan praktis tentang prinsip-prinsip kepramukaan sebagai media pembentukan karakter.",
+    "deskripsi_en": "Covers scouting principles as a medium for character building and leadership development.",
+    "deskripsi_ar": "يغطي مبادئ الكشافة كوسيلة لبناء الشخصية وتنمية القيادة."
   },
   {
     "kode": "UIN6021206",
     "nama": "Kuliah Kerja Nyata (KKN)",
+    "nama_en": "Community Service (KKN)",
+    "nama_ar": "خدمة المجتمع",
     "sks": 4,
     "jenis": "Wajib",
     "semester": "7",
-    "deskripsi": "Wahana pembelajaran berbasis pengalaman dan pengabdian masyarakat yang mengintegrasikan kompetensi kebahasaan Arab dan kepekaan sosial."
+    "deskripsi": "Wahana pembelajaran berbasis pengalaman dan pengabdian masyarakat yang mengintegrasikan kompetensi kebahasaan Arab dan kepekaan sosial.",
+    "deskripsi_en": "Experiential learning through community service integrating Arabic language and social sensitivity.",
+    "deskripsi_ar": "التعلم التجريبي من خلال خدمة المجتمع بدمج اللغة العربية والحساسية الاجتماعية."
   },
   {
     "kode": "FTK6011206",
     "nama": "Pengenalan Lapangan Persekolahan (PLP) 1",
+    "nama_en": "School Field Introduction (PLP) 1",
+    "nama_ar": "التدريب الميداني ١",
     "sks": 1,
     "jenis": "Wajib",
     "semester": "7",
-    "deskripsi": "Pengalaman observasi terbimbing di lingkungan madrasah/sekolah untuk menganalisis konteks pembelajaran secara nyata."
+    "deskripsi": "Pengalaman observasi terbimbing di lingkungan madrasah/sekolah untuk menganalisis konteks pembelajaran secara nyata.",
+    "deskripsi_en": "Guided observation in schools to analyze real learning contexts.",
+    "deskripsi_ar": "ملاحظة موجهة في المدارس لتحليل سياقات التعلم الحقيقية."
   },
   {
     "kode": "FTK6011207",
     "nama": "Pengenalan Lapangan Persekolahan (PLP) 2",
+    "nama_en": "School Field Introduction (PLP) 2",
+    "nama_ar": "التدريب الميداني ٢",
     "sks": 3,
     "jenis": "Wajib",
     "semester": "7",
-    "deskripsi": "Pengalaman praktik mengajar terbimbing di lingkungan madrasah/sekolah untuk membekali kompetensi pedagogis aplikatif."
+    "deskripsi": "Pengalaman praktik mengajar terbimbing di lingkungan madrasah/sekolah untuk membekali kompetensi pedagogis aplikatif.",
+    "deskripsi_en": "Guided teaching practice in schools to develop applied pedagogical competencies.",
+    "deskripsi_ar": "ممارسة تدريس موجهة في المدارس لتطوير الكفاءات التربوية التطبيقية."
   },
   {
     "kode": "FTK6012129",
     "nama": "Ujian Komprehensif",
+    "nama_en": "Comprehensive Exam",
+    "nama_ar": "الامتحان الشامل",
     "sks": 0,
     "jenis": "Wajib",
     "semester": "7",
-    "deskripsi": "Evaluasi integratif untuk mengukur ketercapaian kompetensi holistik sebelum memasuki tahap penyusunan tugas akhir."
+    "deskripsi": "Evaluasi integratif untuk mengukur ketercapaian kompetensi holistik sebelum memasuki tahap penyusunan tugas akhir.",
+    "deskripsi_en": "Integrative evaluation to measure holistic competency achievement before the final project.",
+    "deskripsi_ar": "تقييم تكاملي لقياس تحقيق الكفاءة الشاملة قبل المشروع النهائي."
   },
   {
     "kode": "FTK6012130",
     "nama": "Pre-seminar Proposal",
+    "nama_en": "Pre-proposal Seminar",
+    "nama_ar": "ندوة ما قبل البحث",
     "sks": 0,
     "jenis": "Wajib",
     "semester": "7",
-    "deskripsi": "Kegiatan akademik pra-riset untuk memfasilitasi mahasiswa dalam merumuskan judul dan arah penelitian."
+    "deskripsi": "Kegiatan akademik pra-riset untuk memfasilitasi mahasiswa dalam merumuskan judul dan arah penelitian.",
+    "deskripsi_en": "Pre-research academic activity to help students formulate research titles and directions.",
+    "deskripsi_ar": "نشاط أكاديمي ما قبل البحث لمساعدة الطلاب على صياغة عناوين وتوجهات البحث."
   },
   {
     "kode": "FTK6012131",
     "nama": "Seminar Proposal Skripsi",
+    "nama_en": "Thesis Proposal Seminar",
+    "nama_ar": "ندوة بحث التخرج",
     "sks": 2,
     "jenis": "Wajib",
     "semester": "7",
-    "deskripsi": "Wahana akademik kolaboratif untuk mempresentasikan dan menyempurnakan proposal penelitian skripsi."
+    "deskripsi": "Wahana akademik kolaboratif untuk mempresentasikan dan menyempurnakan proposal penelitian skripsi.",
+    "deskripsi_en": "Collaborative academic platform to present and refine undergraduate thesis proposals.",
+    "deskripsi_ar": "منصة أكاديمية تعاونية لتقديم وتحسين مقترحات بحث التخرج."
   },
   {
     "kode": "UIN6013311",
     "nama": "Tugas Akhir",
+    "nama_en": "Final Project / Thesis",
+    "nama_ar": "مشروع التخرج",
     "sks": 6,
     "jenis": "Wajib",
     "semester": "8",
-    "deskripsi": "Kulminasi akademik berbasis riset mandiri untuk membekali mahasiswa dengan kompetensi melaksanakan penelitian ilmiah."
+    "deskripsi": "Kulminasi akademik berbasis riset mandiri untuk membekali mahasiswa dengan kompetensi melaksanakan penelitian ilmiah.",
+    "deskripsi_en": "Academic culmination based on independent research to equip students with scientific research skills.",
+    "deskripsi_ar": "تتويج أكاديمي قائم على البحث المستقل لتزويد الطلاب بمهارات البحث العلمي."
   },
   {
     "kode": "FTK6012312",
     "nama": "Asistensi Riset PBA (P)",
+    "nama_en": "Arabic Research Assistance",
+    "nama_ar": "مساعد البحث في تعليم اللغة العربية",
     "sks": 4,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Wahana pendampingan intensif dan kolaboratif dalam merancang, melaksanakan, dan mendokumentasikan kegiatan riset."
+    "deskripsi": "Wahana pendampingan intensif dan kolaboratif dalam merancang, melaksanakan, dan mendokumentasikan kegiatan riset.",
+    "deskripsi_en": "Intensive collaborative assistance in designing and documenting research activities.",
+    "deskripsi_ar": "مساعدة تعاونية مكثفة في تصميم وتوثيق الأنشطة البحثية."
   },
   {
     "kode": "FDI6061109",
     "nama": "Ulum al-Qur'an (P4)",
+    "nama_en": "Quranic Sciences",
+    "nama_ar": "علوم القرآن",
     "sks": 2,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Membekali mahasiswa dengan pemahaman analitis dan aplikatif terhadap ilmu-ilmu Al-Qur'an klasik dan kontemporer."
+    "deskripsi": "Membekali mahasiswa dengan pemahaman analitis dan aplikatif terhadap ilmu-ilmu Al-Qur'an klasik dan kontemporer.",
+    "deskripsi_en": "Analytical and applied study of classical and contemporary Quranic sciences.",
+    "deskripsi_ar": "دراسة تحليلية وتطبيقية لعلوم القرآن الكلاسيكية والمعاصرة."
   },
   {
     "kode": "FDI6061110",
     "nama": "Ulum al-Hadits (P4)",
+    "nama_en": "Hadith Sciences",
+    "nama_ar": "علوم الحديث",
     "sks": 2,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Membekali mahasiswa dengan pemahaman analitis dan aplikatif terhadap ilmu-ilmu hadis klasik dan kontemporer."
+    "deskripsi": "Membekali mahasiswa dengan pemahaman analitis dan aplikatif terhadap ilmu-ilmu hadis klasik dan kontemporer.",
+    "deskripsi_en": "Analytical and applied study of classical and contemporary Hadith sciences.",
+    "deskripsi_ar": "دراسة تحليلية وتطبيقية لعلوم الحديث الكلاسيكية والمعاصرة."
   },
   {
     "kode": "FTK6011110",
     "nama": "Ushul al-Fiqh (P4)",
+    "nama_en": "Principles of Jurisprudence",
+    "nama_ar": "أصول الفقه",
     "sks": 2,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Membekali mahasiswa dengan pemahaman analitis dan metodologis tentang prinsip-prinsip istinbat hukum Islam."
+    "deskripsi": "Membekali mahasiswa dengan pemahaman analitis dan metodologis tentang prinsip-prinsip istinbat hukum Islam.",
+    "deskripsi_en": "Methodological study of the principles for deriving Islamic legal rulings.",
+    "deskripsi_ar": "دراسة منهجية لمبادئ استنباط الأحكام الشرعية الإسلامية."
   },
   {
     "kode": "FTK6012301",
     "nama": "Aqidah Akhlaq (P4)",
+    "nama_en": "Islamic Creed and Ethics",
+    "nama_ar": "العقيدة والأخلاق",
     "sks": 2,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Membekali mahasiswa dengan pemahaman analitis terhadap prinsip dasar keimanan dan etika keislaman."
+    "deskripsi": "Membekali mahasiswa dengan pemahaman analitis terhadap prinsip dasar keimanan dan etika keislaman.",
+    "deskripsi_en": "Analytical study of basic Islamic beliefs and ethical principles.",
+    "deskripsi_ar": "دراسة تحليلية للعقائد الإسلامية الأساسية والمبادئ الأخلاقية."
   },
   {
     "kode": "FTK6012303",
     "nama": "Penerjemahan Administrasi dan Akademik (P3)",
+    "nama_en": "Administrative and Academic Translation",
+    "nama_ar": "الترجمة الإدارية والأكاديمية",
     "sks": 3,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Memediasi makna teks administrasi dan akademik Arab–Indonesia dan Indonesia–Arab secara akurat dan konsisten."
+    "deskripsi": "Memediasi makna teks administrasi dan akademik Arab–Indonesia dan Indonesia–Arab secara akurat dan konsisten.",
+    "deskripsi_en": "Translating administrative and academic texts between Arabic and Indonesian accurately.",
+    "deskripsi_ar": "ترجمة النصوص الإدارية والأكاديمية بين اللغتين العربية والإندونيسية بدقة."
   },
   {
     "kode": "FTK6012304",
     "nama": "Penerjemahan Lisan Konferensi (P3)",
+    "nama_en": "Conference Interpreting",
+    "nama_ar": "الترجمة الفورية للمؤتمرات",
     "sks": 3,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Melakukan penerjemahan lisan Arab–Indonesia dan Indonesia–Arab dalam konteks konferensi dan forum formal."
+    "deskripsi": "Melakukan penerjemahan lisan Arab–Indonesia dan Indonesia–Arab dalam konteks konferensi dan forum formal.",
+    "deskripsi_en": "Interpreting orally between Arabic and Indonesian in formal conference contexts.",
+    "deskripsi_ar": "الترجمة الشفهية بين العربية والإندونيسية في سياقات المؤتمرات الرسمية."
   },
   {
     "kode": "FTK6012305",
     "nama": "Penerjemahan Lisan Diplomasi Kenegaraan (P3)",
+    "nama_en": "Diplomatic Interpreting",
+    "nama_ar": "الترجمة الفورية للدبلوماسية",
     "sks": 3,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Melakukan penerjemahan lisan Arab–Indonesia dalam konteks kenegaraan dan diplomasi secara akurat."
+    "deskripsi": "Melakukan penerjemahan lisan Arab–Indonesia dalam konteks kenegaraan dan diplomasi secara akurat.",
+    "deskripsi_en": "Interpreting orally between Arabic and Indonesian in state and diplomatic contexts.",
+    "deskripsi_ar": "الترجمة الشفهية بين العربية والإندونيسية في السياقات الرسمية والدبلوماسية."
   },
   {
     "kode": "FTK 6122101",
     "nama": "Dasar-dasar Pendidikan Anak Usia Dini (P1)",
+    "nama_en": "Foundations of Early Childhood Education",
+    "nama_ar": "أساسيات تربية الطفولة المبكرة",
     "sks": 2,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Membekali mahasiswa dengan pemahaman konseptual tentang prinsip-prinsip perkembangan anak usia dini."
+    "deskripsi": "Membekali mahasiswa dengan pemahaman konseptual tentang prinsip-prinsip perkembangan anak usia dini.",
+    "deskripsi_en": "Provides conceptual understanding of the principles of early childhood development.",
+    "deskripsi_ar": "يوفر فهماً مفاهيمياً لمبادئ تنمية الطفولة المبكرة."
   },
   {
     "kode": "FTK6012307",
     "nama": "Pembelajaran Bahasa Arab Qur'ani (P4)",
+    "nama_en": "Quranic Arabic Learning",
+    "nama_ar": "تعليم اللغة العربية القرآنية",
     "sks": 2,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Merancang, melaksanakan, dan mengevaluasi pembelajaran bahasa Arab berbasis teks-teks Al-Qur'an."
+    "deskripsi": "Merancang, melaksanakan, dan mengevaluasi pembelajaran bahasa Arab berbasis teks-teks Al-Qur'an.",
+    "deskripsi_en": "Designing and evaluating Arabic learning based on Quranic texts.",
+    "deskripsi_ar": "تصميم وتقييم تعلم اللغة العربية بناءً على النصوص القرآنية."
   },
   {
     "kode": "FTK6012308",
     "nama": "Baca Tulis Alquran untuk PAUD (P1)",
+    "nama_en": "Quranic Literacy for Early Childhood",
+    "nama_ar": "تعليم قراءة وكتابة القرآن للطفولة المبكرة",
     "sks": 2,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Membekali mahasiswa dengan pemahaman praktis dalam merancang pembelajaran baca tulis Al-Qur'an untuk anak."
+    "deskripsi": "Membekali mahasiswa dengan pemahaman praktis dalam merancang pembelajaran baca tulis Al-Qur'an untuk anak.",
+    "deskripsi_en": "Provides practical skills in designing Quranic literacy learning for children.",
+    "deskripsi_ar": "يوفر مهارات عملية في تصميم تعلم محو الأمية القرآنية للأطفال."
   },
   {
     "kode": "FTK6012309",
     "nama": "Strategi Pembelajaran Arabiyah lil Athfal (ALA) (P1)",
+    "nama_en": "Arabic Learning Strategies for Children",
+    "nama_ar": "استراتيجيات تعليم العربية للأطفال",
     "sks": 2,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Membekali mahasiswa dengan keterampilan praktis dalam merancang strategi pembelajaran bahasa Arab untuk anak."
+    "deskripsi": "Membekali mahasiswa dengan keterampilan praktis dalam merancang strategi pembelajaran bahasa Arab untuk anak.",
+    "deskripsi_en": "Practical skills in designing Arabic learning strategies specifically for children.",
+    "deskripsi_ar": "مهارات عملية في تصميم استراتيجيات تعلم اللغة العربية خصيصاً للأطفال."
   },
   {
     "kode": "FTK6012310",
     "nama": "Pengembangan Materi Ajar ALA (P1)",
+    "nama_en": "Arabic Teaching Material Development for Children",
+    "nama_ar": "تطوير المواد الدراسية للعربية للأطفال",
     "sks": 2,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Membekali mahasiswa dengan kompetensi praktis dalam merancang materi pembelajaran bahasa Arab untuk anak."
+    "deskripsi": "Membekali mahasiswa dengan kompetensi praktis dalam merancang materi pembelajaran bahasa Arab untuk anak.",
+    "deskripsi_en": "Practical competence in designing Arabic teaching materials for children.",
+    "deskripsi_ar": "كفاءة عملية في تصميم مواد تدريس اللغة العربية للأطفال."
   },
   {
     "kode": "FTK6012314",
     "nama": "Pengembangan Media ALA (P1)",
+    "nama_en": "Arabic Learning Media Development for Children",
+    "nama_ar": "تطوير الوسائل التعليمية للعربية للأطفال",
     "sks": 2,
     "jenis": "Pilihan",
     "semester": "6 atau 7",
-    "deskripsi": "Membekali mahasiswa dengan kompetensi praktis dalam merancang media pembelajaran bahasa Arab untuk anak."
+    "deskripsi": "Membekali mahasiswa dengan kompetensi praktis dalam merancang media pembelajaran bahasa Arab untuk anak.",
+    "deskripsi_en": "Practical competence in designing Arabic learning media for children.",
+    "deskripsi_ar": "كفاءة عملية في تصميم وسائل تعلم اللغة العربية للأطفال."
   }
 ];
