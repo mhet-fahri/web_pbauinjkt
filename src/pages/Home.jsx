@@ -48,7 +48,7 @@ const demoNews = [
 ];
 
 const Home = () => {
-  const { t } = useTranslation(['home', 'common']);
+  const { t, i18n } = useTranslation(['home', 'common']);
 
   const quickLinks = [
     {
