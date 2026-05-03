@@ -68,6 +68,9 @@ const Home = () => {
         { name: t('quick_links.registration'), url: "https://spmb.uinjkt.ac.id/" },
         { name: t('quick_links.portal'), url: "https://ais.uinjkt.ac.id/" },
         { name: t('quick_links.esemesta'), url: "https://esemesta.uinjkt.ac.id/" },
+        { name: t('quick_links.lms'), url: "/layanan/lms" },
+        { name: t('quick_links.hmps'), url: "/mahasiswa/hmps" },
+        { name: t('quick_links.alumni_column'), url: "/alumni/kolom" },
       ]
     },
     {
@@ -297,22 +300,28 @@ const Home = () => {
                   </div>
                   
                   <div className="grid grid-cols-1 gap-3">
-                    {group.links.map((link, i) => (
-                      <a 
-                        key={i}
-                        href={link.url} 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300"
-                      >
-                        <span className="text-sm font-bold text-slate-600 dark:text-slate-400 group-hover:text-blue-600 transition-colors">
-                          {link.name}
-                        </span>
-                        <div className="w-7 h-7 rounded-lg bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
-                          <ChevronRight size={14} />
-                        </div>
-                      </a>
-                    ))}
+                    {group.links.map((link, i) => {
+                      const isExternal = link.url.startsWith('http');
+                      const LinkComponent = isExternal ? 'a' : Link;
+                      const linkProps = isExternal 
+                        ? { href: link.url, target: "_blank", rel: "noopener noreferrer" }
+                        : { to: link.url };
+
+                      return (
+                        <LinkComponent 
+                          key={i}
+                          {...linkProps}
+                          className="group flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300"
+                        >
+                          <span className="text-sm font-bold text-slate-600 dark:text-slate-400 group-hover:text-blue-600 transition-colors">
+                            {link.name}
+                          </span>
+                          <div className="w-7 h-7 rounded-lg bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                            <ChevronRight size={14} />
+                          </div>
+                        </LinkComponent>
+                      );
+                    })}
                   </div>
                 </div>
               ))}

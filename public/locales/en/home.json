@@ -25,7 +25,10 @@
     "s1": "Bachelor Program (S1)",
     "s2": "Master Program (S2)",
     "intensive": "Intensive Language Course",
-    "continuing": "Continuing Education"
+    "continuing": "Continuing Education",
+    "lms": "LMS UIN Jakarta",
+    "hmps": "Student Association (HMPS)",
+    "alumni_column": "Alumni Column"
   },
   "exam_schedule": {
     "title": "Academic Exam Schedule",

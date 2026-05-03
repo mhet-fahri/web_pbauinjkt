@@ -171,5 +171,30 @@
       "ban_pt": "Sertifikat BAN-PT",
       "acquin": "Sertifikat ACQUIN"
     }
+  },
+  "lms": {
+    "title": "LMS UIN Jakarta",
+    "subtitle": "Learning Management System",
+    "desc": "LMS UIN Jakarta adalah platform pembelajaran daring berbasis Moodle yang dirancang untuk mendukung kegiatan belajar mengajar yang fleksibel, interaktif, dan modern.",
+    "features": [
+      "Akses materi kuliah kapan saja",
+      "Pengumpulan tugas digital",
+      "Forum diskusi interaktif",
+      "Kuis dan evaluasi daring"
+    ],
+    "cta": "Buka LMS UIN Jakarta"
+  },
+  "hmps": {
+    "title": "HMPS PBA",
+    "subtitle": "Himpunan Mahasiswa Program Studi",
+    "desc": "Organisasi kemahasiswaan yang menjadi wadah aspirasi dan pengembangan potensi mahasiswa Pendidikan Bahasa Arab dalam bidang akademik, seni, dan kepemimpinan.",
+    "social": "Ikuti Kami di Media Sosial",
+    "vision": "Mewujudkan mahasiswa PBA yang kreatif, kolaboratif, dan unggul dalam prestasi."
+  },
+  "alumni_column": {
+    "title": "Kolom Alumni",
+    "subtitle": "Inspirasi & Jejak Karir",
+    "desc": "Ruang berbagi bagi para alumni PBA UIN Jakarta untuk menceritakan perjalanan karir, memberikan motivasi, dan tetap terhubung dengan almamater.",
+    "opinion_title": "Opini & Testimoni Alumni"
   }
 }

@@ -26,6 +26,9 @@ const TracerStudy = lazy(() => import('./pages/TracerStudy'));
 const Berita = lazy(() => import('./pages/Berita'));
 const DetailBerita = lazy(() => import('./pages/DetailBerita'));
 const Akreditasi = lazy(() => import('./pages/Akreditasi'));
+const LMS = lazy(() => import('./pages/Layanan/LMS'));
+const HMPS = lazy(() => import('./pages/Mahasiswa/HMPS'));
+const KolomAlumni = lazy(() => import('./pages/Alumni/KolomAlumni'));
 
 // Admin Pages
 const Login = lazy(() => import('./pages/admin/Login'));
@@ -86,11 +89,14 @@ function App() {
               <Route path="/mahasiswa" element={<Mahasiswa />} />
               <Route path="/mahasiswa/data" element={<DataMahasiswa />} />
               <Route path="/mahasiswa/layanan" element={<LayananAkademik />} />
+              <Route path="/mahasiswa/hmps" element={<HMPS />} />
+              <Route path="/layanan/lms" element={<LMS />} />
               
               {/* Alumni Group */}
               <Route path="/alumni" element={<Alumni />} />
               <Route path="/alumni/data" element={<DataAlumni />} />
               <Route path="/alumni/tracer-study" element={<TracerStudy />} />
+              <Route path="/alumni/kolom" element={<KolomAlumni />} />
               
               {/* Admin Routes */}
               <Route path="/admin/login" element={<Login />} />

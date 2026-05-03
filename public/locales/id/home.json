@@ -25,7 +25,10 @@
     "s1": "Program Sarjana (S1)",
     "s2": "Program Magister (S2)",
     "intensive": "Kursus Intensif Bahasa",
-    "continuing": "Pendidikan Berkelanjutan"
+    "continuing": "Pendidikan Berkelanjutan",
+    "lms": "LMS UIN Jakarta",
+    "hmps": "HMPS PBA",
+    "alumni_column": "Kolom Alumni"
   },
   "exam_schedule": {
     "title": "Jadwal Ujian Akademik",

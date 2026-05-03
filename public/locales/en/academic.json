@@ -171,5 +171,30 @@
       "ban_pt": "BAN-PT Certificate",
       "acquin": "ACQUIN Certificate"
     }
+  },
+  "lms": {
+    "title": "LMS UIN Jakarta",
+    "subtitle": "Learning Management System",
+    "desc": "LMS UIN Jakarta is a Moodle-based online learning platform designed to support flexible, interactive, and modern teaching and learning activities.",
+    "features": [
+      "24/7 Access to course materials",
+      "Digital assignment submission",
+      "Interactive discussion forums",
+      "Online quizzes and evaluations"
+    ],
+    "cta": "Open LMS UIN Jakarta"
+  },
+  "hmps": {
+    "title": "HMPS PBA",
+    "subtitle": "Student Association",
+    "desc": "A student organization that serves as a forum for aspirations and potential development of Arabic Language Education students in academic, arts, and leadership fields.",
+    "social": "Follow Us on Social Media",
+    "vision": "Empowering PBA students to be creative, collaborative, and outstanding in achievements."
+  },
+  "alumni_column": {
+    "title": "Alumni Column",
+    "subtitle": "Inspiration & Career Paths",
+    "desc": "A dedicated space for PBA UIN Jakarta alumni to share their career journeys, provide motivation, and stay connected with their alma mater.",
+    "opinion_title": "Alumni Opinions & Testimonials"
   }
 }
