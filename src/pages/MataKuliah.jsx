@@ -124,25 +124,22 @@ const MataKuliah = () => {
 
   // Calculate stats for the visualizer
   const stats = useMemo(() => {
-    const data = Array(8).fill(0).map((_, i) => {
-      const semStr = (i + 1).toString();
-      const semesterCourses = courses.filter(c => 
-        c.semester === semStr || 
-        (c.semester && c.semester.includes(semStr) && c.jenis === 'Wajib')
-      );
-      
-      return {
-        semester: semStr,
-        sks: semesterCourses.reduce((acc, curr) => acc + Number(curr.sks || 0), 0),
-        count: semesterCourses.length
-      };
-    });
-    
-    const totalSks = courses.reduce((acc, curr) => acc + Number(curr.sks || 0), 0);
+    const studyLoadData = [
+      { semester: '1', sks: 20 },
+      { semester: '2', sks: 20 },
+      { semester: '3', sks: 22 },
+      { semester: '4', sks: 22 },
+      { semester: '5', sks: 22 },
+      { semester: '6', sks: 22 },
+      { semester: '7', sks: 12 },
+      { semester: '8', sks: 6 },
+    ];
+
+    const totalSks = 146; // Overriding to match user requirement
     const totalWajib = courses.filter(c => c.jenis === 'Wajib').length;
     const totalPilihan = courses.filter(c => c.jenis === 'Pilihan').length;
 
-    return { data, totalSks, totalWajib, totalPilihan };
+    return { data: studyLoadData, totalSks, totalWajib, totalPilihan };
   }, []);
 
   return (
@@ -245,29 +242,32 @@ const MataKuliah = () => {
                 </div>
               </div>
               
-              <div className="h-64 flex items-end justify-between gap-2 md:gap-4 px-2">
+              <div className="h-64 flex items-end justify-between gap-2 md:gap-4 px-2 pt-8">
                 {stats.data.map((d, i) => (
                   <div key={i} className="flex-1 flex flex-col items-center gap-3 group">
                     <div className="relative w-full flex flex-col items-center justify-end h-full">
-                       {/* Tooltip */}
-                       <m.div 
-                         initial={{ opacity: 0, y: 5 }}
-                         whileHover={{ opacity: 1, y: -5 }}
-                         className="absolute -top-10 bg-slate-900 text-white text-[10px] font-black px-2 py-1 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity z-10"
+                       {/* Label on top of bar */}
+                       <m.div
+                         initial={{ opacity: 0, y: 10 }}
+                         whileInView={{ opacity: 1, y: 0 }}
+                         transition={{ delay: 0.5 + (i * 0.1) }}
+                         className="mb-2 text-[10px] md:text-xs font-black text-sky-600 dark:text-sky-400"
                        >
-                         {d.sks} SKS
+                         {d.sks}
                        </m.div>
-                       
+
                        {/* Bar */}
                        <m.div
                          initial={{ height: 0 }}
                          whileInView={{ height: `${Math.max((d.sks / 24) * 100, 2)}%` }}
                          viewport={{ once: true }}
                          transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
-                         className="w-full max-w-[40px] bg-gradient-to-t from-sky-600 to-sky-400 rounded-t-xl group-hover:from-sky-500 group-hover:to-sky-300 transition-all shadow-lg shadow-sky-500/10"
-                       />
+                         className="w-full max-w-[40px] bg-gradient-to-t from-sky-600 to-sky-400 rounded-t-xl group-hover:from-sky-500 group-hover:to-sky-300 transition-all shadow-lg shadow-sky-500/10 relative"
+                       >
+                          <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-xl" />
+                       </m.div>
                     </div>
-                    <span className="text-xs font-black text-slate-400 group-hover:text-sky-600 transition-colors">S{d.semester}</span>
+                    <span className="text-[10px] md:text-xs font-black text-slate-400 group-hover:text-sky-600 transition-colors uppercase">S{d.semester}</span>
                   </div>
                 ))}
               </div>
