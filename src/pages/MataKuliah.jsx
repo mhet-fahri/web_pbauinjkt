@@ -259,10 +259,9 @@ const MataKuliah = () => {
                        {/* Bar */}
                        <m.div
                          initial={{ height: 0 }}
-                         whileInView={{ height: `${Math.max((d.sks / 24) * 100, 2)}%` }}
-                         viewport={{ once: true }}
+                         animate={{ height: `${(d.sks / 24) * 100}%` }}
                          transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
-                         className="w-full max-w-[40px] bg-gradient-to-t from-sky-600 to-sky-400 rounded-t-xl group-hover:from-sky-500 group-hover:to-sky-300 transition-all shadow-lg shadow-sky-500/10 relative"
+                         className="w-full max-w-[40px] bg-sky-500 bg-gradient-to-t from-sky-600 to-sky-400 rounded-t-xl relative shadow-lg shadow-sky-500/10"
                        >
                           <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-xl" />
                        </m.div>
