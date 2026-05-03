@@ -52,6 +52,7 @@ const DetailBerita = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
+  const [otherNews, setOtherNews] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -94,7 +95,27 @@ const DetailBerita = () => {
       }
     };
 
+    const fetchOtherNews = async () => {
+      try {
+        if (supabase) {
+          const { data, error } = await supabase
+            .from('posts')
+            .select('id, title, title_ar, title_en, category, created_at')
+            .neq('id', id)
+            .order('created_at', { ascending: false })
+            .limit(5);
+          
+          if (!error && data) {
+            setOtherNews(data);
+          }
+        }
+      } catch (err) {
+        console.error('Error fetching other news:', err);
+      }
+    };
+
     fetchPost();
+    fetchOtherNews();
     window.scrollTo(0, 0);
   }, [id]);
 
@@ -266,14 +287,24 @@ const DetailBerita = () => {
             <div className="lg:col-span-4">
               <div className="sticky top-32 space-y-8">
                 <div className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
-                  <h3 className="font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-[10px]">Berita Lainnya</h3>
+                  <h3 className="font-black text-slate-900 dark:text-white mb-6 uppercase tracking-widest text-[10px]">
+                    {t('detail.other_news')}
+                  </h3>
                   <div className="space-y-6">
-                    {demoNews.map((item, i) => (
+                    {(otherNews.length > 0 ? otherNews : demoNews.filter(n => n.id !== id)).map((item, i) => (
                       <Link key={i} to={`/berita/${item.id}`} className="group block">
-                        <h4 className="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary-600 transition-colors line-clamp-2 mb-2 leading-snug">
-                          {item.title}
+                        <h4 className={`font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-primary-600 transition-colors line-clamp-2 mb-2 leading-snug ${currentLang === 'ar' ? 'text-right' : 'text-left'}`}>
+                          {currentLang === 'ar' && item.title_ar ? item.title_ar : 
+                           currentLang === 'en' && item.title_en ? item.title_en : 
+                           item.title}
                         </h4>
-                        <div className="text-[10px] text-slate-400 font-medium">{item.category}</div>
+                        <div className={`text-[10px] text-slate-400 font-medium ${currentLang === 'ar' ? 'text-right' : 'text-left'}`}>
+                          {item.category === 'Berita' ? t('categories.news') : 
+                           item.category === 'Kegiatan' ? t('categories.event') : 
+                           item.category === 'Pengumuman' ? t('categories.announcement') : 
+                           item.category === 'Opini' ? t('categories.opinion') : 
+                           item.category}
+                        </div>
                       </Link>
                     ))}
                   </div>
