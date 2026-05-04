@@ -51,7 +51,7 @@ import { useTranslation } from 'react-i18next';
 const PageLoader = () => (
   <div className="fixed inset-0 bg-white dark:bg-slate-950 flex flex-col items-center justify-center text-slate-400 z-[9999]">
     <Loader2 className="animate-spin mb-4 text-primary-600" size={40} />
-    <p className="font-bold uppercase tracking-widest text-[10px] animate-pulse">Memuat Terjemahan...</p>
+    <p className="font-bold uppercase tracking-[0.3em] text-[10px] animate-pulse">PBA UIN Jakarta</p>
   </div>
 );
 
