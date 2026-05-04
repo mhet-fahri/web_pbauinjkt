@@ -57,10 +57,17 @@ const PageLoader = () => (
 
 function App() {
   const { i18n, ready } = useTranslation();
+  const [isTimedOut, setIsTimedOut] = React.useState(false);
   const location = useLocation();
   const isAdminPath = location.pathname.startsWith('/admin');
 
-  if (!ready) return <PageLoader />;
+  // Memberikan toleransi loading selama 2 detik untuk menghindari blank page permanen
+  React.useEffect(() => {
+    const timer = setTimeout(() => setIsTimedOut(true), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!ready && !isTimedOut) return <PageLoader />;
 
   return (
     <LazyMotion features={domAnimation} strict>
