@@ -46,16 +46,21 @@ import ProtectedRoute from './components/admin/ProtectedRoute';
 
 import './App.css';
 
+import { useTranslation } from 'react-i18next';
+
 const PageLoader = () => (
-  <div className="min-h-[60vh] flex flex-col items-center justify-center text-slate-400">
+  <div className="fixed inset-0 bg-white dark:bg-slate-950 flex flex-col items-center justify-center text-slate-400 z-[9999]">
     <Loader2 className="animate-spin mb-4 text-primary-600" size={40} />
-    <p className="font-bold uppercase tracking-widest text-xs">Memuat Halaman...</p>
+    <p className="font-bold uppercase tracking-widest text-[10px] animate-pulse">Memuat Terjemahan...</p>
   </div>
 );
 
 function App() {
+  const { i18n, ready } = useTranslation();
   const location = useLocation();
   const isAdminPath = location.pathname.startsWith('/admin');
+
+  if (!ready) return <PageLoader />;
 
   return (
     <LazyMotion features={domAnimation} strict>
