@@ -203,6 +203,7 @@ const DetailBerita = () => {
               src={getDirectImageUrl(post.image_url, 1000) || "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1200"} 
               alt={post.title}
               className="w-full h-auto object-cover max-h-[550px]"
+              crossOrigin="anonymous"
               onError={(e) => {
                 e.target.src = "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1200";
               }}

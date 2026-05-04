@@ -17,6 +17,7 @@ import { supabase } from '../../lib/supabase';
 import { getDirectImageUrl } from '../../utils/imageUtils';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
+import GenerateAi from './news/GenerateAi';
 
 const quillModules = {
   toolbar: [
@@ -297,9 +298,13 @@ const ManageNews = () => {
                   <h2 className="text-2xl font-black text-slate-900 dark:text-white">
                     {currentNews ? 'Edit Berita' : 'Tambah Berita Baru'}
                   </h2>
-                  <button onClick={() => setIsModalOpen(false)} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                    <X size={24} />
-                  </button>
+                  <div className="flex items-center gap-3">
+                    <GenerateAi formData={formData} setFormData={setFormData} lang="ar" />
+                    <GenerateAi formData={formData} setFormData={setFormData} lang="en" />
+                    <button onClick={() => setIsModalOpen(false)} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                      <X size={24} />
+                    </button>
+                  </div>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">

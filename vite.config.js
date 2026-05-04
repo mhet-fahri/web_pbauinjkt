@@ -19,5 +19,14 @@ export default defineConfig({
       }
     },
     chunkSizeWarningLimit: 1000,
-  }
+  },
+  server: {
+    proxy: {
+      '/api/nvidia': {
+        target: 'https://integrate.api.nvidia.com/v1',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/nvidia/, ''),
+      },
+    },
+  },
 })

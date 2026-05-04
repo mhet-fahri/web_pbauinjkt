@@ -243,6 +243,7 @@ const Home = () => {
                           alt={item.title}
                           className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500"
                           loading="lazy"
+                          crossOrigin="anonymous"
                           width={400}
                           height={200}
                           onError={(e) => {

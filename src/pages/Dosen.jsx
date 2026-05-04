@@ -125,6 +125,7 @@ const Dosen = () => {
                     src={getDirectImageUrl(lecturer.image, 400) || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200&h=200"} 
                     alt={lecturer.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    crossOrigin="anonymous"
                     onError={(e) => {
                       e.target.src = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200&h=200";
                     }}
