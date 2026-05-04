@@ -84,6 +84,10 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      // Tutup pencarian otomatis saat user scroll
+      if (window.scrollY > 100) {
+        setShowSearch(false);
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -129,19 +133,22 @@ const Navbar = () => {
           </div>
           <div className="flex flex-col leading-[1.1]">
             <span className={clsx(
-              "text-[19px] font-extrabold tracking-tight",
+              "text-[20px] font-black tracking-tighter leading-none mb-1",
+              "font-['Outfit']",
               scrolled ? "text-slate-900 dark:text-white" : "text-slate-900 dark:text-white lg:text-slate-900" 
             )}>
-              {t('site.name').split(' ').slice(0, -2).join(' ')} <span className="gradient-text">{t('site.name').split(' ').slice(-2).join(' ')}</span>
+              {t('site.name').split(' ').slice(0, -2).join(' ')} <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">{t('site.name').split(' ').slice(-2).join(' ')}</span>
             </span>
-            <span className={clsx(
-              "text-[8.5px] uppercase font-bold tracking-[0.15em] mt-1 opacity-70",
-              scrolled ? "text-slate-700" : "text-slate-700 lg:text-slate-800"
-            )}>{t('site.faculty')}</span>
-            <span className={clsx(
-              "text-[8.5px] uppercase font-extrabold tracking-[0.2em] text-indigo-600/90",
-              scrolled ? "opacity-100" : "opacity-100 lg:opacity-90"
-            )}>{t('site.university')}</span>
+            <div className="flex flex-col border-l-2 border-indigo-500/30 pl-3 mt-0.5">
+              <span className={clsx(
+                "text-[8px] uppercase font-bold tracking-[0.25em] leading-tight",
+                scrolled ? "text-slate-500" : "text-slate-600 dark:text-slate-400"
+              )}>{t('site.faculty')}</span>
+              <span className={clsx(
+                "text-[9px] uppercase font-black tracking-[0.1em] text-indigo-600 mt-0.5",
+                scrolled ? "opacity-100" : "opacity-90"
+              )}>{t('site.university')}</span>
+            </div>
           </div>
         </Link>
 
@@ -252,25 +259,35 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Search */}
+      {/* Mobile & Desktop Search Bar */}
       <AnimatePresence>
         {showSearch && (
           <m.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full left-0 right-0 bg-white dark:bg-slate-900 p-4 border-t border-slate-100 dark:border-slate-800 shadow-xl"
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-4 border-t border-slate-100 dark:border-slate-800 shadow-2xl z-50"
           >
-            <div className="container-custom relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-              <input 
-                id="mobile-search-input"
-                type="text" 
-                autoFocus
-                placeholder={t('site.search_placeholder')} 
-                aria-label={t('site.search_placeholder')}
-                className="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-800 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 transition-all dark:text-white"
-              />
+            <div className="container-custom relative flex items-center gap-4">
+              <div className="relative flex-grow">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                <input 
+                  id="mobile-search-input"
+                  type="text" 
+                  autoFocus
+                  placeholder={t('site.search_placeholder')} 
+                  aria-label={t('site.search_placeholder')}
+                  onKeyDown={(e) => e.key === 'Escape' && setShowSearch(false)}
+                  className="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-800 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 transition-all dark:text-white"
+                />
+              </div>
+              <button 
+                onClick={() => setShowSearch(false)}
+                className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-500"
+                aria-label="Tutup pencarian"
+              >
+                <X size={20} />
+              </button>
             </div>
           </m.div>
         )}

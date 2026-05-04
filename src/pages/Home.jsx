@@ -139,7 +139,7 @@ const Home = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-slate-50 dark:bg-slate-950">
+      <section className="relative pt-32 pb-20 overflow-hidden bg-slate-50 dark:bg-slate-950 bg-arabic-pattern">
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary-100/50 dark:bg-primary-900/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-sky-100/50 dark:bg-sky-900/10 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2" />
 
@@ -213,15 +213,15 @@ const Home = () => {
           ) : (
             <div className="relative group">
               {/* Navigation Buttons - Hidden on Mobile, shown on hover on Desktop */}
-              <button 
+              <button
                 onClick={() => scroll('left')}
                 className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-6 z-20 w-12 h-12 rounded-full glass border border-white/20 shadow-xl hidden md:flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 disabled:opacity-0 ${!canScrollLeft ? 'pointer-events-none' : ''}`}
                 aria-label="Previous news"
               >
                 <ChevronLeft size={24} />
               </button>
-              
-              <button 
+
+              <button
                 onClick={() => scroll('right')}
                 className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-6 z-20 w-12 h-12 rounded-full glass border border-white/20 shadow-xl hidden md:flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 disabled:opacity-0 ${!canScrollRight ? 'pointer-events-none' : ''}`}
                 aria-label="Next news"
@@ -229,7 +229,7 @@ const Home = () => {
                 <ChevronRight size={24} />
               </button>
 
-              <div 
+              <div
                 ref={scrollRef}
                 onScroll={checkScroll}
                 className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-6 px-1"
@@ -254,9 +254,9 @@ const Home = () => {
                       <div className="p-6 flex flex-col flex-grow">
                         <span className="text-[10px] font-black text-primary-600 uppercase mb-2 block tracking-widest">{item.category}</span>
                         <h3 className="text-xl font-bold mb-3 leading-tight line-clamp-2 text-slate-900 dark:text-white group-hover/card:text-primary-600 transition-colors">
-                          {i18n.language === 'ar' && item.title_ar ? item.title_ar : 
-                           i18n.language === 'en' && item.title_en ? item.title_en : 
-                           item.title}
+                          {i18n.language === 'ar' && item.title_ar ? item.title_ar :
+                            i18n.language === 'en' && item.title_en ? item.title_en :
+                              item.title}
                         </h3>
                         <p className="text-slate-700 dark:text-slate-400 text-sm mb-4 line-clamp-2 leading-relaxed">
                           {item.content ? item.content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ') : ''}
@@ -299,17 +299,17 @@ const Home = () => {
                       {group.category}
                     </h3>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 gap-3">
                     {group.links.map((link, i) => {
                       const isExternal = link.url.startsWith('http');
                       const LinkComponent = isExternal ? 'a' : Link;
-                      const linkProps = isExternal 
+                      const linkProps = isExternal
                         ? { href: link.url, target: "_blank", rel: "noopener noreferrer" }
                         : { to: link.url };
 
                       return (
-                        <LinkComponent 
+                        <LinkComponent
                           key={i}
                           {...linkProps}
                           className="group flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300"
@@ -343,7 +343,7 @@ const Home = () => {
       {/* CTA */}
       <section className="pb-20 bg-slate-50 dark:bg-slate-950">
         <div className="container-custom">
-          <div className="bg-primary-600 rounded-[2.5rem] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl">
+          <div className="bg-primary-600 bg-arabic-pattern rounded-[2.5rem] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl">
             <div className="relative">
               <h2 className="text-3xl md:text-5xl font-black mb-6">{t('cta_title')}</h2>
               <p className="text-lg text-primary-50 mb-10 max-w-2xl mx-auto">
@@ -354,10 +354,6 @@ const Home = () => {
                   {t('cta_button')}
                 </Button>
               </a>
-            </div>
-            {/* Background Decorative Icon */}
-            <div className="absolute -bottom-10 -right-10 opacity-10">
-              <Globe size={300} />
             </div>
           </div>
         </div>
