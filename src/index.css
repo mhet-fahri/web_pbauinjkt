@@ -13,7 +13,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Lora', serif;
   }
 
   body {
@@ -54,10 +54,20 @@
     line-height: 1.5;
   }
 
-  html[lang="ar"] p,
-  html[lang="ar"] .font-arabic {
-    font-family: 'Scheherazade New', serif;
-    line-height: 1.8;
+  /* Global Arabic Font Classes - Mengunci Font & Mematikan Jarak Huruf */
+  .font-arabic, [lang="ar"] {
+    font-family: 'Scheherazade New', serif !important;
+    letter-spacing: 0 !important; /* Mematikan jarak antar huruf agar tidak putus */
+  }
+
+  .font-kufi, [lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4, [lang="ar"] h5, [lang="ar"] h6, [lang="ar"] button {
+    font-family: 'Noto Kufi Arabic', sans-serif !important;
+    line-height: 1.6;
+    letter-spacing: 0 !important; /* Mematikan jarak antar huruf agar tidak putus */
+  }
+
+  html[lang="ar"] body {
+    font-size: 1.125rem;
   }
 
   .dark body {
@@ -98,7 +108,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    background-image: linear-gradient(to bottom right, #0284c7, #38bdf8);
+    background-image: linear-gradient(to bottom right, #002147, #3a5986);
   }
 
   .section-padding {

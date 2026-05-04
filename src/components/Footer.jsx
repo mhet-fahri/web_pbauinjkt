@@ -54,10 +54,15 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-slate-950 text-slate-400 pt-24 pb-12 overflow-hidden relative">
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 via-sky-500 to-primary-600" />
+    <footer className="bg-primary-900 text-white relative overflow-hidden border-t border-primary-800">
+      {/* Decorative Arabic Pattern for Footer */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none overflow-hidden">
+        <div className="text-[20rem] font-serif absolute -bottom-20 -right-20 rotate-[-15deg]">
+          اللغة
+        </div>
+      </div>
       
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-10 pt-24 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
           <div className="lg:col-span-4">
             <Link to="/" className="flex items-center gap-3 mb-8 group">
