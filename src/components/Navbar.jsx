@@ -125,7 +125,7 @@ const Navbar = () => {
       <div className="container-custom flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
           <div className="w-12 h-12 flex items-center justify-center">
-            <img src={logoUin} alt="Logo UIN Syarif Hidayatullah Jakarta" width={48} height={48} className="w-full h-full object-contain" />
+            <img src={logoUin} alt="Logo UIN Syarif Hidayatullah Jakarta" width={48} height={48} className="w-full h-full object-contain" fetchPriority="high" />
           </div>
           <div className="flex flex-col leading-[1.1]">
             <span className={clsx(
@@ -264,9 +264,11 @@ const Navbar = () => {
             <div className="container-custom relative">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
               <input 
+                id="mobile-search-input"
                 type="text" 
                 autoFocus
                 placeholder={t('site.search_placeholder')} 
+                aria-label={t('site.search_placeholder')}
                 className="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-800 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 transition-all dark:text-white"
               />
             </div>

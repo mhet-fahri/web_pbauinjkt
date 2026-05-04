@@ -6,7 +6,8 @@ import Footer from './components/Footer';
 import { Loader2 } from 'lucide-react';
 
 // Lazy load components
-const Home = lazy(() => import('./pages/Home'));
+import Home from './pages/Home';
+// const Home = lazy(() => import('./pages/Home'));
 const Dosen = lazy(() => import('./pages/Dosen'));
 const Mahasiswa = lazy(() => import('./pages/Mahasiswa'));
 const Profil = lazy(() => import('./pages/Profil'));
