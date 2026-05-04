@@ -214,13 +214,21 @@ const Navbar = () => {
           {/* Scrolled Info */}
           {scrolled && (
             <div className="flex items-center gap-4 ml-2 pl-4 border-l border-slate-200 dark:border-slate-800">
-              <button 
-                onClick={() => setShowSearch(!showSearch)} 
-                aria-label="Cari di website"
-                className="text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition-colors"
-              >
-                <Search size={18} />
-              </button>
+              <div className="hidden lg:flex items-center gap-2">
+                <button 
+                  id="desktop-search-toggle"
+                  onClick={() => setShowSearch(!showSearch)}
+                  className={clsx(
+                    "p-2.5 rounded-xl transition-all duration-300",
+                    scrolled 
+                      ? "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-indigo-600 hover:text-white" 
+                      : "bg-white/10 text-slate-700 dark:text-white hover:bg-white hover:text-indigo-600"
+                  )}
+                  aria-label={showSearch ? "Tutup pencarian" : "Buka pencarian"}
+                >
+                  <Search size={20} />
+                </button>
+              </div>
               <div className="flex gap-2">
                 {languages.map((lang) => (
                   <button 

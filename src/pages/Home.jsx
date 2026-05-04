@@ -138,7 +138,6 @@ const Home = () => {
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-slate-50 dark:bg-slate-950 bg-arabic-pattern">
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary-100/50 dark:bg-primary-900/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-sky-100/50 dark:bg-sky-900/10 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2" />
