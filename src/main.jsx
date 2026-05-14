@@ -5,9 +5,14 @@ import './index.css'
 import './i18n/config'
 import App from './App.jsx'
 
+const getBasename = () => {
+  const match = window.location.pathname.match(/^\/(ar|en)(\/|$)/);
+  return match ? `/${match[1]}` : '/';
+};
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={getBasename()}>
       <App />
     </BrowserRouter>
   </StrictMode>,

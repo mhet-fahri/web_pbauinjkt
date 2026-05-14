@@ -27,8 +27,22 @@ const Navbar = () => {
   const location = useLocation();
 
   const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-    setIsOpen(false);
+    const currentPath = window.location.pathname;
+    const pathWithoutLang = currentPath.replace(/^\/(ar|en)(\/|$)/, '/');
+    const cleanPath = pathWithoutLang.startsWith('/') ? pathWithoutLang : '/' + pathWithoutLang;
+    
+    let newPath;
+    if (lng === 'id') {
+      newPath = cleanPath;
+    } else {
+      newPath = `/${lng}${cleanPath === '/' ? '' : cleanPath}`;
+    }
+    
+    // Maintain query strings
+    newPath += window.location.search;
+    
+    localStorage.setItem('i18nextLng', lng);
+    window.location.href = newPath;
   };
 
   const navLinks = [

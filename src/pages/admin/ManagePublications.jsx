@@ -14,9 +14,12 @@ import {
   Loader2,
   FileText,
   Calendar,
-  Layers
+  Layers,
+  Upload,
+  Download
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
+import * as XLSX from 'xlsx';
 
 const ManagePublications = () => {
   const [publications, setPublications] = useState([]);
@@ -140,6 +143,54 @@ const ManagePublications = () => {
     setFormData({ title: '', authors: [], year: '', category: 'Publikasi', type: '', journal_name: '', doi: '', link: '', description: '' });
   };
 
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setLoading(true);
+    const reader = new FileReader();
+    reader.onload = async (evt) => {
+      try {
+        const data = new Uint8Array(evt.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+        const formattedData = jsonData.map(row => ({
+          title: row['Judul'] || row['judul'] || '',
+          category: row['Kategori'] || row['kategori'] || 'Publikasi',
+          year: (row['Tahun'] || row['tahun'] || '').toString(),
+          authors: (row['Tim Penulis/Peneliti'] || row['Penulis'] || row['penulis'] || '').split(',').map(a => a.trim()).filter(a => a),
+          type: row['Jenis'] || row['jenis'] || '',
+          journal_name: row['Nama Jurnal/Penerbit'] || row['Nama Jurnal'] || row['Jurnal'] || row['Penerbit'] || '',
+          link: row['Link Artikel'] || row['Link'] || row['link'] || ''
+        }));
+
+        const validData = formattedData.filter(d => d.title);
+
+        if (validData.length > 0) {
+          const { error } = await supabase
+            .from('publications_data')
+            .insert(validData);
+          
+          if (error) throw error;
+          alert(`Berhasil menyimpan ${validData.length} data publikasi!`);
+          fetchPublications();
+        } else {
+          alert('Tidak ada data valid yang ditemukan dalam file Excel.');
+        }
+
+      } catch (error) {
+        alert('Error parsing Excel: ' + error.message);
+      } finally {
+        setLoading(false);
+        e.target.value = null; // reset input
+      }
+    };
+    reader.readAsArrayBuffer(file);
+  };
+
   const filteredPubs = publications.filter(p => 
     p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     p.authors.some(a => a.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -152,13 +203,34 @@ const ManagePublications = () => {
           <h1 className="text-3xl font-black text-slate-900 dark:text-white mb-2">Penelitian & Publikasi</h1>
           <p className="text-slate-500 dark:text-slate-400">Kelola karya ilmiah dan hibah penelitian dosen</p>
         </div>
-        <button
-          onClick={() => { resetForm(); setIsModalOpen(true); }}
-          className="flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-600/20"
-        >
-          <Plus size={20} />
-          Tambah Karya
-        </button>
+        <div className="flex flex-wrap items-center gap-3">
+          <a
+            href="/template_publikasi.xlsx"
+            download
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 rounded-2xl font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all cursor-pointer"
+            title="Download Template Excel"
+          >
+            <Download size={20} />
+            Template
+          </a>
+          <label className="flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 text-white rounded-2xl font-bold hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-600/20 cursor-pointer">
+            <Upload size={20} />
+            Upload Excel
+            <input 
+              type="file" 
+              accept=".xlsx, .xls" 
+              onChange={handleFileUpload} 
+              className="hidden" 
+            />
+          </label>
+          <button
+            onClick={() => { resetForm(); setIsModalOpen(true); }}
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-600/20"
+          >
+            <Plus size={20} />
+            Tambah Karya
+          </button>
+        </div>
       </div>
 
       <div className="relative mb-8">

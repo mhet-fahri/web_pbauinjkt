@@ -3,11 +3,15 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 
+const langMatch = typeof window !== 'undefined' ? window.location.pathname.match(/^\/(ar|en)(\/|$)/) : null;
+const initialLang = langMatch ? langMatch[1] : 'id';
+
 i18n
   .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    lng: initialLang, // Force language based on path
     fallbackLng: 'id',
     ns: ['common', 'home', 'news', 'academic', 'student', 'profile'],
     defaultNS: 'common',
