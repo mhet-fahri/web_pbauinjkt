@@ -6,6 +6,7 @@ import Card from '../components/Card';
 import { lecturers as demoLecturers } from '../data/lecturers';
 import { supabase } from '../lib/supabase';
 import { getDirectImageUrl } from '../utils/imageUtils';
+import SEO from '../components/SEO';
 
 const Dosen = () => {
   const { t } = useTranslation(['academic', 'common']);
@@ -83,6 +84,11 @@ const Dosen = () => {
 
   return (
     <div className="pt-32 pb-20 bg-slate-50/30 dark:bg-transparent min-h-screen">
+      <SEO 
+        title={t('lecturers.title')} 
+        description={t('lecturers.subtitle')}
+        url="/dosen"
+      />
       <div className="container-custom">
         <div className="mb-20 text-center">
           <m.div

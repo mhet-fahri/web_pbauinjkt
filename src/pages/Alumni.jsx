@@ -12,11 +12,17 @@ import {
   Sparkles,
   Globe
 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Alumni = () => {
   const { t } = useTranslation(['student', 'common']);
   return (
     <div className="min-h-screen pt-32 pb-20 bg-white dark:bg-slate-950 overflow-hidden relative">
+      <SEO 
+        title={t('alumni.title')} 
+        description={t('alumni.subtitle')}
+        url="/alumni"
+      />
       {/* Decorative BG */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-emerald-500/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
       

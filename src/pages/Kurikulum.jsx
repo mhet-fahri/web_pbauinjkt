@@ -15,12 +15,18 @@ import {
   Search
 } from 'lucide-react';
 import Card from '../components/Card';
+import SEO from '../components/SEO';
 
 const Kurikulum = () => {
   const { t } = useTranslation(['academic', 'common']);
 
   return (
     <div className="min-h-screen pt-32 pb-20 bg-white dark:bg-slate-950 overflow-hidden">
+      <SEO 
+        title={t('curriculum.title')} 
+        description={t('curriculum.subtitle')}
+        url="/kurikulum"
+      />
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary-500/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-indigo-500/5 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2" />

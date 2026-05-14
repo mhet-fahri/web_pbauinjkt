@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { researchData as demoResearch } from '../data/research';
 import { supabase } from '../lib/supabase';
+import SEO from '../components/SEO';
 
 const Penelitian = () => {
   const { t } = useTranslation(['academic', 'common']);
@@ -66,6 +67,11 @@ const Penelitian = () => {
 
   return (
     <div className="min-h-screen pt-32 pb-20 bg-slate-50 dark:bg-slate-950">
+      <SEO 
+        title={t('penelitian.title')} 
+        description={t('penelitian.subtitle')}
+        url="/penelitian"
+      />
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <m.h1

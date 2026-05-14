@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import Card from '../components/Card';
 import { supabase } from '../lib/supabase';
 import { getDirectImageUrl } from '../utils/imageUtils';
+import SEO from '../components/SEO';
 
 const demoNews = [
   {
@@ -96,6 +97,11 @@ const Berita = () => {
 
   return (
     <div className="min-h-screen pt-32 pb-20 bg-slate-50 dark:bg-slate-950">
+      <SEO 
+        title={t('title')} 
+        description={t('subtitle')}
+        url="/berita"
+      />
       <div className="container-custom">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-16">

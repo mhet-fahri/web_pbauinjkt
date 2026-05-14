@@ -13,11 +13,17 @@ import {
   ShieldCheck,
   Zap
 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Mahasiswa = () => {
   const { t } = useTranslation(['student', 'common']);
   return (
     <div className="min-h-screen pt-32 pb-20 bg-white dark:bg-slate-950 overflow-hidden relative">
+      <SEO 
+        title={t('mahasiswa.title')} 
+        description={t('mahasiswa.subtitle')}
+        url="/mahasiswa"
+      />
       {/* Decorative BG */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-500/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
       

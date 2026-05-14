@@ -2,6 +2,7 @@ import React from 'react';
 import { m } from 'framer-motion';
 import { CheckCircle2, Target, Award, Rocket, Briefcase, Lightbulb } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const Tujuan = () => {
   const { t } = useTranslation(['profile', 'common']);
@@ -35,6 +36,11 @@ const Tujuan = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-slate-950">
+      <SEO 
+        title={t('tujuan.title')} 
+        description={t('tujuan.subtitle')}
+        url="/profil/tujuan"
+      />
       {/* Header Section */}
       <section className="pt-40 pb-16 bg-primary-600 relative overflow-hidden text-white">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-white/10 skew-x-12 translate-x-1/2" />

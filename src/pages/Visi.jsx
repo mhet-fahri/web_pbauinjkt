@@ -2,6 +2,7 @@ import React from 'react';
 import { m } from 'framer-motion';
 import { Target, Zap, Layers, Microscope, Globe2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const Visi = () => {
   const { t } = useTranslation(['profile', 'common']);
@@ -35,6 +36,11 @@ const Visi = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950 overflow-hidden">
+      <SEO 
+        title={t('visi.title')} 
+        description={t('visi.main_visi')}
+        url="/profil/visi"
+      />
       {/* Decorative Background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-[20%] right-[-10%] w-[40%] h-[40%] bg-primary-500/5 blur-[120px] rounded-full" />

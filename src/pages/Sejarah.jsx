@@ -2,6 +2,7 @@ import React from 'react';
 import { m } from 'framer-motion';
 import { Calendar, History, Award, BookOpen, GraduationCap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const Sejarah = () => {
   const { t } = useTranslation(['profile', 'common']);
@@ -35,6 +36,11 @@ const Sejarah = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-slate-950">
+      <SEO 
+        title={t('sejarah.title')} 
+        description={t('sejarah.desc')}
+        url="/profil/sejarah"
+      />
       {/* Hero Section - More Compact */}
       <section className="relative pt-32 pb-12 overflow-hidden bg-slate-50 dark:bg-slate-900/50">
         <div className="absolute top-0 left-0 w-full h-full">

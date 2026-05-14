@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { m } from 'framer-motion';
 import { Award, ShieldCheck, Globe, Download, FileText, ExternalLink, CheckCircle2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Akreditasi = () => {
   const { t } = useTranslation('academic');
@@ -21,6 +22,11 @@ const Akreditasi = () => {
 
   return (
     <div className="min-h-screen pt-32 pb-20 bg-slate-50 dark:bg-slate-950">
+      <SEO 
+        title={t('accreditation.title')} 
+        description={t('accreditation.subtitle')}
+        url="/profil/akreditasi"
+      />
       <div className="container-custom">
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto text-center mb-20">
