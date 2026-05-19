@@ -10,7 +10,8 @@ import {
   ChevronRight,
   GraduationCap,
   Globe,
-  Calendar
+  Calendar,
+  Megaphone
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 
@@ -32,6 +33,7 @@ const Sidebar = () => {
     { label: 'Data Alumni', icon: Globe, path: '/admin/alumni' },
     { label: 'Publikasi', icon: FileText, path: '/admin/publications' },
     { label: 'Jadwal Ujian', icon: Calendar, path: '/admin/exams' },
+    { label: 'Running Text', icon: Megaphone, path: '/admin/running-text' },
   ];
 
   return (

@@ -86,6 +86,7 @@ const Home = () => {
   ];
 
   const [dbNews, setDbNews] = useState([]);
+  const [announcements, setAnnouncements] = useState([]);
   const [loading, setLoading] = useState(true);
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -109,6 +110,17 @@ const Home = () => {
 
   const displayNews = dbNews.length > 0 ? dbNews : demoNews;
 
+  const getAnnouncementText = () => {
+    if (announcements.length === 0) {
+      return t('announcement');
+    }
+    return announcements.map(ann => {
+      if (i18n.language === 'ar' && ann.title_ar) return ann.title_ar;
+      if (i18n.language === 'en' && ann.title_en) return ann.title_en;
+      return ann.title;
+    }).join('   •   ');
+  };
+
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -128,7 +140,35 @@ const Home = () => {
       }
     };
 
+    const fetchAnnouncements = async () => {
+      try {
+        if (!supabase) return;
+        const { data, error } = await supabase
+          .from('posts')
+          .select('title, title_ar, title_en, content')
+          .eq('category', 'Pengumuman')
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        
+        const activeAnnouncements = (data || []).filter(ann => {
+           if (ann.content && !isNaN(Date.parse(ann.content))) {
+             const endDate = new Date(ann.content);
+             endDate.setHours(23, 59, 59, 999);
+             return new Date() <= endDate;
+           }
+           // If no valid date is set, keep it visible
+           return true;
+        });
+
+        setAnnouncements(activeAnnouncements);
+      } catch (err) {
+        console.error('Error fetching announcements:', err);
+      }
+    };
+
     fetchNews();
+    fetchAnnouncements();
   }, []);
 
   useEffect(() => {
@@ -196,6 +236,28 @@ const Home = () => {
                   height={500}
                 />
               </m.div>
+            </div>
+          </div>
+
+          {/* Full-width Running Text Announcement Banner */}
+          <div className="mt-12 relative flex items-center overflow-hidden h-11 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/80 rounded-2xl shadow-lg pause-on-hover z-20">
+            <div className="absolute start-0 top-0 bottom-0 bg-primary-600 text-white font-black text-xs px-4 flex items-center gap-2 rounded-s-2xl z-30 shadow-[4px_0_10px_rgba(0,0,0,0.15)] rtl:shadow-[-4px_0_10px_rgba(0,0,0,0.15)] select-none">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-200 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+              <span className="tracking-widest font-bold font-kufi">{t('common:info')}</span>
+            </div>
+            
+            <div className="w-full flex items-center overflow-hidden ps-24">
+              <div className="flex-shrink-0 animate-marquee whitespace-nowrap text-sm font-semibold text-slate-700 dark:text-slate-300 py-1 flex items-center">
+                <span className="mx-4">{getAnnouncementText()}</span>
+                <span className="mx-4 text-primary-500 font-extrabold">•</span>
+              </div>
+              <div className="flex-shrink-0 animate-marquee whitespace-nowrap text-sm font-semibold text-slate-700 dark:text-slate-300 py-1 flex items-center">
+                <span className="mx-4">{getAnnouncementText()}</span>
+                <span className="mx-4 text-primary-500 font-extrabold">•</span>
+              </div>
             </div>
           </div>
         </div>
