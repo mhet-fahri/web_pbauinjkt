@@ -76,6 +76,7 @@ const Navbar = () => {
       subLinks: [
         { name: t('nav.student_data'), path: '/mahasiswa/data' },
         { name: t('nav.student_services'), path: '/mahasiswa/layanan' },
+        { name: 'Sistem Proposal', path: '/layanan/proposal' },
       ]
     },
     { 

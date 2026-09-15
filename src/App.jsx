@@ -30,6 +30,7 @@ const Akreditasi = lazy(() => import('./pages/Akreditasi'));
 const LMS = lazy(() => import('./pages/Layanan/LMS'));
 const HMPS = lazy(() => import('./pages/Mahasiswa/HMPS'));
 const KolomAlumni = lazy(() => import('./pages/Alumni/KolomAlumni'));
+const Proposal = lazy(() => import('./pages/Layanan/Proposal'));
 
 // Admin Pages
 const Login = lazy(() => import('./pages/admin/Login'));
@@ -105,6 +106,7 @@ function App() {
               <Route path="/mahasiswa/layanan" element={<LayananAkademik />} />
               <Route path="/mahasiswa/hmps" element={<HMPS />} />
               <Route path="/layanan/lms" element={<LMS />} />
+              <Route path="/layanan/proposal" element={<Proposal />} />
               
               {/* Alumni Group */}
               <Route path="/alumni" element={<Alumni />} />
