@@ -69,6 +69,11 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Scroll otomatis ke bagian paling atas setiap kali berpindah halaman/rute
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   if (!ready && !isTimedOut) return <PageLoader />;
 
   return (

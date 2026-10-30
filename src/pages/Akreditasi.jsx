@@ -166,7 +166,7 @@ const Akreditasi = () => {
             
             <div className="flex flex-wrap gap-4">
               <a 
-                href="#" 
+                href="https://drive.google.com/drive/folders/1PQfxERsNhZJLFlMhJhgQT-sA_4RU3E6w?usp=sharing" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4 p-4 pr-6 rounded-3xl bg-slate-50 dark:bg-slate-800/50 hover:bg-primary-600 dark:hover:bg-primary-600 hover:text-white border border-slate-100 dark:border-slate-800 transition-all duration-300"
@@ -184,7 +184,7 @@ const Akreditasi = () => {
               </a>
 
               <a 
-                href="#" 
+                href="https://drive.google.com/drive/folders/1a9sroA0bmPwWDX6B8kBiUaQQpvoUBLdh?usp=sharing" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4 p-4 pr-6 rounded-3xl bg-slate-50 dark:bg-slate-800/50 hover:bg-sky-600 dark:hover:bg-sky-600 hover:text-white border border-slate-100 dark:border-slate-800 transition-all duration-300"

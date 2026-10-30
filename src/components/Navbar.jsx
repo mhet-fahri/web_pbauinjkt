@@ -56,6 +56,7 @@ const Navbar = () => {
         { name: t('nav.profile_vision'), path: '/profil/visi' },
         { name: t('nav.profile_goals'), path: '/profil/tujuan' },
         { name: t('nav.profile_graduates'), path: '/profil/lulusan' },
+        { name: t('nav.profile_accreditation'), path: '/profil/akreditasi' },
       ]
     },
     { 

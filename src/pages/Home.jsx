@@ -55,7 +55,7 @@ const Home = () => {
     {
       category: t('quick_links.documents'),
       links: [
-        { name: t('quick_links.accreditation'), url: "#" },
+        { name: t('quick_links.accreditation'), url: "/profil/akreditasi" },
         { name: t('quick_links.curriculum_doc'), url: "#" },
         { name: t('quick_links.academic_guidelines'), url: "#" },
         { name: t('quick_links.writing_guidelines'), url: "#" },
