@@ -17,7 +17,8 @@ import {
   Upload,
   Phone,
   ArrowUp,
-  ArrowDown
+  ArrowDown,
+  GripVertical
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { getDirectImageUrl } from '../../utils/imageUtils';
@@ -257,6 +258,67 @@ const ManageLecturers = () => {
     }
   };
 
+  // Drag & Drop State
+  const [draggedIndex, setDraggedIndex] = useState(null);
+  const [dragOverIndex, setDragOverIndex] = useState(null);
+
+  const handleDragStart = (e, index) => {
+    setDraggedIndex(index);
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', index.toString());
+  };
+
+  const handleDragOver = (e, index) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    if (dragOverIndex !== index) {
+      setDragOverIndex(index);
+    }
+  };
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null);
+    setDragOverIndex(null);
+  };
+
+  const handleDrop = async (e, dropIndex) => {
+    e.preventDefault();
+    if (draggedIndex === null || draggedIndex === dropIndex) {
+      setDraggedIndex(null);
+      setDragOverIndex(null);
+      return;
+    }
+
+    // Susun ulang array berdasarkan posisi drop
+    const updated = [...lecturers];
+    const [movedItem] = updated.splice(draggedIndex, 1);
+    updated.splice(dropIndex, 0, movedItem);
+
+    // Update order_index baru secara berurutan 1, 2, 3...
+    const reordered = updated.map((item, i) => ({
+      ...item,
+      order_index: i + 1
+    }));
+
+    setLecturers(reordered);
+    setDraggedIndex(null);
+    setDragOverIndex(null);
+
+    try {
+      // Simpan urutan baru ke Supabase
+      const updates = reordered.map(item => 
+        supabase
+          .from('lecturers')
+          .update({ order_index: item.order_index })
+          .eq('id', item.id)
+      );
+      await Promise.all(updates);
+    } catch (err) {
+      console.error('Gagal menyimpan hasil drag & drop:', err);
+      fetchLecturers();
+    }
+  };
+
   const filteredLecturers = lecturers.filter(l => 
     l.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     l.nip.toLowerCase().includes(searchTerm.toLowerCase())
@@ -320,80 +382,107 @@ const ManageLecturers = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredLecturers.map((lecturer, idx) => (
-            <m.div
-              layout
-              key={lecturer.id}
-              className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm hover:shadow-xl transition-all group relative"
-            >
-              <div className="flex items-start justify-between mb-6">
-                <div className="relative">
-                  <div className="w-20 h-20 rounded-2xl bg-slate-100 dark:bg-slate-800 overflow-hidden flex items-center justify-center">
-                    {lecturer.image_url ? (
-                      <img src={getDirectImageUrl(lecturer.image_url)} alt="" className="w-full h-full object-cover" />
-                    ) : (
-                      <User size={32} className="text-slate-300" />
+          {filteredLecturers.map((lecturer, idx) => {
+            const isDragging = draggedIndex === idx;
+            const isOver = dragOverIndex === idx && draggedIndex !== idx;
+
+            return (
+              <m.div
+                layout
+                key={lecturer.id}
+                draggable={!searchTerm}
+                onDragStart={(e) => handleDragStart(e, idx)}
+                onDragOver={(e) => handleDragOver(e, idx)}
+                onDragEnd={handleDragEnd}
+                onDrop={(e) => handleDrop(e, idx)}
+                className={`bg-white dark:bg-slate-900 rounded-2xl border p-8 shadow-sm transition-all group relative ${
+                  isDragging
+                    ? 'opacity-40 scale-95 border-dashed border-blue-500 shadow-2xl ring-2 ring-blue-400'
+                    : isOver
+                    ? 'border-blue-500 ring-2 ring-blue-500/30 scale-[1.02] bg-blue-50/20 dark:bg-blue-950/20'
+                    : 'border-slate-200 dark:border-slate-800 hover:shadow-xl'
+                } ${!searchTerm ? 'cursor-grab active:cursor-grabbing' : ''}`}
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    {/* Handle Drag Icon */}
+                    {!searchTerm && (
+                      <div 
+                        title="Tahan dan geser untuk memindahkan posisi" 
+                        className="text-slate-300 group-hover:text-slate-400 dark:text-slate-700 dark:group-hover:text-slate-500 transition-colors cursor-grab active:cursor-grabbing"
+                      >
+                        <GripVertical size={20} />
+                      </div>
                     )}
+                    <div className="relative">
+                      <div className="w-20 h-20 rounded-2xl bg-slate-100 dark:bg-slate-800 overflow-hidden flex items-center justify-center">
+                        {lecturer.image_url ? (
+                          <img src={getDirectImageUrl(lecturer.image_url)} alt="" className="w-full h-full object-cover pointer-events-none" />
+                        ) : (
+                          <User size={32} className="text-slate-300" />
+                        )}
+                      </div>
+                      {/* Badge Nomor Urut */}
+                      <span className="absolute -top-2 -left-2 w-7 h-7 bg-blue-600 text-white rounded-xl text-xs font-black flex items-center justify-center shadow-md">
+                        #{idx + 1}
+                      </span>
+                    </div>
                   </div>
-                  {/* Badge Nomor Urut */}
-                  <span className="absolute -top-2 -left-2 w-7 h-7 bg-blue-600 text-white rounded-xl text-xs font-black flex items-center justify-center shadow-md">
-                    #{idx + 1}
-                  </span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  {/* Tombol Geser Posisi Naik / Turun */}
-                  <div className="flex bg-slate-100 dark:bg-slate-800 rounded-xl p-1 gap-0.5 mr-1">
+                  <div className="flex items-center gap-1.5">
+                    {/* Tombol Geser Posisi Naik / Turun */}
+                    <div className="flex bg-slate-100 dark:bg-slate-800 rounded-xl p-1 gap-0.5 mr-1">
+                      <button
+                        type="button"
+                        disabled={idx === 0}
+                        onClick={() => handleMoveOrder(idx, 'up')}
+                        title="Geser Tampil Duluan"
+                        className="p-1.5 rounded-lg text-slate-500 hover:text-blue-600 hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:hover:bg-transparent transition-all"
+                      >
+                        <ArrowUp size={16} />
+                      </button>
+                      <button
+                        type="button"
+                        disabled={idx === filteredLecturers.length - 1}
+                        onClick={() => handleMoveOrder(idx, 'down')}
+                        title="Geser Tampil Belakangan"
+                        className="p-1.5 rounded-lg text-slate-500 hover:text-blue-600 hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:hover:bg-transparent transition-all"
+                      >
+                        <ArrowDown size={16} />
+                      </button>
+                    </div>
                     <button
-                      type="button"
-                      disabled={idx === 0}
-                      onClick={() => handleMoveOrder(idx, 'up')}
-                      title="Geser Tampil Duluan"
-                      className="p-1.5 rounded-lg text-slate-500 hover:text-blue-600 hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:hover:bg-transparent transition-all"
+                      onClick={() => openEdit(lecturer)}
+                      title="Edit Profil"
+                      className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-all"
                     >
-                      <ArrowUp size={16} />
+                      <Edit2 size={16} />
                     </button>
                     <button
-                      type="button"
-                      disabled={idx === filteredLecturers.length - 1}
-                      onClick={() => handleMoveOrder(idx, 'down')}
-                      title="Geser Tampil Belakangan"
-                      className="p-1.5 rounded-lg text-slate-500 hover:text-blue-600 hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:hover:bg-transparent transition-all"
+                      onClick={() => handleDelete(lecturer.id)}
+                      title="Hapus"
+                      className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all"
                     >
-                      <ArrowDown size={16} />
+                      <Trash2 size={16} />
                     </button>
                   </div>
-                  <button
-                    onClick={() => openEdit(lecturer)}
-                    title="Edit Profil"
-                    className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-all"
-                  >
-                    <Edit2 size={16} />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(lecturer.id)}
-                    title="Hapus"
-                    className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all"
-                  >
-                    <Trash2 size={16} />
-                  </button>
                 </div>
-              </div>
 
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 leading-tight">{lecturer.name}</h3>
-              <p className="text-blue-600 text-sm font-bold mb-6">{lecturer.position}</p>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 leading-tight">{lecturer.name}</h3>
+                <p className="text-blue-600 text-sm font-bold mb-6">{lecturer.position}</p>
 
-              <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800">
-                <div className="flex items-center gap-3 text-xs text-slate-500">
-                  <Hash size={14} />
-                  <span className="font-bold tracking-wider">{lecturer.nip || 'NIP Kosong'}</span>
+                <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center gap-3 text-xs text-slate-500">
+                    <Hash size={14} />
+                    <span className="font-bold tracking-wider">{lecturer.nip || 'NIP Kosong'}</span>
+                  </div>
+                  <div className="flex items-start gap-3 text-xs text-slate-500 leading-relaxed">
+                    <Briefcase size={14} className="shrink-0 mt-0.5" />
+                    <span>{lecturer.expertise}</span>
+                  </div>
                 </div>
-                <div className="flex items-start gap-3 text-xs text-slate-500 leading-relaxed">
-                  <Briefcase size={14} className="shrink-0 mt-0.5" />
-                  <span>{lecturer.expertise}</span>
-                </div>
-              </div>
-            </m.div>
-          ))}
+              </m.div>
+            );
+          })}
         </div>
       )}
 
