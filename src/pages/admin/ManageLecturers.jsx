@@ -15,7 +15,9 @@ import {
   Hash,
   Download,
   Upload,
-  Phone
+  Phone,
+  ArrowUp,
+  ArrowDown
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { getDirectImageUrl } from '../../utils/imageUtils';
@@ -38,7 +40,8 @@ const ManageLecturers = () => {
     expertise: '',
     image_url: '',
     email: '',
-    scholar_link: ''
+    scholar_link: '',
+    order_index: 999
   });
 
   const uploadImage = async (e) => {
@@ -80,6 +83,7 @@ const ManageLecturers = () => {
       const { data, error } = await supabase
         .from('lecturers')
         .select('*')
+        .order('order_index', { ascending: true, nullsLast: true })
         .order('name', { ascending: true });
 
       if (error) throw error;
@@ -197,14 +201,60 @@ const ManageLecturers = () => {
       expertise: lecturer.expertise,
       image_url: lecturer.image_url || '',
       email: lecturer.email || '',
-      scholar_link: lecturer.scholar_link || ''
+      scholar_link: lecturer.scholar_link || '',
+      order_index: lecturer.order_index ?? 999
     });
     setIsModalOpen(true);
   };
 
   const resetForm = () => {
     setEditingLecturer(null);
-    setFormData({ name: '', nip: '', position: '', expertise: '', image_url: '', email: '', scholar_link: '' });
+    setFormData({ 
+      name: '', 
+      nip: '', 
+      position: '', 
+      expertise: '', 
+      image_url: '', 
+      email: '', 
+      scholar_link: '',
+      order_index: (lecturers.length + 1)
+    });
+  };
+
+  // Fungsi memindahkan urutan (Tukar posisi dengan atas/bawah)
+  const handleMoveOrder = async (index, direction) => {
+    const targetIndex = direction === 'up' ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= lecturers.length) return;
+
+    const currentLecturer = lecturers[index];
+    const targetLecturer = lecturers[targetIndex];
+
+    const currentOrder = currentLecturer.order_index ?? (index + 1);
+    const targetOrder = targetLecturer.order_index ?? (targetIndex + 1);
+
+    // Pastikan jika nilainya sama, kita beri nilai berbeda
+    const newCurrentOrder = currentOrder === targetOrder 
+      ? (direction === 'up' ? targetOrder - 1 : targetOrder + 1)
+      : targetOrder;
+    const newTargetOrder = currentOrder;
+
+    // Optimistic UI update
+    const updatedList = [...lecturers];
+    updatedList[index] = { ...currentLecturer, order_index: newCurrentOrder };
+    updatedList[targetIndex] = { ...targetLecturer, order_index: newTargetOrder };
+    updatedList.sort((a, b) => (a.order_index ?? 999) - (b.order_index ?? 999));
+    setLecturers(updatedList);
+
+    try {
+      await Promise.all([
+        supabase.from('lecturers').update({ order_index: newCurrentOrder }).eq('id', currentLecturer.id),
+        supabase.from('lecturers').update({ order_index: newTargetOrder }).eq('id', targetLecturer.id)
+      ]);
+      fetchLecturers();
+    } catch (err) {
+      console.error('Gagal memperbarui urutan:', err);
+      fetchLecturers();
+    }
   };
 
   const filteredLecturers = lecturers.filter(l => 
@@ -270,11 +320,11 @@ const ManageLecturers = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredLecturers.map((lecturer) => (
+          {filteredLecturers.map((lecturer, idx) => (
             <m.div
               layout
               key={lecturer.id}
-              className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm hover:shadow-xl transition-all group"
+              className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm hover:shadow-xl transition-all group relative"
             >
               <div className="flex items-start justify-between mb-6">
                 <div className="relative">
@@ -285,19 +335,46 @@ const ManageLecturers = () => {
                       <User size={32} className="text-slate-300" />
                     )}
                   </div>
+                  {/* Badge Nomor Urut */}
+                  <span className="absolute -top-2 -left-2 w-7 h-7 bg-blue-600 text-white rounded-xl text-xs font-black flex items-center justify-center shadow-md">
+                    #{idx + 1}
+                  </span>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex items-center gap-1.5">
+                  {/* Tombol Geser Posisi Naik / Turun */}
+                  <div className="flex bg-slate-100 dark:bg-slate-800 rounded-xl p-1 gap-0.5 mr-1">
+                    <button
+                      type="button"
+                      disabled={idx === 0}
+                      onClick={() => handleMoveOrder(idx, 'up')}
+                      title="Geser Tampil Duluan"
+                      className="p-1.5 rounded-lg text-slate-500 hover:text-blue-600 hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:hover:bg-transparent transition-all"
+                    >
+                      <ArrowUp size={16} />
+                    </button>
+                    <button
+                      type="button"
+                      disabled={idx === filteredLecturers.length - 1}
+                      onClick={() => handleMoveOrder(idx, 'down')}
+                      title="Geser Tampil Belakangan"
+                      className="p-1.5 rounded-lg text-slate-500 hover:text-blue-600 hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:hover:bg-transparent transition-all"
+                    >
+                      <ArrowDown size={16} />
+                    </button>
+                  </div>
                   <button
                     onClick={() => openEdit(lecturer)}
+                    title="Edit Profil"
                     className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-all"
                   >
-                    <Edit2 size={18} />
+                    <Edit2 size={16} />
                   </button>
                   <button
                     onClick={() => handleDelete(lecturer.id)}
+                    title="Hapus"
                     className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all"
                   >
-                    <Trash2 size={18} />
+                    <Trash2 size={16} />
                   </button>
                 </div>
               </div>
@@ -332,9 +409,15 @@ const ManageLecturers = () => {
               </div>
 
               <form onSubmit={handleSubmit} className="p-8 space-y-6 max-h-[70vh] overflow-y-auto custom-scrollbar">
-                <div className="space-y-2">
-                  <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Nama Lengkap & Gelar</label>
-                  <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="Contoh: Dr. Ahmad, M.A." className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="space-y-2 md:col-span-2">
+                    <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Nama Lengkap & Gelar</label>
+                    <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="Contoh: Dr. Ahmad, M.A." className="w-full px-5 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all font-bold" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest ml-1">Nomor Urut Tampil</label>
+                    <input type="number" min="1" value={formData.order_index} onChange={(e) => setFormData({...formData, order_index: parseInt(e.target.value) || 1})} placeholder="1" className="w-full px-5 py-3.5 rounded-2xl bg-blue-50/50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all font-black text-blue-700 dark:text-blue-300" />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">

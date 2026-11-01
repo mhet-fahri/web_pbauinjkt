@@ -20,6 +20,7 @@ const Dosen = () => {
         const { data, error } = await supabase
           .from('lecturers')
           .select('*')
+          .order('order_index', { ascending: true, nullsLast: true })
           .order('name', { ascending: true });
         
         if (error) throw error;
@@ -32,38 +33,9 @@ const Dosen = () => {
           specialization: l.expertise,
           email: l.email,
           scholar_link: l.scholar_link,
+          order_index: l.order_index,
           image: l.image_url || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200&h=200"
         }));
-
-        // Sort by specific criteria
-        formatted.sort((a, b) => {
-          const getRank = (lecturer) => {
-            const role = (lecturer.role || '').toLowerCase();
-            const name = (lecturer.name || '').toLowerCase();
-
-            if (role.includes('ketua program studi') || role.includes('kaprodi') || role === 'ketua') return 1;
-            if (role.includes('sekretaris') || role.includes('sekprodi')) return 2;
-            
-            // Pengecualian nama untuk diletakkan sebelum dosen tidak tetap
-            const isRoyaniOrAzki = name.includes('royani') || name.includes('azki');
-            const isTidakTetap = role.includes('tidak tetap') || role.includes('luar biasa');
-
-            if (isTidakTetap) return 6;
-            if (isRoyaniOrAzki) return 5;
-            
-            if (name.includes('dr.')) return 3; // Doktor (selain Royani/Azki)
-            return 4; // Sisanya (Dosen Tetap biasa)
-          };
-
-          const rankA = getRank(a);
-          const rankB = getRank(b);
-
-          if (rankA !== rankB) {
-            return rankA - rankB;
-          }
-          // Jika ranking sama, urutkan sesuai abjad
-          return a.name.localeCompare(b.name);
-        });
 
         setDbLecturers(formatted);
       } catch (err) {
