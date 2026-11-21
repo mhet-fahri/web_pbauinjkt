@@ -227,6 +227,15 @@ const Navbar = () => {
             </div>
           ))}
           
+          {/* Tombol Akses Portal Asesmen untuk Asesor */}
+          <Link
+            to="/portal-asesmen"
+            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-black shadow-md shadow-blue-600/20 transition-all hover:scale-105 shrink-0"
+          >
+            <Award size={14} />
+            <span>Portal Asesmen</span>
+          </Link>
+
           {/* Scrolled Info */}
           {scrolled && (
             <div className="flex items-center gap-4 ml-2 pl-4 border-l border-slate-200 dark:border-slate-800">

@@ -27,6 +27,7 @@ const TracerStudy = lazy(() => import('./pages/TracerStudy'));
 const Berita = lazy(() => import('./pages/Berita'));
 const DetailBerita = lazy(() => import('./pages/DetailBerita'));
 const Akreditasi = lazy(() => import('./pages/Akreditasi'));
+const PortalAsesmen = lazy(() => import('./pages/PortalAsesmen'));
 const LMS = lazy(() => import('./pages/Layanan/LMS'));
 const HMPS = lazy(() => import('./pages/Mahasiswa/HMPS'));
 const KolomAlumni = lazy(() => import('./pages/Alumni/KolomAlumni'));
@@ -35,6 +36,7 @@ const Proposal = lazy(() => import('./pages/Layanan/Proposal'));
 // Admin Pages
 const Login = lazy(() => import('./pages/admin/Login'));
 const Dashboard = lazy(() => import('./pages/admin/Dashboard'));
+const ManageAkreditasi = lazy(() => import('./pages/admin/ManageAkreditasi'));
 const ManageNews = lazy(() => import('./pages/admin/ManageNews'));
 const ManageLecturers = lazy(() => import('./pages/admin/ManageLecturers'));
 const ManageStudents = lazy(() => import('./pages/admin/ManageStudents'));
@@ -62,6 +64,8 @@ function App() {
   const [isTimedOut, setIsTimedOut] = React.useState(false);
   const location = useLocation();
   const isAdminPath = location.pathname.startsWith('/admin');
+  const isPortalPath = location.pathname === '/portal-asesmen' || location.pathname === '/akreditasi-asesmen';
+  const hidePublicNav = isAdminPath || isPortalPath;
 
   // Memberikan toleransi loading selama 2 detik untuk menghindari blank page permanen
   React.useEffect(() => {
@@ -79,7 +83,7 @@ function App() {
   return (
     <LazyMotion features={domAnimation} strict>
       <div className="min-h-screen bg-white dark:bg-slate-950 flex flex-col font-sans">
-        {!isAdminPath && <Navbar />}
+        {!hidePublicNav && <Navbar />}
         <main className="flex-grow">
           <Suspense fallback={<PageLoader />}>
             <Routes>
@@ -87,6 +91,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/berita" element={<Berita />} />
               <Route path="/berita/:id" element={<DetailBerita />} />
+              <Route path="/portal-asesmen" element={<PortalAsesmen />} />
+              <Route path="/akreditasi-asesmen" element={<PortalAsesmen />} />
               
               {/* Profil Group */}
               <Route path="/profil" element={<Profil />} />
@@ -130,6 +136,7 @@ function App() {
                 }
               >
                 <Route path="dashboard" element={<Dashboard />} />
+                <Route path="akreditasi" element={<ManageAkreditasi />} />
                 <Route path="news" element={<ManageNews />} />
                 <Route path="lecturers" element={<ManageLecturers />} />
                 <Route path="students" element={<ManageStudents />} />
@@ -144,7 +151,7 @@ function App() {
             </Routes>
           </Suspense>
         </main>
-        {!isAdminPath && <Footer />}
+        {!hidePublicNav && <Footer />}
       </div>
     </LazyMotion>
   );

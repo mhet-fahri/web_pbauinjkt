@@ -11,7 +11,8 @@ import {
   GraduationCap,
   Globe,
   Calendar,
-  Megaphone
+  Megaphone,
+  ShieldCheck
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 
@@ -27,6 +28,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { label: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard' },
+    { label: 'Bukti Akreditasi', icon: ShieldCheck, path: '/admin/akreditasi' },
     { label: 'Berita & Kegiatan', icon: Newspaper, path: '/admin/news' },
     { label: 'Data Dosen', icon: Users, path: '/admin/lecturers' },
     { label: 'Data Mahasiswa', icon: GraduationCap, path: '/admin/students' },

@@ -144,6 +144,35 @@ const Akreditasi = () => {
           </m.div>
         </m.div>
 
+        {/* Banner Khusus Portal Asesmen Lapangan untuk Asesor */}
+        <m.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16 bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-900 rounded-[2.5rem] p-8 md:p-10 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6"
+        >
+          <div className="space-y-2 max-w-2xl relative z-10">
+            <span className="inline-block px-3 py-1 rounded-full bg-blue-500/30 text-blue-200 border border-blue-400/30 text-xs font-bold uppercase tracking-wider">
+              Khusus Asesor & Tim Penilai
+            </span>
+            <h2 className="text-2xl md:text-3xl font-black">
+              Portal Asesmen Lapangan & Dokumen Bukti
+            </h2>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              Akses khusus untuk tim asesor dalam meninjau Laporan Evaluasi Diri (LED) dan tautan bukti 9 Kriteria Akreditasi Program Studi PBA.
+            </p>
+          </div>
+          <div className="relative z-10 shrink-0">
+            <a
+              href="/portal-asesmen"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white text-blue-700 hover:bg-blue-50 font-black text-sm shadow-xl transition-all hover:scale-105"
+            >
+              <ShieldCheck size={18} />
+              Buka Portal Asesmen →
+            </a>
+          </div>
+        </m.div>
+
         {/* Certificates Section */}
         <m.div
           initial={{ opacity: 0, y: 30 }}
