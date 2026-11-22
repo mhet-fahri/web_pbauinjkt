@@ -29,6 +29,7 @@ import {
 import { getAkreditasiItems, getLedConfig, getDkpsConfig, getRingkasanConfig } from '../services/akreditasiService';
 import { getGoogleDrivePreviewUrl, getGoogleDriveDownloadUrl } from '../utils/driveUtils';
 import SEO from '../components/SEO';
+import logoUin from '../assets/logo-uin.png';
 
 const PortalAsesmen = () => {
   const [items, setItems] = useState([]);
@@ -174,8 +175,8 @@ const PortalAsesmen = () => {
       <header className="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-600/20">
-              <ShieldCheck size={26} />
+            <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 p-1.5 flex items-center justify-center shadow-md border border-slate-200/80 dark:border-slate-700/60 shrink-0">
+              <img src={logoUin} alt="Logo UIN Jakarta" className="w-full h-full object-contain" />
             </div>
             <div>
               <div className="flex items-center gap-2">
