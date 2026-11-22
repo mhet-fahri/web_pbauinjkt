@@ -20,17 +20,23 @@ import {
   ArrowDown,
   Copy,
   Check,
-  FileSpreadsheet
+  FileSpreadsheet,
+  FileCheck2,
+  Upload,
+  Loader2
 } from 'lucide-react';
 import { 
   getAkreditasiItems, 
   updateAkreditasiItem, 
+  getRingkasanConfig,
+  saveRingkasanConfig,
   getLedConfig, 
   saveLedConfig,
   getDkpsConfig,
   saveDkpsConfig,
   resetAkreditasiItemsToDefault 
 } from '../../services/akreditasiService';
+import { supabase } from '../../lib/supabase';
 import { getGoogleDrivePreviewUrl } from '../../utils/driveUtils';
 
 const ManageAkreditasi = () => {
@@ -38,6 +44,16 @@ const ManageAkreditasi = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedKriteria, setSelectedKriteria] = useState('ALL');
+
+  // Ringkasan Eksekutif State
+  const [ringkasanConfig, setRingkasanConfigState] = useState({
+    title: 'Ringkasan Eksekutif LED PBA',
+    subtitle: 'Ikhtisar Eksekutif Laporan Evaluasi Diri Program Studi Pendidikan Bahasa Arab',
+    pdfUrl: ''
+  });
+  const [isEditingRingkasan, setIsEditingRingkasan] = useState(false);
+  const [ringkasanForm, setRingkasanForm] = useState({ ...ringkasanConfig });
+  const [savingRingkasan, setSavingRingkasan] = useState(false);
 
   // LED State
   const [ledConfig, setLedConfigState] = useState({
@@ -52,12 +68,14 @@ const ManageAkreditasi = () => {
   // DKPS State (Dokumen Kinerja Program Studi Excel)
   const [dkpsConfig, setDkpsConfigState] = useState({
     title: 'Dokumen Kinerja Program Studi (DKPS)',
-    subtitle: 'Tabel Data Kuantitatif Kinerja Program Studi PBA (Format Excel Spreadsheet)',
-    excelUrl: ''
+    subtitle: 'Data Kuantitatif Kinerja Program Studi Pendidikan Bahasa Arab (Format Excel Spreadsheet dengan Rumus Baku)',
+    excelUrl: '',
+    fileName: ''
   });
   const [isEditingDkps, setIsEditingDkps] = useState(false);
   const [dkpsForm, setDkpsForm] = useState({ ...dkpsConfig });
   const [savingDkps, setSavingDkps] = useState(false);
+  const [uploadingExcel, setUploadingExcel] = useState(false);
 
   // Edit Bukti Modal State
   const [editingItem, setEditingItem] = useState(null);
@@ -85,12 +103,15 @@ const ManageAkreditasi = () => {
   const loadData = async () => {
     setLoading(true);
     try {
-      const [fetchedItems, fetchedLed, fetchedDkps] = await Promise.all([
+      const [fetchedItems, fetchedRingkasan, fetchedLed, fetchedDkps] = await Promise.all([
         getAkreditasiItems(),
+        getRingkasanConfig(),
         getLedConfig(),
         getDkpsConfig()
       ]);
       setItems(fetchedItems);
+      setRingkasanConfigState(fetchedRingkasan);
+      setRingkasanForm(fetchedRingkasan);
       setLedConfigState(fetchedLed);
       setLedForm(fetchedLed);
       setDkpsConfigState(fetchedDkps);
@@ -100,6 +121,23 @@ const ManageAkreditasi = () => {
       showToast('Gagal memuat data akreditasi', 'error');
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Simpan Ringkasan Eksekutif
+  const handleSaveRingkasan = async (e) => {
+    e.preventDefault();
+    setSavingRingkasan(true);
+    try {
+      const saved = await saveRingkasanConfig(ringkasanForm);
+      setRingkasanConfigState(saved);
+      setIsEditingRingkasan(false);
+      showToast('Ringkasan Eksekutif LED berhasil diperbarui!');
+    } catch (err) {
+      console.error(err);
+      showToast('Gagal menyimpan Ringkasan Eksekutif', 'error');
+    } finally {
+      setSavingRingkasan(false);
     }
   };
 
@@ -134,6 +172,66 @@ const ManageAkreditasi = () => {
       showToast('Gagal menyimpan DKPS', 'error');
     } finally {
       setSavingDkps(false);
+    }
+  };
+
+  // Upload File Excel DKPS (File Asli dengan Rumus Baku)
+  const handleUploadDkpsFile = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Validasi ekstensi
+    const ext = file.name.split('.').pop().toLowerCase();
+    if (!['xlsx', 'xls', 'xlsm', 'csv'].includes(ext)) {
+      showToast('Harap unggah file Excel (.xlsx, .xls, .xlsm)', 'error');
+      return;
+    }
+
+    setUploadingExcel(true);
+    try {
+      let finalUrl = '';
+
+      // Jika Supabase Storage tersedia
+      if (supabase) {
+        const fileName = `dkps-${Date.now()}.${ext}`;
+        const filePath = `akreditasi/${fileName}`;
+        const { error: uploadError } = await supabase.storage
+          .from('pba-assets')
+          .upload(filePath, file, { upsert: true });
+
+        if (!uploadError) {
+          const { data: { publicUrl } } = supabase.storage
+            .from('pba-assets')
+            .getPublicUrl(filePath);
+          finalUrl = publicUrl;
+        }
+      }
+
+      // Jika Supabase storage belum disetting, kita simpan via FileReader (Base64 Data URI)
+      if (!finalUrl) {
+        finalUrl = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      const updatedForm = {
+        ...dkpsForm,
+        excelUrl: finalUrl,
+        fileName: file.name
+      };
+
+      setDkpsForm(updatedForm);
+      const saved = await saveDkpsConfig(updatedForm);
+      setDkpsConfigState(saved);
+      showToast(`File Excel DKPS "${file.name}" berhasil diunggah!`);
+    } catch (err) {
+      console.error('Upload DKPS error:', err);
+      showToast('Gagal mengunggah file Excel: ' + err.message, 'error');
+    } finally {
+      setUploadingExcel(false);
     }
   };
 
@@ -281,18 +379,18 @@ const ManageAkreditasi = () => {
             Kelola Dokumen & Bukti Akreditasi
           </h1>
           <p className="text-sm text-slate-500 mt-1">
-            Kelola Laporan Evaluasi Diri (LED) dan tautan bukti Google Drive untuk 65 butir instrumen akreditasi prodi.
+            Kelola Laporan Evaluasi Diri (LED), DKPS, dan tautan bukti Google Drive untuk 65 elemen instrumen akreditasi prodi.
           </p>
         </div>
 
         {/* Statistik Ringkas */}
         <div className="flex items-center gap-3 bg-white dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/30 rounded-xl text-center">
-            <div className="text-xs font-bold text-blue-600 dark:text-blue-400">Total Butir</div>
+            <div className="text-xs font-bold text-blue-600 dark:text-blue-400">Total Elemen</div>
             <div className="text-lg font-black text-slate-800 dark:text-white">{totalItems}</div>
           </div>
           <div className="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-900/30 rounded-xl text-center">
-            <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Butir Terisi</div>
+            <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Elemen Terisi</div>
             <div className="text-lg font-black text-slate-800 dark:text-white">{itemsWithBukti}</div>
           </div>
           <div className="px-3 py-1.5 bg-purple-50 dark:bg-purple-900/30 rounded-xl text-center">
@@ -302,27 +400,144 @@ const ManageAkreditasi = () => {
         </div>
       </div>
 
-      {/* SECTION 1: Laporan Evaluasi Diri (LED) & Dokumen Kinerja Program Studi (DKPS) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Card 1: LED */}
-        <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 rounded-3xl p-6 md:p-8 text-white shadow-xl shadow-blue-600/15 relative overflow-hidden flex flex-col justify-between">
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+      {/* SECTION 1: Ringkasan Eksekutif LED, LED, & DKPS Excel */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Card 1: Ringkasan Eksekutif LED */}
+        <div className="bg-gradient-to-br from-amber-600 via-orange-600 to-amber-700 rounded-3xl p-6 text-white shadow-xl shadow-orange-600/15 relative overflow-hidden flex flex-col justify-between">
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-52 h-52 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
 
           <div>
-            <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div className="flex items-start gap-4">
-                <div className="w-13 h-13 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center shrink-0 shadow-inner">
-                  <BookOpen size={26} className="text-white" />
+            <div className="relative z-10 flex items-start gap-3.5">
+              <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center shrink-0 shadow-inner">
+                <FileCheck2 size={24} className="text-white" />
+              </div>
+              <div>
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-white/20 text-[10px] font-bold tracking-wider uppercase mb-1">
+                  Executive Summary
+                </span>
+                <h2 className="text-base sm:text-lg font-black">{ringkasanConfig.title}</h2>
+                <p className="text-amber-100 text-xs mt-0.5 line-clamp-2">
+                  {ringkasanConfig.subtitle}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-4 flex items-center gap-2 text-xs text-amber-200">
+              <LinkIcon size={13} className="shrink-0" />
+              <span className="truncate font-mono">
+                {ringkasanConfig.pdfUrl ? ringkasanConfig.pdfUrl : '(Link Google Drive Ringkasan belum diisi)'}
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-5 pt-4 border-t border-white/20 flex flex-wrap items-center justify-between gap-2 relative z-10">
+            {ringkasanConfig.pdfUrl ? (
+              <button
+                onClick={() => handleOpenPreview('Ringkasan Eksekutif LED PBA', ringkasanConfig.pdfUrl)}
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white text-orange-700 hover:bg-orange-50 font-bold text-xs shadow-md transition-all"
+              >
+                <Eye size={13} />
+                Pratinjau
+              </button>
+            ) : <div />}
+            <button
+              onClick={() => {
+                setRingkasanForm({ ...ringkasanConfig });
+                setIsEditingRingkasan(!isEditingRingkasan);
+              }}
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs backdrop-blur-sm transition-all"
+            >
+              <Edit3 size={13} />
+              {isEditingRingkasan ? 'Batal' : 'Edit Link'}
+            </button>
+          </div>
+
+          {/* Panel Edit Link Ringkasan */}
+          <AnimatePresence>
+            {isEditingRingkasan && (
+              <m.form
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                onSubmit={handleSaveRingkasan}
+                className="mt-4 pt-4 border-t border-white/20 space-y-3 relative z-10"
+              >
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-amber-100 mb-1">
+                    Judul Dokumen
+                  </label>
+                  <input
+                    type="text"
+                    value={ringkasanForm.title}
+                    onChange={(e) => setRingkasanForm({ ...ringkasanForm, title: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl bg-white/10 text-white placeholder-amber-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs"
+                    required
+                  />
                 </div>
                 <div>
-                  <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-[11px] font-bold tracking-wider uppercase mb-1">
-                    Dokumen Induk Kualitatif
-                  </span>
-                  <h2 className="text-lg sm:text-xl font-black">{ledConfig.title}</h2>
-                  <p className="text-blue-100 text-xs mt-1 max-w-md line-clamp-2">
-                    {ledConfig.subtitle}
-                  </p>
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-amber-100 mb-1">
+                    Tautan Google Drive (PDF / Dokumen)
+                  </label>
+                  <input
+                    type="url"
+                    value={ringkasanForm.pdfUrl}
+                    onChange={(e) => setRingkasanForm({ ...ringkasanForm, pdfUrl: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl bg-white/10 text-white placeholder-amber-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs font-mono"
+                    placeholder="https://drive.google.com/file/d/..."
+                    required
+                  />
                 </div>
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-amber-100 mb-1">
+                    Deskripsi / Keterangan
+                  </label>
+                  <input
+                    type="text"
+                    value={ringkasanForm.subtitle}
+                    onChange={(e) => setRingkasanForm({ ...ringkasanForm, subtitle: e.target.value })}
+                    className="w-full px-3 py-2 rounded-xl bg-white/10 text-white placeholder-amber-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs"
+                  />
+                </div>
+
+                <div className="flex justify-end gap-2 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setIsEditingRingkasan(false)}
+                    className="px-3 py-1.5 rounded-lg text-white text-xs hover:bg-white/10 transition"
+                  >
+                    Batal
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={savingRingkasan}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white text-orange-700 font-bold text-xs shadow hover:bg-orange-50 transition"
+                  >
+                    <Save size={13} />
+                    {savingRingkasan ? 'Menyimpan...' : 'Simpan'}
+                  </button>
+                </div>
+              </m.form>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Card 2: LED */}
+        <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 rounded-3xl p-6 text-white shadow-xl shadow-blue-600/15 relative overflow-hidden flex flex-col justify-between">
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-52 h-52 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div>
+            <div className="relative z-10 flex items-start gap-3.5">
+              <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center shrink-0 shadow-inner">
+                <BookOpen size={24} className="text-white" />
+              </div>
+              <div>
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-white/20 text-[10px] font-bold tracking-wider uppercase mb-1">
+                  Dokumen Induk Kualitatif
+                </span>
+                <h2 className="text-base sm:text-lg font-black">{ledConfig.title}</h2>
+                <p className="text-blue-100 text-xs mt-0.5 line-clamp-2">
+                  {ledConfig.subtitle}
+                </p>
               </div>
             </div>
 
@@ -334,14 +549,14 @@ const ManageAkreditasi = () => {
             </div>
           </div>
 
-          <div className="mt-5 pt-4 border-t border-white/20 flex flex-wrap items-center justify-between gap-3 relative z-10">
+          <div className="mt-5 pt-4 border-t border-white/20 flex flex-wrap items-center justify-between gap-2 relative z-10">
             {ledConfig.pdfUrl ? (
               <button
                 onClick={() => handleOpenPreview('Laporan Evaluasi Diri (LED)', ledConfig.pdfUrl)}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-blue-700 hover:bg-blue-50 font-bold text-xs shadow-md transition-all"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white text-blue-700 hover:bg-blue-50 font-bold text-xs shadow-md transition-all"
               >
-                <Eye size={14} />
-                Pratinjau LED
+                <Eye size={13} />
+                Pratinjau
               </button>
             ) : <div />}
             <button
@@ -349,10 +564,10 @@ const ManageAkreditasi = () => {
                 setLedForm({ ...ledConfig });
                 setIsEditingLed(!isEditingLed);
               }}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs backdrop-blur-sm transition-all"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs backdrop-blur-sm transition-all"
             >
-              <Edit3 size={14} />
-              {isEditingLed ? 'Batal Edit' : 'Edit Link LED'}
+              <Edit3 size={13} />
+              {isEditingLed ? 'Batal' : 'Edit Link'}
             </button>
           </div>
 
@@ -364,46 +579,46 @@ const ManageAkreditasi = () => {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 onSubmit={handleSaveLed}
-                className="mt-5 pt-5 border-t border-white/20 space-y-3 relative z-10"
+                className="mt-4 pt-4 border-t border-white/20 space-y-3 relative z-10"
               >
                 <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-blue-100 mb-1">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-blue-100 mb-1">
                     Judul Dokumen
                   </label>
                   <input
                     type="text"
                     value={ledForm.title}
                     onChange={(e) => setLedForm({ ...ledForm, title: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl bg-white/10 text-white placeholder-blue-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs"
+                    className="w-full px-3 py-2 rounded-xl bg-white/10 text-white placeholder-blue-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-blue-100 mb-1">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-blue-100 mb-1">
                     Tautan Google Drive LED (PDF)
                   </label>
                   <input
                     type="url"
                     value={ledForm.pdfUrl}
                     onChange={(e) => setLedForm({ ...ledForm, pdfUrl: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl bg-white/10 text-white placeholder-blue-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs font-mono"
+                    className="w-full px-3 py-2 rounded-xl bg-white/10 text-white placeholder-blue-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs font-mono"
                     placeholder="https://drive.google.com/file/d/..."
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-blue-100 mb-1">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-blue-100 mb-1">
                     Deskripsi / Keterangan
                   </label>
                   <input
                     type="text"
                     value={ledForm.subtitle}
                     onChange={(e) => setLedForm({ ...ledForm, subtitle: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl bg-white/10 text-white placeholder-blue-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs"
+                    className="w-full px-3 py-2 rounded-xl bg-white/10 text-white placeholder-blue-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs"
                   />
                 </div>
 
-                <div className="flex justify-end gap-2 pt-2">
+                <div className="flex justify-end gap-2 pt-1">
                   <button
                     type="button"
                     onClick={() => setIsEditingLed(false)}
@@ -416,8 +631,8 @@ const ManageAkreditasi = () => {
                     disabled={savingLed}
                     className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white text-blue-700 font-bold text-xs shadow hover:bg-blue-50 transition"
                   >
-                    <Save size={14} />
-                    {savingLed ? 'Menyimpan...' : 'Simpan LED'}
+                    <Save size={13} />
+                    {savingLed ? 'Menyimpan...' : 'Simpan'}
                   </button>
                 </div>
               </m.form>
@@ -425,44 +640,45 @@ const ManageAkreditasi = () => {
           </AnimatePresence>
         </div>
 
-        {/* Card 2: DKPS (Excel Spreadsheet) */}
-        <div className="bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 rounded-3xl p-6 md:p-8 text-white shadow-xl shadow-emerald-600/15 relative overflow-hidden flex flex-col justify-between">
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+        {/* Card 3: DKPS (Excel Spreadsheet dengan Upload Langsung File Asli) */}
+        <div className="bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 rounded-3xl p-6 text-white shadow-xl shadow-emerald-600/15 relative overflow-hidden flex flex-col justify-between">
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-52 h-52 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
 
           <div>
-            <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div className="flex items-start gap-4">
-                <div className="w-13 h-13 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center shrink-0 shadow-inner">
-                  <FileSpreadsheet size={26} className="text-white" />
-                </div>
-                <div>
-                  <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-[11px] font-bold tracking-wider uppercase mb-1">
-                    Dokumen Kuantitatif (Excel)
-                  </span>
-                  <h2 className="text-lg sm:text-xl font-black">{dkpsConfig.title}</h2>
-                  <p className="text-emerald-100 text-xs mt-1 max-w-md line-clamp-2">
-                    {dkpsConfig.subtitle}
-                  </p>
-                </div>
+            <div className="relative z-10 flex items-start gap-3.5">
+              <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center shrink-0 shadow-inner">
+                <FileSpreadsheet size={24} className="text-white" />
+              </div>
+              <div>
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-white/20 text-[10px] font-bold tracking-wider uppercase mb-1">
+                  Dokumen Kuantitatif (Excel)
+                </span>
+                <h2 className="text-base sm:text-lg font-black">{dkpsConfig.title}</h2>
+                <p className="text-emerald-100 text-xs mt-0.5 line-clamp-2">
+                  {dkpsConfig.subtitle}
+                </p>
               </div>
             </div>
 
-            <div className="mt-4 flex items-center gap-2 text-xs text-emerald-200">
-              <LinkIcon size={13} className="shrink-0" />
-              <span className="truncate font-mono">
-                {dkpsConfig.excelUrl ? dkpsConfig.excelUrl : '(Link Google Drive DKPS Excel belum diisi)'}
-              </span>
+            {/* Nama File Excel yang Terunggah */}
+            <div className="mt-4 flex flex-col gap-1 text-xs text-emerald-200">
+              <div className="flex items-center gap-2">
+                <LinkIcon size={13} className="shrink-0" />
+                <span className="truncate font-mono">
+                  {dkpsConfig.fileName ? `File: ${dkpsConfig.fileName}` : (dkpsConfig.excelUrl ? dkpsConfig.excelUrl : '(File Excel belum diunggah)')}
+                </span>
+              </div>
             </div>
           </div>
 
-          <div className="mt-5 pt-4 border-t border-white/20 flex flex-wrap items-center justify-between gap-3 relative z-10">
+          <div className="mt-5 pt-4 border-t border-white/20 flex flex-wrap items-center justify-between gap-2 relative z-10">
             {dkpsConfig.excelUrl ? (
               <button
                 onClick={() => handleOpenPreview('Dokumen Kinerja Program Studi (DKPS)', dkpsConfig.excelUrl)}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-emerald-700 hover:bg-emerald-50 font-bold text-xs shadow-md transition-all"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white text-emerald-700 hover:bg-emerald-50 font-bold text-xs shadow-md transition-all"
               >
-                <Eye size={14} />
-                Pratinjau DKPS (Excel)
+                <Eye size={13} />
+                Pratinjau
               </button>
             ) : <div />}
             <button
@@ -470,78 +686,92 @@ const ManageAkreditasi = () => {
                 setDkpsForm({ ...dkpsConfig });
                 setIsEditingDkps(!isEditingDkps);
               }}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs backdrop-blur-sm transition-all"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs backdrop-blur-sm transition-all"
             >
-              <Edit3 size={14} />
-              {isEditingDkps ? 'Batal Edit' : 'Edit Link DKPS'}
+              <Edit3 size={13} />
+              {isEditingDkps ? 'Batal' : 'Kelola / Upload Excel'}
             </button>
           </div>
 
-          {/* Panel Edit Link DKPS */}
+          {/* Panel Kelola & Upload File Excel DKPS */}
           <AnimatePresence>
             {isEditingDkps && (
-              <m.form
+              <m.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                onSubmit={handleSaveDkps}
-                className="mt-5 pt-5 border-t border-white/20 space-y-3 relative z-10"
+                className="mt-4 pt-4 border-t border-white/20 space-y-3 relative z-10"
               >
-                <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-emerald-100 mb-1">
-                    Judul Dokumen
+                {/* Upload File Excel Asli */}
+                <div className="bg-white/10 p-3 rounded-2xl border border-white/20 space-y-2">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-emerald-100 flex items-center justify-between">
+                    <span>1. Upload File Excel DKPS (Rumus Baku)</span>
+                    {uploadingExcel && <Loader2 size={13} className="animate-spin text-white" />}
                   </label>
-                  <input
-                    type="text"
-                    value={dkpsForm.title}
-                    onChange={(e) => setDkpsForm({ ...dkpsForm, title: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl bg-white/10 text-white placeholder-emerald-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-emerald-100 mb-1">
-                    Tautan Google Drive DKPS (File Excel / Spreadsheet)
+                  <label className="flex items-center justify-center gap-2 w-full py-2 px-3 rounded-xl bg-white text-emerald-700 font-bold text-xs cursor-pointer hover:bg-emerald-50 shadow transition">
+                    <Upload size={14} />
+                    <span>{uploadingExcel ? 'Mengunggah file...' : 'Pilih File Excel (.xlsx)'}</span>
+                    <input
+                      type="file"
+                      accept=".xlsx, .xls, .xlsm, .csv"
+                      onChange={handleUploadDkpsFile}
+                      disabled={uploadingExcel}
+                      className="hidden"
+                    />
                   </label>
-                  <input
-                    type="url"
-                    value={dkpsForm.excelUrl}
-                    onChange={(e) => setDkpsForm({ ...dkpsForm, excelUrl: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl bg-white/10 text-white placeholder-emerald-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs font-mono"
-                    placeholder="https://drive.google.com/file/d/..."
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-emerald-100 mb-1">
-                    Deskripsi / Keterangan
-                  </label>
-                  <input
-                    type="text"
-                    value={dkpsForm.subtitle}
-                    onChange={(e) => setDkpsForm({ ...dkpsForm, subtitle: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl bg-white/10 text-white placeholder-emerald-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs"
-                  />
+                  {dkpsConfig.fileName && (
+                    <div className="text-[10px] text-emerald-200 truncate">
+                      File aktif: <strong>{dkpsConfig.fileName}</strong>
+                    </div>
+                  )}
                 </div>
 
-                <div className="flex justify-end gap-2 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => setIsEditingDkps(false)}
-                    className="px-3 py-1.5 rounded-lg text-white text-xs hover:bg-white/10 transition"
-                  >
-                    Batal
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={savingDkps}
-                    className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white text-emerald-700 font-bold text-xs shadow hover:bg-emerald-50 transition"
-                  >
-                    <Save size={14} />
-                    {savingDkps ? 'Menyimpan...' : 'Simpan DKPS'}
-                  </button>
-                </div>
-              </m.form>
+                {/* Atau Input Link Alternatif */}
+                <form onSubmit={handleSaveDkps} className="space-y-3 pt-1">
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-emerald-100 mb-1">
+                      2. Atau Paste Tautan Google Drive Excel
+                    </label>
+                    <input
+                      type="url"
+                      value={dkpsForm.excelUrl}
+                      onChange={(e) => setDkpsForm({ ...dkpsForm, excelUrl: e.target.value })}
+                      className="w-full px-3 py-2 rounded-xl bg-white/10 text-white placeholder-emerald-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs font-mono"
+                      placeholder="https://drive.google.com/file/d/..."
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-emerald-100 mb-1">
+                      Deskripsi / Keterangan
+                    </label>
+                    <input
+                      type="text"
+                      value={dkpsForm.subtitle}
+                      onChange={(e) => setDkpsForm({ ...dkpsForm, subtitle: e.target.value })}
+                      className="w-full px-3 py-2 rounded-xl bg-white/10 text-white placeholder-emerald-200 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white text-xs"
+                    />
+                  </div>
+
+                  <div className="flex justify-end gap-2 pt-1">
+                    <button
+                      type="button"
+                      onClick={() => setIsEditingDkps(false)}
+                      className="px-3 py-1.5 rounded-lg text-white text-xs hover:bg-white/10 transition"
+                    >
+                      Batal
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={savingDkps}
+                      className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white text-emerald-700 font-bold text-xs shadow hover:bg-emerald-50 transition"
+                    >
+                      <Save size={13} />
+                      {savingDkps ? 'Menyimpan...' : 'Simpan'}
+                    </button>
+                  </div>
+                </form>
+              </m.div>
             )}
           </AnimatePresence>
         </div>
@@ -557,7 +787,7 @@ const ManageAkreditasi = () => {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Cari butir, kata kunci (misal: RPS, microteaching, SPMI, visi, kurikulum)..."
+              placeholder="Cari elemen, kata kunci (misal: RPS, microteaching, SPMI, visi, kurikulum)..."
               className="w-full pl-11 pr-4 py-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
             />
             {searchTerm && (
@@ -622,12 +852,12 @@ const ManageAkreditasi = () => {
       {/* SECTION 3: Daftar Tabel Butir */}
       {loading ? (
         <div className="text-center py-20 text-slate-400 font-bold animate-pulse">
-          Memuat data butir akreditasi...
+          Memuat data elemen akreditasi...
         </div>
       ) : filteredItems.length === 0 ? (
         <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8">
           <AlertCircle size={40} className="mx-auto text-slate-400 mb-3" />
-          <h3 className="text-base font-bold text-slate-700 dark:text-slate-200">Tidak ada butir yang cocok</h3>
+          <h3 className="text-base font-bold text-slate-700 dark:text-slate-200">Tidak ada elemen yang cocok</h3>
           <p className="text-xs text-slate-400 mt-1">Coba sesuaikan kata kunci pencarian atau ganti filter kriteria.</p>
         </div>
       ) : (
@@ -640,11 +870,11 @@ const ManageAkreditasi = () => {
                 className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm hover:border-blue-300 dark:hover:border-blue-700 transition-all"
               >
                 <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
-                  {/* Info Butir */}
+                  {/* Info Elemen */}
                   <div className="flex-1 space-y-2">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="px-2.5 py-0.5 rounded-md bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-black text-xs">
-                        No. {item.no}
+                        Elemen No. {item.no}
                       </span>
                       <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
                         {item.kriteria}
@@ -761,7 +991,7 @@ const ManageAkreditasi = () => {
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <span className="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-black text-xs">
-                      No. {editingItem.no}
+                      Elemen No. {editingItem.no}
                     </span>
                     <span className="text-xs text-slate-400 font-bold">{editingItem.kriteria}</span>
                   </div>
@@ -769,7 +999,7 @@ const ManageAkreditasi = () => {
                     {editingItem.elemen}
                   </h3>
                   <p className="text-xs text-slate-500 mt-1">
-                    Tambahkan satu atau lebih tautan Google Drive dokumen bukti untuk indikator ini.
+                    Tambahkan satu atau lebih tautan Google Drive dokumen bukti untuk elemen ini.
                   </p>
                 </div>
                 <button
