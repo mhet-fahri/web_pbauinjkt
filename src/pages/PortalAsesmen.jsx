@@ -22,7 +22,9 @@ import {
   FileSpreadsheet,
   ChevronDown,
   ChevronsUpDown,
-  FileCheck2
+  FileCheck2,
+  Maximize2,
+  FileCode
 } from 'lucide-react';
 import { getAkreditasiItems, getLedConfig, getDkpsConfig, getRingkasanConfig } from '../services/akreditasiService';
 import { getGoogleDrivePreviewUrl, getGoogleDriveDownloadUrl } from '../utils/driveUtils';
@@ -37,6 +39,7 @@ const PortalAsesmen = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedKriteria, setSelectedKriteria] = useState('ALL');
   const [expandedItems, setExpandedItems] = useState({});
+  const [activeDocTab, setActiveDocTab] = useState('ringkasan'); // 'ringkasan' | 'led' | 'dkps'
 
   // Preview Modal
   const [previewModal, setPreviewModal] = useState({
@@ -184,162 +187,231 @@ const PortalAsesmen = () => {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
         {/* ============================================================== */}
-        {/* HERO SECTION 1: DOKUMEN UTAMA (RINGKASAN, LED, & DKPS)         */}
+        {/* HERO SECTION 1: EXECUTIVE DOCUMENT CENTER (INTERACTIVE VIEWER) */}
         {/* ============================================================== */}
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 1: Ringkasan Eksekutif LED PBA */}
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-600 via-orange-600 to-slate-900 text-white p-6 sm:p-7 shadow-2xl shadow-orange-600/10 border border-orange-500/20 flex flex-col justify-between space-y-6">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-52 h-52 bg-orange-500/20 rounded-full blur-2xl pointer-events-none"></div>
+        <section className="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200/80 dark:border-slate-800 shadow-xl overflow-hidden">
+          {/* Header & Tabs Navigation */}
+          <div className="p-6 sm:p-8 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white relative">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <div className="relative z-10 flex items-start gap-4">
-              <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shrink-0 shadow-inner">
-                <FileCheck2 size={28} className="text-amber-200" />
-              </div>
-              <div className="space-y-1">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-orange-500/30 text-amber-200 border border-amber-400/30 text-[10px] font-bold tracking-wider uppercase">
-                  <Sparkles size={11} /> Executive Summary
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/10">
+              <div className="space-y-1.5">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-blue-200 border border-white/15 text-[11px] font-bold tracking-wider uppercase">
+                  <Sparkles size={12} className="text-amber-300" /> Executive Document Center
                 </div>
-                <h2 className="text-lg sm:text-xl font-black text-white tracking-tight">
-                  {ringkasanConfig?.title || 'Ringkasan Eksekutif LED PBA'}
+                <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
+                  Dokumen Induk Akreditasi Program Studi
                 </h2>
-                <p className="text-amber-100/90 text-xs line-clamp-2 leading-relaxed">
-                  {ringkasanConfig?.subtitle || 'Ikhtisar Eksekutif Laporan Evaluasi Diri Program Studi Pendidikan Bahasa Arab.'}
+                <p className="text-xs sm:text-sm text-slate-300 max-w-2xl">
+                  Pratinjau interaktif langsung di layar untuk Ringkasan Eksekutif, Laporan Evaluasi Diri (LED), dan Dokumen Kinerja (DKPS).
                 </p>
               </div>
-            </div>
 
-            {/* Tombol Aksi Ringkasan Eksekutif */}
-            <div className="relative z-10 flex flex-wrap items-center gap-2 pt-2 border-t border-white/10">
-              {ringkasanConfig?.pdfUrl ? (
-                <>
-                  <button
-                    onClick={() => openPreview(ringkasanConfig.title || 'Ringkasan Eksekutif LED PBA', ringkasanConfig.pdfUrl)}
-                    className="flex-1 min-w-[120px] flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white text-orange-700 hover:bg-orange-50 font-black text-xs shadow-md transition-all hover:scale-[1.02]"
-                  >
-                    <Eye size={14} />
-                    Pratinjau
-                  </button>
-                  <a
-                    href={getGoogleDriveDownloadUrl(ringkasanConfig.pdfUrl)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs backdrop-blur-md border border-white/20 transition-all"
-                  >
-                    <Download size={14} />
-                    Unduh
-                  </a>
-                </>
-              ) : (
-                <div className="w-full text-center py-2 px-3 rounded-xl bg-white/10 text-[11px] text-amber-100 italic border border-white/10">
-                  Tautan ringkasan sedang disiapkan oleh panitia.
-                </div>
-              )}
-            </div>
-          </div>
+              {/* Action Buttons for Active Document */}
+              {(() => {
+                const currentDoc = 
+                  activeDocTab === 'ringkasan' ? { ...ringkasanConfig, isExcel: false } :
+                  activeDocTab === 'led' ? { ...ledConfig, isExcel: false } :
+                  { ...dkpsConfig, isExcel: true };
+                const currentUrl = currentDoc?.isExcel ? currentDoc?.excelUrl : currentDoc?.pdfUrl;
 
-          {/* Card 2: Laporan Evaluasi Diri (LED) */}
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-700 via-indigo-700 to-slate-900 text-white p-6 sm:p-7 shadow-2xl shadow-blue-600/10 border border-blue-500/20 flex flex-col justify-between space-y-6">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-52 h-52 bg-blue-500/20 rounded-full blur-2xl pointer-events-none"></div>
-
-            <div className="relative z-10 flex items-start gap-4">
-              <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shrink-0 shadow-inner">
-                <BookOpen size={28} className="text-blue-200" />
-              </div>
-              <div className="space-y-1">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-500/30 text-blue-200 border border-blue-400/30 text-[10px] font-bold tracking-wider uppercase">
-                  <Sparkles size={11} /> Dokumen Kualitatif
-                </div>
-                <h2 className="text-lg sm:text-xl font-black text-white tracking-tight">
-                  {ledConfig?.title || 'Laporan Evaluasi Diri (LED) PBA'}
-                </h2>
-                <p className="text-slate-300 text-xs line-clamp-2 leading-relaxed">
-                  {ledConfig?.subtitle || 'Laporan Evaluasi Diri Program Studi Pendidikan Bahasa Arab FITK UIN Syarif Hidayatullah Jakarta.'}
-                </p>
-              </div>
-            </div>
-
-            {/* Tombol Aksi LED */}
-            <div className="relative z-10 flex flex-wrap items-center gap-2 pt-2 border-t border-white/10">
-              {ledConfig?.pdfUrl ? (
-                <>
-                  <button
-                    onClick={() => openPreview(ledConfig.title || 'Laporan Evaluasi Diri PBA', ledConfig.pdfUrl)}
-                    className="flex-1 min-w-[120px] flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white text-blue-700 hover:bg-blue-50 font-black text-xs shadow-md transition-all hover:scale-[1.02]"
-                  >
-                    <Eye size={14} />
-                    Pratinjau LED
-                  </button>
-                  <a
-                    href={getGoogleDriveDownloadUrl(ledConfig.pdfUrl)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs backdrop-blur-md border border-white/20 transition-all"
-                  >
-                    <Download size={14} />
-                    Unduh
-                  </a>
-                </>
-              ) : (
-                <div className="w-full text-center py-2 px-3 rounded-xl bg-white/10 text-[11px] text-slate-300 italic border border-white/10">
-                  Tautan file LED sedang disiapkan oleh panitia.
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Card 3: Dokumen Kinerja Program Studi (DKPS) */}
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-700 via-teal-700 to-slate-900 text-white p-6 sm:p-7 shadow-2xl shadow-emerald-600/10 border border-emerald-500/20 flex flex-col justify-between space-y-6">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-52 h-52 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none"></div>
-
-            <div className="relative z-10 flex items-start gap-4">
-              <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shrink-0 shadow-inner">
-                <FileSpreadsheet size={28} className="text-emerald-200" />
-              </div>
-              <div className="space-y-1">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 text-[10px] font-bold tracking-wider uppercase">
-                  <Sparkles size={11} /> Dokumen Kuantitatif (Excel)
-                </div>
-                <h2 className="text-lg sm:text-xl font-black text-white tracking-tight">
-                  {dkpsConfig?.title || 'Dokumen Kinerja Program Studi (DKPS)'}
-                </h2>
-                <p className="text-emerald-100/90 text-xs line-clamp-2 leading-relaxed">
-                  {dkpsConfig?.subtitle || 'Tabel Data Kuantitatif Kinerja Program Studi PBA (Format Spreadsheet / Excel Asli dengan Rumus).'}
-                </p>
-                {dkpsConfig?.fileName && (
-                  <div className="text-[10px] text-emerald-200 font-mono truncate max-w-[240px]">
-                    📎 {dkpsConfig.fileName}
+                return currentUrl ? (
+                  <div className="flex items-center gap-2.5 shrink-0">
+                    <button
+                      onClick={() => openPreview(currentDoc?.title || 'Pratinjau Dokumen', currentUrl)}
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-indigo-950 hover:bg-slate-100 font-bold text-xs shadow-md transition-all hover:scale-105"
+                    >
+                      <Maximize2 size={14} />
+                      Buka Layar Penuh
+                    </button>
+                    <a
+                      href={getGoogleDriveDownloadUrl(currentUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs backdrop-blur-md border border-white/20 transition-all"
+                    >
+                      <Download size={14} />
+                      {currentDoc?.isExcel ? 'Unduh Excel' : 'Unduh File'}
+                    </a>
                   </div>
-                )}
-              </div>
+                ) : null;
+              })()}
             </div>
 
-            {/* Tombol Aksi DKPS */}
-            <div className="relative z-10 flex flex-wrap items-center gap-2 pt-2 border-t border-white/10">
-              {dkpsConfig?.excelUrl ? (
-                <>
-                  <button
-                    onClick={() => openPreview(dkpsConfig.title || 'Dokumen Kinerja Program Studi (DKPS)', dkpsConfig.excelUrl)}
-                    className="flex-1 min-w-[120px] flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white text-emerald-700 hover:bg-emerald-50 font-black text-xs shadow-md transition-all hover:scale-[1.02]"
-                  >
-                    <Eye size={14} />
-                    Pratinjau Excel
-                  </button>
-                  <a
-                    href={getGoogleDriveDownloadUrl(dkpsConfig.excelUrl)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs backdrop-blur-md border border-white/20 transition-all"
-                  >
-                    <Download size={14} />
-                    Unduh File
-                  </a>
-                </>
-              ) : (
-                <div className="w-full text-center py-2 px-3 rounded-xl bg-white/10 text-[11px] text-emerald-100 italic border border-white/10">
-                  File DKPS Excel sedang disiapkan oleh panitia.
+            {/* Segmented Document Tabs */}
+            <div className="relative z-10 pt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {/* Tab 1: Ringkasan Eksekutif */}
+              <button
+                onClick={() => setActiveDocTab('ringkasan')}
+                className={`flex items-start gap-3.5 p-4 rounded-2xl border text-left transition-all ${
+                  activeDocTab === 'ringkasan'
+                    ? 'bg-gradient-to-br from-amber-500/25 to-orange-500/10 border-amber-400/50 shadow-lg shadow-amber-500/10 ring-1 ring-amber-400/40'
+                    : 'bg-white/5 border-white/10 hover:bg-white/10 text-slate-300'
+                }`}
+              >
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                  activeDocTab === 'ringkasan' ? 'bg-amber-500 text-white shadow-md' : 'bg-white/10 text-slate-400'
+                }`}>
+                  <FileCheck2 size={20} />
                 </div>
-              )}
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-1 mb-0.5">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-amber-300">
+                      01. Executive Summary
+                    </span>
+                    {ringkasanConfig?.pdfUrl && (
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    )}
+                  </div>
+                  <h4 className="text-xs sm:text-sm font-black text-white truncate">
+                    {ringkasanConfig?.title || 'Ringkasan Eksekutif LED'}
+                  </h4>
+                  <p className="text-[11px] text-slate-300/80 truncate">
+                    Ikhtisar capaian utama prodi
+                  </p>
+                </div>
+              </button>
+
+              {/* Tab 2: Laporan Evaluasi Diri (LED) */}
+              <button
+                onClick={() => setActiveDocTab('led')}
+                className={`flex items-start gap-3.5 p-4 rounded-2xl border text-left transition-all ${
+                  activeDocTab === 'led'
+                    ? 'bg-gradient-to-br from-blue-500/25 to-indigo-500/10 border-blue-400/50 shadow-lg shadow-blue-500/10 ring-1 ring-blue-400/40'
+                    : 'bg-white/5 border-white/10 hover:bg-white/10 text-slate-300'
+                }`}
+              >
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                  activeDocTab === 'led' ? 'bg-blue-600 text-white shadow-md' : 'bg-white/10 text-slate-400'
+                }`}>
+                  <BookOpen size={20} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-1 mb-0.5">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-blue-300">
+                      02. Dokumen Kualitatif
+                    </span>
+                    {ledConfig?.pdfUrl && (
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    )}
+                  </div>
+                  <h4 className="text-xs sm:text-sm font-black text-white truncate">
+                    {ledConfig?.title || 'Laporan Evaluasi Diri (LED)'}
+                  </h4>
+                  <p className="text-[11px] text-slate-300/80 truncate">
+                    Analisis 9 Kriteria Lengkap
+                  </p>
+                </div>
+              </button>
+
+              {/* Tab 3: Dokumen Kinerja (DKPS) */}
+              <button
+                onClick={() => setActiveDocTab('dkps')}
+                className={`flex items-start gap-3.5 p-4 rounded-2xl border text-left transition-all ${
+                  activeDocTab === 'dkps'
+                    ? 'bg-gradient-to-br from-emerald-500/25 to-teal-500/10 border-emerald-400/50 shadow-lg shadow-emerald-500/10 ring-1 ring-emerald-400/40'
+                    : 'bg-white/5 border-white/10 hover:bg-white/10 text-slate-300'
+                }`}
+              >
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                  activeDocTab === 'dkps' ? 'bg-emerald-600 text-white shadow-md' : 'bg-white/10 text-slate-400'
+                }`}>
+                  <FileSpreadsheet size={20} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-1 mb-0.5">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-emerald-300">
+                      03. Dokumen Kuantitatif
+                    </span>
+                    {dkpsConfig?.excelUrl && (
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    )}
+                  </div>
+                  <h4 className="text-xs sm:text-sm font-black text-white truncate">
+                    {dkpsConfig?.title || 'DKPS (Excel Spreadsheet)'}
+                  </h4>
+                  <p className="text-[11px] text-slate-300/80 truncate">
+                    {dkpsConfig?.fileName ? `File: ${dkpsConfig.fileName}` : 'Tabel data dengan rumus baku'}
+                  </p>
+                </div>
+              </button>
             </div>
+          </div>
+
+          {/* Interactive Document Viewer Stage (Pratinjau Langsung di Halaman) */}
+          <div className="p-4 sm:p-6 bg-slate-50 dark:bg-slate-950">
+            {(() => {
+              const activeDoc = 
+                activeDocTab === 'ringkasan' ? { ...ringkasanConfig, isExcel: false } :
+                activeDocTab === 'led' ? { ...ledConfig, isExcel: false } :
+                { ...dkpsConfig, isExcel: true };
+
+              const activeUrl = activeDoc?.isExcel ? activeDoc?.excelUrl : activeDoc?.pdfUrl;
+              const previewEmbedUrl = activeUrl ? getGoogleDrivePreviewUrl(activeUrl) : '';
+
+              if (!activeUrl) {
+                return (
+                  <div className="py-20 text-center rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 space-y-3">
+                    <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-400 flex items-center justify-center mx-auto">
+                      <FileText size={26} />
+                    </div>
+                    <h3 className="text-base font-bold text-slate-800 dark:text-white">
+                      Dokumen Belum Ditautkan
+                    </h3>
+                    <p className="text-xs text-slate-400 max-w-md mx-auto">
+                      Tautan dokumen {activeDoc?.title} sedang disiapkan oleh tim akreditasi. Anda dapat mengunggah atau menautkannya melalui Dashboard Admin.
+                    </p>
+                  </div>
+                );
+              }
+
+              return (
+                <div className="space-y-3">
+                  {/* Viewer Toolbar */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-2">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span className="text-xs font-black text-slate-800 dark:text-white">
+                        {activeDoc?.title}
+                      </span>
+                      <span className="text-[11px] text-slate-400">
+                        • {activeDoc?.isExcel ? 'Spreadsheet Viewer' : 'PDF Document Viewer'}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => openPreview(activeDoc?.title || 'Dokumen', activeUrl)}
+                        className="text-xs font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400 flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition"
+                      >
+                        <Maximize2 size={13} />
+                        Layar Penuh
+                      </button>
+                      <a
+                        href={activeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-bold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition"
+                      >
+                        <ExternalLink size={13} />
+                        Buka di Tab Baru
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* High Performance Embedded Preview Container */}
+                  <div className="w-full h-[520px] sm:h-[620px] rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-inner relative group">
+                    <iframe
+                      key={previewEmbedUrl}
+                      src={previewEmbedUrl}
+                      title={activeDoc?.title || "Document Live Preview"}
+                      className="w-full h-full border-0"
+                      allow="autoplay"
+                    />
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </section>
 
