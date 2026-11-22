@@ -118,12 +118,29 @@ const PortalAsesmen = () => {
   const handleCopyLink = async () => {
     const linkToCopy = previewModal.rawUrl || previewModal.url;
     if (!linkToCopy) return;
+
     try {
-      await navigator.clipboard.writeText(linkToCopy);
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(linkToCopy);
+      } else {
+        // Fallback untuk browser/koneksi tanpa izin async clipboard
+        const textArea = document.createElement('textarea');
+        textArea.value = linkToCopy;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        textArea.remove();
+      }
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2500);
     } catch (e) {
       console.error('Failed to copy', e);
+      // Fallback prompt jika tetap gagal
+      window.prompt('Salin link di bawah ini:', linkToCopy);
     }
   };
 
@@ -148,8 +165,9 @@ const PortalAsesmen = () => {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-sans pb-24">
       <SEO 
         title="Portal Asesmen Lapangan Akreditasi - PBA UIN Jakarta" 
-        description="Portal bukti dan dokumen akreditasi program studi Pendidikan Bahasa Arab FITK UIN Syarif Hidayatullah Jakarta untuk Asesor Lapangan."
+        description="Portal Bukti 9 Kriteria, Ringkasan Eksekutif, Laporan Evaluasi Diri (LED), dan Dokumen Kinerja (DKPS) Program Studi Pendidikan Bahasa Arab FITK UIN Syarif Hidayatullah Jakarta."
         url="/portal-asesmen"
+        image="https://pbafitkuinjkt.id/banner-portal-asesmen.jpg"
       />
 
       {/* Header Khusus Portal Asesmen (Clean & Professional) */}

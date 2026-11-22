@@ -321,12 +321,27 @@ const ManageAkreditasi = () => {
   const handleCopyPreviewLink = async () => {
     const linkToCopy = previewRawUrl || previewUrl;
     if (!linkToCopy) return;
+
     try {
-      await navigator.clipboard.writeText(linkToCopy);
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(linkToCopy);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = linkToCopy;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        textArea.remove();
+      }
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2500);
     } catch (e) {
       console.error('Failed to copy', e);
+      window.prompt('Salin link di bawah ini:', linkToCopy);
     }
   };
 
