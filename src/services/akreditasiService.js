@@ -197,11 +197,12 @@ export async function saveDkpsConfig(config) {
 }
 
 /**
- * Mengambil semua 65 butir akreditasi
+ * Mengambil semua 65 elemen akreditasi (Menggabungkan data default 65 elemen dengan bukti dari DB/Storage)
  */
 export async function getAkreditasiItems() {
-  let supabaseItems = null;
+  let savedItems = [];
 
+  // 1. Ambil data dari Supabase jika ada
   if (supabase) {
     try {
       const { data, error } = await supabase
@@ -209,36 +210,50 @@ export async function getAkreditasiItems() {
         .select('*')
         .order('no', { ascending: true });
       if (!error && data && data.length > 0) {
-        supabaseItems = data;
+        savedItems = data;
       }
     } catch (err) {
-      // Abaikan jika Supabase belum siap
+      // Abaikan jika Supabase offline
     }
   }
 
-  if (supabaseItems && supabaseItems.length > 0) {
-    // Sync ke localStorage untuk offline/cache
+  // 2. Jika tidak ada di Supabase, cek localStorage
+  if (savedItems.length === 0) {
     try {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(supabaseItems));
-    } catch (e) {}
-    return supabaseItems;
-  }
-
-  // Cek localStorage
-  try {
-    const local = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (local) {
-      const parsed = JSON.parse(local);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed;
+      const local = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (local) {
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          savedItems = parsed;
+        }
       }
+    } catch (e) {
+      console.error('Failed to parse akreditasi items from localStorage', e);
     }
-  } catch (e) {
-    console.error('Failed to parse akreditasi items from localStorage', e);
   }
 
-  // Default awal dari JSON 65 butir
-  return defaultItems;
+  // 3. MERGE CERDAS: Pastikan SELALU ada 65 elemen lengkap!
+  // Kita buat map dari savedItems berdasarkan 'no'
+  const savedMap = new Map();
+  savedItems.forEach(item => {
+    if (item && item.no) {
+      savedMap.set(item.no, item);
+    }
+  });
+
+  // Gabungkan dengan default 65 elemen
+  const mergedItems = defaultItems.map(defaultItem => {
+    const saved = savedMap.get(defaultItem.no);
+    if (saved) {
+      return {
+        ...defaultItem,
+        bukti: (saved.bukti && saved.bukti.length > 0) ? saved.bukti : defaultItem.bukti
+      };
+    }
+    return defaultItem;
+  });
+
+  return mergedItems;
 }
 
 /**
