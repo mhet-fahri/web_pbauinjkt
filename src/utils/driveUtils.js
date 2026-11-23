@@ -6,12 +6,23 @@
 // Regex untuk mendeteksi URL YouTube (watch, embed, short link, shorts)
 const YOUTUBE_REGEX = /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([a-zA-Z0-9_-]{11})/;
 
+// Regex untuk mendeteksi folder Google Drive
+const FOLDER_REGEX = /\/drive\/(?:u\/\d+\/)?folders\/([a-zA-Z0-9_-]+)/;
+
 /**
  * Cek apakah URL merupakan tautan YouTube
  */
 export const isYouTubeUrl = (url) => {
   if (!url || typeof url !== 'string') return false;
   return YOUTUBE_REGEX.test(url.trim());
+};
+
+/**
+ * Cek apakah URL merupakan folder Google Drive
+ */
+export const isDriveFolderUrl = (url) => {
+  if (!url || typeof url !== 'string') return false;
+  return FOLDER_REGEX.test(url.trim());
 };
 
 /**
@@ -49,9 +60,10 @@ export const getGoogleDrivePreviewUrl = (url) => {
   }
 
   // Pola 3: Folder Google Drive (/drive/folders/{id})
-  const folderMatch = trimmed.match(/\/drive\/(?:u\/\d+\/)?folders\/([a-zA-Z0-9_-]+)/);
+  // Gunakan format drive.google.com/embeddedfolderview?id={id} agar bisa di-embed di iframe
+  const folderMatch = trimmed.match(FOLDER_REGEX);
   if (folderMatch && folderMatch[1]) {
-    return `https://drive.google.com/drive/folders/${folderMatch[1]}`;
+    return `https://drive.google.com/embeddedfolderview?id=${folderMatch[1]}#list`;
   }
 
   // Jika bukan format Google Drive / YouTube umum, return URL asli
@@ -60,14 +72,14 @@ export const getGoogleDrivePreviewUrl = (url) => {
 
 /**
  * Mendapatkan tautan unduh langsung (khusus Google Drive file).
- * Mengembalikan null jika tipe URL tidak mendukung direct download (misal: YouTube).
+ * Mengembalikan null jika tipe URL tidak mendukung direct download (misal: YouTube atau Folder).
  */
 export const getGoogleDriveDownloadUrl = (url) => {
   if (!url || typeof url !== 'string') return '';
   const trimmed = url.trim();
 
-  // YouTube tidak memiliki direct file download
-  if (isYouTubeUrl(trimmed)) {
+  // YouTube atau Folder Google Drive tidak memiliki direct file download
+  if (isYouTubeUrl(trimmed) || isDriveFolderUrl(trimmed)) {
     return null;
   }
 

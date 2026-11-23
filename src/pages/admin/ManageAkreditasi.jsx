@@ -24,7 +24,8 @@ import {
   FileCheck2,
   Upload,
   Loader2,
-  Tv
+  Tv,
+  FolderOpen
 } from 'lucide-react';
 import { 
   getAkreditasiItems, 
@@ -38,7 +39,7 @@ import {
   resetAkreditasiItemsToDefault 
 } from '../../services/akreditasiService';
 import { supabase } from '../../lib/supabase';
-import { getGoogleDrivePreviewUrl, isYouTubeUrl } from '../../utils/driveUtils';
+import { getGoogleDrivePreviewUrl, isYouTubeUrl, isDriveFolderUrl } from '../../utils/driveUtils';
 
 const ManageAkreditasi = () => {
   const [items, setItems] = useState([]);
@@ -1191,16 +1192,28 @@ const ManageAkreditasi = () => {
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
                     isYouTubeUrl(previewRawUrl)
                       ? 'bg-red-100 dark:bg-red-900/40 text-red-600'
+                      : isDriveFolderUrl(previewRawUrl)
+                      ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-600'
                       : 'bg-blue-100 dark:bg-blue-900/40 text-blue-600'
                   }`}>
-                    {isYouTubeUrl(previewRawUrl) ? <Tv size={16} /> : <FileText size={16} />}
+                    {isYouTubeUrl(previewRawUrl) ? (
+                      <Tv size={16} />
+                    ) : isDriveFolderUrl(previewRawUrl) ? (
+                      <FolderOpen size={16} />
+                    ) : (
+                      <FileText size={16} />
+                    )}
                   </div>
                   <div>
                     <h4 className="text-sm font-black text-slate-800 dark:text-white truncate max-w-lg">
                       {previewTitle}
                     </h4>
                     <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">
-                      {isYouTubeUrl(previewRawUrl) ? 'YouTube Video Preview' : 'Google Drive Document Preview'}
+                      {isYouTubeUrl(previewRawUrl) 
+                        ? 'YouTube Video Preview' 
+                        : isDriveFolderUrl(previewRawUrl)
+                        ? 'Folder Google Drive'
+                        : 'Google Drive Document Preview'}
                     </span>
                   </div>
                 </div>

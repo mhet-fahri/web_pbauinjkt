@@ -25,10 +25,11 @@ import {
   FileCheck2,
   Maximize2,
   FileCode,
-  Tv
+  Tv,
+  FolderOpen
 } from 'lucide-react';
 import { getAkreditasiItems, getLedConfig, getDkpsConfig, getRingkasanConfig } from '../services/akreditasiService';
-import { getGoogleDrivePreviewUrl, getGoogleDriveDownloadUrl, isYouTubeUrl } from '../utils/driveUtils';
+import { getGoogleDrivePreviewUrl, getGoogleDriveDownloadUrl, isYouTubeUrl, isDriveFolderUrl } from '../utils/driveUtils';
 import SEO from '../components/SEO';
 import logoUin from '../assets/logo-uin.png';
 
@@ -719,16 +720,28 @@ const PortalAsesmen = () => {
                   <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
                     isYouTubeUrl(previewModal.rawUrl)
                       ? 'bg-red-100 dark:bg-red-900/40 text-red-600'
+                      : isDriveFolderUrl(previewModal.rawUrl)
+                      ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-600'
                       : 'bg-blue-100 dark:bg-blue-900/40 text-blue-600'
                   }`}>
-                    {isYouTubeUrl(previewModal.rawUrl) ? <Tv size={18} /> : <FileText size={18} />}
+                    {isYouTubeUrl(previewModal.rawUrl) ? (
+                      <Tv size={18} />
+                    ) : isDriveFolderUrl(previewModal.rawUrl) ? (
+                      <FolderOpen size={18} />
+                    ) : (
+                      <FileText size={18} />
+                    )}
                   </div>
                   <div className="min-w-0">
                     <h4 className="text-sm sm:text-base font-black text-slate-900 dark:text-white truncate">
                       {previewModal.title}
                     </h4>
                     <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest block">
-                      {isYouTubeUrl(previewModal.rawUrl) ? 'Pratinjau Video YouTube' : 'Pratinjau Dokumen Asesmen Akreditasi'}
+                      {isYouTubeUrl(previewModal.rawUrl) 
+                        ? 'Pratinjau Video YouTube' 
+                        : isDriveFolderUrl(previewModal.rawUrl)
+                        ? 'Folder Berkas Google Drive'
+                        : 'Pratinjau Dokumen Asesmen Akreditasi'}
                     </span>
                   </div>
                 </div>
