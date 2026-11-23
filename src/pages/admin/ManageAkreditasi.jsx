@@ -23,7 +23,8 @@ import {
   FileSpreadsheet,
   FileCheck2,
   Upload,
-  Loader2
+  Loader2,
+  Tv
 } from 'lucide-react';
 import { 
   getAkreditasiItems, 
@@ -37,7 +38,7 @@ import {
   resetAkreditasiItemsToDefault 
 } from '../../services/akreditasiService';
 import { supabase } from '../../lib/supabase';
-import { getGoogleDrivePreviewUrl } from '../../utils/driveUtils';
+import { getGoogleDrivePreviewUrl, isYouTubeUrl } from '../../utils/driveUtils';
 
 const ManageAkreditasi = () => {
   const [items, setItems] = useState([]);
@@ -1187,15 +1188,19 @@ const ManageAkreditasi = () => {
               {/* Header Preview */}
               <div className="p-4 px-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 bg-slate-50 dark:bg-slate-900">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/40 text-blue-600 flex items-center justify-center">
-                    <FileText size={16} />
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                    isYouTubeUrl(previewRawUrl)
+                      ? 'bg-red-100 dark:bg-red-900/40 text-red-600'
+                      : 'bg-blue-100 dark:bg-blue-900/40 text-blue-600'
+                  }`}>
+                    {isYouTubeUrl(previewRawUrl) ? <Tv size={16} /> : <FileText size={16} />}
                   </div>
                   <div>
                     <h4 className="text-sm font-black text-slate-800 dark:text-white truncate max-w-lg">
                       {previewTitle}
                     </h4>
                     <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">
-                      Google Drive Document Preview
+                      {isYouTubeUrl(previewRawUrl) ? 'YouTube Video Preview' : 'Google Drive Document Preview'}
                     </span>
                   </div>
                 </div>
@@ -1215,7 +1220,7 @@ const ManageAkreditasi = () => {
                   </button>
 
                   <a
-                    href={previewUrl}
+                    href={previewRawUrl || previewUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800"
@@ -1232,13 +1237,14 @@ const ManageAkreditasi = () => {
                 </div>
               </div>
 
-              {/* Iframe Preview Google Drive */}
+              {/* Iframe Preview Google Drive / YouTube */}
               <div className="flex-1 bg-slate-100 dark:bg-slate-950 relative">
                 <iframe
                   src={previewUrl}
                   title="Document Preview"
                   className="w-full h-full border-0"
-                  allow="autoplay"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
                 />
               </div>
             </m.div>
